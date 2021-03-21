@@ -42,6 +42,10 @@
                 <div class="side-menu__title"> Laporan </div>
             </a>
         </li>
+
+        <?php
+        if($this->session->userdata("level")==1){
+        ?>
         <li>
             <a href="#" class="side-menu  ">
                 <div class="side-menu__icon"> <i data-feather="settings"></i> </div>
@@ -137,5 +141,6 @@
                 </li>
             </ul>
         </li>
+      <?php } ?>
     </ul>
 </nav>

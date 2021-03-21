@@ -60,6 +60,8 @@ $route['databaris'] = 'Lemari/baris';
 $route['dataprovinsi'] = 'Provinsi';
 $route['datakota'] = 'Provinsi/kota';
 $route['logout'] = 'Login/logout';
+$route['dataadmin'] = 'admin';
+$route['datapegawai'] = 'pegawai';
 
 $route['success-flash'] = 'MyFlashController/success';
 $route['error-flash'] = 'MyFlashController/error';

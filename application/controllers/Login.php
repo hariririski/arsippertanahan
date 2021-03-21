@@ -8,7 +8,7 @@ class Login extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->library('session');
 			$this->load->database();
-			// $this->load->model('M_Login');
+			$this->load->model('MLogin');
 			// $admin=$this->session->userdata('admin');
 	}
 	public function index()
@@ -16,36 +16,36 @@ class Login extends CI_Controller {
 		$this->load->view('login');
 	}
 
-	public function logout() {
-		$this->session->unset_userdata('login');
+	function logout(){
 		$this->session->sess_destroy();
-		redirect('beranda');
+		redirect(base_url('login'));
 	}
 
 	public function proses_login() {
-		$cek=$this->M_Login->login();
+		$cek=$this->MLogin->login();
 		if($cek==true){
 		  session_save_path();
       $username = $this->input->post('username');
       $password= $this->input->post('password');
       $password=md5($password);
-            $sql="SELECT * FROM admin where username='$username' and password='$password'";
+            $sql="SELECT * FROM admin where username='$username' and password='$password' and status='0'";
       $query = $this->db->query($sql);
       $data=$query->result();
       foreach ($data as $isi) {
 
             $arraydata = array(
-                 'nama'  => $isi->nama,
+                 'namaLengkap'  => $isi->namaLengkap,
                  'level'     => $isi->level,
                  'username' => $isi->username,
+                 'image' => $isi->image,
          );
+				 print_r($arraydata);
          $this->session->set_userdata($arraydata);
       }
-      redirect('admin');
-
+      redirect(base_url('home'));
 		}else{
       echo"<script>alert('Anda Gagal Login')</script>";
-		redirect('beranda?id=1');
+			redirect(base_url('login'));
 		}
 	}
 }
