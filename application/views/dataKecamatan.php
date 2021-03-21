@@ -140,6 +140,7 @@
                 success: function(data){
                   var html = '';
                   var i;
+                    html += '<option value="">Pilih Kota</option>';
                   for(i=0; i<data.length; i++){
                     html += '<option value="'+data[i].idKota+'">'+data[i].namaKota+'</option>';
                   }

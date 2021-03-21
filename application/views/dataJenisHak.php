@@ -42,7 +42,7 @@
                    </div>
                    <div class="intro-y grid grid-cols-12 gap-6 mt-5">
                      <div class="intro-y col-span-12 md:col-span-6 xl:col-span-6 box ">
-                       <form action="<?php echo base_url(); ?>jenishak/tambah" method="post" enctype="multipart/form-data">
+                       <form action="<?php echo base_url(); ?>JenisHak/tambah" method="post" enctype="multipart/form-data">
                          <div class="p-5">
                            <div>
                              <label for="change-password-form-1" class="form-label">Kode Jenis Hak</label>
