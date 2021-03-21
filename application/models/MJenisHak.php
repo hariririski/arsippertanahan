@@ -2,7 +2,7 @@
     class MJenisHak extends CI_Model{
 
       function lihat(){
-        $query=$this->db->query("SELECT * FROM `jenisHak`");
+        $query=$this->db->query("SELECT * FROM `jenishak`");
         return $query->result();
       }
       function add(){
