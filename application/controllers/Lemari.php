@@ -9,12 +9,18 @@ class Lemari extends CI_Controller {
 			$this->load->library('session');
 			$this->load->database();
 			$this->load->model('MLemari');
+			$this->load->model('MProvinsi');
 	}
 	public function index()
 	{
 			$data['dataLemari'] = $this->MLemari->lihat();
 			$this->load->view('dataLemari',$data);
 	}
+	function getBaris(){
+        $id=$this->input->post('id');
+        $data=$this->MLemari->getBaris($id);
+        echo json_encode($data);
+  }
 	public function tambah()
 	{
 		$cek= $this->MLemari->add();
@@ -41,6 +47,26 @@ class Lemari extends CI_Controller {
 
 		}else{
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal di Simpan');window.location.href='".base_url()."databaris';</script>");
+
+	 }
+	}
+
+	public function bundel()
+	{
+			$data['dataDesa'] = $this->MProvinsi->dataDesaBundel();
+			$data['dataLemari'] = $this->MLemari->lihat();
+			$data['dataBaris'] = $this->MLemari->lihatBaris();
+			$data['dataBundel'] = $this->MLemari->lihatBundel();
+			$this->load->view('dataBundel',$data);
+	}
+	public function tambahBundel()
+	{
+		$cek= $this->MLemari->tambahBundel();
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil di Simpan');window.location.href='".base_url()."databundel';</script>");
+
+		}else{
+			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal di Simpan');window.location.href='".base_url()."databundel';</script>");
 
 	 }
 	}

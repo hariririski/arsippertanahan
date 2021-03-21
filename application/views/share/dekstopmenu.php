@@ -128,7 +128,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo base_url(); ?>dataadmin" class="side-menu <?php echo $this->uri->segment('1')=='datadamin'?'side-menu--active':''; ?> ">
+                    <a href="<?php echo base_url(); ?>dataadmin" class="side-menu <?php echo $this->uri->segment('1')=='dataadmin'?'side-menu--active':''; ?> ">
                         <div class="side-menu__icon"> <i data-feather="hash"></i> </div>
                         <div class="side-menu__title"> Admin </div>
                     </a>
