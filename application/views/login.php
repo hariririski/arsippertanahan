@@ -24,13 +24,13 @@
                         <span class="text-white text-lg ml-3"> Arsip<span class="font-medium"> Pertanahan</span> </span>
                     </a>
                     <div class="my-auto">
-                        <img alt="Icewall Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="dist/images/illustration.svg">
+                        <img alt="Icewall Tailwind HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="dist/images/icon.png">
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                            A few more clicks to
+                            Temukan Arsip Pertanahan
                             <br>
-                            sign in to your account.
+                            Lebih Mudah dan Cepat.
                         </div>
-                        <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500">Manage all your e-commerce accounts in one place</div>
+                        <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-gray-500">Kelola Arsip Pertanahan Di Satu Aplikasi</div>
                     </div>
                 </div>
                 <!-- END: Login Info -->
