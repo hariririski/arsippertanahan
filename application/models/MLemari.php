@@ -25,11 +25,11 @@
       }
       function tambahBaris(){
         $idLemari = $this->input->post('idLemari');
-        $idbaris = $this->input->post('idbaris');
+        $idBaris = $this->input->post('idBaris');
         $namaBaris = $this->input->post('namaBaris');
         $keterangan = $this->input->post('keterangan');
 
-        $perintah1="INSERT INTO `baris`(`idBaris`, `namaBaris`, `keterangan`, `idLemari`) VALUES ('$idbaris','$namaBaris','$keterangan','$idLemari')";
+        $perintah1="INSERT INTO `baris`(`idBaris`, `namaBaris`, `keterangan`, `idLemari`) VALUES ('$idBaris','$namaBaris','$keterangan','$idLemari')";
         $query=$this->db->query($perintah1);
         return $query;
       }
