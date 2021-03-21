@@ -20,7 +20,21 @@
                 <div class="dropdown-menu__content box bg-theme-11 dark:bg-dark-6 text-white">
                     <div class="p-4 border-b border-theme-12 dark:border-dark-3">
                         <div class="font-medium"> <?php echo $this->session->userdata("namaLengkap"); ?></div>
-                        <div class="text-xs text-theme-13 mt-0.5 dark:text-gray-600"><?php echo $this->session->userdata("level"); ?></div>
+                        <div class="text-xs text-theme-13 mt-0.5 dark:text-gray-600">
+                          <?php
+                            switch ($this->session->userdata("level")){
+                              case 1:
+                                    echo "Administrator";
+                                    break;
+                              case 2:
+                                    echo "Pustakawan";
+                                    break;
+                              case 3:
+                                    echo "Umum";
+                                    break;
+                            }
+                          ?>
+                        </div>
                     </div>
                     <div class="p-2">
                         <a href="" class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"> <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile </a>
