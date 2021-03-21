@@ -9,7 +9,7 @@
         <meta name="description" content="Icewall admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Icewall Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
-        <title>Data Admin</title>
+        <title>Data Waktu Pelayanan</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/app.css">
         <!-- END: CSS Assets-->
@@ -37,36 +37,24 @@
 
                   <div class="intro-y flex items-center mt-8">
                     <h1 class="text-lg font-medium mr-auto">
-                      Master Data Admin
+                      Master Data Waktu Pelayanan
                     </h1>
                   </div>
 
                   <div class="intro-y box p-5 mt-5 ">
-                    <form action="<?php echo base_url(); ?>Admin/tambah" method="post" enctype="multipart/form-data">
-                      <div class="p-5">
-
-                        <div>
-                        <label for="change-password-form-1" class="form-label">Nama Lengkap</label>
-                        <input id="change-password-form-1" type="text" class="form-control" placeholder="Input text" required name="namaLengkap">
-                      </div>
-                      <div class="mt-3">
-                        <label for="change-password-form-2" class="form-label">Username</label>
-                        <input id="change-password-form-2" type="text" class="form-control" placeholder="Input text"  required name="username">
-                      </div>
-                      <div class="mt-3">
-                        <label for="change-password-form-2" class="form-label">Password</label>
-                        <input id="change-password-form-2" type="password" class="form-control" placeholder="Input text"  required name="password">
-                      </div>
-                      <br>
+                    <form action="<?php echo base_url(); ?>WaktuPelayanan/tambah" method="post" enctype="multipart/form-data">
+                    <div class="p-5">
                       <div>
-                        <label for="change-password-form-1" class="form-label">Level</label>
-                        <select class="form-select mt-2 sm:mr-2 form-control" aria-label="Default select example" required name="level">
-                          <option value="">Pilih Level</option>
-                          <option value="1">Admnistrator</option>
-                          <option value="2">Pustakawan</option>
-                          <option value="3">Umum</option>
-                        </select>
-
+                        <label for="change-password-form-1" class="form-label">Kode Waktu Pelayanan</label>
+                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="kodeWaktu">
+                      </div>
+                      <div class="mt-3">
+                        <label for="change-password-form-2" class="form-label">Nama Pelayanan</label>
+                        <input id="change-password-form-2" type="text" class="form-control" placeholder="Input text"  required name="pelayanan">
+                      </div>
+                      <div class="mt-3">
+                        <label for="change-password-form-2" class="form-label">Durasi Pelayanan (Hari)</label>
+                        <input id="change-password-form-2" type="number" class="form-control" placeholder="Input text"  required name="durasi">
                       </div>
 
                       <button type="submit" class="btn btn-primary mt-4">Simpan</button>
@@ -79,47 +67,23 @@
                       <thead>
                         <tr class="bg-gray-700 dark:bg-dark-1 text-white">
                           <th class="whitespace-nowrap" width="10%">#</th>
-                          <th class="whitespace-nowrap" width="20%">Icon</th>
-                          <th class="whitespace-nowrap" width="30%">Nama Lengkap</th>
-                          <th class="whitespace-nowrap">Level</th>
-                          <th class="whitespace-nowrap">Status</th>
+                          <th class="whitespace-nowrap" width="30%">Kode</th>
+                          <th class="whitespace-nowrap">Pelayanan</th>
+                          <th class="whitespace-nowrap" width="30%">Durasi</th>
                           <th class="whitespace-nowrap" width="30%">Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
                         $i=0;
-                        foreach($dataAdmin as $dataAdmin){
+                        foreach($dataWaktu as $dataWaktu){
                           $i++;
                           ?>
                           <tr>
                             <td class="border-b dark:border-dark-5"><?php echo $i; ?></td>
-                            <td class="border-b dark:border-dark-5"><image src="<?php echo base_url(); ?><?php echo $dataAdmin->image; ?>" width="30%"></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataAdmin->namaLengkap; ?></td>
-                            <td class="border-b dark:border-dark-5">
-                              <?php
-                                switch ($dataAdmin->level){
-                                  case 1:
-                                        echo "Administrator";
-                                        break;
-                                  case 2:
-                                        echo "Pustakawan";
-                                        break;
-                                  case 3:
-                                        echo "Umum";
-                                        break;
-                                }
-                              ?>
-                            </td>
-                            <td class="border-b dark:border-dark-5">
-                              <?php if($dataAdmin->status==0){
-                                        echo "Aktif";
-                                      }
-                                        else{
-                                        echo "Tidak Aktif";
-                                      }
-                              ?>
-                            </td>
+                            <td class="border-b dark:border-dark-5"><?php echo $dataWaktu->idWaktu; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $dataWaktu->pelayanan; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $dataWaktu->durasi; ?> Hari</td>
                             <td class="border-b dark:border-dark-5">
                               <a href="">
                               </a>

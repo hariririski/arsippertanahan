@@ -60,13 +60,9 @@ $route['databaris'] = 'Lemari/baris';
 $route['dataprovinsi'] = 'Provinsi';
 $route['datakota'] = 'Provinsi/kota';
 $route['logout'] = 'Login/logout';
-$route['dataadmin'] = 'admin';
-$route['datapegawai'] = 'pegawai';
-
-$route['success-flash'] = 'MyFlashController/success';
-$route['error-flash'] = 'MyFlashController/error';
-$route['warning-flash'] = 'MyFlashController/warning';
-$route['info-flash'] = 'MyFlashController/info';
+$route['dataadmin'] = 'Admin';
+$route['datawaktupelayanan'] = 'WaktuPelayanan';
+$route['datapegawai'] = 'Pegawai';
 
 $route['404_override'] = 'Rusak';
 $route['translate_uri_dashes'] = FALSE;

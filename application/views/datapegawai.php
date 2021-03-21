@@ -9,7 +9,7 @@
         <meta name="description" content="Icewall admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Icewall Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
-        <title>Data Admin</title>
+        <title>Data Pegawai</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/app.css">
         <!-- END: CSS Assets-->
@@ -37,34 +37,34 @@
 
                   <div class="intro-y flex items-center mt-8">
                     <h1 class="text-lg font-medium mr-auto">
-                      Master Data Admin
+                      Master Data Pegawai
                     </h1>
                   </div>
 
                   <div class="intro-y box p-5 mt-5 ">
-                    <form action="<?php echo base_url(); ?>Admin/tambah" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url(); ?>Pegawai/tambah" method="post" enctype="multipart/form-data">
                       <div class="p-5">
 
                         <div>
-                        <label for="change-password-form-1" class="form-label">Nama Lengkap</label>
-                        <input id="change-password-form-1" type="text" class="form-control" placeholder="Input text" required name="namaLengkap">
+                        <label for="change-password-form-1" class="form-label">NIP / NIK</label>
+                        <input id="change-password-form-1" type="text" class="form-control" placeholder="Input text" required name="nip">
                       </div>
                       <div class="mt-3">
-                        <label for="change-password-form-2" class="form-label">Username</label>
-                        <input id="change-password-form-2" type="text" class="form-control" placeholder="Input text"  required name="username">
+                        <label for="change-password-form-2" class="form-label">Nama Lengkap</label>
+                        <input id="change-password-form-2" type="text" class="form-control" placeholder="Input text"  required name="namaLengkap">
                       </div>
                       <div class="mt-3">
-                        <label for="change-password-form-2" class="form-label">Password</label>
-                        <input id="change-password-form-2" type="password" class="form-control" placeholder="Input text"  required name="password">
+                        <label for="change-password-form-2" class="form-label">Jabatan</label>
+                        <input id="change-password-form-2" type="password" class="form-control" placeholder="Input text"  required name="jabatan">
                       </div>
                       <br>
                       <div>
-                        <label for="change-password-form-1" class="form-label">Level</label>
-                        <select class="form-select mt-2 sm:mr-2 form-control" aria-label="Default select example" required name="level">
-                          <option value="">Pilih Level</option>
-                          <option value="1">Admnistrator</option>
-                          <option value="2">Pustakawan</option>
-                          <option value="3">Umum</option>
+                        <label for="change-password-form-1" class="form-label">Jenis Pegawai</label>
+                        <select class="form-select mt-2 sm:mr-2 form-control" aria-label="Default select example" required name="jenis">
+                          <option value="">Pilih Jenis</option>
+                          <option value="1">ASN</option>
+                          <option value="2">ASK</option>
+                          <option value="3">PPNPN</option>
                         </select>
 
                       </div>
@@ -79,9 +79,10 @@
                       <thead>
                         <tr class="bg-gray-700 dark:bg-dark-1 text-white">
                           <th class="whitespace-nowrap" width="10%">#</th>
-                          <th class="whitespace-nowrap" width="20%">Icon</th>
+                          <th class="whitespace-nowrap" width="20%">NIP/NIK</th>
                           <th class="whitespace-nowrap" width="30%">Nama Lengkap</th>
-                          <th class="whitespace-nowrap">Level</th>
+                          <th class="whitespace-nowrap">Jabatan</th>
+                          <th class="whitespace-nowrap">Jenis</th>
                           <th class="whitespace-nowrap">Status</th>
                           <th class="whitespace-nowrap" width="30%">Aksi</th>
                         </tr>
@@ -89,30 +90,31 @@
                       <tbody>
                         <?php
                         $i=0;
-                        foreach($dataAdmin as $dataAdmin){
+                        foreach($dataPegawai as $dataPegawai){
                           $i++;
                           ?>
                           <tr>
                             <td class="border-b dark:border-dark-5"><?php echo $i; ?></td>
-                            <td class="border-b dark:border-dark-5"><image src="<?php echo base_url(); ?><?php echo $dataAdmin->image; ?>" width="30%"></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataAdmin->namaLengkap; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $dataPegawai->nip; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $dataPegawai->namaLengkap; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $dataPegawai->jabatan; ?></td>
                             <td class="border-b dark:border-dark-5">
                               <?php
-                                switch ($dataAdmin->level){
+                                switch ($dataPegawai->jenis){
                                   case 1:
-                                        echo "Administrator";
+                                        echo "ASN";
                                         break;
                                   case 2:
-                                        echo "Pustakawan";
+                                        echo "ASK";
                                         break;
                                   case 3:
-                                        echo "Umum";
+                                        echo "PPNPN";
                                         break;
                                 }
                               ?>
                             </td>
                             <td class="border-b dark:border-dark-5">
-                              <?php if($dataAdmin->status==0){
+                              <?php if($dataPegawai->status==0){
                                         echo "Aktif";
                                       }
                                         else{
