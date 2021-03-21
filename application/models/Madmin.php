@@ -1,6 +1,5 @@
 <?php
     class MAdmin extends CI_Model{
-
       function lihat(){
         $query=$this->db->query("SELECT * FROM `admin`");
         return $query->result();
