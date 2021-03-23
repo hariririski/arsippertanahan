@@ -36,7 +36,7 @@
                     </div>
                     <div class="grid grid-cols-12 gap-6 mt-5">
                         <!-- BEGIN: Simple Editor -->
-                        <div class="col-span-12 lg:col-span-6">
+                        <div class="col-span-12 lg:col-span-12">
                             <div class="box">
                                 <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
                                     <h2 class="font-medium text-base mr-auto">
@@ -45,9 +45,21 @@
                                 </div>
                                 <div class="p-5" id="simple-editor">
                                     <div class="preview">
-                                        <div data-simple-toolbar="true" class="editor">
-                                            <p>Content of the editor.</p>
-                                        </div>
+                                         <div class="form-inline">
+                                           <label for="horizontal-form-1" class="form-label sm:w-20">Email</label>
+                                           <input id="horizontal-form-1" type="text" class="form-control" placeholder="example@gmail.com">
+                                         </div>
+                                         <div class="form-inline mt-5">
+                                           <label for="horizontal-form-2" class="form-label sm:w-20">Password</label>
+                                           <input id="horizontal-form-2" type="password" class="form-control" placeholder="secret">
+                                         </div>
+                                         <div class="form-check sm:ml-20 sm:pl-5 mt-5">
+                                           <input id="horizontal-form-3" class="form-check-input" type="checkbox" value="">
+                                           <label class="form-check-label" for="horizontal-form-3">Remember me</label>
+                                         </div>
+                                         <div class="sm:ml-20 sm:pl-5 mt-5">
+                                           <button class="btn btn-primary">Login</button>
+                                         </div>
                                     </div>
 
                                 </div>

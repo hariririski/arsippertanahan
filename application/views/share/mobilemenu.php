@@ -7,47 +7,81 @@
     </div>
     <ul class="border-t border-theme-2 py-5 hidden">
         <li>
-            <a href="javascript:;.html" class="menu menu--active">
-                <div class="menu__icon"> <i data-feather="home"></i> </div>
-                <div class="menu__title"> Daashboard <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
-            </a>
-            <ul class="menu__sub-open">
-                <li>
-                    <a href="index.html" class="menu menu--active">
-                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="menu__title"> Overview 1 </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="side-menu-light-dashboard-overview-2.html" class="menu">
-                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="menu__title"> Overview 2 </div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
             <a href="javascript:;" class="menu">
                 <div class="menu__icon"> <i data-feather="box"></i> </div>
-                <div class="menu__title"> Menu Layout <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
+                <div class="menu__title"> Setting<i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
             </a>
             <ul class="">
                 <li>
                     <a href="index.html" class="menu menu--active">
                         <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="menu__title"> Side Menu </div>
+                        <div class="menu__title">Data Kondisi</div>
                     </a>
                 </li>
                 <li>
                     <a href="simple-menu-light-dashboard-overview-1.html" class="menu menu--active">
                         <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="menu__title"> Simple Menu </div>
+                        <div class="menu__title"> Data Jenis Hak </div>
                     </a>
                 </li>
                 <li>
                     <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
                         <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="menu__title"> Top Menu </div>
+                        <div class="menu__title"> Data Provinsi </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
+                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="menu__title"> Data Kota</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
+                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="menu__title"> Data Kecamatan</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
+                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="menu__title"> Data Desa</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
+                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="menu__title"> Data Lemari</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
+                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="menu__title"> Data Baris</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
+                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="menu__title"> Data Bundel</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
+                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="menu__title"> Data Waktu Pelayanan</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
+                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="menu__title"> Data Admin</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
+                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="menu__title"> Data Pegawai</div>
                     </a>
                 </li>
             </ul>
@@ -55,7 +89,7 @@
         <li>
             <a href="side-menu-light-inbox.html" class="menu">
                 <div class="menu__icon"> <i data-feather="inbox"></i> </div>
-                <div class="menu__title"> Inbox </div>
+                <div class="menu__title"> Home</div>
             </a>
         </li>
         <li>

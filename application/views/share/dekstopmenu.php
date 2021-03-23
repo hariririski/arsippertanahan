@@ -13,31 +13,31 @@
         </li>
 
         <li>
-            <a href="side-menu-light-inbox.html" class="side-menu <?php echo base_url(); ?>home" class="side-menu <?php echo $this->uri->segment('1')=='home'?'side-menu--active':''; ?> ">
+            <a href="<?php echo base_url(); ?>bukutanah" class="side-menu <?php echo $this->uri->segment('1')=='bukutanah'?'side-menu--active':''; ?> ">
                 <div class="side-menu__icon"> <i data-feather="book"></i> </div>
                 <div class="side-menu__title"> Buku Tanah </div>
             </a>
         </li>
         <li>
-            <a href="side-menu-light-file-manager.html" class="side-menu <?php echo base_url(); ?>home" class="side-menu <?php echo $this->uri->segment('1')=='home'?'side-menu--active':''; ?> ">
+            <a href="<?php echo base_url(); ?>suratukur"  class="side-menu <?php echo $this->uri->segment('1')=='suratukur'?'side-menu--active':''; ?> ">
                 <div class="side-menu__icon"> <i data-feather="book"></i> </div>
                 <div class="side-menu__title"> Surat Ukur </div>
             </a>
         </li>
         <li>
-            <a href="side-menu-light-point-of-sale.html" class="side-menu <?php echo base_url(); ?>home" class="side-menu <?php echo $this->uri->segment('1')=='home'?'side-menu--active':''; ?> ">
+            <a href=" <?php echo base_url(); ?>warkah" class="side-menu <?php echo $this->uri->segment('1')=='warkah'?'side-menu--active':''; ?> ">
                 <div class="side-menu__icon"> <i data-feather="book"></i> </div>
                 <div class="side-menu__title"> Warkah </div>
             </a>
         </li>
         <li>
-            <a href="side-menu-light-chat.html" class="side-menu <?php echo base_url(); ?>home" class="side-menu <?php echo $this->uri->segment('1')=='home'?'side-menu--active':''; ?> ">
+            <a href="<?php echo base_url(); ?>peminjaman"  class="side-menu <?php echo $this->uri->segment('1')=='peminjaman'?'side-menu--active':''; ?> ">
                 <div class="side-menu__icon"> <i data-feather="edit"></i> </div>
                 <div class="side-menu__title"> Peminjaman </div>
             </a>
         </li>
         <li>
-            <a href="side-menu-light-post.html" class="side-menu <?php echo base_url(); ?>home" class="side-menu <?php echo $this->uri->segment('1')=='home'?'side-menu--active':''; ?> ">
+            <a href=" <?php echo base_url(); ?>laporan" class="side-menu <?php echo $this->uri->segment('1')=='laporan'?'side-menu--active':''; ?> ">
                 <div class="side-menu__icon"> <i data-feather="file-text"></i> </div>
                 <div class="side-menu__title"> Laporan </div>
             </a>
