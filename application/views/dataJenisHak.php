@@ -60,7 +60,7 @@
                          </div>
                        </form>
                      </div>
-                     <div class="intro-y col-span-12 md:col-span-6 xl:col-span-6 box ">
+                     <div class="overflow-x-auto intro-y box p-5 mt-5">
                        <div class="p-5">
                          <table class="table"  style="width:98%;">
                            <thead>

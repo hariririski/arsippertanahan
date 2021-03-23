@@ -74,7 +74,7 @@
                   </form>
                   </div>
                   <!-- BEGIN: HTML Table Data -->
-                  <div class="intro-y box p-5 mt-5">
+                  <div class="overflow-x-auto intro-y box p-5 mt-5">
                     <table class="table">
                       <thead>
                         <tr class="bg-gray-700 dark:bg-dark-1 text-white">
@@ -131,7 +131,10 @@
                         <?php } ?>
                       </tbody>
                     </table>
-                  </div>
+                      </div>
+
+
+
                   <!-- END: HTML Table Data -->
                 </div>
                 <!-- END: Content -->

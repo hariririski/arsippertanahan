@@ -9,7 +9,7 @@
         <meta name="description" content="Icewall admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Icewall Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
-        <title>Data Desa</title>
+        <title>Data Bundel</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/app.css">
         <!-- END: CSS Assets-->
@@ -111,7 +111,7 @@
                   </form>
                   </div>
                   <!-- BEGIN: HTML Table Data -->
-                  <div class="intro-y box p-5 mt-5">
+                  <div class="overflow-x-auto intro-y box p-5 mt-5">
                     <table class="table">
                       <thead>
                         <tr class="bg-gray-700 dark:bg-dark-1 text-white">
