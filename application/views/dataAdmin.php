@@ -78,12 +78,12 @@
                     <table class="table">
                       <thead>
                         <tr class="bg-gray-700 dark:bg-dark-1 text-white">
-                          <th class="whitespace-nowrap" width="10%">#</th>
-                          <th class="whitespace-nowrap" width="20%">Icon</th>
-                          <th class="whitespace-nowrap" width="30%">Nama Lengkap</th>
+                          <th class="whitespace-nowrap" >#</th>
+                          <th class="whitespace-nowrap" >Icon</th>
+                          <th class="whitespace-nowrap">Nama Lengkap</th>
                           <th class="whitespace-nowrap">Level</th>
                           <th class="whitespace-nowrap">Status</th>
-                          <th class="whitespace-nowrap" width="30%">Aksi</th>
+                          <th class="whitespace-nowrap" >Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -94,7 +94,7 @@
                           ?>
                           <tr>
                             <td class="border-b dark:border-dark-5"><?php echo $i; ?></td>
-                            <td class="border-b dark:border-dark-5"><image src="<?php echo base_url(); ?><?php echo $dataAdmin->image; ?>" width="30%"></td>
+                            <td class="border-b dark:border-dark-5"><image src="<?php echo base_url(); ?><?php echo $dataAdmin->image; ?>" width="70px"></td>
                             <td class="border-b dark:border-dark-5"><?php echo $dataAdmin->namaLengkap; ?></td>
                             <td class="border-b dark:border-dark-5">
                               <?php
