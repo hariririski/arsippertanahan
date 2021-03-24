@@ -13,8 +13,8 @@
         $query=$this->db->query("SELECT * FROM `kec` where kec.idKota=$id");
         return $query->result();
       }
-      function getDesa(){
-        $query=$this->db->query("SELECT * FROM `desa` where desa.idKecamatan=$id");
+      function getDesa($id){
+        $query=$this->db->query("SELECT * FROM `desa` where desa.idKec=$id");
         return $query->result();
       }
 

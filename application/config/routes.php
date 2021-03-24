@@ -54,6 +54,7 @@ $route['default_controller'] = 'Login';
 $route['login'] = 'Login';
 $route['home'] = 'Home';
 $route['bukutanah'] = 'BukuTanah';
+$route['databukutanah'] = 'BukuTanah/data';
 $route['datakondisi'] = 'Kondisi';
 $route['datajenishak'] = 'JenisHak';
 $route['datalemari'] = 'Lemari';

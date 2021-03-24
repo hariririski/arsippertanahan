@@ -9,7 +9,7 @@
         <meta name="description" content="Icewall admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Icewall Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
-        <title>Beranda</title>
+        <title></title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="dist/css/app.css">
         <!-- END: CSS Assets-->
@@ -31,7 +31,7 @@
                 <div class="content">
                     <div class="flex items-center mt-8">
                         <h2 class="text-lg font-medium mr-auto">
-                            CKEditor
+                            Tambah Buku Tanah
                         </h2>
                     </div>
                     <div class="grid grid-cols-12 gap-6 mt-5">
@@ -39,150 +39,59 @@
                         <div class="col-span-12 lg:col-span-12">
                             <div class="box">
                                 <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                                    <h2 class="font-medium text-base mr-auto">
-                                        Simple Editor
-                                    </h2>
+                                    Buku Tanah
                                 </div>
-                                <div class="p-5" id="simple-editor">
+                                <form action="<?php echo base_url(); ?>Bukutanah/tambah" method="post" enctype="multipart/form-data">
+
+                                <div class="p-5">
                                     <div class="preview">
-                                         <div class="form-inline">
-                                           <label for="horizontal-form-1" class="form-label sm:w-20">Email</label>
-                                           <input id="horizontal-form-1" type="text" class="form-control" placeholder="example@gmail.com">
+                                        <div class="form-inline mt-5">
+                                          <label for="horizontal-form-2" class="form-label sm:w-20">Provinsi</label>
+                                          <select id="horizontal-form-2" data-search="true" class="tail-select w-full form-control" required name="dataAlamat">
+                                            <option value="">Pilih Desa</option>
+                                            <?php
+                                              foreach($dataDesa as $dataDesa){
+                                            ?>
+                                              <option value="<?php echo $dataDesa->idProv; ?>-<?php echo $dataDesa->idKota;?>-<?php echo $dataDesa->idKec;?>-<?php echo $dataDesa->idDesa; ?>"><?php echo $dataDesa->idProv; ?><?php echo $dataDesa->idKota; ?><?php echo $dataDesa->idKec; ?> <?php echo $dataDesa->idDesa; ?>- <?php echo $dataDesa->namaProv; ?> - <?php echo $dataDesa->namaKota; ?> -  <?php echo $dataDesa->namaKec; ?> -> <?php echo $dataDesa->namaDesa; ?></option>
+                                            <?php } ?>
+                                          </select>
+                                        </div>
+                                         <div class="form-inline mt-5">
+                                           <label for="horizontal-form-1" class="form-label sm:w-20">No Hak</label>
+                                           <input id="horizontal-form-1" type="text" class="form-control" name="noHak">
                                          </div>
                                          <div class="form-inline mt-5">
-                                           <label for="horizontal-form-2" class="form-label sm:w-20">Password</label>
-                                           <input id="horizontal-form-2" type="password" class="form-control" placeholder="secret">
+                                           <label for="horizontal-form-2" class="form-label sm:w-20">Jenis Hak</label>
+                                           <select id="horizontal-form-2" data-search="true" class="tail-select w-full form-control" required name="idJenisHak">
+                                             <option value="">Pilih Jenis Hak</option>
+                                             <?php
+                                               foreach($dataJenisHak as $dataJenisHak){
+                                             ?>
+                                               <option value="<?php echo $dataJenisHak->idJenisHak; ?>"><?php echo $dataJenisHak->namaJenisHak; ?></option>
+                                             <?php } ?>
+                                           </select>
                                          </div>
-                                         <div class="form-check sm:ml-20 sm:pl-5 mt-5">
-                                           <input id="horizontal-form-3" class="form-check-input" type="checkbox" value="">
-                                           <label class="form-check-label" for="horizontal-form-3">Remember me</label>
+                                         <div class="form-inline mt-5">
+                                           <label for="horizontal-form-2" class="form-label sm:w-20">Kondisi</label>
+                                           <select id="horizontal-form-2" data-search="true" class="tail-select w-full form-control" required name="idKondisi">
+                                             <option value="">Pilih Kondisi</option>
+                                             <?php
+                                               foreach($dataKondisi as $dataKondisi){
+                                             ?>
+                                               <option value="<?php echo $dataKondisi->idKondisi; ?>"><?php echo $dataKondisi->namaKondisi; ?></option>
+                                             <?php } ?>
+                                           </select>
                                          </div>
                                          <div class="sm:ml-20 sm:pl-5 mt-5">
-                                           <button class="btn btn-primary">Login</button>
+                                           <button class="btn btn-primary">Tambah</button>
                                          </div>
                                     </div>
-
                                 </div>
+                              </form>
                             </div>
                         </div>
                         <!-- END: Simple Editor -->
-                        <!-- BEGIN: Standard Editor -->
-                        <div class="col-span-12 lg:col-span-6">
-                            <div class="box">
-                                <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                                    <h2 class="font-medium text-base mr-auto">
-                                        Standard Editor
-                                    </h2>
-                                    <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
-                                        <label class="form-check-label ml-0 sm:ml-2" for="show-example-2">Show example code</label>
-                                        <input data-target="#standard-editor" class="show-code form-check-switch mr-0 ml-3" type="checkbox" id="show-example-2">
-                                    </div>
-                                </div>
-                                <div class="p-5" id="standard-editor">
-                                    <div class="preview">
-                                        <div class="editor">
-                                            <p>Content of the editor.</p>
-                                        </div>
-                                    </div>
-                                    <div class="source-code hidden">
-                                        <button data-target="#copy-standard-editor" class="copy-code btn py-1 px-2 btn-outline-secondary"> <i data-feather="file" class="w-4 h-4 mr-2"></i> Copy example code </button>
-                                        <div class="overflow-y-auto mt-3 rounded-md">
-                                            <pre class="source-preview" id="copy-standard-editor"> <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10"> HTMLOpenTagdiv class=&quot;editor&quot;HTMLCloseTag HTMLOpenTagpHTMLCloseTagContent of the editor.HTMLOpenTag/pHTMLCloseTag HTMLOpenTag/divHTMLCloseTag </code> </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END: Standard Editor -->
-                        <!-- BEGIN: Inline Editor -->
-                        <div class="col-span-12 lg:col-span-6">
-                            <div class="box">
-                                <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                                    <h2 class="font-medium text-base mr-auto">
-                                        Inline Editor
-                                    </h2>
-                                    <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
-                                        <label class="form-check-label ml-0 sm:ml-2" for="show-example-3">Show example code</label>
-                                        <input data-target="#inline-editor" class="show-code form-check-switch mr-0 ml-3" type="checkbox" id="show-example-3">
-                                    </div>
-                                </div>
-                                <div class="p-5" id="inline-editor">
-                                    <div class="preview">
-                                        <div data-editor="inline" class="editor">
-                                            <p>Content of the editor.</p>
-                                        </div>
-                                    </div>
-                                    <div class="source-code hidden">
-                                        <button data-target="#copy-inline-editor" class="copy-code btn py-1 px-2 btn-outline-secondary"> <i data-feather="file" class="w-4 h-4 mr-2"></i> Copy example code </button>
-                                        <div class="overflow-y-auto mt-3 rounded-md">
-                                            <pre class="source-preview" id="copy-inline-editor"> <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10"> HTMLOpenTagdiv data-editor=&quot;inline&quot; class=&quot;editor&quot;HTMLCloseTag HTMLOpenTagpHTMLCloseTagContent of the editor.HTMLOpenTag/pHTMLCloseTag HTMLOpenTag/divHTMLCloseTag </code> </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END: Inline Editor -->
-                        <!-- BEGIN: Balloon Editor -->
-                        <div class="col-span-12 lg:col-span-6">
-                            <div class="box">
-                                <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                                    <h2 class="font-medium text-base mr-auto">
-                                        Balloon Editor
-                                    </h2>
-                                    <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
-                                        <label class="form-check-label ml-0 sm:ml-2" for="show-example-4">Show example code</label>
-                                        <input data-target="#balloon-editor" class="show-code form-check-switch mr-0 ml-3" type="checkbox" id="show-example-4">
-                                    </div>
-                                </div>
-                                <div class="p-5" id="balloon-editor">
-                                    <div class="preview">
-                                        <div data-editor="balloon" class="editor">
-                                            <p>Content of the editor.</p>
-                                        </div>
-                                    </div>
-                                    <div class="source-code hidden">
-                                        <button data-target="#copy-balloon-editor" class="copy-code btn py-1 px-2 btn-outline-secondary"> <i data-feather="file" class="w-4 h-4 mr-2"></i> Copy example code </button>
-                                        <div class="overflow-y-auto mt-3 rounded-md">
-                                            <pre class="source-preview" id="copy-balloon-editor"> <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10"> HTMLOpenTagdiv data-editor=&quot;balloon&quot; class=&quot;editor&quot;HTMLCloseTag HTMLOpenTagpHTMLCloseTagContent of the editor.HTMLOpenTag/pHTMLCloseTag HTMLOpenTag/divHTMLCloseTag </code> </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END: Balloon Editor -->
-                        <!-- BEGIN: Document Editor -->
-                        <div class="col-span-12">
-                            <div class="box">
-                                <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
-                                    <h2 class="font-medium text-base mr-auto">
-                                        Document Editor
-                                    </h2>
-                                    <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
-                                        <label class="form-check-label ml-0 sm:ml-2" for="show-example-5">Show example code</label>
-                                        <input data-target="#document-editor" class="show-code form-check-switch mr-0 ml-3" type="checkbox" id="show-example-5">
-                                    </div>
-                                </div>
-                                <div class="p-5" id="document-editor">
-                                    <div class="preview">
-                                        <div data-editor="document" class="editor document-editor">
-                                            <div class="document-editor__toolbar"></div>
-                                            <div class="document-editor__editable-container">
-                                                <div class="document-editor__editable">
-                                                    <p>Content of the editor.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="source-code hidden">
-                                        <button data-target="#copy-document-editor" class="copy-code btn py-1 px-2 btn-outline-secondary"> <i data-feather="file" class="w-4 h-4 mr-2"></i> Copy example code </button>
-                                        <div class="overflow-y-auto mt-3 rounded-md">
-                                            <pre class="source-preview" id="copy-document-editor"> <code class="text-xs p-0 rounded-md html pl-5 pt-8 pb-4 -mb-10 -mt-10"> HTMLOpenTagdiv data-editor=&quot;document&quot; class=&quot;editor document-editor&quot;HTMLCloseTag HTMLOpenTagdiv class=&quot;document-editor__toolbar&quot;HTMLCloseTagHTMLOpenTag/divHTMLCloseTag HTMLOpenTagdiv class=&quot;document-editor__editable-container&quot;HTMLCloseTag HTMLOpenTagdiv class=&quot;document-editor__editable&quot;HTMLCloseTag HTMLOpenTagpHTMLCloseTagContent of the editor.HTMLOpenTag/pHTMLCloseTag HTMLOpenTag/divHTMLCloseTag HTMLOpenTag/divHTMLCloseTag HTMLOpenTag/divHTMLCloseTag </code> </pre>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- END: Document Editor -->
+
                     </div>
                 </div>
                 <!-- END: Content -->
@@ -190,8 +99,8 @@
         </div>
 
         <!-- BEGIN: JS Assets-->
-        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG7gNHAhDzgYmq4-EHvM4bqW1DNj2UCuk&libraries=places"></script>
+        <script src="dist/js/markerclusterer.js"></script>
+        <script src="dist/js/js.js"></script>
         <script src="dist/js/app.js"></script>
         <!-- END: JS Assets-->
     </body>

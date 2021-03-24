@@ -11,13 +11,33 @@
             </a>
 
         </li>
-
         <li>
-            <a href="<?php echo base_url(); ?>bukutanah" class="side-menu <?php echo $this->uri->segment('1')=='bukutanah'?'side-menu--active':''; ?> ">
+          <a href="javascript:;" class="side-menu">
+            <div class="side-menu__icon"> <i data-feather="home"></i> </div>
+            <div class="side-menu__title">
+              Buku Tanah
+              <div class="side-menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+            </div>
+          </a>
+          <ul class="<?php echo ($this->uri->segment('1')=='bukutanah'
+                                  || $this->uri->segment('1')=='databukutanah'
+                                  )?'side-menu__sub-open':''; ?>">
+            <li>
+              <a href="<?php echo base_url(); ?>bukutanah" class="side-menu <?php echo $this->uri->segment('1')=='bukutanah'?'side-menu--active':''; ?> ">
                 <div class="side-menu__icon"> <i data-feather="book"></i> </div>
-                <div class="side-menu__title"> Buku Tanah </div>
-            </a>
+                <div class="side-menu__title"> Tambah Buku Tanah </div>
+              </a>
+            </li>
+            <li>
+              <a href="<?php echo base_url(); ?>databukutanah" class="side-menu <?php echo $this->uri->segment('1')=='databukutanah'?'side-menu--active':''; ?> ">
+                <div class="side-menu__icon"> <i data-feather="book"></i> </div>
+                <div class="side-menu__title">Pencarian Buku Tanah </div>
+              </a>
+            </li>
+
+          </ul>
         </li>
+
         <li>
             <a href="<?php echo base_url(); ?>suratukur"  class="side-menu <?php echo $this->uri->segment('1')=='suratukur'?'side-menu--active':''; ?> ">
                 <div class="side-menu__icon"> <i data-feather="book"></i> </div>
