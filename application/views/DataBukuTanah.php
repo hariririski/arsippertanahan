@@ -14,6 +14,9 @@
         <link rel="stylesheet" href="dist/css/app.css">
         <link href="dist/css/tabulator.min.css" rel="stylesheet">
         <script type="text/javascript" src="dist/js/tabulator.min.js"></script>
+        <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.0.5/jspdf.plugin.autotable.js"></script>
 
         <!-- END: CSS Assets-->
     </head>
@@ -105,8 +108,23 @@
 
                     <div class="grid grid-cols-12 gap-6 mt-5">
                         <!-- BEGIN: Simple Editor -->
+
                         <div class="col-span-12 lg:col-span-12">
-                            <div class="box">
+
+                            <div class="intro-y box">
+                              <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
+                                    <h2 class="font-medium text-base mr-auto">
+                                        Data Buku Tanah
+                                    </h2>
+                                    <div class="w-full sm:w-auto flex items-center sm:ml-auto mt-3 sm:mt-0">
+                                      <button id="download-csv" class="btn btn-primary w-24 mr-2 mb-2">CSV</button>
+                                      <button id="download-json" class="btn btn-primary w-24 mr-1 mb-2">JSON</button>
+                                      <button id="download-xlsx" class="btn btn-primary w-24 mr-1 mb-2">XLSX</button>
+                                      <button id="download-pdf" class="btn btn-primary w-24 mr-1 mb-2">PDF</button>
+                                      <button id="download-html" class="btn btn-primary w-24 mr-1 mb-2">HTML</button>
+                                    </div>
+                                </div>
+
                               <div id="players"></div>
                             <script type="text/javascript">
                                 var tabledata = [{
@@ -114,7 +132,7 @@
                                         playername: "Virat Kohli",
                                         price: "17",
                                         team: "RCB",
-                                        joiningdate: "01/01/2020"
+                                        joiningdate: '<a href="#"><button align="right" class=" form-control col-span-5 btn btn-primary">Cari</button></a>'
                                     }, {
                                         playerid: 2,
                                         playername: "Rohit Sharma",
@@ -221,14 +239,41 @@
                                         }, {
                                             title: "Joining Date",
                                             field: "joiningdate",
-                                            sorter: "date",
+                                            formatter:"html",
                                             hozAlign: "center"
                                         },
                                     ],
-                                    rowClick: function(e, row) {
-                                        alert("Row " + row.getData().playerid + " Clicked!!!!");
-                                    },
+
                                 });
+
+
+                                        //trigger download of data.csv file
+                                        document.getElementById("download-csv").addEventListener("click", function(){
+                                            table.download("csv", "data.csv");
+                                        });
+
+                                        //trigger download of data.json file
+                                        document.getElementById("download-json").addEventListener("click", function(){
+                                            table.download("json", "data.json");
+                                        });
+
+                                        //trigger download of data.xlsx file
+                                        document.getElementById("download-xlsx").addEventListener("click", function(){
+                                            table.download("xlsx", "data.xlsx", {sheetName:"My Data"});
+                                        });
+
+                                        //trigger download of data.pdf file
+                                        document.getElementById("download-pdf").addEventListener("click", function(){
+                                            table.download("pdf", "data.pdf", {
+                                                orientation:"portrait", //set page orientation to portrait
+                                                title:"Example Report", //add title to report
+                                            });
+                                        });
+
+                                        //trigger download of data.html file
+                                        document.getElementById("download-html").addEventListener("click", function(){
+                                            table.download("html", "data.html", {style:true});
+                                        });
                             </script>
                             </div>
                         </div>
