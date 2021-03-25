@@ -41,6 +41,29 @@ class BukuTanah extends CI_Controller {
 		$data['dataDesa'] = $this->MProvinsi->dataDesaBundel();
 		$data['dataProvinsi'] = $this->MProvinsi->lihat();
 		$data['dataDesa'] = $this->MProvinsi->lihatDesa();
+		$data['dataKota'] = $this->MProvinsi->lihatKota();
+		$data['dataKecamatan'] = $this->MProvinsi->LihatKecamatan();
 		$this->load->view('dataBukuTanah',$data);
+	}
+	// public function pData()
+	// {
+	//
+	// 	$data['dataJenisHak'] = $this->MJenisHak->lihat();
+	// 	$data['dataKondisi'] = $this->MKondisi->lihat();
+	// 	$data['dataDesa'] = $this->MProvinsi->dataDesaBundel();
+	// 	$data['dataProvinsi'] = $this->MProvinsi->lihat();
+	// 	$data['dataDesa'] = $this->MProvinsi->lihatDesa();
+	// 	$this->load->view('pDataBukuTanah',$data);
+	// }
+	public function bukuTanahBarcode()
+	{
+		$data['dataJenisHak'] = $this->MJenisHak->lihat();
+		$data['dataKondisi'] = $this->MKondisi->lihat();
+		$data['dataDesa'] = $this->MProvinsi->dataDesaBundel();
+		$data['dataProvinsi'] = $this->MProvinsi->lihat();
+		$data['dataKota'] = $this->MProvinsi->lihatKota();
+		$data['dataDesa'] = $this->MProvinsi->lihatDesa();
+		$data['dataBukuTanah'] = $this->MBukuTanah->cariBarcode();
+		$this->load->view('pBarcodeDataBukuTanah',$data);
 	}
 }

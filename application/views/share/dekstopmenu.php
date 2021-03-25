@@ -13,7 +13,7 @@
         </li>
         <li>
           <a href="javascript:;" class="side-menu">
-            <div class="side-menu__icon"> <i data-feather="home"></i> </div>
+            <div class="side-menu__icon"> <i data-feather="book"></i> </div>
             <div class="side-menu__title">
               Buku Tanah
               <div class="side-menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
