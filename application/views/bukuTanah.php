@@ -61,6 +61,10 @@
                                            <input id="horizontal-form-1" type="text" class="form-control" name="noHak">
                                          </div>
                                          <div class="form-inline mt-5">
+                                           <label for="horizontal-form-1" class="form-label sm:w-20">No NIB</label>
+                                           <input id="horizontal-form-1" type="text" class="form-control" name="nib">
+                                         </div>
+                                         <div class="form-inline mt-5">
                                            <label for="horizontal-form-2" class="form-label sm:w-20">Jenis Hak</label>
                                            <select id="horizontal-form-2" data-search="true" class="tail-select w-full form-control" required name="idJenisHak">
                                              <option value="">Pilih Jenis Hak</option>

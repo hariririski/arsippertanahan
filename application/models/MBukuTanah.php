@@ -51,12 +51,13 @@
         $idKondisi = $this->input->post('idKondisi');
         $noHak = $this->input->post('noHak');
         $idJenisHak = $this->input->post('idJenisHak');
+        $nib = $this->input->post('nib');
         $pecah=explode('-',$dataalamat);
         $idProv=$pecah[0];
         $idKota=$pecah[1];
         $idKec=$pecah[2];
         $idDesa=$pecah[3];
-        $idBukuTanah=$idProv."-".$idKota."-".$idKec."-".$idDesa."-".$idJenisHak."-".$noHak;
+        $idBukuTanah=$idProv."-".$idKota."-".$idKec."-".$idDesa."-".$idJenisHak."-".$noHak."-".$nib;
         $status=1;
         //1 false (tersedia)
         //0 false(tidak tersedia)
@@ -64,8 +65,8 @@
         //3 Belum di tentukan
 
 
-        print $perintah1="INSERT INTO `bt`(`idBukuTanah`, `noHak`, `idJenisHak`, `idDesa`, `idKondisi`,`status`)
-                             VALUES ('$idBukuTanah','$noHak','$idJenisHak','$idDesa','$idKondisi','$status')";
+        print $perintah1="INSERT INTO `bt`(`idBukuTanah`, `noHak`, `idJenisHak`, `idDesa`, `idKondisi`,`status`,`nib`)
+                             VALUES ('$idBukuTanah','$noHak','$idJenisHak','$idDesa','$idKondisi','$status','$nib')";
         $query=$this->db->query($perintah1);
         //return $query;
       }
