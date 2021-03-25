@@ -14,9 +14,9 @@
         <link rel="stylesheet" href="dist/css/app.css">
         <link href="dist/css/tabulator.min.css" rel="stylesheet">
         <script type="text/javascript" src="dist/js/tabulator.min.js"></script>
-        <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.0.5/jspdf.plugin.autotable.js"></script>
+        <script type="text/javascript" src="dist/js/xlsx.full.min.js"></script>
+        <script type="text/javascript" src="dist/js/jspdf.min.js"></script>
+        <script type="text/javascript" src="dist/js/jspdf.plugin.autotable.js"></script>
 
         <!-- END: CSS Assets-->
     </head>
@@ -44,39 +44,46 @@
                         <!-- BEGIN: Simple Editor -->
                         <div class="col-span-12 lg:col-span-12">
                             <div class="box">
-                                <form action="<?php echo base_url(); ?>Bukutanah/tambah" method="post" enctype="multipart/form-data">
+                                <form action="<?php echo base_url(); ?>caribukutanah1" method="GET" enctype="multipart/form-data">
                                   <div id="inline-form" class="p-5">
                                       <div class="preview">
                                           <div class="grid grid-cols-12 gap-3">
-                                              <select class="form-select form-control col-span-5" aria-label=".form-select-lg example" id="provinsi">
-                                               <option>Provinsi</option>
-                                               <?php
-                                                 foreach($dataProvinsi as $dataProvinsi){
-                                               ?>
-                                                 <option value="<?php echo $dataProvinsi->idProv; ?>"><?php echo $dataProvinsi->namaProv; ?></option>
-                                               <?php } ?>
-                                              </select>
-                                              <select class="form-select form-control col-span-5 getKota" aria-label=".form-select-lg example" id="kota">
-                                               <option>Kota</option>
+                                            <select class="form-select form-control col-span-5" aria-label=".form-select-lg example" id="provinsi" name="idProv">
 
-                                              </select>
-                                              <select class="form-select form-control col-span-5 getKec" aria-label=".form-select-lg example" id="kec">
-                                               <option>Kecamatan</option>
+                                             <?php
+                                               foreach($dataProvinsi as $dataProvinsi){
+                                             ?>
+                                               <option value="<?php echo $dataProvinsi->idProv; ?>"><?php echo $dataProvinsi->namaProv; ?></option>
+                                             <?php } ?>
+                                            </select>
+                                            <select class="form-select form-control col-span-5 getKota" aria-label=".form-select-lg example" id="kota" name="idKota">
+                                              <?php
+                                                foreach($dataKota as $dataKota){
+                                              ?>
+                                                <option value="<?php echo $dataKota->idKota; ?>"><?php echo $dataKota->namaKota; ?></option>
+                                              <?php } ?>
+                                            </select>
+                                            <select class="form-select form-control col-span-5 getKec" aria-label=".form-select-lg example" id="kec" name="idKec">
+                                             <option value="">Kecamatan</option>
+                                             <?php
+                                               foreach($dataKecamatan as $dataKecamatan){
+                                             ?>
+                                               <option value="<?php echo $dataKecamatan->idKec; ?>"><?php echo $dataKecamatan->namaKec; ?></option>
+                                             <?php } ?>
+                                            </select>
+                                            <select class="form-select form-control col-span-3 getDesa" aria-label=".form-select-lg example" name="idDesa">
+                                             <option value="">Desa</option>
 
-                                              </select>
-                                              <select class="form-select form-control col-span-3 getDesa" aria-label=".form-select-lg example">
-                                               <option>Desa</option>
-
-                                              </select>
-                                              <select class="form-select form-control col-span-5" aria-label=".form-select-lg example">
-                                                <option value="">Jenis Hak</option>
-                                                <?php
-                                                  foreach($dataJenisHak as $dataJenisHak){
-                                                ?>
-                                                  <option value="<?php echo $dataJenisHak->idJenisHak; ?>"><?php echo $dataJenisHak->namaJenisHak; ?></option>
-                                                <?php } ?>
-                                              </select>
-                                              <input type="text" class="form-control col-span-3" placeholder="No Hak" aria-label="default input inline 1">
+                                            </select>
+                                            <select class="form-select form-control col-span-5" aria-label=".form-select-lg example" name="idJenisHak">
+                                              <option value="">Jenis Hak</option>
+                                              <?php
+                                                foreach($dataJenisHak as $dataJenisHak){
+                                              ?>
+                                                <option value="<?php echo $dataJenisHak->idJenisHak; ?>"><?php echo $dataJenisHak->namaJenisHak; ?></option>
+                                              <?php } ?>
+                                            </select>
+                                            <input type="text" class="form-control col-span-3" placeholder="No Hak" aria-label="default input inline 1" name="noHak">
                                               <button align="right" class=" form-control col-span-5 btn btn-primary">Cari</button>
                                           </div>
                                       </div>
@@ -95,7 +102,7 @@
                                   <div id="inline-form" class="p-5">
                                       <div class="preview">
                                           <div class="grid grid-cols-12 gap-3">
-                                              <input type="text" class="form-control col-span-6" placeholder="No Hak Pada Barcode" aria-label="default input inline 1" autofocus="autofocus">
+                                              <input type="text" class="form-control col-span-6" placeholder="No Hak Pada Barcode" aria-label="default input inline 1" name="id" autofocus=”autofocus”>
                                               <button align="right" class=" form-control col-span-5 btn btn-primary">Cari</button>
                                           </div>
                                       </div>

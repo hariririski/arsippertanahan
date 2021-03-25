@@ -40,8 +40,8 @@
                        Master Data Jenis Pembarian Hak
                      </h1>
                    </div>
-                   <div class="intro-y grid grid-cols-12 gap-6 mt-5">
-                     <div class="intro-y col-span-12 md:col-span-6 xl:col-span-6 box ">
+                   <div class="intro-y box p-5 mt-5">
+
                        <form action="<?php echo base_url(); ?>JenisHak/tambah" method="post" enctype="multipart/form-data">
                          <div class="p-5">
                            <div>
@@ -59,8 +59,8 @@
                            <button type="submit" class="btn btn-primary mt-4">Simpan</button>
                          </div>
                        </form>
-                     </div>
-                     <div class="overflow-x-auto intro-y box p-5 mt-5">
+                    </div>
+                    <div class="intro-y box p-5 mt-5">
                        <div class="p-5">
                          <table class="table"  style="width:98%;">
                            <thead>
@@ -92,7 +92,7 @@
                            </tbody>
                          </table>
                        </div>
-                     </div>
+
                    </div>
 
                  </div>

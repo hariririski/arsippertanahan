@@ -63,6 +63,7 @@ class BukuTanah extends CI_Controller {
 		$data['dataProvinsi'] = $this->MProvinsi->lihat();
 		$data['dataKota'] = $this->MProvinsi->lihatKota();
 		$data['dataDesa'] = $this->MProvinsi->lihatDesa();
+		$data['dataKecamatan'] = $this->MProvinsi->LihatKecamatan();
 		$data['dataBukuTanah'] = $this->MBukuTanah->cariBarcode();
 		$this->load->view('pBarcodeDataBukuTanah',$data);
 	}
