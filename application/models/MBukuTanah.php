@@ -9,7 +9,7 @@
 
         if(empty($this->input->GET('id'))==false){
           $id=$this->input->GET('id');
-          $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenisHak.idJenisHak=bt.idJenisHak WHERE bt.idBukuTanah='$id'");
+          $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenishak.idJenisHak=bt.idJenisHak WHERE bt.idBukuTanah='$id'");
           return $query->result();
         }else{
           $idKec= $this->input->GET('idKec');
@@ -18,28 +18,28 @@
           $noHak= $this->input->GET('noHak');
 
           if(empty($idKec)==false && empty($idDesa)==True && empty($idJenisHak)==True && empty($noHak)==true){
-            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenisHak.idJenisHak=bt.idJenisHak WHERE desa.idKec='$idKec'");
+            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenishak.idJenisHak=bt.idJenisHak WHERE desa.idKec='$idKec'");
             return $query->result();
           }else if(empty($idKec)==false && empty($idDesa)==False && empty($idJenisHak)==True && empty($noHak)==true){
-            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenisHak.idJenisHak=bt.idJenisHak WHERE bt.idDesa='$idDesa'");
+            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenishak.idJenisHak=bt.idJenisHak WHERE bt.idDesa='$idDesa'");
             return $query->result();
           }else if(empty($idKec)==false && empty($idDesa)==False && empty($idJenisHak)==False && empty($noHak)==true){
-            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenisHak.idJenisHak=bt.idJenisHak WHERE bt.idDesa='$idDesa' and bt.idJenisHak='$idJenisHak'");
+            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenishak.idJenisHak=bt.idJenisHak WHERE bt.idDesa='$idDesa' and bt.idJenisHak='$idJenisHak'");
             return $query->result();
           }else if(empty($idKec)==false && empty($idDesa)==False && empty($idJenisHak)==False && empty($noHak)==False){
-            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenisHak.idJenisHak=bt.idJenisHak WHERE bt.idDesa='$idDesa' and bt.idJenisHak='$idJenisHak' and bt.noHak='$noHak'");
+            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenishak.idJenisHak=bt.idJenisHak WHERE bt.idDesa='$idDesa' and bt.idJenisHak='$idJenisHak' and bt.noHak='$noHak'");
             return $query->result();
           }else if(empty($idKec)==false && empty($idDesa)==false && empty($idJenisHak)==True && empty($noHak)==false){
-            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenisHak.idJenisHak=bt.idJenisHak WHERE bt.idDesa='$idDesa' and bt.noHak='$noHak'");
+            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenishak.idJenisHak=bt.idJenisHak WHERE bt.idDesa='$idDesa' and bt.noHak='$noHak'");
             return $query->result();
           }else if(empty($idKec)==true && empty($idDesa)==True && empty($idJenisHak)==True && empty($noHak)==False){
-            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenisHak.idJenisHak=bt.idJenisHak WHERE bt.nohak='$noHak'");
+            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenishak.idJenisHak=bt.idJenisHak WHERE bt.nohak='$noHak'");
             return $query->result();
           }else if(empty($idKec)==True && empty($idDesa)==True && empty($idJenisHak)==False && empty($noHak)==False){
-            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenisHak.idJenisHak=bt.idJenisHak WHERE bt.nohak='$noHak' and bt.idJenisHak='$idJenisHak'");
+            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenishak.idJenisHak=bt.idJenisHak WHERE bt.nohak='$noHak' and bt.idJenisHak='$idJenisHak'");
             return $query->result();
           }else if(empty($idKec)==True && empty($idDesa)==True && empty($idJenisHak)==False && empty($noHak)==True){
-            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenisHak.idJenisHak=bt.idJenisHak WHERE bt.idJenisHak='$idJenisHak'");
+            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenishak.idJenisHak=bt.idJenisHak WHERE bt.idJenisHak='$idJenisHak'");
             return $query->result();
           }
 
