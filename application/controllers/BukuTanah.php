@@ -8,23 +8,23 @@ class BukuTanah extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->library('session');
 			$this->load->database();
-			$this->load->model('MProvinsi');
-			$this->load->model('MJenisHak');
-			$this->load->model('MKondisi');
-			$this->load->model('MBukuTanah');
+			$this->load->model('M_provinsi');
+			$this->load->model('M_jenis_hak');
+			$this->load->model('M_kondisi');
+			$this->load->model('M_buku_tanah');
 			// $admin=$this->session->userdata('admin');
 	}
 	public function index()
 	{
 
-		$data['dataJenisHak'] = $this->MJenisHak->lihat();
-		$data['dataKondisi'] = $this->MKondisi->lihat();
-		$data['dataDesa'] = $this->MProvinsi->dataDesaBundel();
-		$this->load->view('bukuTanah',$data);
+		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
+		$data['data_kondisi'] = $this->M_kondisi->lihat();
+		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
+		$this->load->view('buku_tanah',$data);
 	}
 	public function tambah()
 	{
-		$cek= $this->MBukuTanah->add();
+		$cek= $this->M_buku_tanah->add();
 		// if($cek>0){
 		// 	echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."datakondisi';</script>");
 	 //
@@ -36,35 +36,35 @@ class BukuTanah extends CI_Controller {
 	public function data()
 	{
 
-		$data['dataJenisHak'] = $this->MJenisHak->lihat();
-		$data['dataKondisi'] = $this->MKondisi->lihat();
-		$data['dataDesa'] = $this->MProvinsi->dataDesaBundel();
-		$data['dataProvinsi'] = $this->MProvinsi->lihat();
-		$data['dataDesa'] = $this->MProvinsi->lihatDesa();
-		$data['dataKota'] = $this->MProvinsi->lihatKota();
-		$data['dataKecamatan'] = $this->MProvinsi->LihatKecamatan();
-		$this->load->view('dataBukuTanah',$data);
+		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
+		$data['data_kondisi'] = $this->M_kondisi->lihat();
+		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
+		$data['dataProvinsi'] = $this->M_provinsi->lihat();
+		$data['data_desa'] = $this->M_provinsi->lihat_desa();
+		$data['data_kota'] = $this->M_provinsi->lihat_kota();
+		$data['data_kecamatan'] = $this->M_provinsi->lihat_kecamatan();
+		$this->load->view('data_buku_tanah',$data);
 	}
 	// public function pData()
 	// {
 	//
-	// 	$data['dataJenisHak'] = $this->MJenisHak->lihat();
-	// 	$data['dataKondisi'] = $this->MKondisi->lihat();
-	// 	$data['dataDesa'] = $this->MProvinsi->dataDesaBundel();
-	// 	$data['dataProvinsi'] = $this->MProvinsi->lihat();
-	// 	$data['dataDesa'] = $this->MProvinsi->lihatDesa();
+	// 	$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
+	// 	$data['data_kondisi'] = $this->M_kondisi->lihat();
+	// 	$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
+	// 	$data['dataProvinsi'] = $this->M_provinsi->lihat();
+	// 	$data['data_desa'] = $this->M_provinsi->lihat_desa();
 	// 	$this->load->view('pDataBukuTanah',$data);
 	// }
-	public function bukuTanahBarcode()
+	public function buku_tanah_barcode()
 	{
-		$data['dataJenisHak'] = $this->MJenisHak->lihat();
-		$data['dataKondisi'] = $this->MKondisi->lihat();
-		$data['dataDesa'] = $this->MProvinsi->dataDesaBundel();
-		$data['dataProvinsi'] = $this->MProvinsi->lihat();
-		$data['dataKota'] = $this->MProvinsi->lihatKota();
-		$data['dataDesa'] = $this->MProvinsi->lihatDesa();
-		$data['dataKecamatan'] = $this->MProvinsi->LihatKecamatan();
-		$data['dataBukuTanah'] = $this->MBukuTanah->cariBarcode();
-		$this->load->view('pBarcodeDataBukuTanah',$data);
+		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
+		$data['data_kondisi'] = $this->M_kondisi->lihat();
+		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
+		$data['dataProvinsi'] = $this->M_provinsi->lihat();
+		$data['data_kota'] = $this->M_provinsi->lihat_kota();
+		$data['data_desa'] = $this->M_provinsi->lihat_desa();
+		$data['data_kecamatan'] = $this->M_provinsi->lihat_kecamatan();
+		$data['data_buku_tanah'] = $this->M_buku_tanah->cari_barcode();
+		$this->load->view('p_barcode_data_buku_tanah',$data);
 	}
 }

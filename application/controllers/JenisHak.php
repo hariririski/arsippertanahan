@@ -8,16 +8,16 @@ class JenisHak extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->library('session');
 			$this->load->database();
-			$this->load->model('MJenisHak');
+			$this->load->model('M_jenis_hak');
 	}
 	public function index()
 	{
-			$data['dataJenisHak'] = $this->MJenisHak->lihat();
-			$this->load->view('dataJenisHak',$data);
+			$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
+			$this->load->view('data_jenis_hak',$data);
 	}
 	public function tambah()
 	{
-		$cek= $this->MJenisHak->add();
+		$cek= $this->M_jenis_hak->add();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil di Simpan');window.location.href='".base_url()."datajenishak';</script>");
 

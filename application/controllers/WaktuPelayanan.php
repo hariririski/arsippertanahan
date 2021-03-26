@@ -8,16 +8,16 @@ class WaktuPelayanan extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->library('session');
 			$this->load->database();
-			$this->load->model('MWaktuPelayanan');
+			$this->load->model('M_waktu_pelayanan');
 	}
 	public function index()
 	{
-			$data['dataWaktu'] = $this->MWaktuPelayanan->lihat();
-			$this->load->view('dataWaktu',$data);
+			$data['data_waktu'] = $this->M_waktu_pelayanan->lihat();
+			$this->load->view('data_waktu',$data);
 	}
 	public function tambah()
 	{
-		$cek= $this->MWaktuPelayanan->add();
+		$cek= $this->M_waktu_pelayanan->add();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."datawaktupelayanan';</script>");
 

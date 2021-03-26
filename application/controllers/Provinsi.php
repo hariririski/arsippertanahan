@@ -8,32 +8,32 @@ class Provinsi extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->library('session');
 		$this->load->database();
-		$this->load->model('MProvinsi');
+		$this->load->model('M_provinsi');
 	}
 	public function index()
 	{
-		$data['dataProvinsi'] = $this->MProvinsi->lihat();
-		$this->load->view('dataProvinsi',$data);
+		$data['data_provinsi'] = $this->M_provinsi->lihat();
+		$this->load->view('data_provinsi',$data);
 	}
 	function getKota(){
         $id=$this->input->post('id');
-        $data=$this->MProvinsi->getKota($id);
+        $data=$this->M_provinsi->getKota($id);
         echo json_encode($data);
   }
 	function getKec(){
         $id=$this->input->post('id');
-        $data=$this->MProvinsi->getKec($id);
+        $data=$this->M_provinsi->getKec($id);
         echo json_encode($data);
   }
 	function getDesa(){
         $id=$this->input->post('id');
-        $data=$this->MProvinsi->getDesa($id);
+        $data=$this->M_provinsi->getDesa($id);
         echo json_encode($data);
   }
 
 	public function tambah()
 	{
-		$cek= $this->MProvinsi->add();
+		$cek= $this->M_provinsi->add();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."dataprovinsi';</script>");
 
@@ -45,13 +45,13 @@ class Provinsi extends CI_Controller {
 
 	public function kota()
 	{
-		$data['dataProvinsi'] = $this->MProvinsi->lihat();
-		$data['dataKota'] = $this->MProvinsi->lihatKota();
-		$this->load->view('dataKota',$data);
+		$data['data_provinsi'] = $this->M_provinsi->lihat();
+		$data['data_kota'] = $this->M_provinsi->lihatKota();
+		$this->load->view('data_kota',$data);
 	}
-	public function tambahKota()
+	public function tambah_kota()
 	{
-		$cek= $this->MProvinsi->tambahKota();
+		$cek= $this->M_provinsi->tambah_kota();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."datakota';</script>");
 
@@ -63,13 +63,13 @@ class Provinsi extends CI_Controller {
 
 	public function kecamatan()
 	{
-		$data['dataProvinsi'] = $this->MProvinsi->lihat();
-		$data['dataKecamatan'] = $this->MProvinsi->lihatKecamatan();
-		$this->load->view('dataKecamatan',$data);
+		$data['data_provinsi'] = $this->M_provinsi->lihat();
+		$data['data_kecamatan'] = $this->M_provinsi->lihat_kecamatan();
+		$this->load->view('data_kecamatan',$data);
 	}
 	public function tambahKec()
 	{
-		$cek= $this->MProvinsi->tambahKec();
+		$cek= $this->M_provinsi->tambahKec();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."datakecamatan';</script>");
 
@@ -81,14 +81,14 @@ class Provinsi extends CI_Controller {
 
 	public function desa()
 	{
-		$data['dataProvinsi'] = $this->MProvinsi->lihat();
-		$data['dataKecamatan'] = $this->MProvinsi->lihatKecamatan();
-		$data['dataDesa'] = $this->MProvinsi->lihatDesa();
-		$this->load->view('dataDesa',$data);
+		$data['data_provinsi'] = $this->M_provinsi->lihat();
+		$data['data_kecamatan'] = $this->M_provinsi->lihat_kecamatan();
+		$data['data_desa'] = $this->M_provinsi->lihat_desa();
+		$this->load->view('data_desa',$data);
 	}
-	public function tambahDesa()
+	public function tambah_desa()
 	{
-		$cek= $this->MProvinsi->tambahDesa();
+		$cek= $this->M_provinsi->tambah_desa();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."datadesa';</script>");
 

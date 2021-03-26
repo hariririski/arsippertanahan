@@ -8,22 +8,22 @@ class Lemari extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->library('session');
 			$this->load->database();
-			$this->load->model('MLemari');
-			$this->load->model('MProvinsi');
+			$this->load->model('M_lemari');
+			$this->load->model('M_provinsi');
 	}
 	public function index()
 	{
-			$data['dataLemari'] = $this->MLemari->lihat();
-			$this->load->view('dataLemari',$data);
+			$data['data_lemari'] = $this->M_lemari->lihat();
+			$this->load->view('data_lemari',$data);
 	}
 	function getBaris(){
         $id=$this->input->post('id');
-        $data=$this->MLemari->getBaris($id);
+        $data=$this->M_lemari->getBaris($id);
         echo json_encode($data);
   }
 	public function tambah()
 	{
-		$cek= $this->MLemari->add();
+		$cek= $this->M_lemari->add();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil di Simpan');window.location.href='".base_url()."datalemari';</script>");
 
@@ -35,13 +35,13 @@ class Lemari extends CI_Controller {
 
 	public function baris()
 	{
-			$data['dataLemari'] = $this->MLemari->lihat();
-			$data['dataBaris'] = $this->MLemari->lihatBaris();
-			$this->load->view('dataBaris',$data);
+			$data['data_lemari'] = $this->M_lemari->lihat();
+			$data['data_baris'] = $this->M_lemari->lihat_baris();
+			$this->load->view('data_baris',$data);
 	}
 	public function tambahBaris()
 	{
-		$cek= $this->MLemari->tambahBaris();
+		$cek= $this->M_lemari->tambahBaris();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil di Simpan');window.location.href='".base_url()."databaris';</script>");
 
@@ -53,15 +53,15 @@ class Lemari extends CI_Controller {
 
 	public function bundel()
 	{
-			$data['dataDesa'] = $this->MProvinsi->dataDesaBundel();
-			$data['dataLemari'] = $this->MLemari->lihat();
-			$data['dataBaris'] = $this->MLemari->lihatBaris();
-			$data['dataBundel'] = $this->MLemari->lihatBundel();
-			$this->load->view('dataBundel',$data);
+			$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
+			$data['data_lemari'] = $this->M_lemari->lihat();
+			$data['data_baris'] = $this->M_lemari->lihat_baris();
+			$data['data_bundel'] = $this->M_lemari->lihat_bundel();
+			$this->load->view('data_bundel',$data);
 	}
-	public function tambahBundel()
+	public function tambah_bundel()
 	{
-		$cek= $this->MLemari->tambahBundel();
+		$cek= $this->M_lemari->tambah_bundel();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil di Simpan');window.location.href='".base_url()."databundel';</script>");
 

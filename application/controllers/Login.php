@@ -8,7 +8,7 @@ class Login extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->library('session');
 			$this->load->database();
-			$this->load->model('MLogin');
+			$this->load->model('M_login');
 			// $admin=$this->session->userdata('admin');
 	}
 	public function index()
@@ -22,7 +22,7 @@ class Login extends CI_Controller {
 	}
 
 	public function proses_login() {
-		$cek=$this->MLogin->login();
+		$cek=$this->M_login->login();
 		if($cek==true){
 		  session_save_path();
       $username = $this->input->post('username');

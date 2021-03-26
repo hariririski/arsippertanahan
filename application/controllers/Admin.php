@@ -8,12 +8,12 @@ class Admin extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->library('session');
 			$this->load->database();
-			$this->load->model('MAdmin');
+			$this->load->model('M_admin');
 	}
 	public function index()
 	{
-			$data['dataAdmin'] = $this->MAdmin->lihat();
-			$this->load->view('dataAdmin',$data);
+			$data['data_admin'] = $this->M_admin->lihat();
+			$this->load->view('data_admin',$data);
 	}
 	public function tambah()
 	{
