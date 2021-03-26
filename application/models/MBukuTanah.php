@@ -18,7 +18,7 @@
           $noHak= $this->input->GET('noHak');
 
           if(empty($idKec)==false && empty($idDesa)==True && empty($idJenisHak)==True && empty($noHak)==true){
-            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenishak.idJenisHak=bt.idJenisHak WHERE desa.idKec='$idKec'");
+            $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenishaka.idJenisHak=bt.idJenisHak WHERE desa.idKec='$idKec'");
             return $query->result();
           }else if(empty($idKec)==false && empty($idDesa)==False && empty($idJenisHak)==True && empty($noHak)==true){
             $query=$this->db->query("SELECT * FROM `bt` LEFT JOIN desa on desa.idDesa=bt.idDesa left join kec on kec.idKec=desa.idKec LEFT JOIN kota on kota.idKota=kec.idKota LEFT join prov on prov.idProv=kota.idProv LEFT JOIN jenisHak on jenishak.idJenisHak=bt.idJenisHak WHERE bt.idDesa='$idDesa'");
