@@ -67,15 +67,15 @@
                       <tbody>
                         <?php
                         $i=0;
-                        foreach($dataLemari as $dataLemari){
+                        foreach($data_lemari as $data_lemari){
                           $i++;
                           ?>
                           <tr>
                             <td class="border-b dark:border-dark-5"><?php echo $i; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataLemari->id_lemari; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataLemari->nama_lemari; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_lemari->id_lemari; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_lemari->nama_lemari; ?></td>
                             <td class="border-b dark:border-dark-5">
-                              <a href="<?php echo base_url(); ?>lapor/detail_lapor/<?php echo $dataLemari->id_lemari; ?>">
+                              <a href="<?php echo base_url(); ?>lapor/detail_lapor/<?php echo $data_lemari->id_lemari; ?>">
                               </a>
                                <button class="btn btn-success mr-1 mb-2"> <i data-feather="calendar" class="w-5 h-5"></i> </button>
                                <button class="btn btn-warning mr-1 mb-2"> <i data-feather="share-2" class="w-5 h-5"></i> </button>

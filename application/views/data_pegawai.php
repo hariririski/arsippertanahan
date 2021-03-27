@@ -17,7 +17,7 @@
     <!-- END: Head -->
     <body class="main">
         <!-- BEGIN: Mobile Menu -->
-        <?php echo $this->load->view('share/mobilemenu', '', TRUE);?>
+        <?php echo $this->load->view('share/mobile_menu', '', TRUE);?>
           <!-- END: Mobile Menu -->
           <!-- BEGIN: Top Bar -->
         <?php echo $this->load->view('share/profile', '', TRUE);?>
@@ -25,7 +25,7 @@
         <div class="wrapper">
             <div class="wrapper-box">
                 <!-- BEGIN: Side Menu -->
-                <?php echo $this->load->view('share/dekstopmenu', '', TRUE);?>
+                <?php echo $this->load->view('share/dekstop_menu', '', TRUE);?>
                 <!-- END: Side Menu -->
                 <div class="content">
 
@@ -84,17 +84,17 @@
                       <tbody>
                         <?php
                         $i=0;
-                        foreach($dataPegawai as $dataPegawai){
+                        foreach($data_pegawai as $data_pegawai){
                           $i++;
                           ?>
                           <tr>
                             <td class="border-b dark:border-dark-5"><?php echo $i; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataPegawai->nip; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataPegawai->nama_lengkap; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataPegawai->jabatan; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_pegawai->nip; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_pegawai->nama_lengkap; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_pegawai->jabatan; ?></td>
                             <td class="border-b dark:border-dark-5">
                               <?php
-                                switch ($dataPegawai->jenis){
+                                switch ($data_pegawai->jenis){
                                   case 1:
                                         echo "ASN";
                                         break;
@@ -108,7 +108,7 @@
                               ?>
                             </td>
                             <td class="border-b dark:border-dark-5">
-                              <?php if($dataPegawai->status==0){
+                              <?php if($data_pegawai->status==0){
                                         echo "Aktif";
                                       }
                                         else{

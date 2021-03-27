@@ -34,7 +34,7 @@ class Login extends CI_Controller {
       foreach ($data as $isi) {
 
             $arraydata = array(
-                 'namaLengkap'  => $isi->namaLengkap,
+                 'nama_lengkap'  => $isi->nama_lengkap,
                  'level'     => $isi->level,
                  'username' => $isi->username,
                  'image' => $isi->image,

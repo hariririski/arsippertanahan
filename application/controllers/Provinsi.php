@@ -46,7 +46,7 @@ class Provinsi extends CI_Controller {
 	public function kota()
 	{
 		$data['data_provinsi'] = $this->M_provinsi->lihat();
-		$data['data_kota'] = $this->M_provinsi->lihatKota();
+		$data['data_kota'] = $this->M_provinsi->lihat_kota();
 		$this->load->view('data_kota',$data);
 	}
 	public function tambah_kota()
@@ -67,9 +67,9 @@ class Provinsi extends CI_Controller {
 		$data['data_kecamatan'] = $this->M_provinsi->lihat_kecamatan();
 		$this->load->view('data_kecamatan',$data);
 	}
-	public function tambahKec()
+	public function tambah_kec()
 	{
-		$cek= $this->M_provinsi->tambahKec();
+		$cek= $this->M_provinsi->tambah_kec();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."datakecamatan';</script>");
 

@@ -19,11 +19,11 @@
         return $query;
       }
 
-      function lihatBaris(){
+      function lihat_baris(){
         $query=$this->db->query("SELECT * FROM lemari LEFT JOIN baris on lemari.id_lemari=baris.id_lemari");
         return $query->result();
       }
-      function tambahBaris(){
+      function tambah_baris(){
         $id_lemari = $this->input->post('id_lemari');
         $id_baris = $this->input->post('id_baris');
         $nama_baris = $this->input->post('nama_baris');
@@ -34,11 +34,11 @@
         return $query;
       }
 
-      function lihatBundel(){
+      function lihat_bundel(){
         $query=$this->db->query("SELECT * FROM lemari LEFT JOIN baris on lemari.id_lemari=baris.id_lemari left join bundel on bundel.id_baris=baris.id_baris LEFT JOIN desa on desa.id_desa=bundel.id_desa");
         return $query->result();
       }
-      function tambahBundel(){
+      function tambah_bundel(){
 
         $id_baris = $this->input->post('id_baris');
         $id_bundel = $this->input->post('id_bundel');
