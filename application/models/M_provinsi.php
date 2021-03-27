@@ -20,9 +20,9 @@
 
       function add(){
         $id_provinsi = $this->input->post('id_prov');
-        $namaProvinsi = $this->input->post('namaProv');
+        $nama_provinsi = $this->input->post('nama_prov');
 
-        $perintah1="INSERT INTO `prov`(`id_prov`, `namaProv`) VALUES ('$id_provinsi','$namaProvinsi')";
+        $perintah1="INSERT INTO `prov`(`id_prov`, `nama_prov`) VALUES ('$id_provinsi','$nama_provinsi')";
         $query=$this->db->query($perintah1);
         return $query;
       }

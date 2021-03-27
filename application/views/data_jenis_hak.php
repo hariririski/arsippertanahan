@@ -35,7 +35,7 @@
                    </div>
                    <div class="intro-y box p-5 mt-5">
 
-                       <form action="<?php echo base_url(); ?>_jenis_hak/tambah" method="post" enctype="multipart/form-data">
+                       <form action="<?php echo base_url(); ?>jenis_hak/tambah" method="post" enctype="multipart/form-data">
                          <div class="p-5">
                            <div>
                              <label for="change-password-form-1" class="form-label">Kode Jenis Hak</label>

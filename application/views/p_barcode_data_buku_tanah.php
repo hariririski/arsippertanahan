@@ -23,7 +23,7 @@
     <!-- END: Head -->
     <body class="main">
         <!-- BEGIN: Mobile Menu -->
-      <?php echo $this->load->view('share/mobilemenu', '', TRUE);?>
+      <?php echo $this->load->view('share/mobile_menu', '', TRUE);?>
         <!-- END: Mobile Menu -->
         <!-- BEGIN: Top Bar -->
       <?php echo $this->load->view('share/profile', '', TRUE);?>
@@ -31,7 +31,7 @@
         <div class="wrapper">
             <div class="wrapper-box">
                 <!-- BEGIN: Side Menu -->
-                <?php echo $this->load->view('share/dekstopmenu', '', TRUE);?>
+                <?php echo $this->load->view('share/dekstop_menu', '', TRUE);?>
                 <!-- END: Side Menu -->
                 <!-- BEGIN: Content -->
                 <div class="content">
@@ -48,42 +48,42 @@
                                   <div id="inline-form" class="p-5">
                                       <div class="preview">
                                           <div class="grid grid-cols-12 gap-3">
-                                            <select class="form-select form-control col-span-5" aria-label=".form-select-lg example" id="provinsi" name="idProv">
+                                            <select class="form-select form-control col-span-5" aria-label=".form-select-lg example" id="provinsi" name="id_prov">
 
                                              <?php
-                                               foreach($dataProvinsi as $dataProvinsi){
+                                               foreach($data_provinsi as $data_provinsi){
                                              ?>
-                                               <option value="<?php echo $dataProvinsi->idProv; ?>"><?php echo $dataProvinsi->namaProv; ?></option>
+                                               <option value="<?php echo $data_provinsi->id_prov; ?>"><?php echo $data_provinsi->nama_prov; ?></option>
                                              <?php } ?>
                                             </select>
-                                            <select class="form-select form-control col-span-5 getKota" aria-label=".form-select-lg example" id="kota" name="idKota">
+                                            <select class="form-select form-control col-span-5 getKota" aria-label=".form-select-lg example" id="kota" name="id_kota">
                                               <?php
-                                                foreach($dataKota as $dataKota){
+                                                foreach($data_kota as $data_kota){
                                               ?>
-                                                <option value="<?php echo $dataKota->idKota; ?>"><?php echo $dataKota->namaKota; ?></option>
+                                                <option value="<?php echo $data_kota->id_kota; ?>"><?php echo $data_kota->nama_kota; ?></option>
                                               <?php } ?>
                                             </select>
-                                            <select class="form-select form-control col-span-5 getKec" aria-label=".form-select-lg example" id="kec" name="idKec">
+                                            <select class="form-select form-control col-span-5 getKec" aria-label=".form-select-lg example" id="kec" name="id_kec">
                                              <option value="">Kecamatan</option>
                                              <?php
-                                               foreach($dataKecamatan as $dataKecamatan){
+                                               foreach($data_kecamatan as $data_kecamatan){
                                              ?>
-                                               <option value="<?php echo $dataKecamatan->idKec; ?>"><?php echo $dataKecamatan->namaKec; ?></option>
+                                               <option value="<?php echo $data_kecamatan->id_kec; ?>"><?php echo $data_kecamatan->nama_kec; ?></option>
                                              <?php } ?>
                                             </select>
-                                            <select class="form-select form-control col-span-3 getDesa" aria-label=".form-select-lg example" name="idDesa">
-                                             <option value="">Desa</option>
+                                            <select class="form-select form-control col-span-3 getDesa" aria-label=".form-select-lg example" name="id_desa">
+                                              <option value="">Desa</option>
 
                                             </select>
-                                            <select class="form-select form-control col-span-5" aria-label=".form-select-lg example" name="idJenisHak">
+                                            <select class="form-select form-control col-span-5" aria-label=".form-select-lg example" name="id_jenis_hak">
                                               <option value="">Jenis Hak</option>
                                               <?php
-                                                foreach($dataJenisHak as $dataJenisHak){
+                                                foreach($data_jenis_hak as $data_jenis_hak){
                                               ?>
-                                                <option value="<?php echo $dataJenisHak->idJenisHak; ?>"><?php echo $dataJenisHak->namaJenisHak; ?></option>
+                                                <option value="<?php echo $data_jenis_hak->id_jenis_hak; ?>"><?php echo $data_jenis_hak->nama_jenis_hak; ?></option>
                                               <?php } ?>
                                             </select>
-                                            <input type="text" class="form-control col-span-3" placeholder="No Hak" aria-label="default input inline 1" name="noHak">
+                                            <input type="text" class="form-control col-span-3" placeholder="No Hak" aria-label="default input inline 1" name="no_hak">
                                               <button align="right" class=" form-control col-span-5 btn btn-primary">Cari</button>
                                           </div>
                                       </div>
@@ -137,16 +137,16 @@
 
                                 var tabledata = [
                                     <?php
-                                      foreach($dataBukuTanah as $dataBukuTanah){
+                                      foreach($data_buku_tanah as $data_buku_tanah){
                                     ?>
                                     {
-                                          provinsi: "<?php echo $dataBukuTanah->namaProv; ?>",
-                                          kota: "<?php echo $dataBukuTanah->namaKota; ?>",
-                                          kecamatan: "<?php echo $dataBukuTanah->namaKec; ?>",
-                                          desa: "<?php echo $dataBukuTanah->namaDesa; ?>",
-                                          jenishak: "<?php echo $dataBukuTanah->namaJenisHak; ?>",
-                                          hak: "<?php echo $dataBukuTanah->noHak; ?>",
-                                          status: "<?php echo $dataBukuTanah->status; ?>",
+                                          provinsi: "<?php echo $data_buku_tanah->nama_prov; ?>",
+                                          kota: "<?php echo $data_buku_tanah->nama_kota; ?>",
+                                          kecamatan: "<?php echo $data_buku_tanah->nama_kec; ?>",
+                                          desa: "<?php echo $data_buku_tanah->nama_desa; ?>",
+                                          jenishak: "<?php echo $data_buku_tanah->nama_jenis_hak; ?>",
+                                          hak: "<?php echo $data_buku_tanah->no_hak; ?>",
+                                          status: "<?php echo $data_buku_tanah->status; ?>",
                                           detail: '<a href=""><button align="right" class=" form-control col-span-5 btn btn-primary">Detail</button></a>',
 
                                     },
@@ -273,7 +273,7 @@
                   var i;
                   html += '<option value="">Pilih Kota</option>';
                   for(i=0; i<data.length; i++){
-                    html += '<option value="'+data[i].idKota+'">'+data[i].namaKota+'</option>';
+                    html += '<option value="'+data[i].id_kota+'">'+data[i].nama_kota+'</option>';
                   }
                   $('.getKota').html(html);
 
@@ -297,7 +297,7 @@
                   var i;
                   html += '<option value="">Pilih Kecamatan</option>';
                   for(i=0; i<data.length; i++){
-                    html += '<option value="'+data[i].idKec+'">'+data[i].namaKec+'</option>';
+                    html += '<option value="'+data[i].id_kec+'">'+data[i].nama_kec+'</option>';
                   }
                   $('.getKec').html(html);
 
@@ -321,7 +321,7 @@
                   var i;
                   html += '<option value="">Pilih Desa</option>';
                   for(i=0; i<data.length; i++){
-                    html += '<option value="'+data[i].idDesa+'">'+data[i].namaDesa+'</option>';
+                    html += '<option value="'+data[i].id_desa+'">'+data[i].nama_desa+'</option>';
                   }
                   $('.getDesa').html(html);
 

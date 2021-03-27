@@ -39,9 +39,9 @@ class Lemari extends CI_Controller {
 			$data['data_baris'] = $this->M_lemari->lihat_baris();
 			$this->load->view('data_baris',$data);
 	}
-	public function tambahBaris()
+	public function tambah_baris()
 	{
-		$cek= $this->M_lemari->tambahBaris();
+		$cek= $this->M_lemari->tambah_baris();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil di Simpan');window.location.href='".base_url()."databaris';</script>");
 

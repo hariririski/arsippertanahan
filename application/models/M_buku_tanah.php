@@ -5,7 +5,7 @@
       //   $query=$this->db->query("SELECT * FROM `kondisi`");
       //   return $query->result();
       // }
-      function cariBarcode(){
+      function cari_barcode(){
 
         if(empty($this->input->GET('id'))==false){
           $id=$this->input->GET('id');
@@ -28,6 +28,7 @@
             return $query->result();
           }else if(empty($id_kec)==false && empty($id_desa)==False && empty($id_jenis_hak)==False && empty($no_hak)==False){
             $query=$this->db->query("SELECT * FROM `buku_tanah` LEFT JOIN desa on desa.id_desa=buku_tanah.id_desa left join kec on kec.id_kec=desa.id_kec LEFT JOIN kota on kota.id_kota=kec.id_kota LEFT join prov on prov.id_prov=kota.id_prov LEFT JOIN jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak WHERE buku_tanah.id_desa='$id_desa' and buku_tanah.id_jenis_hak='$id_jenis_hak' and buku_tanah.no_hak='$no_hak'");
+            //print $a="SELECT * FROM `buku_tanah` LEFT JOIN desa on desa.id_desa=buku_tanah.id_desa left join kec on kec.id_kec=desa.id_kec LEFT JOIN kota on kota.id_kota=kec.id_kota LEFT join prov on prov.id_prov=kota.id_prov LEFT JOIN jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak WHERE buku_tanah.id_desa='$id_desa' and buku_tanah.id_jenis_hak='$id_jenis_hak' and buku_tanah.no_hak='$no_hak'";
             return $query->result();
           }else if(empty($id_kec)==false && empty($id_desa)==false && empty($id_jenis_hak)==True && empty($no_hak)==false){
             $query=$this->db->query("SELECT * FROM `buku_tanah` LEFT JOIN desa on desa.id_desa=buku_tanah.id_desa left join kec on kec.id_kec=desa.id_kec LEFT JOIN kota on kota.id_kota=kec.id_kota LEFT join prov on prov.id_prov=kota.id_prov LEFT JOIN jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak WHERE buku_tanah.id_desa='$id_desa' and buku_tanah.no_hak='$no_hak'");
@@ -41,6 +42,8 @@
           }else if(empty($id_kec)==True && empty($id_desa)==True && empty($id_jenis_hak)==False && empty($no_hak)==True){
             $query=$this->db->query("SELECT * FROM `buku_tanah` LEFT JOIN desa on desa.id_desa=buku_tanah.id_desa left join kec on kec.id_kec=desa.id_kec LEFT JOIN kota on kota.id_kota=kec.id_kota LEFT join prov on prov.id_prov=kota.id_prov LEFT JOIN jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak WHERE buku_tanah.id_jenis_hak='$id_jenis_hak'");
             return $query->result();
+          }else{
+            print"nggak termasuk";
           }
 
         }
@@ -65,8 +68,8 @@
         //3 Belum di tentukan
 
 
-        print $perintah1="INSERT INTO `buku_tanah`(`id_buku_tanah`, `no_hak`, `id_jenis_hak`, `id_desa`, `idKondisi`,`status`,`nib`)
-                             VALUES ('$id_buku_tanah','$no_hak','$id_jenis_hak','$id_desa','$idKondisi','$status','$nib')";
+        print $perintah1="INSERT INTO `buku_tanah`(`id_buku_tanah`, `no_hak`, `id_jenis_hak`, `id_desa`, `id_kondisi`,`status`,`nib`)
+                             VALUES ('$id_buku_tanah','$no_hak','$id_jenis_hak','$id_desa','$id_kondisi','$status','$nib')";
         $query=$this->db->query($perintah1);
         //return $query;
       }

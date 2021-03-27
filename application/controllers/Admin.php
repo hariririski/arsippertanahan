@@ -17,7 +17,7 @@ class Admin extends CI_Controller {
 	}
 	public function tambah()
 	{
-		$cek= $this->MAdmin->add();
+		$cek= $this->M_admin->add();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."dataadmin';</script>");
 
