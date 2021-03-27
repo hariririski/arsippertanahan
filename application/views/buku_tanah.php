@@ -17,7 +17,7 @@
     <!-- END: Head -->
     <body class="main">
         <!-- BEGIN: Mobile Menu -->
-      <?php echo $this->load->view('share/mobilemenu', '', TRUE);?>
+      <?php echo $this->load->view('share/mobile_menu', '', TRUE);?>
         <!-- END: Mobile Menu -->
         <!-- BEGIN: Top Bar -->
       <?php echo $this->load->view('share/profile', '', TRUE);?>
@@ -25,7 +25,7 @@
         <div class="wrapper">
             <div class="wrapper-box">
                 <!-- BEGIN: Side Menu -->
-                <?php echo $this->load->view('share/dekstopmenu', '', TRUE);?>
+                <?php echo $this->load->view('share/dekstop_menu', '', TRUE);?>
                 <!-- END: Side Menu -->
                 <!-- BEGIN: Content -->
                 <div class="content">
@@ -41,24 +41,24 @@
                                 <div class="flex flex-col sm:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
                                     Buku Tanah
                                 </div>
-                                <form action="<?php echo base_url(); ?>Bukutanah/tambah" method="post" enctype="multipart/form-data">
+                                <form action="<?php echo base_url(); ?>Buku_tanah/tambah" method="post" enctype="multipart/form-data">
 
                                 <div class="p-5">
                                     <div class="preview">
                                         <div class="form-inline mt-5">
                                           <label for="horizontal-form-2" class="form-label sm:w-20">Provinsi</label>
-                                          <select id="horizontal-form-2" data-search="true" class="tail-select w-full form-control" required name="dataAlamat">
+                                          <select id="horizontal-form-2" data-search="true" class="tail-select w-full form-control" required name="data_alamat">
                                             <option value="">Pilih Desa</option>
                                             <?php
-                                              foreach($dataDesa as $dataDesa){
+                                              foreach($data_desa as $data_desa){
                                             ?>
-                                              <option value="<?php echo $dataDesa->idProv; ?>-<?php echo $dataDesa->idKota;?>-<?php echo $dataDesa->idKec;?>-<?php echo $dataDesa->idDesa; ?>"><?php echo $dataDesa->idProv; ?><?php echo $dataDesa->idKota; ?><?php echo $dataDesa->idKec; ?> <?php echo $dataDesa->idDesa; ?>- <?php echo $dataDesa->namaProv; ?> - <?php echo $dataDesa->namaKota; ?> -  <?php echo $dataDesa->namaKec; ?> -> <?php echo $dataDesa->namaDesa; ?></option>
+                                              <option value="<?php echo $data_desa->id_prov; ?>-<?php echo $data_desa->id_kota;?>-<?php echo $data_desa->id_kec;?>-<?php echo $data_desa->id_desa; ?>"><?php echo $data_desa->id_prov; ?><?php echo $data_desa->id_kota; ?><?php echo $data_desa->id_kec; ?> <?php echo $data_desa->id_desa; ?>- <?php echo $data_desa->namaProv; ?> - <?php echo $data_desa->namaKota; ?> -  <?php echo $data_desa->namaKec; ?> -> <?php echo $data_desa->namaDesa; ?></option>
                                             <?php } ?>
                                           </select>
                                         </div>
                                          <div class="form-inline mt-5">
                                            <label for="horizontal-form-1" class="form-label sm:w-20">No Hak</label>
-                                           <input id="horizontal-form-1" type="text" class="form-control" name="noHak">
+                                           <input id="horizontal-form-1" type="text" class="form-control" name="no_hak">
                                          </div>
                                          <div class="form-inline mt-5">
                                            <label for="horizontal-form-1" class="form-label sm:w-20">No NIB</label>
@@ -66,23 +66,23 @@
                                          </div>
                                          <div class="form-inline mt-5">
                                            <label for="horizontal-form-2" class="form-label sm:w-20">Jenis Hak</label>
-                                           <select id="horizontal-form-2" data-search="true" class="tail-select w-full form-control" required name="idJenisHak">
+                                           <select id="horizontal-form-2" data-search="true" class="tail-select w-full form-control" required name="id_jenis_hak">
                                              <option value="">Pilih Jenis Hak</option>
                                              <?php
-                                               foreach($dataJenisHak as $dataJenisHak){
+                                               foreach($data_jenis_hak as $data_jenis_hak){
                                              ?>
-                                               <option value="<?php echo $dataJenisHak->idJenisHak; ?>"><?php echo $dataJenisHak->namaJenisHak; ?></option>
+                                               <option value="<?php echo $data_jenis_hak->id_jenis_hak; ?>"><?php echo $data_jenis_hak->nama_jenis_hak; ?></option>
                                              <?php } ?>
                                            </select>
                                          </div>
                                          <div class="form-inline mt-5">
                                            <label for="horizontal-form-2" class="form-label sm:w-20">Kondisi</label>
-                                           <select id="horizontal-form-2" data-search="true" class="tail-select w-full form-control" required name="idKondisi">
+                                           <select id="horizontal-form-2" data-search="true" class="tail-select w-full form-control" required name="id_kondisi">
                                              <option value="">Pilih Kondisi</option>
                                              <?php
-                                               foreach($dataKondisi as $dataKondisi){
+                                               foreach($data_kondisi as $data_kondisi){
                                              ?>
-                                               <option value="<?php echo $dataKondisi->idKondisi; ?>"><?php echo $dataKondisi->namaKondisi; ?></option>
+                                               <option value="<?php echo $data_kondisi->id_kondisi; ?>"><?php echo $data_kondisi->nama_kondisi; ?></option>
                                              <?php } ?>
                                            </select>
                                          </div>

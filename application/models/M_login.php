@@ -1,5 +1,5 @@
 <?php
-    class MLogin extends CI_Model{
+    class M_login extends CI_Model{
       function login(){
   			$username = $this->input->post('username');
   			$password= $this->input->post('password');

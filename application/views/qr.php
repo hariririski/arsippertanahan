@@ -17,7 +17,7 @@
     <!-- END: Head -->
     <body class="main">
         <!-- BEGIN: Mobile Menu -->
-      <?php echo $this->load->view('share/mobilemenu', '', TRUE);?>
+      <?php echo $this->load->view('share/mobile_menu', '', TRUE);?>
         <!-- END: Mobile Menu -->
         <!-- BEGIN: Top Bar -->
       <?php echo $this->load->view('share/profile', '', TRUE);?>
@@ -25,7 +25,7 @@
         <div class="wrapper">
             <div class="wrapper-box">
                 <!-- BEGIN: Side Menu -->
-                <?php echo $this->load->view('share/dekstopmenu', '', TRUE);?>
+                <?php echo $this->load->view('share/dekstop_menu', '', TRUE);?>
                 <!-- END: Side Menu -->
                 <!-- BEGIN: Content -->
                 <div class="content">

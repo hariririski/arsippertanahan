@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="light">
     <!-- BEGIN: Head -->
@@ -17,7 +16,7 @@
     <!-- END: Head -->
     <body class="main">
         <!-- BEGIN: Mobile Menu -->
-      <?php echo $this->load->view('share/mobilemenu', '', TRUE);?>
+      <?php echo $this->load->view('share/mobile_menu', '', TRUE);?>
         <!-- END: Mobile Menu -->
         <!-- BEGIN: Top Bar -->
       <?php echo $this->load->view('share/profile', '', TRUE);?>
@@ -25,7 +24,7 @@
         <div class="wrapper">
             <div class="wrapper-box">
                 <!-- BEGIN: Side Menu -->
-                <?php echo $this->load->view('share/dekstopmenu', '', TRUE);?>
+                <?php echo $this->load->view('share/dekstop_menu', '', TRUE);?>
                 <!-- END: Side Menu -->
                 <!-- BEGIN: Content -->
                 <div class="content">
@@ -178,8 +177,8 @@
         </div>
 
         <!-- BEGIN: JS Assets-->
-        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG7gNHAhDzgYmq4-EHvM4bqW1DNj2UCuk&libraries=places"></script>
+        <script src="dist/js/markerclusterer.js"></script>
+        <script src="dist/js/js.js"></script>
         <script src="dist/js/app.js"></script>
         <!-- END: JS Assets-->
     </body>

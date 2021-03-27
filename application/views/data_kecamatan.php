@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" class="light">
     <!-- BEGIN: Head -->
     <head>
@@ -9,7 +8,7 @@
         <meta name="description" content="Icewall admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Icewall Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
-        <title>Data Baris</title>
+        <title>Data Kecamatan</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/app.css">
         <!-- END: CSS Assets-->
@@ -17,7 +16,7 @@
     <!-- END: Head -->
     <body class="main">
         <!-- BEGIN: Mobile Menu -->
-        <?php echo $this->load->view('share/mobilemenu', '', TRUE);?>
+        <?php echo $this->load->view('share/mobile_menu', '', TRUE);?>
           <!-- END: Mobile Menu -->
           <!-- BEGIN: Top Bar -->
         <?php echo $this->load->view('share/profile', '', TRUE);?>
@@ -25,45 +24,48 @@
         <div class="wrapper">
             <div class="wrapper-box">
                 <!-- BEGIN: Side Menu -->
-                <?php echo $this->load->view('share/dekstopmenu', '', TRUE);?>
+                <?php echo $this->load->view('share/dekstop_menu', '', TRUE);?>
                 <!-- END: Side Menu -->
-
-                 <!-- BEGIN: Notification Toggle -->
-                 <
-                 <!-- END: Notification Toggle -->
-
-
                 <div class="content">
 
                   <div class="intro-y flex items-center mt-8">
                     <h1 class="text-lg font-medium mr-auto">
-                      Master Data Baris Pada Lemari
+                      Master Data Kecamatan
                     </h1>
                   </div>
 
                   <div class="intro-y box p-5 mt-5 ">
-                    <form action="<?php echo base_url(); ?>Lemari/tambahBaris" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url(); ?>Provinsi/tambah_kec" method="post" enctype="multipart/form-data">
                       <div class="p-5">
                         <div>
-                          <label for="change-password-form-1" class="form-label">Lemari Penyimpanan</label>
-                          <select class="form-select mt-2 sm:mr-2 form-control" aria-label="Default select example" required name="idLemari">
-                            <option value="">Pilih Lemari Penyimpanan</option>
+                          <label for="change-password-form-1" class="form-label">Provinsi</label>
+                          <select class="form-select mt-2 sm:mr-2 form-control" id="provinsi" aria-label="Default select example" required name="id_prov">
+                            <option value="">Pilih Provinsi</option>
                             <?php
-                              foreach($dataLemari as $dataLemari){
+                              foreach($data_provinsi as $data_provinsi){
                             ?>
-                              <option value="<?php echo $dataLemari->idLemari; ?>"><?php echo $dataLemari->namaLemari; ?></option>
+                              <option value="<?php echo $data_provinsi->id_prov; ?>"><?php echo $data_provinsi->nama_prov; ?></option>
                             <?php } ?>
                           </select>
                           <br>
                           <br>
                         </div>
                         <div>
-                        <label for="change-password-form-1" class="form-label">Kode Baris</label>
-                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="idBaris">
+                          <label for="change-password-form-1" class="form-label">Kota</label>
+                          <select class="form-select mt-2 sm:mr-2 form-control getKecamatan" aria-label="Default select example" required name="id_kota">
+                            <option value="">Pilih Kota</option>
+
+                          </select>
+                          <br>
+                          <br>
+                        </div>
+                        <div>
+                        <label for="change-password-form-1" class="form-label">Kode Kecamatan</label>
+                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required n_kme="idKec">
                       </div>
                       <div class="mt-3">
-                        <label for="change-password-form-2" class="form-label">Nama Baris</label>
-                        <input id="change-password-form-2" type="text" class="form-control" placeholder="Input text"  required name="namaBaris">
+                        <label for="change-password-form-2" class="form-label">Nama Kecamatan</label>
+                        <input id="change-password-form-2" type="text" class="form-control" placeholder="Input text"  required name="nama_kec">
                       </div>
 
                       <button type="submit" class="btn btn-primary mt-4">Simpan</button>
@@ -76,25 +78,27 @@
                       <thead>
                         <tr class="bg-gray-700 dark:bg-dark-1 text-white">
                           <th class="whitespace-nowrap" width="10%">#</th>
-                          <th class="whitespace-nowrap" width="30%">Lemari</th>
-                          <th class="whitespace-nowrap">Kode Baris</th>
-                          <th class="whitespace-nowrap">Nama Baris</th>
+                          <th class="whitespace-nowrap" width="30%">Provinsi</th>
+                          <th class="whitespace-nowrap" width="30%">Kecamatan</th>
+                          <th class="whitespace-nowrap">Kode Kota</th>
+                          <th class="whitespace-nowrap">Nama Kota</th>
                           <th class="whitespace-nowrap" width="30%">Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
                         $i=0;
-                        foreach($dataBaris as $dataBaris){
+                        foreach($data_kecamatan as $data_kec){
                           $i++;
                           ?>
                           <tr>
                             <td class="border-b dark:border-dark-5"><?php echo $i; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataBaris->namaLemari; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataBaris->idBaris; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataBaris->namaBaris; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_kec->nama_prov; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_kec->nama_kota; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_kec->id_kec; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_kec->nama_kec; ?></td>
                             <td class="border-b dark:border-dark-5">
-                              <a href="<?php echo base_url(); ?>lapor/detail_lapor/<?php echo $dataBaris->idBaris; ?>">
+                              <a href="<?php echo base_url(); ?>lapor/detail_lapor/<?php echo $data_kec->id_prov; ?>">
                               </a>
                                <button class="btn btn-success mr-1 mb-2"> <i data-feather="calendar" class="w-5 h-5"></i> </button>
                                <button class="btn btn-warning mr-1 mb-2"> <i data-feather="share-2" class="w-5 h-5"></i> </button>
@@ -112,9 +116,34 @@
         </div>
 
         <!-- BEGIN: JS Assets-->
-        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG7gNHAhDzgYmq4-EHvM4bqW1DNj2UCuk&libraries=places"></script>
+        <script src="dist/js/markerclusterer.js"></script>
+        <script src="dist/js/js.js"></script>
         <script src="<?php echo base_url(); ?>dist/js/app.js"></script>
+        <script src="<?php echo base_url(); ?>dist/js/jquery-3.3.1.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function(){
+            $('#provinsi').change(function(){
+              var id=$(this).val();
+              $.ajax({
+                url : "<?php echo base_url();?>Provinsi/getKota",
+                method : "POST",
+                data : {id: id},
+                async : false,
+                dataType : 'json',
+                success: function(data){
+                  var html = '';
+                  var i;
+                    html += '<option value="">Pilih Kota</option>';
+                  for(i=0; i<data.length; i++){
+                    html += '<option value="'+data[i].id_kota+'">'+data[i].nama_kota+'</option>';
+                  }
+                  $('.getKecamatan').html(html);
+
+                }
+              });
+            });
+          });
+        </script>
         <!-- END: JS Assets-->
     </body>
 </html>

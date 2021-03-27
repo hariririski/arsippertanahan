@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" class="light">
     <!-- BEGIN: Head -->
     <head>
@@ -17,7 +16,7 @@
     <!-- END: Head -->
     <body class="main">
         <!-- BEGIN: Mobile Menu -->
-        <?php echo $this->load->view('share/mobilemenu', '', TRUE);?>
+        <?php echo $this->load->view('share/mobile_menu', '', TRUE);?>
           <!-- END: Mobile Menu -->
           <!-- BEGIN: Top Bar -->
         <?php echo $this->load->view('share/profile', '', TRUE);?>
@@ -25,14 +24,8 @@
         <div class="wrapper">
             <div class="wrapper-box">
                 <!-- BEGIN: Side Menu -->
-                <?php echo $this->load->view('share/dekstopmenu', '', TRUE);?>
+                <?php echo $this->load->view('share/dekstop_menu', '', TRUE);?>
                 <!-- END: Side Menu -->
-
-                 <!-- BEGIN: Notification Toggle -->
-                 <
-                 <!-- END: Notification Toggle -->
-
-
                 <div class="content">
 
                   <div class="intro-y flex items-center mt-8">
@@ -42,11 +35,11 @@
                   </div>
 
                   <div class="intro-y box p-5 mt-5 ">
-                    <form action="<?php echo base_url(); ?>WaktuPelayanan/tambah" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url(); ?>Waktu_pelayanan/tambah" method="post" enctype="multipart/form-data">
                     <div class="p-5">
                       <div>
                         <label for="change-password-form-1" class="form-label">Kode Waktu Pelayanan</label>
-                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="kodeWaktu">
+                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="kode_waktu">
                       </div>
                       <div class="mt-3">
                         <label for="change-password-form-2" class="form-label">Nama Pelayanan</label>
@@ -76,14 +69,14 @@
                       <tbody>
                         <?php
                         $i=0;
-                        foreach($dataWaktu as $dataWaktu){
+                        foreach($data_waktu as $data_waktu){
                           $i++;
                           ?>
                           <tr>
                             <td class="border-b dark:border-dark-5"><?php echo $i; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataWaktu->idWaktu; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataWaktu->pelayanan; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataWaktu->durasi; ?> Hari</td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_waktu->id_waktu; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_waktu->pelayanan; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_waktu->durasi; ?> Hari</td>
                             <td class="border-b dark:border-dark-5">
                               <a href="">
                               </a>
@@ -103,8 +96,8 @@
         </div>
 
         <!-- BEGIN: JS Assets-->
-        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG7gNHAhDzgYmq4-EHvM4bqW1DNj2UCuk&libraries=places"></script>
+        <script src="dist/js/markerclusterer.js"></script>
+        <script src="dist/js/js.js"></script>
         <script src="<?php echo base_url(); ?>dist/js/app.js"></script>
         <!-- END: JS Assets-->
     </body>

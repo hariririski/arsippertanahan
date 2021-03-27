@@ -1,11 +1,11 @@
 <?php
-    class MAdmin extends CI_Model{
+    class M_admin extends CI_Model{
       function lihat(){
         $query=$this->db->query("SELECT * FROM `admin`");
         return $query->result();
       }
       function add(){
-        $namaLengkap = $this->input->post('namaLengkap');
+        $nama_lengkap = $this->input->post('nama_lengkap');
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $password = md5($password);
@@ -24,8 +24,8 @@
               break;
         }
 
-        $perintah1="INSERT INTO `admin`(`username`, `password`, `level`, `status`, `namaLengkap`, `image`)
-                                VALUES ('$username','$password','$level','$status','$namaLengkap','$image')";
+        $perintah1="INSERT INTO `admin`(`username`, `password`, `level`, `status`, `nama_lengkap`, `image`)
+                                VALUES ('$username','$password','$level','$status','$nama_lengkap','$image')";
         $query=$this->db->query($perintah1);
         return $query;
       }

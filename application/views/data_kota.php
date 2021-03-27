@@ -17,7 +17,7 @@
     <!-- END: Head -->
     <body class="main">
         <!-- BEGIN: Mobile Menu -->
-        <?php echo $this->load->view('share/mobilemenu', '', TRUE);?>
+        <?php echo $this->load->view('share/mobile_menu', '', TRUE);?>
           <!-- END: Mobile Menu -->
           <!-- BEGIN: Top Bar -->
         <?php echo $this->load->view('share/profile', '', TRUE);?>
@@ -25,14 +25,8 @@
         <div class="wrapper">
             <div class="wrapper-box">
                 <!-- BEGIN: Side Menu -->
-                <?php echo $this->load->view('share/dekstopmenu', '', TRUE);?>
+                <?php echo $this->load->view('share/dekstop_menu', '', TRUE);?>
                 <!-- END: Side Menu -->
-
-                 <!-- BEGIN: Notification Toggle -->
-                 <
-                 <!-- END: Notification Toggle -->
-
-
                 <div class="content">
 
                   <div class="intro-y flex items-center mt-8">
@@ -42,16 +36,16 @@
                   </div>
 
                   <div class="intro-y box p-5 mt-5 ">
-                    <form action="<?php echo base_url(); ?>Provinsi/tambahKota" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url(); ?>Provinsi/tambah_kota" method="post" enctype="multipart/form-data">
                       <div class="p-5">
                         <div>
                           <label for="change-password-form-1" class="form-label">Provinsi</label>
-                          <select class="form-select mt-2 sm:mr-2 form-control" aria-label="Default select example" required name="idProv">
+                          <select class="form-select mt-2 sm:mr-2 form-control" aria-label="Default select example" required name="id_prov">
                             <option value="">Pilih Provinsi</option>
                             <?php
-                              foreach($dataProvinsi as $dataProvinsi){
+                              foreach($data_provinsi as $data_provinsi){
                             ?>
-                              <option value="<?php echo $dataProvinsi->idProv; ?>"><?php echo $dataProvinsi->namaProv; ?></option>
+                              <option value="<?php echo $data_provinsi->id_prov; ?>"><?php echo $data_provinsi->nama_prov; ?></option>
                             <?php } ?>
                           </select>
                           <br>
@@ -59,11 +53,11 @@
                         </div>
                         <div>
                         <label for="change-password-form-1" class="form-label">Kode Kota</label>
-                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="idKota">
+                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="id_kota">
                       </div>
                       <div class="mt-3">
                         <label for="change-password-form-2" class="form-label">Nama Kota</label>
-                        <input id="change-password-form-2" type="text" class="form-control" placeholder="Input text"  required name="namaKota">
+                        <input id="change-password-form-2" type="text" class="form-control" placeholder="Input text"  required name="nama_kota">
                       </div>
 
                       <button type="submit" class="btn btn-primary mt-4">Simpan</button>
@@ -85,16 +79,16 @@
                       <tbody>
                         <?php
                         $i=0;
-                        foreach($dataKota as $dataKota){
+                        foreach($data_kota as $data_kota){
                           $i++;
                           ?>
                           <tr>
                             <td class="border-b dark:border-dark-5"><?php echo $i; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataKota->namaProv; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataKota->idKota; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataKota->namaKota; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_kota->nama_prov; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_kota->id_kota; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_kota->nama_kota; ?></td>
                             <td class="border-b dark:border-dark-5">
-                              <a href="<?php echo base_url(); ?>lapor/detail_lapor/<?php echo $dataKota->idProv; ?>">
+                              <a href="<?php echo base_url(); ?>lapor/detail_lapor/<?php echo $data_kota->id_prov; ?>">
                               </a>
                                <button class="btn btn-success mr-1 mb-2"> <i data-feather="calendar" class="w-5 h-5"></i> </button>
                                <button class="btn btn-warning mr-1 mb-2"> <i data-feather="share-2" class="w-5 h-5"></i> </button>
@@ -112,8 +106,8 @@
         </div>
 
         <!-- BEGIN: JS Assets-->
-        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG7gNHAhDzgYmq4-EHvM4bqW1DNj2UCuk&libraries=places"></script>
+        <script src="dist/js/markerclusterer.js"></script>
+        <script src="dist/js/js.js"></script>
         <script src="<?php echo base_url(); ?>dist/js/app.js"></script>
         <!-- END: JS Assets-->
     </body>

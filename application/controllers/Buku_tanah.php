@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class BukuTanah extends CI_Controller {
+class Buku_tanah extends CI_Controller {
 
 	function __construct() {
 			parent::__construct();

@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" class="light">
     <!-- BEGIN: Head -->
     <head>
@@ -9,7 +8,7 @@
         <meta name="description" content="Icewall admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Icewall Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
-        <title>Data Kecamatan</title>
+        <title>Data Desa</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="<?php echo base_url(); ?>dist/css/app.css">
         <!-- END: CSS Assets-->
@@ -17,7 +16,7 @@
     <!-- END: Head -->
     <body class="main">
         <!-- BEGIN: Mobile Menu -->
-        <?php echo $this->load->view('share/mobilemenu', '', TRUE);?>
+        <?php echo $this->load->view('share/mobile_menu', '', TRUE);?>
           <!-- END: Mobile Menu -->
           <!-- BEGIN: Top Bar -->
         <?php echo $this->load->view('share/profile', '', TRUE);?>
@@ -25,11 +24,11 @@
         <div class="wrapper">
             <div class="wrapper-box">
                 <!-- BEGIN: Side Menu -->
-                <?php echo $this->load->view('share/dekstopmenu', '', TRUE);?>
+                <?php echo $this->load->view('share/dekstop_menu', '', TRUE);?>
                 <!-- END: Side Menu -->
 
                  <!-- BEGIN: Notification Toggle -->
-                 <
+                 
                  <!-- END: Notification Toggle -->
 
 
@@ -37,21 +36,21 @@
 
                   <div class="intro-y flex items-center mt-8">
                     <h1 class="text-lg font-medium mr-auto">
-                      Master Data Kecamatan
+                      Master Data Desa
                     </h1>
                   </div>
 
                   <div class="intro-y box p-5 mt-5 ">
-                    <form action="<?php echo base_url(); ?>Provinsi/tambahKec" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url(); ?>Provinsi/tambah_desa" method="post" enctype="multipart/form-data">
                       <div class="p-5">
                         <div>
                           <label for="change-password-form-1" class="form-label">Provinsi</label>
-                          <select class="form-select mt-2 sm:mr-2 form-control" id="provinsi" aria-label="Default select example" required name="idProv">
+                          <select class="form-select mt-2 sm:mr-2 form-control" id="provinsi" aria-label="Default select example" required name="id_prov">
                             <option value="">Pilih Provinsi</option>
                             <?php
-                              foreach($dataProvinsi as $dataProvinsi){
+                              foreach($data_provinsi as $data_provinsi){
                             ?>
-                              <option value="<?php echo $dataProvinsi->idProv; ?>"><?php echo $dataProvinsi->namaProv; ?></option>
+                              <option value="<?php echo $data_provinsi->id_prov; ?>"><?php echo $data_provinsi->nama_prov; ?></option>
                             <?php } ?>
                           </select>
                           <br>
@@ -59,7 +58,7 @@
                         </div>
                         <div>
                           <label for="change-password-form-1" class="form-label">Kota</label>
-                          <select class="form-select mt-2 sm:mr-2 form-control getKecamatan" aria-label="Default select example" required name="idKota">
+                          <select class="form-select mt-2 sm:mr-2 form-control getKota" id="kota" aria-label="Default select example" required name="id_kota">
                             <option value="">Pilih Kota</option>
 
                           </select>
@@ -67,12 +66,21 @@
                           <br>
                         </div>
                         <div>
-                        <label for="change-password-form-1" class="form-label">Kode Kecamatan</label>
-                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="idKec">
+                          <label for="change-password-form-1" class="form-label">Kecamatan</label>
+                          <select class="form-select mt-2 sm:mr-2 form-control getKec" id="kota" aria-label="Default select example" required name="id_kec">
+                            <option value="">Pilih Kecamatan</option>
+
+                          </select>
+                          <br>
+                          <br>
+                        </div>
+                        <div>
+                        <label for="change-password-form-1" class="form-label">Kode Desa</label>
+                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="id_desa">
                       </div>
                       <div class="mt-3">
-                        <label for="change-password-form-2" class="form-label">Nama Kecamatan</label>
-                        <input id="change-password-form-2" type="text" class="form-control" placeholder="Input text"  required name="namaKec">
+                        <label for="change-password-form-2" class="form-label">Nama Desa</label>
+                        <input id="change-password-form-2" type="text" class="form-control" placeholder="Input text"  required name="nama_desa">
                       </div>
 
                       <button type="submit" class="btn btn-primary mt-4">Simpan</button>
@@ -87,25 +95,27 @@
                           <th class="whitespace-nowrap" width="10%">#</th>
                           <th class="whitespace-nowrap" width="30%">Provinsi</th>
                           <th class="whitespace-nowrap" width="30%">Kecamatan</th>
-                          <th class="whitespace-nowrap">Kode Kota</th>
-                          <th class="whitespace-nowrap">Nama Kota</th>
+                          <th class="whitespace-nowrap" width="30%">Kota</th>
+                          <th class="whitespace-nowrap">Kode Desa</th>
+                          <th class="whitespace-nowrap">Nama Desa</th>
                           <th class="whitespace-nowrap" width="30%">Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php
                         $i=0;
-                        foreach($dataKecamatan as $dataKec){
+                        foreach($data_desa as $data_desa){
                           $i++;
                           ?>
                           <tr>
                             <td class="border-b dark:border-dark-5"><?php echo $i; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataKec->namaProv; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataKec->namaKota; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataKec->idKec; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataKec->namaKec; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_desa->nama_prov; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_desa->nama_kota; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_desa->nama_kec; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_desa->id_desa; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_desa->nama_desa; ?></td>
                             <td class="border-b dark:border-dark-5">
-                              <a href="<?php echo base_url(); ?>lapor/detail_lapor/<?php echo $dataKec->idProv; ?>">
+                              <a href="<?php echo base_url(); ?>lapor/detail_lapor/<?php echo $data_desa->id_prov; ?>">
                               </a>
                                <button class="btn btn-success mr-1 mb-2"> <i data-feather="calendar" class="w-5 h-5"></i> </button>
                                <button class="btn btn-warning mr-1 mb-2"> <i data-feather="share-2" class="w-5 h-5"></i> </button>
@@ -123,8 +133,8 @@
         </div>
 
         <!-- BEGIN: JS Assets-->
-        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG7gNHAhDzgYmq4-EHvM4bqW1DNj2UCuk&libraries=places"></script>
+        <script src="dist/js/markerclusterer.js"></script>
+        <script src="dist/js/js.js"></script>
         <script src="<?php echo base_url(); ?>dist/js/app.js"></script>
         <script src="<?php echo base_url(); ?>dist/js/jquery-3.3.1.js"></script>
         <script type="text/javascript">
@@ -140,11 +150,35 @@
                 success: function(data){
                   var html = '';
                   var i;
-                    html += '<option value="">Pilih Kota</option>';
+                  html += '<option value="">Pilih Kota</option>';
                   for(i=0; i<data.length; i++){
-                    html += '<option value="'+data[i].idKota+'">'+data[i].namaKota+'</option>';
+                    html += '<option value="'+data[i].id_kota+'">'+data[i].nama_kota+'</option>';
                   }
-                  $('.getKecamatan').html(html);
+                  $('.getKota').html(html);
+
+                }
+              });
+            });
+          });
+        </script>
+        <script type="text/javascript">
+          $(document).ready(function(){
+            $('#kota').change(function(){
+              var id=$(this).val();
+              $.ajax({
+                url : "<?php echo base_url();?>Provinsi/getKec",
+                method : "POST",
+                data : {id: id},
+                async : false,
+                dataType : 'json',
+                success: function(data){
+                  var html = '';
+                  var i;
+                  html += '<option value="">Pilih Kecamatan</option>';
+                  for(i=0; i<data.length; i++){
+                    html += '<option value="'+data[i].id_kec+'">'+data[i].nama_kec+'</option>';
+                  }
+                  $('.getKec').html(html);
 
                 }
               });

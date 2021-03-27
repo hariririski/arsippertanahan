@@ -19,7 +19,7 @@
             <div class="dropdown-menu w-56">
                 <div class="dropdown-menu__content box bg-theme-11 dark:bg-dark-6 text-white">
                     <div class="p-4 border-b border-theme-12 dark:border-dark-3">
-                        <div class="font-medium"> <?php echo $this->session->userdata("namaLengkap"); ?></div>
+                        <div class="font-medium"> <?php echo $this->session->userdata("nama_lengkap"); ?></div>
                         <div class="text-xs text-theme-13 mt-0.5 dark:text-gray-600">
                           <?php
                             switch ($this->session->userdata("level")){

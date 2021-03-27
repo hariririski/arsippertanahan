@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" class="light">
     <!-- BEGIN: Head -->
     <head>
@@ -17,7 +16,7 @@
     <!-- END: Head -->
     <body class="main">
         <!-- BEGIN: Mobile Menu -->
-        <?php echo $this->load->view('share/mobilemenu', '', TRUE);?>
+        <?php echo $this->load->view('share/mobile_menu', '', TRUE);?>
           <!-- END: Mobile Menu -->
           <!-- BEGIN: Top Bar -->
         <?php echo $this->load->view('share/profile', '', TRUE);?>
@@ -25,11 +24,11 @@
         <div class="wrapper">
             <div class="wrapper-box">
                 <!-- BEGIN: Side Menu -->
-                <?php echo $this->load->view('share/dekstopmenu', '', TRUE);?>
+                <?php echo $this->load->view('share/dekstop_menu', '', TRUE);?>
                 <!-- END: Side Menu -->
 
                  <!-- BEGIN: Notification Toggle -->
-                 <
+                 
                  <!-- END: Notification Toggle -->
 
 
@@ -42,18 +41,18 @@
                   </div>
 
                   <div class="intro-y box p-5 mt-5 ">
-                    <form action="<?php echo base_url(); ?>Lemari/tambahBundel" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo base_url(); ?>Lemari/tambah_bundel" method="post" enctype="multipart/form-data">
                       <div class="p-5">
                         <div>
                            <div>
                              <label>Desa</label>
                              <div class="mt-2">
-                               <select data-search="true" class="tail-select w-full" required name="idDesa">
+                               <select data-search="true" class="tail-select w-full" required name="id_desa">
                                  <option value="">Pilih Desa</option>
                                  <?php
-                                   foreach($dataDesa as $dataDesa){
+                                   foreach($data_desa as $data_desa){
                                  ?>
-                                   <option value="<?php echo $dataDesa->idDesa; ?>"><?php echo $dataDesa->namaProv; ?> -> <?php echo $dataDesa->namaKota; ?> - > <?php echo $dataDesa->namaKec; ?> -> <?php echo $dataDesa->namaDesa; ?></option>
+                                   <option value="<?php echo $data_desa->id_desa; ?>"><?php echo $data_desa->nama_prov; ?> -> <?php echo $data_desa->nama_kota; ?> - > <?php echo $data_desa->nama_kec; ?> -> <?php echo $data_desa->nama_desa; ?></option>
                                  <?php } ?>
                                </select>
                              </div>
@@ -62,12 +61,12 @@
                         </div>
                         <div>
                           <label for="change-password-form-1" class="form-label">Lemari</label>
-                          <select class="form-select mt-2 sm:mr-2 form-control" id="lemari" aria-label="Default select example" required name="idLemari">
+                          <select class="form-select mt-2 sm:mr-2 form-control" id="lemari" aria-label="Default select example" required name="id_lemari">
                             <option value="">Pilih Lemari</option>
                             <?php
-                              foreach($dataLemari as $dataLemari){
+                              foreach($data_lemari as $data_lemari){
                             ?>
-                              <option value="<?php echo $dataLemari->idLemari; ?>"><?php echo $dataLemari->namaLemari; ?></option>
+                              <option value="<?php echo $data_lemari->id_lemari; ?>"><?php echo $data_lemari->nama_lemari; ?></option>
                             <?php } ?>
                           </select>
                           <br>
@@ -75,7 +74,7 @@
                         </div>
                         <div>
                           <label for="change-password-form-1" class="form-label">Baris</label>
-                          <select class="form-select mt-2 sm:mr-2 form-control getBaris" aria-label="Default select example" required name="idBaris">
+                          <select class="form-select mt-2 sm:mr-2 form-control getBaris" aria-label="Default select example" required name="id_baris">
                             <option value="">Pilih Baris</option>
 
                           </select>
@@ -84,12 +83,12 @@
                         </div>
                         <div>
                         <label for="change-password-form-1" class="form-label">Kode Bundel</label>
-                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="idBundel">
+                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="id_bundel">
                       </div>
                       <br>
                         <div>
                         <label for="change-password-form-1" class="form-label">Nama Bundel</label>
-                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="namaBundel">
+                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="nama_bundel">
                       </div>
                       <br>
                       <div>
@@ -127,18 +126,18 @@
                       <tbody>
                         <?php
                         $i=0;
-                        foreach($dataBundel as $dataBundel){
+                        foreach($data_bundel as $data_bundel){
                           $i++;
                           ?>
                           <tr>
                             <td class="border-b dark:border-dark-5"><?php echo $i; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataBundel->namaLemari; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataBundel->namaBaris; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataBundel->idBundel; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataBundel->namaBundel; ?></td>
-                            <td class="border-b dark:border-dark-5"><?php echo $dataBundel->namaDesa; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_bundel->nama_lemari; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_bundel->nama_baris; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_bundel->id_bundel; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_bundel->nama_bundel; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_bundel->nama_desa; ?></td>
                             <td class="border-b dark:border-dark-5">
-                              <a href="<?php echo base_url(); ?>lapor/detail_lapor/<?php echo $dataBundel->idBundel; ?>">
+                              <a href="<?php echo base_url(); ?>lapor/detail_lapor/<?php echo $data_bundel->id_bundel; ?>">
                               </a>
                                <button class="btn btn-success mr-1 mb-2"> <i data-feather="calendar" class="w-5 h-5"></i> </button>
                                <button class="btn btn-warning mr-1 mb-2"> <i data-feather="share-2" class="w-5 h-5"></i> </button>
@@ -156,8 +155,8 @@
         </div>
 
         <!-- BEGIN: JS Assets-->
-        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG7gNHAhDzgYmq4-EHvM4bqW1DNj2UCuk&libraries=places"></script>
+        <script src="dist/js/markerclusterer.js"></script>
+        <script src="dist/js/js.js"></script>
         <script src="<?php echo base_url(); ?>dist/js/app.js"></script>
         <script src="<?php echo base_url(); ?>dist/js/jquery-3.3.1.js"></script>
         <script type="text/javascript">
@@ -175,7 +174,7 @@
                   var i;
                   html += '<option value="">Pilih Baris</option>';
                   for(i=0; i<data.length; i++){
-                    html += '<option value="'+data[i].idBaris+'">'+data[i].namaBaris+'</option>';
+                    html += '<option value="'+data[i].id_baris+'">'+data[i].nama_baris+'</option>';
                   }
                   $('.getBaris').html(html);
 

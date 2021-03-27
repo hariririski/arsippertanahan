@@ -53,12 +53,12 @@ $route['default_controller'] = 'Login';
 
 $route['login'] = 'Login';
 $route['home'] = 'Home';
-$route['bukutanah'] = 'BukuTanah';
+$route['bukutanah'] = 'Buku_tanah';
 $route['databukutanah'] = 'BukuTanah/data';
 $route['caribukutanah'] = 'BukuTanah/pData';
-$route['caribukutanah1'] = 'BukuTanah/bukuTanahBarcode';
+$route['caribukutanah1'] = 'BukuTanah/buku_tanah_barcode';
 $route['datakondisi'] = 'Kondisi';
-$route['datajenishak'] = 'JenisHak';
+$route['datajenishak'] = 'Jenis_hak';
 $route['datalemari'] = 'Lemari';
 $route['databaris'] = 'Lemari/baris';
 $route['databundel'] = 'Lemari/bundel';
@@ -68,7 +68,7 @@ $route['datakecamatan'] = 'Provinsi/kecamatan';
 $route['datadesa'] = 'Provinsi/desa';
 $route['logout'] = 'Login/logout';
 $route['dataadmin'] = 'Admin';
-$route['datawaktupelayanan'] = 'WaktuPelayanan';
+$route['datawaktupelayanan'] = 'Waktu_pelayanan';
 $route['datapegawai'] = 'Pegawai';
 
 $route['404_override'] = 'Rusak';
