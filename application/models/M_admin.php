@@ -14,13 +14,13 @@
         $status=0;
         switch($level){
           case 1:
-              $image="dist/images/1.png";
+              $image="assets/images/users/admin.jpg";
               break;
           case 2:
-              $image="dist/images/2.png";
+              $image="assets/images/users/pustaka.jpg";
               break;
           case 3:
-              $image="dist/images/3.png";
+              $image="assets/images/users/umum.jpg";
               break;
         }
 

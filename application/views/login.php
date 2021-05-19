@@ -59,7 +59,7 @@
                                 <!-- email -->
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <input  type="text" class="validate" required name="username">
+                                        <input  type="text" class="validate" required name="username" autofocus>
                                         <label for="email">Username</label>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
                                 </div>
                             </form>
                         </div>
-                        
+
                     </div>
 
                 </div>

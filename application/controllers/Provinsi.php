@@ -35,7 +35,7 @@ class Provinsi extends CI_Controller {
 	{
 		$cek= $this->M_provinsi->add();
 		if($cek>0){
-			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."dataprovinsi';</script>");
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."dataprovinsi';</script>");
 
 		}else{
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Berhasil Di Simpan');window.location.href='dataprovinsi';</script>");
