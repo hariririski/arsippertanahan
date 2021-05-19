@@ -61,7 +61,7 @@
                         </div>
                         <div>
                         <label for="change-password-form-1" class="form-label">Kode Kecamatan</label>
-                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required n_kme="idKec">
+                        <input id="change-password-form-1" type="number" class="form-control" placeholder="Input text" required name="id_kec">
                       </div>
                       <div class="mt-3">
                         <label for="change-password-form-2" class="form-label">Nama Kecamatan</label>
@@ -78,11 +78,11 @@
                       <thead>
                         <tr class="bg-gray-700 dark:bg-dark-1 text-white">
                           <th class="whitespace-nowrap" width="10%">#</th>
-                          <th class="whitespace-nowrap" width="30%">Provinsi</th>
-                          <th class="whitespace-nowrap" width="30%">Kecamatan</th>
-                          <th class="whitespace-nowrap">Kode Kota</th>
-                          <th class="whitespace-nowrap">Nama Kota</th>
-                          <th class="whitespace-nowrap" width="30%">Aksi</th>
+                          <th class="whitespace-nowrap" width="20%">Provinsi</th>
+                          <th class="whitespace-nowrap" width="30%">Kota</th>
+                          <th class="whitespace-nowrap">Kode Kecamatan</th>
+                          <th class="whitespace-nowrap">Nama Kecamatan</th>
+                          <th class="whitespace-nowrap" width="40%">Aksi</th>
                         </tr>
                       </thead>
                       <tbody>

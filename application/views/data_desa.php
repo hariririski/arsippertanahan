@@ -28,7 +28,7 @@
                 <!-- END: Side Menu -->
 
                  <!-- BEGIN: Notification Toggle -->
-                 
+
                  <!-- END: Notification Toggle -->
 
 
@@ -45,7 +45,7 @@
                       <div class="p-5">
                         <div>
                           <label for="change-password-form-1" class="form-label">Provinsi</label>
-                          <select class="form-select mt-2 sm:mr-2 form-control" id="provinsi" aria-label="Default select example" required name="id_prov">
+                          <select class="form-select mt-2 sm:mr-2 form-control" id="provinsi" autofocus="autofocus" aria-label="Default select example" required name="id_prov">
                             <option value="">Pilih Provinsi</option>
                             <?php
                               foreach($data_provinsi as $data_provinsi){
@@ -92,13 +92,13 @@
                     <table class="table">
                       <thead>
                         <tr class="bg-gray-700 dark:bg-dark-1 text-white">
-                          <th class="whitespace-nowrap" width="10%">#</th>
-                          <th class="whitespace-nowrap" width="30%">Provinsi</th>
-                          <th class="whitespace-nowrap" width="30%">Kecamatan</th>
-                          <th class="whitespace-nowrap" width="30%">Kota</th>
+                          <th class="whitespace-nowrap" >#</th>
+                          <th class="whitespace-nowrap" >Provinsi</th>
+                          <th class="whitespace-nowrap" >Kecamatan</th>
+                          <th class="whitespace-nowrap" >Kota</th>
                           <th class="whitespace-nowrap">Kode Desa</th>
                           <th class="whitespace-nowrap">Nama Desa</th>
-                          <th class="whitespace-nowrap" width="30%">Aksi</th>
+                          <th class="whitespace-nowrap">Aksi</th>
                         </tr>
                       </thead>
                       <tbody>

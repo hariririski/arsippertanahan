@@ -53,7 +53,7 @@ class Provinsi extends CI_Controller {
 	{
 		$cek= $this->M_provinsi->tambah_kota();
 		if($cek>0){
-			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."datakota';</script>");
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakota';</script>");
 
 		}else{
 		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datakota';</script>");
@@ -71,7 +71,7 @@ class Provinsi extends CI_Controller {
 	{
 		$cek= $this->M_provinsi->tambah_kec();
 		if($cek>0){
-			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."datakecamatan';</script>");
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakecamatan';</script>");
 
 		}else{
 		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datakecamatan';</script>");
@@ -90,7 +90,7 @@ class Provinsi extends CI_Controller {
 	{
 		$cek= $this->M_provinsi->tambah_desa();
 		if($cek>0){
-			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."datadesa';</script>");
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datadesa';</script>");
 
 		}else{
 		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datadesa';</script>");

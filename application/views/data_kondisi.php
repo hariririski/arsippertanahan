@@ -64,10 +64,11 @@
                     <table class="table">
                       <thead>
                         <tr class="bg-gray-700 dark:bg-dark-1 text-white">
-                          <th class="whitespace-nowrap" width="10%">#</th>
-                          <th class="whitespace-nowrap" width="30%">Kode</th>
+                          <th class="whitespace-nowrap" >#</th>
+                          <th class="whitespace-nowrap" >Kode</th>
                           <th class="whitespace-nowrap">Kondisi</th>
-                          <th class="whitespace-nowrap" width="30%">Aksi</th>
+                          <th class="whitespace-nowrap">Ket</th>
+                          <th class="whitespace-nowrap" width="25%">Aksi</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -80,6 +81,7 @@
                             <td class="border-b dark:border-dark-5"><?php echo $i; ?></td>
                             <td class="border-b dark:border-dark-5"><?php echo $data_kondisi->id_kondisi; ?></td>
                             <td class="border-b dark:border-dark-5"><?php echo $data_kondisi->nama_kondisi; ?></td>
+                            <td class="border-b dark:border-dark-5"><?php echo $data_kondisi->keterangan; ?></td>
                             <td class="border-b dark:border-dark-5">
                               <a href="<?php echo base_url(); ?>lapor/detail_lapor/<?php echo $data_kondisi->id_kondisi; ?>">
                               </a>

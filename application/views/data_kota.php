@@ -70,10 +70,10 @@
                       <thead>
                         <tr class="bg-gray-700 dark:bg-dark-1 text-white">
                           <th class="whitespace-nowrap" width="10%">#</th>
-                          <th class="whitespace-nowrap" width="30%">Provinsi</th>
+                          <th class="whitespace-nowrap" width="20%">Provinsi</th>
                           <th class="whitespace-nowrap">Kode Kota</th>
                           <th class="whitespace-nowrap">Nama Kota</th>
-                          <th class="whitespace-nowrap" width="30%">Aksi</th>
+                          <th class="whitespace-nowrap" width="40%">Aksi</th>
                         </tr>
                       </thead>
                       <tbody>

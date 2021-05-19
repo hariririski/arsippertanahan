@@ -52,7 +52,7 @@
                                             <?php
                                               foreach($data_desa as $data_desa){
                                             ?>
-                                              <option value="<?php echo $data_desa->id_prov; ?>-<?php echo $data_desa->id_kota;?>-<?php echo $data_desa->id_kec;?>-<?php echo $data_desa->id_desa; ?>"><?php echo $data_desa->id_prov; ?><?php echo $data_desa->id_kota; ?><?php echo $data_desa->id_kec; ?> <?php echo $data_desa->id_desa; ?>- <?php echo $data_desa->nama_prov; ?> - <?php echo $data_desa->nama_kota; ?> -  <?php echo $data_desa->nama_kec; ?> -> <?php echo $data_desa->nama_desa; ?></option>
+                                              <option value="<?php echo $data_desa->id_prov; ?>-<?php echo $data_desa->id_kota;?>-<?php echo $data_desa->id_kec;?>-<?php echo $data_desa->id_desa; ?>"><?php echo $data_desa->id_prov; ?><?php echo $data_desa->id_kota; ?><?php echo $data_desa->id_kec; ?><?php echo $data_desa->id_desa; ?>- <?php echo $data_desa->nama_prov; ?> - <?php echo $data_desa->nama_kota; ?> -  <?php echo $data_desa->nama_kec; ?> -> <?php echo $data_desa->nama_desa; ?></option>
                                             <?php } ?>
                                           </select>
                                         </div>
