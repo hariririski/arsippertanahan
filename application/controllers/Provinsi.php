@@ -45,33 +45,38 @@ class Provinsi extends CI_Controller {
 
 	public function kota()
 	{
-		$data['data_provinsi'] = $this->M_provinsi->lihat();
-		$data['data_kota'] = $this->M_provinsi->lihat_kota();
+		$id_prov = $this->input->get('prov');
+		$data['data_prov'] = $this->M_provinsi->lihat_prov($id_prov);
+		$data['data_kota'] = $this->M_provinsi->lihat_kota($id_prov);
+
 		$this->load->view('data_kota',$data);
 	}
 	public function tambah_kota()
 	{
-		$cek= $this->M_provinsi->tambah_kota();
+		$id_prov = $this->input->get('prov');
+		$cek= $this->M_provinsi->tambah_kota($id_prov);
 		if($cek>0){
-			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakota';</script>");
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakota?prov=".$id_prov."';</script>");
 
 		}else{
-		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datakota';</script>");
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datakota?prov=".$id_prov."';</script>");
 
 		}
 	}
 
 	public function kecamatan()
 	{
-		$data['data_provinsi'] = $this->M_provinsi->lihat();
-		$data['data_kecamatan'] = $this->M_provinsi->lihat_kecamatan();
+		$id_kota = $this->input->get('kota');
+		$data['data_kota'] = $this->M_provinsi->lihat_kota2($id_kota);
+		$data['data_kecamatan'] = $this->M_provinsi->lihat_kecamatan($id_kota);
 		$this->load->view('data_kecamatan',$data);
 	}
 	public function tambah_kec()
 	{
-		$cek= $this->M_provinsi->tambah_kec();
+		$id_kota= $this->input->get('kota');
+		$cek= $this->M_provinsi->tambah_kec($id_kota);
 		if($cek>0){
-			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakecamatan';</script>");
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakecamatan?kota=".$id_kota."';</script>");
 
 		}else{
 		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datakecamatan';</script>");

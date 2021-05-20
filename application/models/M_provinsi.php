@@ -5,6 +5,10 @@
         $query=$this->db->query("SELECT * FROM `prov`");
         return $query->result();
       }
+      function lihat_prov($id){
+        $query=$this->db->query("SELECT * FROM `prov` where id_prov=$id");
+        return $query->result();
+      }
       function getKota($id){
         $query=$this->db->query("SELECT * FROM `kota` inner join prov on prov.id_prov=kota.id_prov where kota.id_prov=$id");
         return $query->result();
@@ -27,30 +31,31 @@
         return $query;
       }
 
-      function lihat_kota(){
-        $query=$this->db->query("SELECT * FROM prov LEFT JOIN kota on prov.id_prov=kota.id_prov");
+      function lihat_kota($id_prov){
+        $query=$this->db->query("SELECT * FROM prov LEFT JOIN kota on prov.id_prov=kota.id_prov where prov.id_prov=$id_prov");
         return $query->result();
       }
-      function tambah_kota(){
-        $id_provinsi = $this->input->post('id_prov');
+      function lihat_kota2($id_kota){
+        $query=$this->db->query("SELECT * FROM prov LEFT JOIN kota on prov.id_prov=kota.id_prov where kota.id_kota=$id_kota");
+        return $query->result();
+      }
+      function tambah_kota($id_prov){
+        ;
         $id_kota = $this->input->post('id_kota');
         $nama_kota = $this->input->post('nama_kota');
 
-        $perintah1="INSERT INTO `kota`(`id_kota`, `nama_kota`, `id_prov`) VALUES ('$id_kota','$nama_kota','$id_provinsi')";
+        $perintah1="INSERT INTO `kota`(`id_kota`, `nama_kota`, `id_prov`) VALUES ('$id_kota','$nama_kota','$id_prov')";
         $query=$this->db->query($perintah1);
         return $query;
       }
 
-      function lihat_kecamatan(){
-        $query=$this->db->query("SELECT * FROM prov LEFT JOIN kota on prov.id_prov=kota.id_prov left join kec on kec.id_kota=kota.id_kota");
+      function lihat_kecamatan($id_kota){
+        $query=$this->db->query("SELECT * FROM `kec` LEFT JOIN kota on kota.id_kota=kec.id_kota WHERE kec.id_kota=$id_kota");
         return $query->result();
       }
-      function tambah_kec(){
-
-        $id_kota = $this->input->post('id_kota');
+      function tambah_kec($id_kota){
         $id_kecamatan= $this->input->post('id_kec');
         $nama_kecamatan= $this->input->post('nama_kec');
-
         $perintah1="INSERT INTO `kec`(`id_kec`, `nama_kec`, `id_kota`) VALUES ('$id_kecamatan','$nama_kecamatan','$id_kota')";
         $query=$this->db->query($perintah1);
         return $query;

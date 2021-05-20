@@ -52,16 +52,12 @@
                     <div class="collapsible-body">
                         <ul>
                             <li><a href="<?php echo base_url(); ?>dataprovinsi"><i class="material-icons">email</i><span class="hide-menu">Provinsi</span></a></li>
-                            <!-- <li><a href="<?php echo base_url(); ?>dataprovinsi"><i class="material-icons">email</i><span class="hide-menu">Kota</span></a></li>
-                            <li><a href="<?php echo base_url(); ?>dataprovinsi"><i class="material-icons">email</i><span class="hide-menu">Kabupaten</span></a></li>
-                            <li><a href="<?php echo base_url(); ?>dataprovinsi"><i class="material-icons">email</i><span class="hide-menu">Desa</span></a></li> -->
-                            <li><a href="<?php echo base_url(); ?>dataprovinsi"><i class="material-icons">email</i><span class="hide-menu">Lemari</span></a></li>
-                            <li><a href="<?php echo base_url(); ?>dataprovinsi"><i class="material-icons">email</i><span class="hide-menu">Baris</span></a></li>
-                            <li><a href="<?php echo base_url(); ?>dataprovinsi"><i class="material-icons">email</i><span class="hide-menu">Bundel</span></a></li>
-                            <li><a href="<?php echo base_url(); ?>dataprovinsi"><i class="material-icons">email</i><span class="hide-menu">Jenis Hak</span></a></li>
-                            <li><a href="<?php echo base_url(); ?>dataprovinsi"><i class="material-icons">email</i><span class="hide-menu">Kondisi</span></a></li>
-                            <li><a href="<?php echo base_url(); ?>dataprovinsi"><i class="material-icons">email</i><span class="hide-menu">Waktu Pelayanan</span></a></li>
-                            <li><a href="<?php echo base_url(); ?>dataprovinsi"><i class="material-icons">email</i><span class="hide-menu">Admin</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>datalemari"><i class="material-icons">email</i><span class="hide-menu">Lemari</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>datajenishak"><i class="material-icons">email</i><span class="hide-menu">Jenis Hak</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>datakondisi"><i class="material-icons">email</i><span class="hide-menu">Kondisi</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>datawaktupelayanan"><i class="material-icons">email</i><span class="hide-menu">Waktu Pelayanan</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>dataadmin"><i class="material-icons">email</i><span class="hide-menu">Admin</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>datapegawai"><i class="material-icons">email</i><span class="hide-menu">Pegawai</span></a></li>
                         </ul>
                     </div>
                 </li>

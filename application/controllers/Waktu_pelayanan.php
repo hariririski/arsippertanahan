@@ -19,7 +19,7 @@ class Waktu_pelayanan extends CI_Controller {
 	{
 		$cek= $this->M_waktu_pelayanan->add();
 		if($cek>0){
-			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."datawaktupelayanan';</script>");
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datawaktupelayanan';</script>");
 
 		}else{
 				echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datawaktupelayanan';</script>");

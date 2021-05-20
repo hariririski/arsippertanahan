@@ -19,7 +19,7 @@ class Jenis_hak extends CI_Controller {
 	{
 		$cek= $this->M_jenis_hak->add();
 		if($cek>0){
-			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil di Simpan');window.location.href='".base_url()."datajenishak';</script>");
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datajenishak';</script>");
 
 		}else{
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal di Simpan');window.location.href='".base_url()."datajenishak';</script>");

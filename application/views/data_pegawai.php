@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Data Provinsi</title>
+    <title>Data Pegawai</title>
     <link href="dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
@@ -40,10 +40,10 @@
             <!-- ============================================================== -->
             <div class="page-titles">
                 <div class="d-flex align-items-center">
-                    <h5 class="font-medium m-b-0">Data Provinsi</h5>
+                    <h5 class="font-medium m-b-0">Data Pegawai</h5>
                     <div class="custom-breadcrumb ml-auto">
                         <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Provinsi</a>
+                        <a href="#!" class="breadcrumb">Pegawai</a>
                     </div>
                 </div>
             </div>
@@ -55,25 +55,43 @@
                     <div class="col s12 ">
                         <div class="card">
                             <div class="card-content">
-                                <h5 class="card-title activator">Tambah Data Provinsi<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
-                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Provinsi/tambah" method="post" enctype="multipart/form-data">
+                                <h5 class="card-title activator">Tambah Pegawai<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
+                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Pegawai/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">account_circle</i>
-                                            <input  name="id_prov" type="text" required>
-                                            <label for="uname">Kode Provinsi *</label>
+                                            <input   type="text" required name="nip" autofocus>
+                                            <label for="uname">NIP / NIK *</label>
                                             <div class="errorTxt1"></div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">email</i>
-                                            <label for="cemail">Nama Provinsi *</label>
-                                            <input  type="text" name="nama_prov" required>
+                                            <label for="cemail">Nama Lengkap *</label>
+                                            <input  type="text"  required name="nama_lengkap" >
                                             <div class="errorTxt2"></div>
                                         </div>
                                     </div>
-
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">email</i>
+                                            <label for="cemail">Jabatan *</label>
+                                            <input  type="text"  required name="jabatan">
+                                            <div class="errorTxt2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                          <div class="input-field col s12">
+                                            <i class="material-icons prefix">email</i>
+                                              <select required name="jenis">
+                                                  <option value="" disabled selected>Pilih Jenis</option>
+                                                  <option value="1">ASN</option>
+                                                  <option value="2">ASK</option>
+                                                  <option value="3">PPNPN</option>
+                                              </select>
+                                          </div>
+                                    </div>
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <button class="btn cyan waves-effect waves-light right submit" type="submit" name="action">Submit
@@ -95,8 +113,11 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Kode</th>
-                                            <th>Provinsi</th>
+                                            <th>NIP/NIK</th>
+                                            <th>Nama</th>
+                                            <th>Jabatan</th>
+                                            <th>Jenis</th>
+                                            <th>Status</th>
                                             <th width="30%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -104,16 +125,41 @@
                                         <tr>
                                             <?php
                                               $i=0;
-                                              foreach($data_provinsi as $data_provinsi){
+                                              foreach($data_pegawai as $data_pegawai){
                                               $i++;
                                             ?>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $data_provinsi->id_prov; ?></td>
-                                            <td><?php echo $data_provinsi->nama_prov; ?></td>
+                                            <td><?php echo $data_pegawai->nip; ?></td>
+                                            <td><?php echo $data_pegawai->nama_lengkap; ?></td>
+                                            <td><?php echo $data_pegawai->jabatan; ?></td>
                                             <td>
-                                              <a href="<?php echo base_url(); ?>datakota?prov=<?php echo $data_provinsi->id_prov; ?>" class="waves-effect waves-light btn btn-round green">Tambah Kecamatan</a>
+                                              <?php
+                                                switch ($data_pegawai->jenis){
+                                                  case 1:
+                                                        echo "ASN";
+                                                        break;
+                                                  case 2:
+                                                        echo "ASK";
+                                                        break;
+                                                  case 3:
+                                                        echo "PPNPN";
+                                                        break;
+                                                }
+                                              ?>
+                                            </td>
+                                            <td>
+                                              <?php if($data_pegawai->status==0){
+                                                        echo "Aktif";
+                                                      }
+                                                        else{
+                                                        echo "Tidak Aktif";
+                                                      }
+                                              ?>
+                                            </td>
+                                            <td>
                                               <a class="waves-effect waves-light btn btn-round orange">Edit</a>
                                               <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
+                                              <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Non Aktifkan</a>
                                             </td>
                                         </tr>
                                         <?php } ?>

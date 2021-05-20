@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Data Provinsi</title>
+    <title>Data Waktu Pelayanan</title>
     <link href="dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
@@ -40,10 +40,10 @@
             <!-- ============================================================== -->
             <div class="page-titles">
                 <div class="d-flex align-items-center">
-                    <h5 class="font-medium m-b-0">Data Provinsi</h5>
+                    <h5 class="font-medium m-b-0">Data Waktu Pelayanan</h5>
                     <div class="custom-breadcrumb ml-auto">
                         <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Provinsi</a>
+                        <a href="#!" class="breadcrumb">Waktu Pelayanan</a>
                     </div>
                 </div>
             </div>
@@ -55,21 +55,29 @@
                     <div class="col s12 ">
                         <div class="card">
                             <div class="card-content">
-                                <h5 class="card-title activator">Tambah Data Provinsi<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
-                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Provinsi/tambah" method="post" enctype="multipart/form-data">
+                                <h5 class="card-title activator">Tambah Data Waktu Pelayanan<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
+                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Waktu_pelayanan/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">account_circle</i>
-                                            <input  name="id_prov" type="text" required>
-                                            <label for="uname">Kode Provinsi *</label>
-                                            <div class="errorTxt1"></div>
+                                            <i class="material-icons prefix">email</i>
+                                            <label for="cemail">Kode Waktu Pelayanan *</label>
+                                            <input  type="text"  required name="kode_waktu" autofocus>
+                                            <div class="errorTxt2"></div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">email</i>
-                                            <label for="cemail">Nama Provinsi *</label>
-                                            <input  type="text" name="nama_prov" required>
+                                            <label for="cemail">Nama Kondisi *</label>
+                                            <input  type="text"  required name="nama_kondisi">
+                                            <div class="errorTxt2"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">email</i>
+                                            <label for="cemail">Keterangan *</label>
+                                            <input  type="text"  required name="keterangan">
                                             <div class="errorTxt2"></div>
                                         </div>
                                     </div>
@@ -96,22 +104,23 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Kode</th>
-                                            <th>Provinsi</th>
-                                            <th width="30%">Aksi</th>
+                                            <th>Kondisi</th>
+                                            <th>Keterangan</th>
+                                            <th width="20%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <?php
                                               $i=0;
-                                              foreach($data_provinsi as $data_provinsi){
+                                              foreach($data_kondisi as $data_kondisi){
                                               $i++;
                                             ?>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $data_provinsi->id_prov; ?></td>
-                                            <td><?php echo $data_provinsi->nama_prov; ?></td>
+                                            <td><?php echo $data_kondisi->id_kondisi; ?></td>
+                                            <td><?php echo $data_kondisi->nama_kondisi; ?></td>
+                                            <td><?php echo $data_kondisi->keterangan; ?></td>
                                             <td>
-                                              <a href="<?php echo base_url(); ?>datakota?prov=<?php echo $data_provinsi->id_prov; ?>" class="waves-effect waves-light btn btn-round green">Tambah Kecamatan</a>
                                               <a class="waves-effect waves-light btn btn-round orange">Edit</a>
                                               <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
                                             </td>
