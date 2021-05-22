@@ -59,7 +59,7 @@
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>lemari/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">account_circle</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <input   type="text" required name="id_lemari" autofocus>
                                             <label for="uname">Kode Lemari *</label>
                                             <div class="errorTxt1"></div>
@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Lemari *</label>
                                             <input  type="text"  required name="nama_lemari">
                                             <div class="errorTxt2"></div>
@@ -75,7 +75,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Keterangan *</label>
                                             <input  type="text"  required name="keterangan">
                                             <div class="errorTxt2"></div>
@@ -121,7 +121,7 @@
                                             <td><?php echo $data_lemari->nama_lemari; ?></td>
                                             <td><?php echo $data_lemari->keterangan; ?></td>
                                             <td>
-                                              <a class="waves-effect waves-light btn btn-round green">Tambah Baris</a>
+                                              <a href="<?php echo base_url(); ?>databaris?lemari=<?php echo $data_lemari->id_lemari; ?>" class="waves-effect waves-light btn btn-round green">Tambah Baris</a>
                                               <a class="waves-effect waves-light btn btn-round orange">Edit</a>
                                               <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
                                             </td>

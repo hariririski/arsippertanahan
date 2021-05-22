@@ -59,7 +59,7 @@
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Provinsi/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">account_circle</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <input  name="id_prov" type="text" required>
                                             <label for="uname">Kode Provinsi *</label>
                                             <div class="errorTxt1"></div>
@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Provinsi *</label>
                                             <input  type="text" name="nama_prov" required>
                                             <div class="errorTxt2"></div>

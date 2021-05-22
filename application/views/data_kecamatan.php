@@ -62,7 +62,7 @@
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>provinsi/tambah_kec?kota=<?php echo $kota->id_kota;?>" method="post" enctype="multipart/form-data">
                                   <div class="row">
                                       <div class="input-field col s12">
-                                          <i class="material-icons prefix">email</i>
+                                          <i class="material-icons prefix">chrome_reader_mode</i>
                                           <label for="cemail">Nama Kota</label>
                                           <input  type="text"  disabled value="<?php echo $kota->nama_kota;?>">
                                           <div class="errorTxt2"></div>
@@ -71,7 +71,7 @@
                               <?php  } ?>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Kode kecamatan *</label>
                                             <input  type="text"  required name="id_kec" autofocus>
                                             <div class="errorTxt2"></div>
@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Kecamatan*</label>
                                             <input  type="text"  required name="nama_kec">
                                             <div class="errorTxt2"></div>

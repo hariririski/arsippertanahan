@@ -73,7 +73,7 @@
                               <?php  } ?>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Kode Kota *</label>
                                             <input  type="text"  required name="id_kota" autofocus>
                                             <div class="errorTxt2"></div>
@@ -81,7 +81,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Kota *</label>
                                             <input  type="text"  required name="nama_kota">
                                             <div class="errorTxt2"></div>

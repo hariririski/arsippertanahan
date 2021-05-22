@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Jenis Hak</title>
+    <title>Data Bundel</title>
     <link href="dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
@@ -40,10 +40,10 @@
             <!-- ============================================================== -->
             <div class="page-titles">
                 <div class="d-flex align-items-center">
-                    <h5 class="font-medium m-b-0">Data Jenis Hak</h5>
+                    <h5 class="font-medium m-b-0">Data Bundel</h5>
                     <div class="custom-breadcrumb ml-auto">
                         <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Jenis Hak</a>
+                        <a href="#!" class="breadcrumb">Bundel</a>
                     </div>
                 </div>
             </div>
@@ -55,32 +55,70 @@
                     <div class="col s12 ">
                         <div class="card">
                             <div class="card-content">
-                                <h5 class="card-title activator">Tambah Data Jenis Hak<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
-                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>jenis_hak/tambah" method="post" enctype="multipart/form-data">
+                              <?php
+                                foreach($data_baris as $baris){
+                              ?>
+                                <h5 class="card-title activator">Tambah Data Bundel<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
+                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Lemari/tambah_bundel?baris=<?php echo $baris->id_baris;?>" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <input name="id_jenis_hak" type="text" required autofocus>
-                                            <label for="uname">Kode Jenis Hak *</label>
+
+                                            <input   type="text" disabled required name="id_Kota" autofocus value="<?php echo $baris->nama_lemari; ?> - <?php echo $baris->nama_baris; ?>">
+
+                                            <label for="uname">Kode Bundel - Baris *</label>
                                             <div class="errorTxt1"></div>
+                                        </div>
+                                    </div>
+                              <?php  } ?>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
+                                            <label for="cemail">Kode Bundel *</label>
+                                            <input  type="text"  required name="id_bundel"autofocus>
+                                            <div class="errorTxt2"></div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <label for="cemail">Jenis Hak *</label>
-                                            <input  type="text" name="nama_jenis_hak" required>
+                                            <label for="cemail">Nama Bundel *</label>
+                                            <input  type="text"  required name="nama_bundel">
                                             <div class="errorTxt2"></div>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                          <div class="input-field col s12">
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
+                                              <select required name="sengketa">
+                                                  <option value="" disabled selected>Pilih Sengketa/Tidak</option>
+                                                  <option value="1">IYA</option>
+                                                  <option value="0">TIDAK</option>
+                                              </select>
+                                          </div>
+                                    </div>
+                                    <div class="row">
+                                          <div class="input-field col s12">
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
+                                            <select required name="id_desa">
+                                              <option value="" disabled selected>Pilih Desa</option>
+                                              <?php
+                                                foreach($data_desa as $data_desa){
+                                              ?>
+                                                <option value="<?php echo $data_desa->id_desa; ?>"><?php echo $data_desa->nama_kec; ?> -- <?php echo $data_desa->nama_desa; ?></option>
+                                              <?php } ?>
+                                            </select>
+                                          </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Keterangan *</label>
-                                            <input  type="text" nname="keterangan" required>
+                                            <input  type="text"  required name="keterangan">
                                             <div class="errorTxt2"></div>
                                         </div>
                                     </div>
+
 
                                     <div class="row">
                                         <div class="input-field col s12">
@@ -104,7 +142,9 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Kode</th>
-                                            <th>Jenis Hak</th>
+                                            <th>Bundel</th>
+                                            <th>Desa</th>
+                                            <th>Sengketa</th>
                                             <th width="30%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -112,12 +152,25 @@
                                         <tr>
                                             <?php
                                               $i=0;
-                                              foreach($data_jenis_hak as $data_jenis_hak){
+                                              foreach($data_bundel as $data_bundel){
                                               $i++;
                                             ?>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $data_jenis_hak->id_jenis_hak; ?></td>
-                                            <td><?php echo $data_jenis_hak->nama_jenis_hak; ?></td>
+                                            <td><?php echo $data_bundel->id_bundel; ?></td>
+                                            <td><?php echo $data_bundel->nama_bundel; ?></td>
+                                            <td><?php echo $data_bundel->nama_desa; ?></td>
+                                            <td>
+                                              <?php
+                                              switch ($data_bundel->sengketa){
+                                                case 1:
+                                                      echo "Sengketa";
+                                                      break;
+                                                case 0:
+                                                      echo "Tidak Sengketa";
+                                                      break;
+                                              }
+                                              ?>
+                                            </td>
                                             <td>
                                               <a class="waves-effect waves-light btn btn-round orange">Edit</a>
                                               <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
@@ -162,7 +215,6 @@
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-
 
 </body>
 

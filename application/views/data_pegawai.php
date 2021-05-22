@@ -59,7 +59,7 @@
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Pegawai/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">account_circle</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <input   type="text" required name="nip" autofocus>
                                             <label for="uname">NIP / NIK *</label>
                                             <div class="errorTxt1"></div>
@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Lengkap *</label>
                                             <input  type="text"  required name="nama_lengkap" >
                                             <div class="errorTxt2"></div>
@@ -75,7 +75,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Jabatan *</label>
                                             <input  type="text"  required name="jabatan">
                                             <div class="errorTxt2"></div>
@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="row">
                                           <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                               <select required name="jenis">
                                                   <option value="" disabled selected>Pilih Jenis</option>
                                                   <option value="1">ASN</option>

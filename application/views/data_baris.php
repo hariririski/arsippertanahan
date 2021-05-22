@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Jenis Hak</title>
+    <title>Data Baris Lemari</title>
     <link href="dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
@@ -40,10 +40,10 @@
             <!-- ============================================================== -->
             <div class="page-titles">
                 <div class="d-flex align-items-center">
-                    <h5 class="font-medium m-b-0">Data Jenis Hak</h5>
+                    <h5 class="font-medium m-b-0">Data Baris lemari</h5>
                     <div class="custom-breadcrumb ml-auto">
                         <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Jenis Hak</a>
+                        <a href="#!" class="breadcrumb">Baris Lemari</a>
                     </div>
                 </div>
             </div>
@@ -55,29 +55,35 @@
                     <div class="col s12 ">
                         <div class="card">
                             <div class="card-content">
-                                <h5 class="card-title activator">Tambah Data Jenis Hak<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
-                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>jenis_hak/tambah" method="post" enctype="multipart/form-data">
+                              <?php
+                                foreach($data_lemari as $lemari){
+                              ?>
+                                <h5 class="card-title activator">Tambah Data Baris Lemari<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
+                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>lemari/tambah_baris?lemari=<?php echo $lemari->id_lemari;?>" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <input name="id_jenis_hak" type="text" required autofocus>
-                                            <label for="uname">Kode Jenis Hak *</label>
+
+                                            <input   type="text" disabled required name="id_Kota" autofocus value="<?php echo $lemari->nama_lemari; ?>">
+
+                                            <label for="uname">Lemari *</label>
                                             <div class="errorTxt1"></div>
                                         </div>
                                     </div>
+                              <?php  } ?>
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <label for="cemail">Jenis Hak *</label>
-                                            <input  type="text" name="nama_jenis_hak" required>
+                                            <label for="cemail">Kode baris *</label>
+                                            <input  type="text"  required name="id_baris"autofocus>
                                             <div class="errorTxt2"></div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <label for="cemail">Keterangan *</label>
-                                            <input  type="text" nname="keterangan" required>
+                                            <label for="cemail">Nama baris *</label>
+                                            <input  type="text"  required name="nama_baris">
                                             <div class="errorTxt2"></div>
                                         </div>
                                     </div>
@@ -104,7 +110,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Kode</th>
-                                            <th>Jenis Hak</th>
+                                            <th>Baris</th>
                                             <th width="30%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -112,13 +118,14 @@
                                         <tr>
                                             <?php
                                               $i=0;
-                                              foreach($data_jenis_hak as $data_jenis_hak){
+                                              foreach($data_baris as $data_baris){
                                               $i++;
                                             ?>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $data_jenis_hak->id_jenis_hak; ?></td>
-                                            <td><?php echo $data_jenis_hak->nama_jenis_hak; ?></td>
+                                            <td><?php echo $data_baris->id_baris; ?></td>
+                                            <td><?php echo $data_baris->nama_baris; ?></td>
                                             <td>
+                                              <a href="<?php echo base_url(); ?>databundel?baris=<?php echo $data_baris->id_baris; ?>" class="waves-effect waves-light btn btn-round green">Tambah Bundel</a>
                                               <a class="waves-effect waves-light btn btn-round orange">Edit</a>
                                               <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
                                             </td>

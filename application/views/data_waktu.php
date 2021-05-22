@@ -59,7 +59,7 @@
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Waktu_pelayanan/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">account_circle</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <input   type="text" required name="kode_waktu" autofocus>
                                             <label for="uname">Kode Pelayanan *</label>
                                             <div class="errorTxt1"></div>
@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Pelayanan *</label>
                                             <input  type="text"  required name="pelayanan">
                                             <div class="errorTxt2"></div>
@@ -75,7 +75,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">email</i>
+                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Durasi Pelayanan (Hari) *</label>
                                             <input  type="text"  required name="durasi">
                                             <div class="errorTxt2"></div>
