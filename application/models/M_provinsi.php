@@ -53,6 +53,10 @@
         $query=$this->db->query("SELECT * FROM `kec` LEFT JOIN kota on kota.id_kota=kec.id_kota WHERE kec.id_kota=$id_kota");
         return $query->result();
       }
+      function lihat_kecamatan2($id_kec){
+        $query=$this->db->query("SELECT * FROM `kec`WHERE id_kec=$id_kec");
+        return $query->result();
+      }
       function tambah_kec($id_kota){
         $id_kecamatan= $this->input->post('id_kec');
         $nama_kecamatan= $this->input->post('nama_kec');
@@ -61,12 +65,11 @@
         return $query;
       }
 
-      function lihat_desa(){
-        $query=$this->db->query("SELECT * FROM prov LEFT JOIN kota on prov.id_prov=kota.id_prov left join kec on kec.id_kota=kota.id_kota left join desa on desa.id_kec=kec.id_kec");
+      function lihat_desa($id_kec){
+        $query=$this->db->query("SELECT * FROM prov LEFT JOIN kota on prov.id_prov=kota.id_prov left join kec on kec.id_kota=kota.id_kota left join desa on desa.id_kec=kec.id_kec WHERE desa.id_kec=$id_kec");
         return $query->result();
       }
-      function tambah_desa(){
-        $id_kec = $this->input->post('id_kec');
+      function tambah_desa($id_kec){
         $id_desa= $this->input->post('id_desa');
         $nama_desa= $this->input->post('nama_desa');
 

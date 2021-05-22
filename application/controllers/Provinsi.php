@@ -5,6 +5,9 @@ class Provinsi extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
+		if (!$this->session->userdata("token")){
+			   redirect('login/logout', 'refresh');
+			}
 		$this->load->helper('url');
 		$this->load->library('session');
 		$this->load->database();
@@ -86,16 +89,17 @@ class Provinsi extends CI_Controller {
 
 	public function desa()
 	{
-		$data['data_provinsi'] = $this->M_provinsi->lihat();
-		$data['data_kecamatan'] = $this->M_provinsi->lihat_kecamatan();
-		$data['data_desa'] = $this->M_provinsi->lihat_desa();
+		$id_kec= $this->input->get('kec');
+		$data['data_kecamatan'] = $this->M_provinsi->lihat_kecamatan2($id_kec);
+		$data['data_desa'] = $this->M_provinsi->lihat_desa($id_kec);
 		$this->load->view('data_desa',$data);
 	}
 	public function tambah_desa()
 	{
-		$cek= $this->M_provinsi->tambah_desa();
+		$id_kec= $this->input->get('kec');
+		$cek= $this->M_provinsi->tambah_desa($id_kec);
 		if($cek>0){
-			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datadesa';</script>");
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datadesa?kec=".$id_kec."';</script>");
 
 		}else{
 		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datadesa';</script>");

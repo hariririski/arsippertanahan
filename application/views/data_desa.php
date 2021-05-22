@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Data Kecamatan</title>
+    <title>Data Desa</title>
     <link href="dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
@@ -40,10 +40,10 @@
             <!-- ============================================================== -->
             <div class="page-titles">
                 <div class="d-flex align-items-center">
-                    <h5 class="font-medium m-b-0">Data Kecamatan</h5>
+                    <h5 class="font-medium m-b-0">Data Desa</h5>
                     <div class="custom-breadcrumb ml-auto">
                         <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Kecamatan</a>
+                        <a href="#!" class="breadcrumb">Desa</a>
                     </div>
                 </div>
             </div>
@@ -56,15 +56,15 @@
                         <div class="card">
                             <div class="card-content">
                               <?php
-                                foreach($data_kota as $kota){
+                                foreach($data_kecamatan as $kec){
                               ?>
-                                <h5 class="card-title activator">Tambah Data Kecamatan<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
-                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>provinsi/tambah_kec?kota=<?php echo $kota->id_kota;?>" method="post" enctype="multipart/form-data">
+                                <h5 class="card-title activator">Tambah Data Desa<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
+                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>provinsi/tambah_desa?kec=<?php echo $kec->id_kec;?>" method="post" enctype="multipart/form-data">
                                   <div class="row">
                                       <div class="input-field col s12">
                                           <i class="material-icons prefix">email</i>
-                                          <label for="cemail">Nama Kota</label>
-                                          <input  type="text"  disabled value="<?php echo $kota->nama_kota;?>">
+                                          <label for="cemail">Nama Kecamatan</label>
+                                          <input  type="text"  disabled value="<?php echo $kec->nama_kec;?>">
                                           <div class="errorTxt2"></div>
                                       </div>
                                   </div>
@@ -72,16 +72,16 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">email</i>
-                                            <label for="cemail">Kode kecamatan *</label>
-                                            <input  type="text"  required name="id_kec" autofocus>
+                                            <label for="cemail">Kode Desa *</label>
+                                            <input  type="text"  required name="id_desa" autofocus>
                                             <div class="errorTxt2"></div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">email</i>
-                                            <label for="cemail">Nama Kecamatan*</label>
-                                            <input  type="text"  required name="nama_kec">
+                                            <label for="cemail">Nama desa*</label>
+                                            <input  type="text"  required name="nama_desa">
                                             <div class="errorTxt2"></div>
                                         </div>
                                     </div>
@@ -116,14 +116,13 @@
                                         <tr>
                                             <?php
                                               $i=0;
-                                              foreach($data_kecamatan as $data_kecamatan){
+                                              foreach($data_desa as $data_desa){
                                               $i++;
                                             ?>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $data_kecamatan->id_kec; ?></td>
-                                            <td><?php echo $data_kecamatan->nama_kec; ?></td>
+                                            <td><?php echo $data_desa->id_desa; ?></td>
+                                            <td><?php echo $data_desa->nama_desa; ?></td>
                                             <td>
-                                              <a href="<?php echo base_url(); ?>datadesa?kota=<?php echo $data_kecamatan->id_kec; ?>" class="waves-effect waves-light btn btn-round green">Tambah Desa</a>
                                               <a class="waves-effect waves-light btn btn-round orange">Edit</a>
                                               <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
                                             </td>

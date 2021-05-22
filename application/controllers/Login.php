@@ -9,6 +9,7 @@ class Login extends CI_Controller {
 			$this->load->library('session');
 			$this->load->database();
 			$this->load->model('M_login');
+			$this->load->helper('string');
 			// $admin=$this->session->userdata('admin');
 	}
 	public function index()
@@ -31,6 +32,7 @@ class Login extends CI_Controller {
             $sql="SELECT * FROM admin where username='$username' and password='$password' and status='0'";
       $query = $this->db->query($sql);
       $data=$query->result();
+			$token=random_string('alnum',20);
       foreach ($data as $isi) {
 
             $arraydata = array(
@@ -38,8 +40,9 @@ class Login extends CI_Controller {
                  'level'     => $isi->level,
                  'username' => $isi->username,
                  'image' => $isi->image,
+                 'token' => $token,
          );
-				 print_r($arraydata);
+				 //print_r($arraydata);
          $this->session->set_userdata($arraydata);
       }
       redirect(base_url('home'));

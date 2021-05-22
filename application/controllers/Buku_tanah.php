@@ -5,6 +5,9 @@ class Buku_tanah extends CI_Controller {
 
 	function __construct() {
 			parent::__construct();
+			if (!$this->session->userdata("token")){
+				   redirect('login/logout', 'refresh');
+				}
 			$this->load->helper('url');
 			$this->load->library('session');
 			$this->load->database();
