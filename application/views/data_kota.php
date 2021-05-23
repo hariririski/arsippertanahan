@@ -127,8 +127,8 @@
                                             <td><?php echo $data_kota->nama_kota; ?></td>
                                             <td>
                                               <center>
-                                              <a href="<?php echo site_url('Code/QRcode/'.$data_kota->id_kota); ?>">
-                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_kota->id_kota);?>" width="30%"><br>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_kota->qrkota); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_kota->qrkota);?>" width="30%"><br>
                                               </a>
                                               <?php echo $data_kota->nama_kota; ?>
                                               </center>

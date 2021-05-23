@@ -75,7 +75,7 @@
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Kode Bundel *</label>
-                                            <input  type="text"  required name="id_bundel"autofocus>
+                                            <input  type="number"  required name="id_bundel"autofocus>
                                             <div class="errorTxt2"></div>
                                         </div>
                                     </div>
@@ -100,12 +100,12 @@
                                     <div class="row">
                                           <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <select required name="id_desa">
+                                            <select required name="kode_desa">
                                               <option value="" disabled selected>Pilih Desa</option>
                                               <?php
                                                 foreach($data_desa as $data_desa){
                                               ?>
-                                                <option value="<?php echo $data_desa->id_desa; ?>"><?php echo $data_desa->nama_kec; ?> -- <?php echo $data_desa->nama_desa; ?></option>
+                                                <option value="<?php echo $data_desa->kode_desa; ?>"><?php echo $data_desa->nama_kec; ?> -- <?php echo $data_desa->nama_desa; ?></option>
                                               <?php } ?>
                                             </select>
                                           </div>
@@ -161,8 +161,8 @@
                                             <td><?php echo $data_bundel->nama_bundel; ?></td>
                                             <td>
                                               <center>
-                                              <a href="<?php echo site_url('Code/QRcode/'.$data_bundel->id_bundel); ?>">
-                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_bundel->id_bundel);?>" width="30%"><br>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_bundel->qrbundel); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_bundel->qrbundel);?>" width="30%"><br>
                                               </a>
                                               <?php echo $data_bundel->nama_bundel; ?>
                                               </center>

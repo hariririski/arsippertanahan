@@ -125,8 +125,8 @@
                                             <td><?php echo $data_desa->nama_desa; ?></td>
                                             <td>
                                               <center>
-                                              <a href="<?php echo site_url('Code/QRcode/'.$data_desa->kode_desa); ?>">
-                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_desa->kode_desa);?>" width="30%"><br>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_desa->qrdesa); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_desa->qrdesa);?>" width="30%"><br>
                                               </a>
                                               <?php echo $data_desa->nama_desa; ?>
                                               </center>

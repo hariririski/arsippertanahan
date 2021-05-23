@@ -60,7 +60,7 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <input   type="text" required name="id_lemari" autofocus>
+                                            <input   type="number" required name="id_lemari" autofocus>
                                             <label for="uname">Kode Lemari *</label>
                                             <div class="errorTxt1"></div>
                                         </div>
@@ -122,8 +122,8 @@
                                             <td><?php echo $data_lemari->nama_lemari; ?></td>
                                             <td>
                                               <center>
-                                              <a href="<?php echo site_url('Code/QRcode/'.$data_lemari->id_lemari); ?>">
-                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_lemari->id_lemari);?>" width="30%"><br>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_lemari->qrcode); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_lemari->qrcode);?>" width="30%"><br>
                                               </a>
                                               <?php echo $data_lemari->nama_lemari; ?>
                                               </center>

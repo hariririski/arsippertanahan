@@ -50,7 +50,6 @@ class Provinsi extends CI_Controller {
 		$id_prov = $this->input->get('prov');
 		$data['data_prov'] = $this->M_provinsi->lihat_prov($id_prov);
 		$data['data_kota'] = $this->M_provinsi->lihat_kota($id_prov);
-
 		$this->load->view('data_kota',$data);
 	}
 

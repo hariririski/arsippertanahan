@@ -125,8 +125,8 @@
                                             <td><?php echo $data_kecamatan->nama_kec; ?></td>
                                             <td>
                                               <center>
-                                              <a href="<?php echo site_url('Code/QRcode/'.$data_kecamatan->id_kec); ?>">
-                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_kecamatan->id_kec);?>" width="30%"><br>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_kecamatan->qrkec); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_kecamatan->qrkec);?>" width="30%"><br>
                                               </a>
                                               <?php echo $data_kecamatan->nama_kec; ?>
                                               </center>

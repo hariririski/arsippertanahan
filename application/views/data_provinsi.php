@@ -113,8 +113,8 @@
                                             <td><?php echo $data_provinsi->nama_prov; ?></td>
                                             <td>
                                               <center>
-                                              <a href="<?php echo site_url('Code/QRcode/'.$data_provinsi->id_prov); ?>">
-                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_provinsi->id_prov);?>" width="30%"><br>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_provinsi->qrcode); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_provinsi->qrcode);?>" width="30%"><br>
                                               </a>
                                               <?php echo $data_provinsi->nama_prov; ?>
                                               </center>

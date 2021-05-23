@@ -75,7 +75,7 @@
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Kode baris *</label>
-                                            <input  type="text"  required name="id_baris"autofocus>
+                                            <input  type="number"  required name="id_baris"autofocus>
                                             <div class="errorTxt2"></div>
                                         </div>
                                     </div>
@@ -127,8 +127,8 @@
                                             <td><?php echo $data_baris->nama_baris; ?></td>
                                             <td>
                                               <center>
-                                              <a href="<?php echo site_url('Code/QRcode/'.$data_baris->id_baris); ?>">
-                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_baris->id_baris);?>" width="30%"><br>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_baris->qrcode); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_baris->qrcode);?>" width="30%"><br>
                                               </a>
                                               <?php echo $data_baris->id_baris; ?>
                                               </center>
