@@ -46,26 +46,6 @@ class Buku_tanah extends CI_Controller {
 		$data['data_kecamatan'] = $this->M_provinsi->lihat_kecamatan();
 		$this->load->view('data_buku_tanah',$data);
 	}
-	// public function pData()
-	// {
-	//
-	// 	$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
-	// 	$data['data_kondisi'] = $this->M_kondisi->lihat();
-	// 	$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
-	// 	$data['data_provinsi'] = $this->M_provinsi->lihat();
-	// 	$data['data_desa'] = $this->M_provinsi->lihat_desa();
-	// 	$this->load->view('pDataBukuTanah',$data);
-	// }
-	public function buku_tanah_barcode()
-	{
-		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
-		$data['data_kondisi'] = $this->M_kondisi->lihat();
-		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
-		$data['data_provinsi'] = $this->M_provinsi->lihat();
-		$data['data_kota'] = $this->M_provinsi->lihat_kota();
-		$data['data_desa'] = $this->M_provinsi->lihat_desa();
-		$data['data_kecamatan'] = $this->M_provinsi->lihat_kecamatan();
-		$data['data_buku_tanah'] = $this->M_buku_tanah->cari_barcode();
-		$this->load->view('p_barcode_data_buku_tanah',$data);
-	}
+
+
 }

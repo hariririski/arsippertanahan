@@ -39,6 +39,11 @@
         return $query->result();
       }
 
+      function lihat_kota_barcode(){
+        $query=$this->db->query("SELECT * FROM prov LEFT JOIN kota on prov.id_prov=kota.id_prov ");
+        return $query->result();
+      }
+
       function lihat_kota2($id_kota){
         $query=$this->db->query("SELECT * FROM prov LEFT JOIN kota on prov.id_prov=kota.id_prov where kota.id_kota=$id_kota");
         return $query->result();
@@ -72,6 +77,11 @@
 
       function lihat_desa($id_kec){
         $query=$this->db->query("SELECT * FROM prov LEFT JOIN kota on prov.id_prov=kota.id_prov left join kec on kec.id_kota=kota.id_kota left join desa on desa.id_kec=kec.id_kec WHERE desa.id_kec=$id_kec");
+        return $query->result();
+      }
+
+      function lihat_desa_barcode(){
+        $query=$this->db->query("SELECT * FROM prov LEFT JOIN kota on prov.id_prov=kota.id_prov left join kec on kec.id_kota=kota.id_kota left join desa on desa.id_kec=kec.id_kec ");
         return $query->result();
       }
 

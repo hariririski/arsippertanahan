@@ -109,6 +109,7 @@
                                             <th>#</th>
                                             <th>Kode</th>
                                             <th>Kecamatan</th>
+                                            <th>QR Code</th>
                                             <th width="30%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -122,6 +123,14 @@
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $data_kecamatan->id_kec; ?></td>
                                             <td><?php echo $data_kecamatan->nama_kec; ?></td>
+                                            <td>
+                                              <center>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_kecamatan->id_kec); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_kecamatan->id_kec);?>" width="30%"><br>
+                                              </a>
+                                              <?php echo $data_kecamatan->nama_kec; ?>
+                                              </center>
+                                            </td>
                                             <td>
                                               <a href="<?php echo base_url(); ?>datadesa?kec=<?php echo $data_kecamatan->id_kec; ?>" class="waves-effect waves-light btn btn-round green">Tambah Desa</a>
                                               <a class="waves-effect waves-light btn btn-round orange">Edit</a>

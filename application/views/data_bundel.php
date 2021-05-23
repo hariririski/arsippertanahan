@@ -143,6 +143,7 @@
                                             <th>#</th>
                                             <th>Kode</th>
                                             <th>Bundel</th>
+                                            <th>QR Code</th>
                                             <th>Desa</th>
                                             <th>Sengketa</th>
                                             <th width="30%">Aksi</th>
@@ -158,6 +159,14 @@
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $data_bundel->id_bundel; ?></td>
                                             <td><?php echo $data_bundel->nama_bundel; ?></td>
+                                            <td>
+                                              <center>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_bundel->id_bundel); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_bundel->id_bundel);?>" width="30%"><br>
+                                              </a>
+                                              <?php echo $data_bundel->nama_bundel; ?>
+                                              </center>
+                                            </td>
                                             <td><?php echo $data_bundel->nama_desa; ?></td>
                                             <td>
                                               <?php

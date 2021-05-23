@@ -97,7 +97,8 @@
                                             <th>#</th>
                                             <th>Kode</th>
                                             <th>Provinsi</th>
-                                            <th width="30%">Aksi</th>
+                                            <th>QR Code</th>
+                                            <th width="40%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -111,14 +112,24 @@
                                             <td><?php echo $data_provinsi->id_prov; ?></td>
                                             <td><?php echo $data_provinsi->nama_prov; ?></td>
                                             <td>
+                                              <center>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_provinsi->id_prov); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_provinsi->id_prov);?>" width="30%"><br>
+                                              </a>
+                                              <?php echo $data_provinsi->nama_prov; ?>
+                                              </center>
+                                            </td>
+                                            <td>
                                               <a href="<?php echo base_url(); ?>datakota?prov=<?php echo $data_provinsi->id_prov; ?>" class="waves-effect waves-light btn btn-round green">Tambah Kecamatan</a>
                                               <a class="waves-effect waves-light btn btn-round orange">Edit</a>
+                                              <a  href="<?php echo base_url(); ?>datakota?prov=<?php echo $data_provinsi->id_prov; ?>" class="waves-effect waves-light btn btn-round orange">Cetak Barcode</a>
                                               <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
                                             </td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>

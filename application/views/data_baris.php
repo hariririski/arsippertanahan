@@ -111,6 +111,7 @@
                                             <th>#</th>
                                             <th>Kode</th>
                                             <th>Baris</th>
+                                            <th>QR Code</th>
                                             <th width="30%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -124,6 +125,14 @@
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $data_baris->id_baris; ?></td>
                                             <td><?php echo $data_baris->nama_baris; ?></td>
+                                            <td>
+                                              <center>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_baris->id_baris); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_baris->id_baris);?>" width="30%"><br>
+                                              </a>
+                                              <?php echo $data_baris->id_baris; ?>
+                                              </center>
+                                            </td>
                                             <td>
                                               <a href="<?php echo base_url(); ?>databundel?baris=<?php echo $data_baris->id_baris; ?>" class="waves-effect waves-light btn btn-round green">Tambah Bundel</a>
                                               <a class="waves-effect waves-light btn btn-round orange">Edit</a>

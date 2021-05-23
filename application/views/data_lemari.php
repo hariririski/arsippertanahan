@@ -105,6 +105,7 @@
                                             <th>#</th>
                                             <th>Kode</th>
                                             <th>Lemari</th>
+                                            <th>QR Code</th>
                                             <th>Keterangan</th>
                                             <th width="30%">Aksi</th>
                                         </tr>
@@ -119,6 +120,14 @@
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $data_lemari->id_lemari; ?></td>
                                             <td><?php echo $data_lemari->nama_lemari; ?></td>
+                                            <td>
+                                              <center>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_lemari->id_lemari); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_lemari->id_lemari);?>" width="30%"><br>
+                                              </a>
+                                              <?php echo $data_lemari->nama_lemari; ?>
+                                              </center>
+                                            </td>
                                             <td><?php echo $data_lemari->keterangan; ?></td>
                                             <td>
                                               <a href="<?php echo base_url(); ?>databaris?lemari=<?php echo $data_lemari->id_lemari; ?>" class="waves-effect waves-light btn btn-round green">Tambah Baris</a>

@@ -108,7 +108,8 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Kode</th>
-                                            <th>Kecamatan</th>
+                                            <th>Desa</th>
+                                            <th>QR Code</th>
                                             <th width="30%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -122,6 +123,14 @@
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $data_desa->id_desa; ?></td>
                                             <td><?php echo $data_desa->nama_desa; ?></td>
+                                            <td>
+                                              <center>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_desa->kode_desa); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_desa->kode_desa);?>" width="30%"><br>
+                                              </a>
+                                              <?php echo $data_desa->nama_desa; ?>
+                                              </center>
+                                            </td>
                                             <td>
                                               <a class="waves-effect waves-light btn btn-round orange">Edit</a>
                                               <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>

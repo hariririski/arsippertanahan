@@ -111,6 +111,7 @@
                                             <th>#</th>
                                             <th>Kode</th>
                                             <th>Kota</th>
+                                            <th>QR Code</th>
                                             <th width="30%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -124,6 +125,14 @@
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $data_kota->id_kota; ?></td>
                                             <td><?php echo $data_kota->nama_kota; ?></td>
+                                            <td>
+                                              <center>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_kota->id_kota); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_kota->id_kota);?>" width="30%"><br>
+                                              </a>
+                                              <?php echo $data_kota->nama_kota; ?>
+                                              </center>
+                                            </td>
                                             <td>
                                               <a href="<?php echo base_url(); ?>datakecamatan?kota=<?php echo $data_kota->id_kota; ?>" class="waves-effect waves-light btn btn-round green">Tambah Kecamatan</a>
                                               <a class="waves-effect waves-light btn btn-round orange">Edit</a>
