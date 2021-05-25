@@ -60,14 +60,6 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <input   type="number" required name="id_lemari" autofocus>
-                                            <label for="uname">Kode Lemari *</label>
-                                            <div class="errorTxt1"></div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Lemari *</label>
                                             <input  type="text"  required name="nama_lemari">
                                             <div class="errorTxt2"></div>
@@ -103,7 +95,6 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Kode</th>
                                             <th>Lemari</th>
                                             <th>QR Code</th>
                                             <th>Keterangan</th>
@@ -118,7 +109,6 @@
                                               $i++;
                                             ?>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $data_lemari->id_lemari; ?></td>
                                             <td><?php echo $data_lemari->nama_lemari; ?></td>
                                             <td>
                                               <center>
@@ -130,9 +120,9 @@
                                             </td>
                                             <td><?php echo $data_lemari->keterangan; ?></td>
                                             <td>
-                                              <a href="<?php echo base_url(); ?>databaris?lemari=<?php echo $data_lemari->id_lemari; ?>" class="waves-effect waves-light btn btn-round green">Tambah Baris</a>
-                                              <a class="waves-effect waves-light btn btn-round orange">Edit</a>
-                                              <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
+                                              <a href="<?php echo base_url(); ?>databaris?lemari=<?php echo $data_lemari->id_lemari; ?>" class="waves-effect waves-light btn  green">Tambah Baris</a>
+                                              <a class="waves-effect waves-light btn  orange">Edit</a>
+                                              <a href="<?php echo base_url(); ?>lemari/hapus_lemari/<?php echo $data_lemari->id_lemari; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Ingin Menghapus Lemari <?php echo $data_lemari->nama_lemari; ?>?')"/>Hapus </a>
                                             </td>
                                         </tr>
                                         <?php } ?>

@@ -149,10 +149,10 @@
                                             </td>
                                             <td>
                                               <?php if($data_admin->status==0){
-                                                        echo "Aktif";
-                                                      }
-                                                        else{
-                                                        echo "Tidak Aktif";
+                                                echo '<span class="label label-success">Aktif</span>';
+                                              }
+                                                else{
+                                                echo '<span class="label label-danger">Tidak Aktif</span>';
                                                       }
                                               ?>
                                             </td>

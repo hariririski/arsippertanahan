@@ -74,14 +74,6 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <label for="cemail">Kode Bundel *</label>
-                                            <input  type="number"  required name="id_bundel"autofocus>
-                                            <div class="errorTxt2"></div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Bundel *</label>
                                             <input  type="text"  required name="nama_bundel">
                                             <div class="errorTxt2"></div>
@@ -141,7 +133,6 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Kode</th>
                                             <th>Bundel</th>
                                             <th>QR Code</th>
                                             <th>Desa</th>
@@ -157,7 +148,6 @@
                                               $i++;
                                             ?>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $data_bundel->id_bundel; ?></td>
                                             <td><?php echo $data_bundel->nama_bundel; ?></td>
                                             <td>
                                               <center>
@@ -181,8 +171,8 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn btn-round orange">Edit</a>
-                                              <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
+                                              <a class="waves-effect waves-light btn  orange">Edit</a>
+                                              <a href="<?php echo base_url(); ?>lemari/hapus_bundel/<?php echo $data_bundel->id_baris; ?>/<?php echo $data_bundel->id_bundel; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Ingin Menghapus Bundel <?php echo $data_bundel->nama_bundel; ?>?')"/>Hapus </a>
                                             </td>
                                         </tr>
                                         <?php } ?>

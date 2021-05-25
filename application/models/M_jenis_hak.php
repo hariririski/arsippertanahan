@@ -14,6 +14,16 @@
         $query=$this->db->query($perintah1);
         return $query;
       }
+
+      function aktif_jenis_hak($kode,$aktif){
+        $query=$this->db->query("UPDATE `jenis_hak` SET `aktif`=$aktif WHERE id_jenis_hak='$kode'");
+        return $query;
+      }
+
+      function hapus_jenis_hak($kode){
+        $query=$this->db->query("DELETE from `jenis_hak` WHERE id_jenis_hak='$kode'");
+        return $query;
+      }
 }
 
 ?>

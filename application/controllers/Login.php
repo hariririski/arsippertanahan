@@ -29,7 +29,7 @@ class Login extends CI_Controller {
       $username = $this->input->post('username');
       $password= $this->input->post('password');
       $password=md5($password);
-            $sql="SELECT * FROM admin where username='$username' and password='$password' and status='0'";
+            $sql="SELECT * FROM admin where username='$username' and password='$password' and status='1'";
       $query = $this->db->query($sql);
       $data=$query->result();
 			$token=random_string('alnum',20);

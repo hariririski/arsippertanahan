@@ -59,7 +59,7 @@
                                 foreach($data_kecamatan as $kec){
                               ?>
                                 <h5 class="card-title activator">Tambah Data Desa<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
-                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>provinsi/tambah_desa?kec=<?php echo $kec->id_kec;?>" method="post" enctype="multipart/form-data">
+                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>provinsi/tambah_desa?kec=<?php echo $kec->kode_kec;?>" method="post" enctype="multipart/form-data">
                                   <div class="row">
                                       <div class="input-field col s12">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
@@ -110,6 +110,7 @@
                                             <th>Kode</th>
                                             <th>Desa</th>
                                             <th>QR Code</th>
+                                            <th>Status</th>
                                             <th width="30%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -132,8 +133,28 @@
                                               </center>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn btn-round orange">Edit</a>
-                                              <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
+                                              <?php if($data_desa->aktif==1){
+                                                        echo '<span class="label label-success">Aktif</span>';
+                                                      }
+                                                        else{
+                                                        echo '<span class="label label-danger">Tidak Aktif</span>';
+                                                      }
+                                              ?>
+                                            </td>
+                                            <td>
+                                              <a class="waves-effect waves-light btn  orange">Edit</a>
+                                              <?php
+                                              if($data_desa->aktif==1){
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_desa/<?php echo $data_desa->kode_kec; ?>/<?php echo $data_desa->kode_desa; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_desa->nama_desa; ?>?')"/>Non Aktifkan</a>
+                                              <?php
+                                                }else{
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_desa/<?php echo $data_desa->kode_kec; ?>/<?php echo $data_desa->kode_desa; ?>/1" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_desa->nama_desa; ?>?')"/>Aktifkan</a>
+                                              <?php
+                                                  }
+                                              ?>
+                                              <a href="<?php echo base_url(); ?>provinsi/hapus_desa/<?php echo $data_desa->kode_kec; ?>/<?php echo $data_desa->kode_desa; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Yakin Menghapus Desa <?php echo $data_desa->nama_desa; ?>?')"/>Hapus </a>
                                             </td>
                                         </tr>
                                         <?php } ?>

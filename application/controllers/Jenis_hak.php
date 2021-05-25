@@ -30,6 +30,25 @@ class Jenis_hak extends CI_Controller {
 	 }
 	}
 
+	function aktif_hak(){
+		$id_jenis_hak=$this->uri->segment('3');
+		$aktif=$this->uri->segment('4');
+		$cek= $this->M_jenis_hak->aktif_jenis_hak($id_jenis_hak,$aktif);
+		if($cek>0){
+		echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datajenishak';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal di Simpan');window.location.href='".base_url()."datajenishak';</script>");
+		}
+	}
 
+	function hapus_hak(){
+		$id_jenis_hak=$this->uri->segment('3');
+		$cek= $this->M_jenis_hak->hapus_jenis_hak($id_jenis_hak);
+		if($cek>0){
+		echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datajenishak';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal di Simpan');window.location.href='".base_url()."datajenishak';</script>");
+		}
+	}
 
 }

@@ -12,6 +12,8 @@ class Provinsi extends CI_Controller {
 		$this->load->library('session');
 		$this->load->database();
 		$this->load->model('M_provinsi');
+		$this->load->helper('string');
+
 	}
 	public function index(){
 		$data['data_provinsi'] = $this->M_provinsi->lihat();
@@ -38,7 +40,8 @@ class Provinsi extends CI_Controller {
 
 	public function tambah()
 	{
-		$cek= $this->M_provinsi->add();
+		$kode_prov=random_string('alnum',10);
+		$cek= $this->M_provinsi->add($kode_prov);
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."dataprovinsi';</script>");
 		}else{
@@ -54,8 +57,9 @@ class Provinsi extends CI_Controller {
 	}
 
 	public function tambah_kota(){
+		$kode_kota=random_string('alnum',10);
 		$id_prov = $this->input->get('prov');
-		$cek= $this->M_provinsi->tambah_kota($id_prov);
+		$cek= $this->M_provinsi->tambah_kota($id_prov,$kode_kota);
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakota?prov=".$id_prov."';</script>");
 
@@ -72,8 +76,9 @@ class Provinsi extends CI_Controller {
 	}
 
 	public function tambah_kec(){
+		$kode_kec=random_string('alnum',10);
 		$id_kota= $this->input->get('kota');
-		$cek= $this->M_provinsi->tambah_kec($id_kota);
+		$cek= $this->M_provinsi->tambah_kec($id_kota,$kode_kec);
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakecamatan?kota=".$id_kota."';</script>");
 		}else{
@@ -89,8 +94,9 @@ class Provinsi extends CI_Controller {
 	}
 
 	public function tambah_desa(){
+		$kode_desa=random_string('alnum',10);
 		$id_kec= $this->input->get('kec');
-		$cek= $this->M_provinsi->tambah_desa($id_kec);
+		$cek= $this->M_provinsi->tambah_desa($id_kec,$kode_desa);
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datadesa?kec=".$id_kec."';</script>");
 		}else{
@@ -98,6 +104,100 @@ class Provinsi extends CI_Controller {
 		}
 	}
 
+
+	function hapus_desa(){
+		$kode_kec=$this->uri->segment('3');
+		$kode_desa=$this->uri->segment('4');
+		$where = array('kode_desa' => $kode_desa);
+		$cek= $this->M_provinsi->hapus_data($where,'desa');
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datadesa?kec=".$kode_kec."';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datadesa?kec=".$kode_kec."';</script>");
+		}
+	}
+
+	function hapus_kec(){
+		$kode_kota=$this->uri->segment('3');
+		$kode_kec=$this->uri->segment('4');
+		$where1 = array('kode_kec' => $kode_kec);
+		$cek1= $this->M_provinsi->hapus_data($where1,'desa');
+		$where2 = array('kode_kec' => $kode_kec);
+		$cek2= $this->M_provinsi->hapus_data($where2,'kec');
+		if($cek1>0&&$cek2>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakecamatan?kota=".$kode_kota."';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datakecamatan?kota=".$kode_kota."';</script>");
+		}
+	}
+
+	function hapus_kota(){
+		$kode_prov=$this->uri->segment('3');
+		$kode_kota=$this->uri->segment('4');
+		$cek= $this->M_provinsi->hapus_kota($kode_kota);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakota?prov=".$kode_prov."';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datakota?prov=".$kode_prov."';</script>");
+		}
+	}
+
+	function hapus_prov(){
+		$kode_prov=$this->uri->segment('3');
+		$cek= $this->M_provinsi->hapus_prov($kode_prov);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."dataprovinsi';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."data_provinsi';</script>");
+		}
+	}
+
+	function aktif_prov(){
+		$kode_prov=$this->uri->segment('3');
+		$aktif=$this->uri->segment('4');
+		$cek= $this->M_provinsi->aktif_prov($kode_prov,$aktif);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."dataprovinsi';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."data_provinsi';</script>");
+		}
+	}
+
+	function aktif_kota(){
+		$kode_prov=$this->uri->segment('3');
+		$kode_kota=$this->uri->segment('4');
+		$aktif=$this->uri->segment('5');
+		$cek= $this->M_provinsi->aktif_kota($kode_kota,$aktif);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakota?prov=".$kode_prov."';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datakota?prov=".$kode_prov."';</script>");
+		}
+	}
+
+	function aktif_kec(){
+		$kode_kota=$this->uri->segment('3');
+		$kode_kec=$this->uri->segment('4');
+		$aktif=$this->uri->segment('5');
+		$cek= $this->M_provinsi->aktif_kec($kode_kec,$aktif);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakecamatan?kota=".$kode_kota."';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datakecamatan?kota=".$kode_kota."';</script>");
+		}
+	}
+
+	function aktif_desa(){
+		$kode_kec=$this->uri->segment('3');
+		$kode_desa=$this->uri->segment('4');
+		$aktif=$this->uri->segment('5');
+		$cek= $this->M_provinsi->aktif_desa($kode_desa,$aktif);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datadesa?kec=".$kode_kec."';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datadesa?kec=".$kode_kec."';</script>");
+		}
+	}
 
 
 

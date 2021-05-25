@@ -98,6 +98,7 @@
                                             <th>Kode</th>
                                             <th>Provinsi</th>
                                             <th>QR Code</th>
+                                            <th>Status</th>
                                             <th width="40%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -120,10 +121,31 @@
                                               </center>
                                             </td>
                                             <td>
-                                              <a href="<?php echo base_url(); ?>datakota?prov=<?php echo $data_provinsi->id_prov; ?>" class="waves-effect waves-light btn btn-round green">Tambah Kecamatan</a>
-                                              <a class="waves-effect waves-light btn btn-round orange">Edit</a>
-                                              <a  href="<?php echo base_url(); ?>datakota?prov=<?php echo $data_provinsi->id_prov; ?>" class="waves-effect waves-light btn btn-round orange">Cetak Barcode</a>
-                                              <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
+                                              <?php
+                                              if($data_provinsi->aktif==1){
+                                                        echo '<span class="label label-success">Aktif</span>';
+                                                      }
+                                                        else{
+                                                        echo '<span class="label label-danger">Tidak Aktif</span>';
+                                                      }
+                                              ?>
+                                            </td>
+                                            <td>
+                                              <a href="<?php echo base_url(); ?>datakota?prov=<?php echo $data_provinsi->kode_prov; ?>" class="waves-effect waves-light btn green">Kota</a>
+                                              <a class="waves-effect waves-light btn orange">Edit</a>
+                                              <?php
+                                              if($data_provinsi->aktif==1){
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_prov/<?php echo $data_provinsi->kode_prov; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Me Non-Aktifkan <?php echo $data_provinsi->nama_prov; ?>?')"/>Non Aktifkan</a>
+                                              <?php
+                                                }else{
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_prov/<?php echo $data_provinsi->kode_prov; ?>/1" class="waves-effect waves-light btn purple " onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_provinsi->nama_prov; ?>?')"/>Aktifkan</a>
+                                              <?php
+                                                  }
+                                              ?>
+                                              <a  href="<?php echo base_url(); ?>provinsi/aktif_prov/<?php echo $data_provinsi->kode_prov; ?>/" class="waves-effect waves-light btn indigo" >Cetak Barcode</a>
+                                              <a href="<?php echo base_url(); ?>provinsi/hapus_prov/<?php echo $data_provinsi->kode_prov; ?>" type="submit" class="waves-effect waves-light btn red" onclick="return confirm('Apakah Anda Ingin Menghapus Provinsi <?php echo $data_provinsi->nama_prov; ?>?')"/>Hapus </a>
                                             </td>
                                         </tr>
                                         <?php } ?>

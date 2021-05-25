@@ -13,6 +13,7 @@ class Lemari extends CI_Controller {
 			$this->load->database();
 			$this->load->model('M_lemari');
 			$this->load->model('M_provinsi');
+			$this->load->helper('string');
 	}
 
 	public function index(){
@@ -26,7 +27,8 @@ class Lemari extends CI_Controller {
         echo json_encode($data);
   }
 	public function tambah(){
-		$cek= $this->M_lemari->add();
+		$id_lemari=random_string('alnum',10);
+		$cek= $this->M_lemari->add($id_lemari);
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datalemari';</script>");
 		}else{
@@ -42,8 +44,9 @@ class Lemari extends CI_Controller {
 	}
 
 	public function tambah_baris(){
+		$id_baris=random_string('alnum',10);
 		$id_lemari = $this->input->get('lemari');
-		$cek= $this->M_lemari->tambah_baris($id_lemari);
+		$cek= $this->M_lemari->tambah_baris($id_lemari,$id_baris);
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."databaris?lemari=".$id_lemari."';</script>");
 		}else{
@@ -60,14 +63,47 @@ class Lemari extends CI_Controller {
 	}
 
 	public function tambah_bundel(){
+		$id_bundel=random_string('alnum',10);
 		$id_baris = $this->input->get('baris');
-		$cek= $this->M_lemari->tambah_bundel($id_baris);
+		$cek= $this->M_lemari->tambah_bundel($id_baris,$id_bundel);
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."databundel?baris=".$id_baris."';</script>");
 		}else{
 			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal di Simpan');window.location.href='".base_url()."databundel';</script>");
 
 	 }
+	}
+
+	function hapus_bundel(){
+		$id_baris=$this->uri->segment('3');
+		$id_bundel=$this->uri->segment('4');
+		$cek= $this->M_lemari->hapus_bundel($id_bundel);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."databundel?baris=".$id_baris."';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."databundel?baris=".$id_baris."';</script>");
+		}
+	}
+
+	function hapus_baris(){
+		$id_lemari=$this->uri->segment('3');
+		$id_baris=$this->uri->segment('4');
+		$cek= $this->M_lemari->hapus_baris($id_baris);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."databaris?lemari=".$id_lemari."';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."databaris?lemari=".$id_lemari."';</script>");
+		}
+	}
+
+	function hapus_lemari(){
+		$id_lemari=$this->uri->segment('3');
+		$cek= $this->M_lemari->hapus_lemari($id_lemari);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datalemari';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datalemari';</script>");
+		}
 	}
 
 }

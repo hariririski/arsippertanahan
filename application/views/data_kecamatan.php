@@ -59,7 +59,7 @@
                                 foreach($data_kota as $kota){
                               ?>
                                 <h5 class="card-title activator">Tambah Data Kecamatan<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
-                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>provinsi/tambah_kec?kota=<?php echo $kota->id_kota;?>" method="post" enctype="multipart/form-data">
+                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>provinsi/tambah_kec?kota=<?php echo $kota->kode_kota;?>" method="post" enctype="multipart/form-data">
                                   <div class="row">
                                       <div class="input-field col s12">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
@@ -110,6 +110,7 @@
                                             <th>Kode</th>
                                             <th>Kecamatan</th>
                                             <th>QR Code</th>
+                                            <th>Status</th>
                                             <th width="30%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -125,16 +126,36 @@
                                             <td><?php echo $data_kecamatan->nama_kec; ?></td>
                                             <td>
                                               <center>
-                                              <a href="<?php echo site_url('Code/QRcode/'.$data_kecamatan->qrkec); ?>">
-                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_kecamatan->qrkec);?>" width="30%"><br>
+                                              <a href="<?php echo site_url('Code/QRcode/'.$data_kecamatan->qrcode); ?>">
+                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_kecamatan->qrcode);?>" width="30%"><br>
                                               </a>
                                               <?php echo $data_kecamatan->nama_kec; ?>
                                               </center>
                                             </td>
                                             <td>
-                                              <a href="<?php echo base_url(); ?>datadesa?kec=<?php echo $data_kecamatan->id_kec; ?>" class="waves-effect waves-light btn btn-round green">Tambah Desa</a>
-                                              <a class="waves-effect waves-light btn btn-round orange">Edit</a>
-                                              <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
+                                              <?php if($data_kecamatan->aktif==1){
+                                                        echo '<span class="label label-success">Aktif</span>';
+                                                      }
+                                                        else{
+                                                        echo '<span class="label label-danger">Tidak Aktif</span>';
+                                                      }
+                                              ?>
+                                            </td>
+                                            <td>
+                                              <a href="<?php echo base_url(); ?>datadesa?kec=<?php echo $data_kecamatan->kode_kec; ?>" class="waves-effect waves-light btn  green">Desa</a>
+                                              <a class="waves-effect waves-light btn  orange">Edit</a>
+                                              <?php
+                                              if($data_kecamatan->aktif==1){
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_kec/<?php echo $data_kecamatan->kode_kota; ?>/<?php echo $data_kecamatan->kode_kec; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin  Non-Aktifkan <?php echo $data_kecamatan->nama_kec; ?>?')"/>Non Aktifkan</a>
+                                              <?php
+                                                }else{
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_kec/<?php echo $data_kecamatan->kode_kota; ?>/<?php echo $data_kecamatan->kode_kec; ?>/1" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin  Aktifkan <?php echo $data_kecamatan->nama_kec; ?>?')"/>Aktifkan</a>
+                                              <?php
+                                                  }
+                                              ?>
+                                              <a href="<?php echo base_url(); ?>provinsi/hapus_kec/<?php echo $data_kecamatan->kode_kota?>/<?php echo $data_kecamatan->kode_kec; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Yakin Menghapus Kecamatan <?php echo $data_kecamatan->nama_kec; ?>?')"/>Hapus </a>
                                             </td>
                                         </tr>
                                         <?php } ?>

@@ -105,6 +105,7 @@
                                             <th>#</th>
                                             <th>Kode</th>
                                             <th>Jenis Hak</th>
+                                            <th>Status</th>
                                             <th width="30%">Aksi</th>
                                         </tr>
                                     </thead>
@@ -119,8 +120,28 @@
                                             <td><?php echo $data_jenis_hak->id_jenis_hak; ?></td>
                                             <td><?php echo $data_jenis_hak->nama_jenis_hak; ?></td>
                                             <td>
-                                              <a class="waves-effect waves-light btn btn-round orange">Edit</a>
-                                              <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
+                                              <?php if($data_jenis_hak->aktif==1){
+                                                        echo '<span class="label label-success">Aktif</span>';
+                                                      }
+                                                        else{
+                                                        echo '<span class="label label-danger">Tidak Aktif</span>';
+                                                      }
+                                              ?>
+                                            </td>
+                                            <td>
+                                              <a class="waves-effect waves-light btn  orange">Edit</a>
+                                              <?php
+                                              if($data_jenis_hak->aktif==1){
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>jenis_hak/aktif_hak/<?php echo $data_jenis_hak->id_jenis_hak; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_jenis_hak->nama_jenis_hak; ?>?')"/>Non Aktifkan</a>
+                                              <?php
+                                                }else{
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>jenis_hak/aktif_hak/<?php echo $data_jenis_hak->id_jenis_hak; ?>/1" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_jenis_hak->nama_jenis_hak; ?>?')"/>Aktifkan</a>
+                                              <?php
+                                                  }
+                                              ?>
+                                              <a href="<?php echo base_url(); ?>jenis_hak/hapus_hak/<?php echo $data_jenis_hak->id_jenis_hak; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Ingin Menghapus Data Jenis <?php echo $data_jenis_hak->nama_jenis_hak; ?> ?')"/>Hapus </a>
                                             </td>
                                         </tr>
                                         <?php } ?>

@@ -74,14 +74,6 @@
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <label for="cemail">Kode baris *</label>
-                                            <input  type="number"  required name="id_baris"autofocus>
-                                            <div class="errorTxt2"></div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama baris *</label>
                                             <input  type="text"  required name="nama_baris">
                                             <div class="errorTxt2"></div>
@@ -109,7 +101,6 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Kode</th>
                                             <th>Baris</th>
                                             <th>QR Code</th>
                                             <th width="30%">Aksi</th>
@@ -123,20 +114,19 @@
                                               $i++;
                                             ?>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $data_baris->id_baris; ?></td>
                                             <td><?php echo $data_baris->nama_baris; ?></td>
                                             <td>
                                               <center>
                                               <a href="<?php echo site_url('Code/QRcode/'.$data_baris->qrcode); ?>">
                                                   <img src="<?php echo base_url('Code/QRcode/'.$data_baris->qrcode);?>" width="30%"><br>
                                               </a>
-                                              <?php echo $data_baris->id_baris; ?>
+                                              <?php echo $data_baris->nama_baris; ?>
                                               </center>
                                             </td>
                                             <td>
-                                              <a href="<?php echo base_url(); ?>databundel?baris=<?php echo $data_baris->id_baris; ?>" class="waves-effect waves-light btn btn-round green">Tambah Bundel</a>
-                                              <a class="waves-effect waves-light btn btn-round orange">Edit</a>
-                                              <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
+                                              <a href="<?php echo base_url(); ?>databundel?baris=<?php echo $data_baris->id_baris; ?>" class="waves-effect waves-light btn  green">Tambah Bundel</a>
+                                              <a class="waves-effect waves-light btn  orange">Edit</a>
+                                              <a href="<?php echo base_url(); ?>lemari/hapus_baris/<?php echo $data_baris->id_lemari; ?>/<?php echo $data_baris->id_baris; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
                                             </td>
                                         </tr>
                                         <?php } ?>
