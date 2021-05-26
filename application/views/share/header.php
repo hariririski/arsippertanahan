@@ -67,7 +67,7 @@
                                             <span class="time">9:30 AM</span>
                                         </span>
                                     </a>
-                                
+
                                 <a href="#">
                                         <span class="user-img">
                                             <img src="assets/images/users/2.jpg" alt="user" class="circle">
@@ -134,17 +134,17 @@
                                       }
                                     ?>
                                   </p>
-                                    <a class="waves-effect waves-light btn-small red white-text">View Profile</a>
+                                    <a href="<?php echo base_url('profil'); ?>" class="waves-effect waves-light btn-small red white-text">View Profile</a>
                                 </div>
                             </div>
                         </li>
-                        <li role="separator" class="divider"></li>
+                        <!-- <li role="separator" class="divider"></li>
                         <li><a href="#"><i class="material-icons">account_circle</i> My Profile</a></li>
                         <li><a href="#"><i class="material-icons">account_balance_wallet</i> My Balance</a></li>
                         <li><a href="#"><i class="material-icons">inbox</i> Inbox</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#"><i class="material-icons">settings</i> Account Setting</a></li>
-                        <li role="separator" class="divider"></li>
+                        <li role="separator" class="divider"></li> -->
                         <li><a href="<?php echo base_url('login/logout'); ?>"><i class="material-icons">power_settings_new</i> Logout</a></li>
                     </ul>
                 </li>

@@ -19,6 +19,11 @@ class Admin extends CI_Controller {
 			$this->load->view('data_admin',$data);
 	}
 
+	public function profil(){
+
+			$this->load->view('profil');
+	}
+
 	public function tambah(){
 		$cek= $this->M_admin->add();
 		if($cek>0){

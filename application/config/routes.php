@@ -76,6 +76,7 @@ $route['datapinjam'] = 'Pinjam/data_peminjaman';
 $route['databukutanah'] = 'Buku_tanah';
 $route['datasuratukur'] = 'Surat_ukur';
 $route['datawarkah'] = 'Warkah';
+$route['profil'] = 'Admin/profil';
 
 $route['404_override'] = 'Rusak';
 $route['translate_uri_dashes'] = FALSE;
