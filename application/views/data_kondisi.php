@@ -56,12 +56,12 @@
                         <div class="card">
                             <div class="card-content">
                                 <h5 class="card-title activator">Tambah Data Waktu Pelayanan<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
-                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Waktu_pelayanan/tambah" method="post" enctype="multipart/form-data">
+                                <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>kondisi/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <label for="cemail">Kode Waktu Pelayanan *</label>
-                                            <input  type="text"  required name="kode_waktu" autofocus>
+                                            <label for="cemail">Kode Kondisi *</label>
+                                            <input  type="text"  required name="id_kondisi" autofocus>
                                             <div class="errorTxt2"></div>
                                         </div>
                                     </div>
@@ -105,8 +105,9 @@
                                             <th>#</th>
                                             <th>Kode</th>
                                             <th>Kondisi</th>
-                                            <th>Keterangan</th>
-                                            <th width="20%">Aksi</th>
+                                            <th width="30%">Keterangan</th>
+                                            <th>Status</th>
+                                            <th width="30%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -121,9 +122,30 @@
                                             <td><?php echo $data_kondisi->nama_kondisi; ?></td>
                                             <td><?php echo $data_kondisi->keterangan; ?></td>
                                             <td>
-                                              <a class="waves-effect waves-light btn btn-round orange">Edit</a>
-                                              <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
+                                              <?php if($data_kondisi->aktif==1){
+                                                        echo '<span class="label label-success">Aktif</span>';
+                                                      }
+                                                        else{
+                                                        echo '<span class="label label-danger">Tidak Aktif</span>';
+                                                      }
+                                              ?>
                                             </td>
+                                            <td>
+                                              <a class="waves-effect waves-light btn orange">Edit</a>
+                                              <?php
+                                              if($data_kondisi->aktif==1){
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>kondisi/aktif_kondisi/<?php echo $data_kondisi->id_kondisi; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_kondisi->nama_kondisi; ?>?')"/>Non Aktifkan</a>
+                                              <?php
+                                                }else{
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>kondisi/aktif_kondisi/<?php echo $data_kondisi->id_kondisi; ?>/1" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_kondisi->nama_kondisi; ?>?')"/>Aktifkan</a>
+                                              <?php
+                                                  }
+                                              ?>
+                                              <a href="<?php echo base_url(); ?>kondisi/hapus_kondisi/<?php echo $data_kondisi->id_kondisi; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Yakin Menghapus Kondisi <?php echo $data_kondisi->nama_kondisi; ?>?')"/>Hapus </a>
+                                            </td>
+                                            
                                         </tr>
                                         <?php } ?>
                                     </tbody>

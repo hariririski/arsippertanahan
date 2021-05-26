@@ -148,18 +148,28 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <?php if($data_pegawai->status==0){
-                                                        echo "Aktif";
+                                              <?php if($data_pegawai->aktif==1){
+                                                        echo '<span class="label label-success">Aktif</span>';
                                                       }
                                                         else{
-                                                        echo "Tidak Aktif";
+                                                        echo '<span class="label label-danger">Tidak Aktif</span>';
                                                       }
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn btn-round orange">Edit</a>
-                                              <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
-                                              <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Non Aktifkan</a>
+                                              <a class="waves-effect waves-light btn orange">Edit</a>
+                                              <?php
+                                              if($data_pegawai->aktif==1){
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>pegawai/aktif_pegawai/<?php echo $data_pegawai->nip; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_pegawai->nama_lengkap; ?>?')"/>Non Aktifkan</a>
+                                              <?php
+                                                }else{
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>pegawai/aktif_pegawai/<?php echo $data_pegawai->nip; ?>/1" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_pegawai->nama_lengkap; ?>?')"/>Aktifkan</a>
+                                              <?php
+                                                  }
+                                              ?>
+                                              <a href="<?php echo base_url(); ?>pegawai/hapus_pegawai/<?php echo $data_pegawai->nip; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Yakin Menghapus pegawai <?php echo $data_pegawai->nama_lengkap; ?>?')"/>Hapus </a>
                                             </td>
                                         </tr>
                                         <?php } ?>

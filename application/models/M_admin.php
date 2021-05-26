@@ -4,6 +4,7 @@
         $query=$this->db->query("SELECT * FROM `admin`");
         return $query->result();
       }
+
       function add(){
         $nama_lengkap = $this->input->post('nama_lengkap');
         $username = $this->input->post('username');
@@ -27,6 +28,16 @@
         $perintah1="INSERT INTO `admin`(`username`, `password`, `level`, `status`, `nama_lengkap`, `image`)
                                 VALUES ('$username','$password','$level','$status','$nama_lengkap','$image')";
         $query=$this->db->query($perintah1);
+        return $query;
+      }
+
+      function aktif_admin($kode,$aktif){
+        $query=$this->db->query("UPDATE `admin` SET `status`=$aktif WHERE id_admin='$kode'");
+        return $query;
+      }
+
+      function hapus_admin($kode){
+        $query=$this->db->query("DELETE FROM `admin` WHERE id_admin='$kode'");
         return $query;
       }
 }

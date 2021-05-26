@@ -13,21 +13,42 @@ class Admin extends CI_Controller {
 			$this->load->database();
 			$this->load->model('M_admin');
 	}
-	public function index()
-	{
+
+	public function index(){
 			$data['data_admin'] = $this->M_admin->lihat();
 			$this->load->view('data_admin',$data);
 	}
-	public function tambah()
-	{
+
+	public function tambah(){
 		$cek= $this->M_admin->add();
 		if($cek>0){
-			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."dataadmin';</script>");
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."dataadmin';</script>");
 
 		}else{
 				echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."dataadmin';</script>");
 
 	 }
+	}
+
+	function aktif_admin(){
+		$id_admin=$this->uri->segment('3');
+		$aktif=$this->uri->segment('4');
+		$cek= $this->M_admin->aktif_admin($id_admin,$aktif);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."dataadmin';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."dataadmin';</script>");
+		}
+	}
+
+	function hapus_admin(){
+		$id_admin=$this->uri->segment('3');
+		$cek= $this->M_admin->hapus_admin($id_admin);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."dataadmin';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."dataadmin';</script>");
+		}
 	}
 
 

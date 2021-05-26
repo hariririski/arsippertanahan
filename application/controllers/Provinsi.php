@@ -159,7 +159,7 @@ class Provinsi extends CI_Controller {
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."dataprovinsi';</script>");
 		}else{
-		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."data_provinsi';</script>");
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."dataprovinsi';</script>");
 		}
 	}
 

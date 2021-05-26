@@ -13,13 +13,13 @@ class Waktu_pelayanan extends CI_Controller {
 			$this->load->database();
 			$this->load->model('M_waktu_pelayanan');
 	}
-	public function index()
-	{
+
+	public function index(){
 			$data['data_waktu'] = $this->M_waktu_pelayanan->lihat();
 			$this->load->view('data_waktu',$data);
 	}
-	public function tambah()
-	{
+
+	public function tambah(){
 		$cek= $this->M_waktu_pelayanan->add();
 		if($cek>0){
 			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datawaktupelayanan';</script>");
@@ -28,6 +28,27 @@ class Waktu_pelayanan extends CI_Controller {
 				echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datawaktupelayanan';</script>");
 
 	 }
+	}
+
+	function aktif_waktu(){
+		$id_waktu=$this->uri->segment('3');
+		$aktif=$this->uri->segment('4');
+		$cek= $this->M_waktu_pelayanan->aktif_waktu($id_waktu,$aktif);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datawaktupelayanan';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datawaktupelayanan';</script>");
+		}
+	}
+
+	function hapus_waktu(){
+		$id_waktu=$this->uri->segment('3');
+		$cek= $this->M_waktu_pelayanan->hapus_waktu($id_waktu);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datawaktupelayanan';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datawaktupelayanan';</script>");
+		}
 	}
 
 

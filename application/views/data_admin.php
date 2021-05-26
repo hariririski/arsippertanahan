@@ -148,7 +148,7 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <?php if($data_admin->status==0){
+                                              <?php if($data_admin->status==1){
                                                 echo '<span class="label label-success">Aktif</span>';
                                               }
                                                 else{
@@ -157,8 +157,19 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn btn-round orange">Edit</a>
-                                              <a href="<?php echo base_url(); ?>dataprovinsi" type="submit" class="waves-effect waves-light btn btn-round red" onclick="return confirm('Are you sure you want to search Google?')"/>Non Aktifkan </a>
+                                              <a class="waves-effect waves-light btn orange">Edit</a>
+                                              <?php
+                                              if($data_admin->status==1){
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>admin/aktif_admin/<?php echo $data_admin->id_admin; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_admin->nama_lengkap; ?>?')"/>Non Aktifkan</a>
+                                              <?php
+                                                }else{
+                                              ?>
+                                                  <a  href="<?php echo base_url(); ?>admin/aktif_admin/<?php echo $data_admin->id_admin; ?>/1" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_admin->nama_lengkap; ?>?')"/>Aktifkan</a>
+                                              <?php
+                                                  }
+                                              ?>
+                                              <a href="<?php echo base_url(); ?>admin/hapus_admin/<?php echo $data_admin->id_admin; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Yakin Menghapus admin <?php echo $data_admin->nama_lengkap; ?>?')"/>Hapus </a>
                                             </td>
                                         </tr>
                                         <?php } ?>

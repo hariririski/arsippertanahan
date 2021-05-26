@@ -30,6 +30,26 @@ class Kondisi extends CI_Controller {
 	 }
 	}
 
+	function aktif_kondisi(){
+		$id_kondisi=$this->uri->segment('3');
+		$aktif=$this->uri->segment('4');
+		$cek= $this->M_kondisi->aktif_kondisi($id_kondisi,$aktif);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakondisi';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datakondisi';</script>");
+		}
+	}
+
+	function hapus_kondisi(){
+		$id_kondisi=$this->uri->segment('3');
+		$cek= $this->M_kondisi->hapus_kondisi($id_kondisi);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datakondisi';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datakondisi';</script>");
+		}
+	}
 
 
 }

@@ -30,6 +30,27 @@ class Pegawai extends CI_Controller {
 	 }
 	}
 
+	function aktif_pegawai(){
+		$nip=$this->uri->segment('3');
+		$aktif=$this->uri->segment('4');
+		$cek= $this->M_pegawai->aktif_pegawai($nip,$aktif);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datapegawai';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datapegawai';</script>");
+		}
+	}
+
+	function hapus_pegawai(){
+		$nip=$this->uri->segment('3');
+		$cek= $this->M_pegawai->hapus_pegawai($nip);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datapegawai';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datapegawai';</script>");
+		}
+	}
+
 
 
 }
