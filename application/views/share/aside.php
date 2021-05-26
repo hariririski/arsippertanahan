@@ -11,7 +11,8 @@
                     <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">dashboard</i><span class="hide-menu">Buku Tanah</span></a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Email</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>bukutanah"><i class="material-icons">email</i><span class="hide-menu">Data Buku Tanah</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>kondisibukutanah"><i class="material-icons">email</i><span class="hide-menu">Kondisi Buku Tanah</span></a></li>
                         </ul>
                     </div>
                 </li>
@@ -19,7 +20,8 @@
                     <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">dashboard</i><span class="hide-menu">Surat Ukur</span></a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Email</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>datasuratukur"><i class="material-icons">email</i><span class="hide-menu">Data Surat Ukur</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">email</i><span class="hide-menu">Kondisi Surat Ukur</span></a></li>
                         </ul>
                     </div>
                 </li>
@@ -27,7 +29,8 @@
                     <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">dashboard</i><span class="hide-menu">Warkah</span></a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Email</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>datawarkah"><i class="material-icons">email</i><span class="hide-menu">Data Warkah</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">email</i><span class="hide-menu">Kondisi Warkah</span></a></li>
                         </ul>
                     </div>
                 </li>
@@ -35,7 +38,8 @@
                     <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">dashboard</i><span class="hide-menu">Peminjaman</span></a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Email</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>datapinjam"><i class="material-icons">email</i><span class="hide-menu">Data Peminjaman</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">email</i><span class="hide-menu">Peminjaman</span></a></li>
                         </ul>
                     </div>
                 </li>

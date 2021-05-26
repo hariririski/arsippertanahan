@@ -71,5 +71,11 @@ $route['dataadmin'] = 'Admin';
 $route['datawaktupelayanan'] = 'Waktu_pelayanan';
 $route['datapegawai'] = 'Pegawai';
 
+$route['pinjam'] = 'Pinjam';
+$route['datapinjam'] = 'Pinjam/data_peminjaman';
+$route['databukutanah'] = 'Buku_tanah';
+$route['datasuratukur'] = 'Surat_ukur';
+$route['datawarkah'] = 'Warkah';
+
 $route['404_override'] = 'Rusak';
 $route['translate_uri_dashes'] = FALSE;

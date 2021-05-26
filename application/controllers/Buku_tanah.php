@@ -23,7 +23,7 @@ class Buku_tanah extends CI_Controller {
 		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
 		$data['data_kondisi'] = $this->M_kondisi->lihat();
 		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
-		$this->load->view('buku_tanah',$data);
+		$this->load->view('data_buku_tanah',$data);
 	}
 	public function tambah()
 	{
