@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <?php echo $this->load->view('share/icon', '', TRUE);?>
     <title>Data Waktu Pelayanan</title>
     <link href="dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
@@ -145,7 +145,7 @@
                                               ?>
                                               <a href="<?php echo base_url(); ?>kondisi/hapus_kondisi/<?php echo $data_kondisi->id_kondisi; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Yakin Menghapus Kondisi <?php echo $data_kondisi->nama_kondisi; ?>?')"/>Hapus </a>
                                             </td>
-                                            
+
                                         </tr>
                                         <?php } ?>
                                     </tbody>

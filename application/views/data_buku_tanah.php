@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <?php echo $this->load->view('share/icon', '', TRUE);?>
     <title>Data Peminjaman</title>
     <link href="dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
@@ -51,72 +51,115 @@
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <div class="container-fluid">
+              <div class="row">
+                  <div class="col s12 ">
+                      <div class="card">
+                          <div class="card-content">
+
+                              <h5 class="card-title activator">Tambah Data Bundel<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
+                              <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Lemari/tambah_bundel?baris=" method="post" enctype="multipart/form-data">
+                                  <div class="row">
+                                      <div class="input-field col s12">
+                                          <i class="material-icons prefix">chrome_reader_mode</i>
+
+                                          <input   type="text" disabled required name="id_Kota" autofocus >
+
+                                          <label for="uname">Kode Bundel - Baris *</label>
+                                          <div class="errorTxt1"></div>
+                                      </div>
+                                  </div>
+
+                                  <div class="row">
+                                      <div class="input-field col s12">
+                                          <i class="material-icons prefix">chrome_reader_mode</i>
+                                          <label for="cemail">Nama Bundel *</label>
+                                          <input  type="text"  required name="nama_bundel">
+                                          <div class="errorTxt2"></div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                        <div class="input-field col s12">
+                                          <i class="material-icons prefix">chrome_reader_mode</i>
+                                            <select required name="sengketa">
+                                                <option value="" disabled selected>Pilih Sengketa/Tidak</option>
+                                                <option value="1">IYA</option>
+                                                <option value="0">TIDAK</option>
+                                            </select>
+                                        </div>
+                                  </div>
+                                  <div class="row">
+                                        <div class="input-field col s12">
+                                          <i class="material-icons prefix">chrome_reader_mode</i>
+                                          <select required name="kode_desa">
+                                            <option value="" disabled selected>Pilih Desa</option>
+                                            <?php
+                                              foreach($data_desa as $data_desa){
+                                            ?>
+                                              <option value="<?php echo $data_desa->kode_desa; ?>"><?php echo $data_desa->nama_kec; ?> -- <?php echo $data_desa->nama_desa; ?></option>
+                                            <?php } ?>
+                                          </select>
+                                        </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="input-field col s12">
+                                          <i class="material-icons prefix">chrome_reader_mode</i>
+                                          <label for="cemail">Keterangan *</label>
+                                          <input  type="text"  required name="keterangan">
+                                          <div class="errorTxt2"></div>
+                                      </div>
+                                  </div>
+
+
+                                  <div class="row">
+                                      <div class="input-field col s12">
+                                          <button class="btn cyan waves-effect waves-light right submit" type="submit" name="action">Submit
+                                          </button>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
                 <div class="row">
                     <div class="col s12">
                         <div class="card">
-                            <div class="card-content">
-                              <table id="zero_config" class="responsive-table display" style="width:100%">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Kode</th>
-                                            <th>Provinsi</th>
-                                            <th>QR Code</th>
-                                            <th>Status</th>
-                                            <th width="40%">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <?php
-                                              $i=0;
-                                              foreach($data_provinsi as $data_provinsi){
-                                              $i++;
-                                            ?>
-                                            <td><?php echo $i; ?></td>
-                                            <td><?php echo $data_provinsi->id_prov; ?></td>
-                                            <td><?php echo $data_provinsi->nama_prov; ?></td>
-                                            <td>
-                                              <center>
-                                              <a href="<?php echo site_url('Code/QRcode/'.$data_provinsi->qrcode); ?>">
-                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_provinsi->qrcode);?>" width="30%"><br>
-                                              </a>
-                                              <?php echo $data_provinsi->nama_prov; ?>
-                                              </center>
-                                            </td>
-                                            <td>
-                                              <?php
-                                              if($data_provinsi->aktif==1){
-                                                        echo '<span class="label label-success">Aktif</span>';
-                                                      }
-                                                        else{
-                                                        echo '<span class="label label-danger">Tidak Aktif</span>';
-                                                      }
-                                              ?>
-                                            </td>
-                                            <td>
-                                              <a href="<?php echo base_url(); ?>datakota?prov=<?php echo $data_provinsi->kode_prov; ?>" class="waves-effect waves-light btn green">Kota</a>
-                                              <a class="waves-effect waves-light btn orange">Edit</a>
-                                              <?php
-                                              if($data_provinsi->aktif==1){
-                                              ?>
-                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_prov/<?php echo $data_provinsi->kode_prov; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Me Non-Aktifkan <?php echo $data_provinsi->nama_prov; ?>?')"/>Non Aktifkan</a>
-                                              <?php
-                                                }else{
-                                              ?>
-                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_prov/<?php echo $data_provinsi->kode_prov; ?>/1" class="waves-effect waves-light btn purple " onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_provinsi->nama_prov; ?>?')"/>Aktifkan</a>
-                                              <?php
-                                                  }
-                                              ?>
-                                              <a  href="<?php echo base_url(); ?>provinsi/aktif_prov/<?php echo $data_provinsi->kode_prov; ?>/" class="waves-effect waves-light btn indigo" >Cetak Barcode</a>
-                                              <a href="<?php echo base_url(); ?>provinsi/hapus_prov/<?php echo $data_provinsi->kode_prov; ?>" type="submit" class="waves-effect waves-light btn red" onclick="return confirm('Apakah Anda Ingin Menghapus Provinsi <?php echo $data_provinsi->nama_prov; ?>?')"/>Hapus </a>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-
-                            </div>
+                          <div class="card-content">
+                              <h5 class="card-title">Data Buku Tanah</h5>
+                              <div class="table-responsive">
+                                  <table class="table striped m-b-20" id="editable-datatable">
+                                      <thead>
+                                          <tr>
+                                              <th>No</th>
+                                              <th>Kecamatan</th>
+                                              <th>Desa</th>
+                                              <th>Nomor Hak</th>
+                                              <th>Jenis Hak</th>
+                                              <th>Detail</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                        <?php
+                                          foreach($data_buku_tanah as $data_buku_tanah){
+                                          $no=0;
+                                          $no++;
+                                        ?>
+                                          <tr id="<?php echo $data_buku_tanah->id_buku_tanah; ?>" class="gradeX">
+                                              <td><?php echo $no;?></td>
+                                              <td><?php echo $data_buku_tanah->nama_kec; ?></td>
+                                              <td><?php echo $data_buku_tanah->nama_desa; ?></td>
+                                              <td><?php echo $data_buku_tanah->no_hak; ?></td>
+                                              <td><?php echo $data_buku_tanah->nama_jenis_hak; ?></td>
+                                              <td> <a class="waves-effect waves-light btn  orange">Detail</a></td>
+                                          </tr>
+                                          <?php
+                                          }
+                                          ?>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -150,9 +193,16 @@
     <!-- ============================================================== -->
     <script src="assets/extra-libs/prism/prism.js"></script>
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
-    <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
-    <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-
+    <script src="assets/extra-libs/jquery-datatables-editable/jquery.dataTables.js"></script>
+    <script src="assets/extra-libs/tiny-editable/mindmup-editabletable.js"></script>
+    <script src="assets/extra-libs/tiny-editable/numeric-input-example.js"></script>
+    <script>
+    $('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
+    $('#editable-datatable').editableTableWidget().numericInputExample().find('td:first').focus();
+    $(function() {
+        $('#editable-datatable').DataTable();
+    });
+    </script>
 
 </body>
 
