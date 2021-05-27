@@ -9,12 +9,12 @@
             <!-- ============================================================== -->
             <a href="javascript:void(0)" class="brand-logo">
                 <span class="icon">
-                    <img class="light-logo" src="assets/images/logo-light-icon.png">
-                    <img class="dark-logo" src="assets/images/logo-icon.png">
+                    <img class="light-logo" src="<?php echo base_url(); ?>assets/images/logo-light-icon.png">
+                    <img class="dark-logo" src="<?php echo base_url(); ?>assets/images/logo-icon.png">
                 </span>
                 <span class="text">
-                    <img class="light-logo" src="assets/images/logo-light-text.png">
-                    <img class="dark-logo" src="assets/images/logo-text.png">
+                    <img class="light-logo" src="<?php echo base_url(); ?>assets/images/logo-light-text.png">
+                    <img class="dark-logo" src="<?php echo base_url(); ?>assets/images/logo-text.png">
                 </span>
             </a>
             <!-- ============================================================== -->

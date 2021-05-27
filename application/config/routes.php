@@ -53,7 +53,6 @@ $route['default_controller'] = 'Login';
 
 $route['login'] = 'Login';
 $route['home'] = 'Home';
-$route['bukutanah'] = 'Buku_tanah';
 $route['databukutanah'] = 'Buku_tanah/data';
 $route['caribukutanah'] = 'Buku_tanah/pData';
 $route['caribukutanah1'] = 'Buku_tanah/buku_tanah_barcode';
@@ -74,6 +73,7 @@ $route['datapegawai'] = 'Pegawai';
 $route['pinjam'] = 'Pinjam';
 $route['datapinjam'] = 'Pinjam/data_peminjaman';
 $route['databukutanah'] = 'Buku_tanah';
+// $route['bukutanah'] = 'Buku_tanah/buku_tanah';
 $route['datasuratukur'] = 'Surat_ukur';
 $route['datawarkah'] = 'Warkah';
 $route['profil'] = 'Admin/profil';

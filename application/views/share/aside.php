@@ -11,7 +11,7 @@
                     <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">dashboard</i><span class="hide-menu">Buku Tanah</span></a>
                     <div class="collapsible-body">
                         <ul>
-                          <li><a href="<?php echo base_url(); ?>bukutanah"><i class="material-icons">email</i><span class="hide-menu">Data Buku Tanah</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>databukutanah"><i class="material-icons">email</i><span class="hide-menu">Data Buku Tanah</span></a></li>
                           <li><a href="<?php echo base_url(); ?>kondisibukutanah"><i class="material-icons">email</i><span class="hide-menu">Kondisi Buku Tanah</span></a></li>
                         </ul>
                     </div>

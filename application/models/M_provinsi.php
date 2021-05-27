@@ -60,12 +60,12 @@
       }
 
       function lihat_kecamatan($kode_kota){
-        $query=$this->db->query("SELECT * from kec WHERE kec.kode_kota='$kode_kota'");
+        $query=$this->db->query("SELECT * from kec WHERE kec.kode_kota='$kode_kota' ORDER BY kec.id_kec");
         return $query->result();
       }
 
       function lihat_kecamatan2($kode_kec){
-        $query=$this->db->query("SELECT * FROM `kec`WHERE kode_kec='$kode_kec'");
+        $query=$this->db->query("SELECT * FROM `kec`WHERE kode_kec='$kode_kec' ORDER BY kec.id_kec");
         return $query->result();
       }
 
@@ -79,7 +79,7 @@
       }
 
       function lihat_desa($kode_kec){
-        $query=$this->db->query("SELECT *, desa.qrcode as qrdesa FROM prov INNER JOIN kota on prov.kode_prov=kota.kode_prov INNER join kec on kec.kode_kota=kota.kode_kota INNER join desa on desa.kode_kec=kec.kode_kec WHERE desa.kode_kec='$kode_kec'");
+        $query=$this->db->query("SELECT *, desa.qrcode as qrdesa FROM prov INNER JOIN kota on prov.kode_prov=kota.kode_prov INNER join kec on kec.kode_kota=kota.kode_kota INNER join desa on desa.kode_kec=kec.kode_kec WHERE desa.kode_kec='$kode_kec' ORDER BY desa.id_desa");
         return $query->result();
       }
 
@@ -136,6 +136,11 @@
       function aktif_desa($kode,$aktif){
         $query=$this->db->query("UPDATE `desa` SET `aktif`=$aktif WHERE kode_desa='$kode'");
         return $query;
+      }
+
+      function data_desa_buku_tanah(){
+        $query=$this->db->query("SELECT kec.nama_kec, desa.id_desa, desa.nama_desa, desa.kode_desa, COUNT(buku_tanah.kode_desa) as jumlah_hak FROM kec INNER JOIN desa on desa.kode_kec=kec.kode_kec LEFT JOIN buku_tanah on buku_tanah.kode_desa=desa.kode_desa GROUP BY desa.kode_desa ORDER BY kec.id_kec");
+        return $query->result();
       }
 
 }

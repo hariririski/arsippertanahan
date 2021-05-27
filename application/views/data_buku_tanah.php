@@ -131,27 +131,25 @@
                                   <table class="table striped m-b-20" id="editable-datatable">
                                       <thead>
                                           <tr>
-                                              <th>No</th>
+                                              <th>#</th>
                                               <th>Kecamatan</th>
                                               <th>Desa</th>
-                                              <th>Nomor Hak</th>
-                                              <th>Jenis Hak</th>
-                                              <th>Detail</th>
+                                              <th>Total Hak</th>
+
                                           </tr>
                                       </thead>
                                       <tbody>
                                         <?php
-                                          foreach($data_buku_tanah as $data_buku_tanah){
-                                          $no=0;
-                                          $no++;
+                                          $i=0;
+                                          foreach($desa_tabel as $desa){
+                                          $i++;
                                         ?>
-                                          <tr id="<?php echo $data_buku_tanah->id_buku_tanah; ?>" class="gradeX">
-                                              <td><?php echo $no;?></td>
-                                              <td><?php echo $data_buku_tanah->nama_kec; ?></td>
-                                              <td><?php echo $data_buku_tanah->nama_desa; ?></td>
-                                              <td><?php echo $data_buku_tanah->no_hak; ?></td>
-                                              <td><?php echo $data_buku_tanah->nama_jenis_hak; ?></td>
-                                              <td> <a class="waves-effect waves-light btn  orange">Detail</a></td>
+                                          <tr class="gradeX">
+                                              <td><?php echo $i;?></td>
+                                              <td><?php echo $desa->nama_kec; ?></td>
+                                              <td><?php echo $desa->nama_desa; ?></td>
+                                              <td><a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah_desa/<?php echo $desa->kode_desa; ?>"><?php echo $desa->jumlah_hak; ?></a></td>
+
                                           </tr>
                                           <?php
                                           }
