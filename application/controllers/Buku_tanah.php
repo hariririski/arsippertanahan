@@ -15,7 +15,7 @@ class Buku_tanah extends CI_Controller {
 			$this->load->model('M_jenis_hak');
 			$this->load->model('M_kondisi');
 			$this->load->model('M_buku_tanah');
-			// $admin=$this->session->userdata('admin');
+			
 	}
 	public function index()
 	{

@@ -11,14 +11,13 @@ class Home extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->library('session');
 			$this->load->database();
-			// $this->load->model('M_Login');
-			// $admin=$this->session->userdata('admin');
+			$this->load->model('M_home');
+		
 	}
 	public function index()
 	{
-		// $data['proses_data'] = $this->M_lapor->proses();
-		// $this->load->view('admin_beranda',$data);
-		$this->load->view('home');
+		$data['jumlah_buku_tanah'] = $this->M_home->jumlah_buku_tanah();
+		$this->load->view('home',$data);
 	}
 
 

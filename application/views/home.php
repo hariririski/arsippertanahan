@@ -79,7 +79,18 @@
                                 <div class="card warning-gradient card-hover">
                                     <div class="card-content">
                                         <h5 class="card-title  white-text">Buku Tanah</h5>
-                                        <p class="m-b-5"><span class="white-text op-6">Total <span class="right">$250</span></span></p>
+                                        <p class="m-b-5">
+                                          <span class="white-text op-6">
+                                            Total
+                                            <span class="right">
+                                              <?php
+                                                foreach($jumlah_buku_tanah as $data){
+                                                  echo $data->jumlah_buku_tanah;
+                                                }
+                                              ?>
+                                            </span>
+                                          </span>
+                                        </p>
                                         <p><span class="white-text op-6">Validasi <span class="right">$158</span></span></p>
 
                                     </div>
