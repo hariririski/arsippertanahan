@@ -78,7 +78,7 @@
                                               <td><?php echo $buku_tanah->nama_kec; ?></td>
                                               <td><?php echo $buku_tanah->nama_desa; ?></td>
                                               <td><?php echo $buku_tanah->no_hak; ?></td>
-                                              <td> <a class="waves-effect waves-light btn  orange">Detail</a></td>
+                                              <td> <a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah/<?php echo $buku_tanah->id_buku_tanah; ?>" class="waves-effect waves-light btn  orange">Detail</a></td>
                                           </tr>
                                           <?php
                                           }

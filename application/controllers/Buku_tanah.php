@@ -33,6 +33,14 @@ class Buku_tanah extends CI_Controller {
 		$data['data_buku_tanah'] = $this->M_buku_tanah->data_buku_tanah_desa($kode_desa);
 		$this->load->view('detail_buku_tanah_desa',$data);
 	}
+
+	public function detail_buku_tanah()
+	{
+		$id_buku_tanah=$this->uri->segment('3');
+		$data['data_buku_tanah'] = $this->M_buku_tanah->detail_buku_tanah($id_buku_tanah);
+		$this->load->view('detail_buku_tanah',$data);
+	}
+
 	public function tambah()
 	{
 		$id_bundel = $this->input->post('id_bundel');
