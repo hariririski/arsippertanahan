@@ -56,46 +56,51 @@
                       <div class="card">
                           <div class="card-content">
 
-                              <h5 class="card-title activator">Tambah Data Bundel<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
-                              <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Lemari/tambah_bundel?baris=" method="post" enctype="multipart/form-data">
+                              <h5 class="card-title activator">Tambah Buku Tanah<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
+                              <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>buku_tanah/tambah" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                      <div class="input-field col s12">
+                                        <i class="material-icons prefix">chrome_reader_mode</i>
+                                        <select required name="kode_desa">
+                                          <option value="" disabled selected>Pilih Desa</option>
+                                          <?php
+                                            foreach($data_desa as $data_desa){
+                                          ?>
+                                            <option value="<?php echo $data_desa->kode_desa; ?>"><?php echo $data_desa->nama_kec; ?> -- <?php echo $data_desa->nama_desa; ?></option>
+                                          <?php } ?>
+                                        </select>
+                                      </div>
+                                </div>
+                                <div class="row">
+                                      <div class="input-field col s12">
+                                        <i class="material-icons prefix">chrome_reader_mode</i>
+                                        <select required name="id_jenis_hak">
+                                          <option value="" disabled selected>Pilih Jenis Hak</option>
+                                          <?php
+                                            foreach($data_jenis_hak as $data_jenis_hak){
+                                          ?>
+                                            <option value="<?php echo $data_jenis_hak->id_jenis_hak; ?>"><?php echo $data_jenis_hak->id_jenis_hak; ?> - <?php echo $data_jenis_hak->nama_jenis_hak; ?></option>
+                                          <?php } ?>
+                                        </select>
+                                      </div>
+                                </div>
                                   <div class="row">
                                       <div class="input-field col s12">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
-
-                                          <input   type="text" disabled required name="id_Kota" autofocus >
-
-                                          <label for="uname">Kode Bundel - Baris *</label>
+                                          <input   type="text" required name="nomor_hak" autofocus >
+                                          <label for="uname">Nomor Hak *</label>
                                           <div class="errorTxt1"></div>
                                       </div>
                                   </div>
-
-                                  <div class="row">
-                                      <div class="input-field col s12">
-                                          <i class="material-icons prefix">chrome_reader_mode</i>
-                                          <label for="cemail">Nama Bundel *</label>
-                                          <input  type="text"  required name="nama_bundel">
-                                          <div class="errorTxt2"></div>
-                                      </div>
-                                  </div>
                                   <div class="row">
                                         <div class="input-field col s12">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <select required name="sengketa">
-                                                <option value="" disabled selected>Pilih Sengketa/Tidak</option>
-                                                <option value="1">IYA</option>
-                                                <option value="0">TIDAK</option>
-                                            </select>
-                                        </div>
-                                  </div>
-                                  <div class="row">
-                                        <div class="input-field col s12">
-                                          <i class="material-icons prefix">chrome_reader_mode</i>
-                                          <select required name="kode_desa">
-                                            <option value="" disabled selected>Pilih Desa</option>
+                                          <select required name="id_kondisi">
+                                            <option value="" disabled selected>Pilih Kondisi Arsip</option>
                                             <?php
-                                              foreach($data_desa as $data_desa){
+                                              foreach($data_kondisi as $data_kondisi){
                                             ?>
-                                              <option value="<?php echo $data_desa->kode_desa; ?>"><?php echo $data_desa->nama_kec; ?> -- <?php echo $data_desa->nama_desa; ?></option>
+                                              <option value="<?php echo $data_kondisi->id_kondisi; ?>"><?php echo $data_kondisi->id_kondisi; ?> - <?php echo $data_kondisi->nama_kondisi; ?></option>
                                             <?php } ?>
                                           </select>
                                         </div>
@@ -103,8 +108,16 @@
                                   <div class="row">
                                       <div class="input-field col s12">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
-                                          <label for="cemail">Keterangan *</label>
-                                          <input  type="text"  required name="keterangan">
+                                          <label for="cemail">NIB (Nomor Induk Bidang)*</label>
+                                          <input  type="text"  required name="nib">
+                                          <div class="errorTxt2"></div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="input-field col s12">
+                                          <i class="material-icons prefix">chrome_reader_mode</i>
+                                          <label for="cemail">Kode Bundel (Scan Barcode Pada Bundel) *</label>
+                                          <input  type="text"  required name="id_bundel">
                                           <div class="errorTxt2"></div>
                                       </div>
                                   </div>

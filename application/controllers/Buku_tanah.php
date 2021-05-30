@@ -15,7 +15,8 @@ class Buku_tanah extends CI_Controller {
 			$this->load->model('M_jenis_hak');
 			$this->load->model('M_kondisi');
 			$this->load->model('M_buku_tanah');
-			
+			$this->load->helper('string');
+
 	}
 	public function index()
 	{
@@ -34,14 +35,28 @@ class Buku_tanah extends CI_Controller {
 	}
 	public function tambah()
 	{
-		$cek= $this->M_buku_tanah->add();
-		// if($cek>0){
-		// 	echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan');window.location.href='".base_url()."datakondisi';</script>");
-	 //
-		// }else{
-		// 		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datakondisi';</script>");
-	 //
-	 // }
+		$id_bundel = $this->input->post('id_bundel');
+		$sql="SELECT COUNT(id_bundel) as jumlah FROM `bundel` WHERE id_bundel='$id_bundel'";
+		$query = $this->db->query($sql);
+		$data=$query->result();
+		foreach ($data as $isi) {
+		$data = array(
+				 'jumlah'  => $isi->jumlah,
+			 );
+		 }
+		if($data['jumlah']!=0){
+			$id=random_string('alnum',20);
+			$id_buku_tanah=$id;
+			$cek= $this->M_buku_tanah->add($id_buku_tanah);
+			if($cek>0){
+					echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."detailbukutanah?id=".$id_buku_tanah."';</script>");
+			}else{
+					echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."databukutanah';</script>");
+		 	}
+		}else{
+					echo ("<script LANGUAGE='JavaScript'>window.alert('Bundel Tidak Ditemukan');window.location.href='".base_url()."databukutanah';</script>");
+		}
+
 	}
 	public function data()
 	{

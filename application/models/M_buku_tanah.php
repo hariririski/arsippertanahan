@@ -51,29 +51,17 @@
         }
 
       }
-      function add(){
-        $data_alamat = $this->input->post('data_alamat');
+      function add($id_buku_tanah){
         $id_kondisi = $this->input->post('id_kondisi');
-        $no_hak = $this->input->post('no_hak');
+        $kode_desa = $this->input->post('kode_desa');
+        $no_hak = $this->input->post('nomor_hak');
         $id_jenis_hak = $this->input->post('id_jenis_hak');
         $nib = $this->input->post('nib');
-        $pecah=explode('-',$data_alamat);
-        $id_prov=$pecah[0];
-        $id_kota=$pecah[1];
-        $id_kec=$pecah[2];
-        $id_desa=$pecah[3];
-        $id_buku_tanah=$id_prov."-".$id_kota."-".$id_kec."-".$id_desa."-".$id_jenis_hak."-".$no_hak."-".$nib;
-        $status=1;
-        //1 false (tersedia)
-        //0 false(tidak tersedia)
-        //2 Hilang()
-        //3 Belum di tentukan
-
-
-        print $perintah1="INSERT INTO `buku_tanah`(`id_buku_tanah`, `no_hak`, `id_jenis_hak`, `id_desa`, `id_kondisi`,`status`,`nib`)
-                             VALUES ('$id_buku_tanah','$no_hak','$id_jenis_hak','$id_desa','$id_kondisi','$status','$nib')";
+        $id_bundel = $this->input->post('id_bundel');
+        $perintah1="INSERT INTO `buku_tanah`(`id_buku_tanah`, `no_hak`, `id_jenis_hak`, `kode_desa`, `id_kondisi`,`nib`,`id_bundel`)
+                             VALUES ('$id_buku_tanah','$no_hak','$id_jenis_hak','$kode_desa','$id_kondisi','$nib','$id_bundel')";
         $query=$this->db->query($perintah1);
-        //return $query;
+        return $query;
       }
 
       function data_buku_tanah_desa($kode_desa){

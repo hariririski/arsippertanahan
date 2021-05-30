@@ -62,6 +62,7 @@
                             <li><a href="<?php echo base_url(); ?>datawaktupelayanan"><i class="material-icons">email</i><span class="hide-menu">Waktu Pelayanan</span></a></li>
                             <li><a href="<?php echo base_url(); ?>dataadmin"><i class="material-icons">email</i><span class="hide-menu">Admin</span></a></li>
                             <li><a href="<?php echo base_url(); ?>datapegawai"><i class="material-icons">email</i><span class="hide-menu">Pegawai</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>datapegawai"><i class="material-icons">email</i><span class="hide-menu">Upload CSV</span></a></li>
                         </ul>
                     </div>
                 </li>
