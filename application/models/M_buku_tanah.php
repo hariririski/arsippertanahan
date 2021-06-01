@@ -73,6 +73,11 @@
         $query=$this->db->query("SELECT * FROM `buku_tanah`LEFT JOIN desa on desa.kode_desa=buku_tanah.kode_desa LEFT JOIN kec on kec.kode_kec=desa.kode_kec left join kota on kota.kode_kota=kec.kode_kota left JOIN prov on prov.kode_prov=kota.kode_prov left join jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak LEFT JOIN bundel on bundel.id_bundel=buku_tanah.id_bundel LEFT JOIN baris on baris.id_baris=bundel.id_baris LEFT JOIN lemari on lemari.id_lemari=baris.id_lemari LEFT JOIN kondisi on kondisi.id_kondisi=buku_tanah.id_kondisi where buku_tanah.id_buku_tanah='$id_buku_tanah'");
         return $query->result();
       }
+
+      function getBukuTanah($id){
+        $query=$this->db->query("SELECT * FROM `buku_tanah` LEFT JOIN jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak WHERE buku_tanah.kode_desa='$id'");
+        return $query->result();
+      }
 }
 
 ?>

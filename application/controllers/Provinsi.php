@@ -21,19 +21,19 @@ class Provinsi extends CI_Controller {
 	}
 
 	function getKota(){
-        $id=$this->input->post('id');
+        $id=$this->input->get('id');
         $data=$this->M_provinsi->getKota($id);
         echo json_encode($data);
   }
 
 	function getKec(){
-        $id=$this->input->post('id');
+        $id=$this->input->get('id');
         $data=$this->M_provinsi->getKec($id);
         echo json_encode($data);
   }
 
 	function getDesa(){
-        $id=$this->input->post('id');
+        $id=$this->input->get('id');
         $data=$this->M_provinsi->getDesa($id);
         echo json_encode($data);
   }

@@ -77,5 +77,11 @@ class Buku_tanah extends CI_Controller {
 		$this->load->view('data_buku_tanah',$data);
 	}
 
+	function getBukuTanah(){
+        $id=$this->input->get('id');
+        $data=$this->M_buku_tanah->getBukuTanah($id);
+        echo json_encode($data);
+  }
+
 
 }
