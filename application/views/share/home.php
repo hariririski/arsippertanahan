@@ -1,3 +1,46 @@
+<?php
+$label_kondisi;
+$jumlah_kondisi;
+$i=0;
+foreach($data_kondisi as $kondisi){
+  $label_kondisi[$i]=$kondisi->nama_kondisi;
+  $id_kondisi[$i]=$kondisi->id_kondisi;
+  $jumlah_kondisi[$i]=0;
+  $i++;
+}
+$i=0;
+foreach($g1_buku_tanah as $bt){
+  foreach($data_kondisi as $kondisi){
+    if($kondisi->id_kondisi==$bt->id_kondisi){
+      $jumlah_kondisi[$i]+=$bt->jumlah;
+    }
+  }
+  $i++;
+}
+$i=0;
+foreach($g1_surat_ukur as $su){
+  foreach($data_kondisi as $kondisi){
+    if($kondisi->id_kondisi==$su->id_kondisi){
+      $jumlah_kondisi[$i]+=$su->jumlah;
+    }
+  }
+  $i++;
+}
+$i=0;
+foreach($g1_warkah as $warkah){
+  foreach($data_kondisi as $kondisi){
+    if($kondisi->id_kondisi==$warkah->id_kondisi){
+      $jumlah_kondisi[$i]+=$warkah->jumlah;
+    }
+  }
+  $i++;
+}
+
+
+
+print_r($jumlah_kondisi);
+
+?>
 <script type="text/javascript">
 $(function() {
     "use strict";
@@ -5,17 +48,25 @@ $(function() {
         new Chart(document.getElementById("chart3"), {
             type: 'pie',
             data: {
-                labels: ["Africa", "Asia", "Europe", "Latin America"],
+                labels: [
+                  <?php foreach ($label_kondisi as $kondisi) {
+                    echo '"'."$kondisi".'",';
+                  }?>
+                ],
                 datasets: [{
-                    label: "Population (millions)",
-                    backgroundColor: ["#36a2eb", "#ff6384", "#4bc0c0", "#ffcd56", "#07b107"],
-                    data: [2478, 5267, 3734, 2784]
+                    label: "Arsip Pertanahan",
+                    backgroundColor: ["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#2196f3","#009688","#8bc34a","#ffeb3b","#ff9800","#ff5722","#9e9e9e","#795548"],
+                    data: [
+                      <?php foreach ($jumlah_kondisi as $jumlah) {
+                        echo '"'."$jumlah".'",';
+                      }?>
+                    ]
                 }]
             },
             options: {
                 title: {
                     display: true,
-                    text: 'Predicted world population (millions) in 2050'
+                    text: 'Kondisi Arsip Pertanahan'
                 }
             }
         });
@@ -23,18 +74,30 @@ $(function() {
         new Chart(document.getElementById("chart4"), {
         type: 'horizontalBar',
         data: {
-            labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+            labels: [
+              <?php
+              foreach($g2_jenis_hak as $jenis_hak){
+                echo '"'.$jenis_hak->nama_jenis_hak.'",';
+              }
+              ?>
+            ],
             datasets: [{
-                label: "Population (millions)",
-                backgroundColor: ["#03a9f4", "#e861ff", "#08ccce", "#e2b35b", "#e40503"],
-                data: [8478, 6267, 5534, 4784, 3433]
+                label: "Sertipikat/Buku Tanah",
+                backgroundColor: ["#f44336", "#e91e63", "#9c27b0", "#673ab7", "#2196f3","#009688","#8bc34a","#ffeb3b","#ff9800","#ff5722","#9e9e9e","#795548"],
+                data: [
+                  <?php
+                  foreach($g2_jenis_hak as $jenis_hak){
+                    echo '"'.$jenis_hak->jumlah.'",';
+                  }
+                  ?>
+                ]
             }]
         },
         options: {
             legend: { display: false },
             title: {
                 display: true,
-                text: 'Predicted world population (millions) in 2050'
+                text: 'Arsip Pertanahan Berdasarkan Jenis Hak'
             }
         }
     });
