@@ -1,10 +1,6 @@
 <?php
     class M_buku_tanah extends CI_Model{
 
-      // function lihat(){
-      //   $query=$this->db->query("SELECT * FROM `kondisi`");
-      //   return $query->result();
-      // }
       function cari_barcode(){
 
         if(empty($this->input->GET('id'))==false){
@@ -74,8 +70,12 @@
         return $query->result();
       }
 
-      function getBukuTanah($id){
+      function getBukuTanahSuratUkur($id){
         $query=$this->db->query("SELECT * FROM `buku_tanah` LEFT JOIN jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak WHERE buku_tanah.kode_desa='$id' and buku_tanah.id_surat_ukur IS NULL");
+        return $query->result();
+      }
+      function getBukuTanahWarkah($id){
+        $query=$this->db->query("SELECT * FROM `buku_tanah` LEFT JOIN jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak WHERE buku_tanah.kode_desa='$id'");
         return $query->result();
       }
 
@@ -87,6 +87,11 @@
 
       function detail_su_bt($id_buku_tanah){
         $query=$this->db->query("SELECT desa.nama_desa, lemari.nama_lemari, baris.nama_baris, bundel.nama_bundel, surat_ukur.nib, surat_ukur.nomor, kondisi.nama_kondisi, surat_ukur.nib, surat_ukur.tahun, surat_ukur.status from surat_ukur LEFT JOIN desa on desa.kode_desa=surat_ukur.kode_desa LEFT JOIN kec on kec.kode_kec=desa.kode_kec left join kota on kota.kode_kota=kec.kode_kota left JOIN prov on prov.kode_prov=kota.kode_prov LEFT JOIN bundel on bundel.id_bundel=surat_ukur.id_bundel LEFT JOIN baris on baris.id_baris=bundel.id_baris LEFT JOIN lemari on lemari.id_lemari=baris.id_lemari LEFT JOIN buku_tanah on buku_tanah.id_surat_ukur=surat_ukur.id_surat_ukur left join kondisi on surat_ukur.id_kondisi=kondisi.id_kondisi WHERE buku_tanah.id_buku_tanah='$id_buku_tanah'");
+        return $query->result();
+      }
+
+      function detail_warkah_bt($id_buku_tanah){
+        $query=$this->db->query("SELECT desa.nama_desa, lemari.nama_lemari, baris.nama_baris, bundel.nama_bundel, warkah.nomor, kondisi.nama_kondisi, warkah.tahun, warkah.status, warkah.nomor from warkah LEFT JOIN desa on desa.kode_desa=warkah.kode_desa LEFT JOIN kec on kec.kode_kec=desa.kode_kec left join kota on kota.kode_kota=kec.kode_kota left JOIN prov on prov.kode_prov=kota.kode_prov LEFT JOIN bundel on bundel.id_bundel=warkah.id_bundel LEFT JOIN baris on baris.id_baris=bundel.id_baris LEFT JOIN lemari on lemari.id_lemari=baris.id_lemari left join kondisi on warkah.id_kondisi=kondisi.id_kondisi WHERE warkah.id_buku_tanah='$id_buku_tanah'");
         return $query->result();
       }
 }

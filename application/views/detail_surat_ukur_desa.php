@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo $this->load->view('share/icon', '', TRUE);?>
-    <title>Buku Tanah Per Desa</title>
+    <title>Surat Ukur Per desa</title>
     <link href="../../dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
     <link href="../../assets/extra-libs/prism/prism.css" rel="stylesheet">
@@ -63,22 +63,28 @@
                                               <th>#</th>
                                               <th>Kecamatan</th>
                                               <th>Desa</th>
-                                              <th>Total Hak</th>
+                                              <th>Nomor Surat Ukur</th>
+                                              <th>Tahun</th>
+                                              <th>Jenis Hak</th>
+                                              <th>Buku Tanah</th>
                                               <th>Detail</th>
                                           </tr>
                                       </thead>
                                       <tbody>
                                         <?php
                                           $i=0;
-                                          foreach($data_buku_tanah as $buku_tanah){
+                                          foreach($data_surat_ukur as $surat_ukur){
                                           $i++;
                                         ?>
                                           <tr class="gradeX">
                                               <td><?php echo $i;?></td>
-                                              <td><?php echo $buku_tanah->nama_kec; ?></td>
-                                              <td><?php echo $buku_tanah->nama_desa; ?></td>
-                                              <td><?php echo $buku_tanah->no_hak; ?></td>
-                                              <td> <a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah/<?php echo $buku_tanah->id_buku_tanah; ?>" class="waves-effect waves-light btn  orange">Detail</a></td>
+                                              <td><?php echo $surat_ukur->nama_kec; ?></td>
+                                              <td><?php echo $surat_ukur->nama_desa; ?></td>
+                                              <td><?php echo $surat_ukur->nomor; ?></td>
+                                              <td><?php echo $surat_ukur->tahun; ?></td>
+                                              <td><?php echo $surat_ukur->nama_jenis_hak; ?></td>
+                                              <td><?php echo $surat_ukur->no_hak; ?></td>
+                                              <td> <a href="<?php echo base_url(); ?>surat_ukur/detail_surat_ukur/<?php echo $surat_ukur->id_surat_ukur; ?>" class="waves-effect waves-light btn  orange">Detail</a></td>
                                           </tr>
                                           <?php
                                           }

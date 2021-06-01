@@ -11,22 +11,56 @@ class Warkah extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->library('session');
 			$this->load->database();
-			// $this->load->model('M_Login');
-			// $admin=$this->session->userdata('admin');
+			$this->load->helper('string');
+			$this->load->model('M_provinsi');
+			$this->load->model('M_kondisi');
+			$this->load->model('M_surat_ukur');
+			$this->load->model('M_buku_tanah');
+			$this->load->model('M_warkah');
 	}
-	public function index()
-	{
-		// $data['proses_data'] = $this->M_lapor->proses();
-		// $this->load->view('admin_beranda',$data);
-		$this->load->view('data_warkah');
+	public function index(){
+		$data['data_provinsi'] = $this->M_provinsi->lihat();
+		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
+		$data['data_kondisi'] = $this->M_kondisi->lihat();
+		$data['desa_tabel'] = $this->M_provinsi->data_desa_warkah();
+		$this->load->view('data_warkah',$data);
 	}
-	public function data_peminjaman()
+	public function tambah()
 	{
-		// $data['proses_data'] = $this->M_lapor->proses();
-		// $this->load->view('admin_beranda',$data);
-		$this->load->view('data_peminjaman');
+		$id_bundel = $this->input->post('id_bundel');
+		$id_buku_tanah = $this->input->post('id_buku_tanah');
+		$sql="SELECT COUNT(id_bundel) as jumlah FROM `bundel` WHERE id_bundel='$id_bundel'";
+		$query = $this->db->query($sql);
+		$data=$query->result();
+		foreach ($data as $isi) {
+		$data = array(
+				 'jumlah'  => $isi->jumlah,
+			 );
+		 }
+		if($data['jumlah']!=0){
+			$id=random_string('alnum',20);
+			$id_warkah=$id;
+			$cek= $this->M_warkah->add($id_warkah,$id_buku_tanah);
+
+		if($cek>0){
+					if(!empty($id_buku_tanah)){
+						echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."buku_tanah/detail_buku_tanah/".$id_buku_tanah."';</script>");
+					}else{
+						echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan, Tetapi Belum Link Buku Tanah');window.location.href='".base_url()."datawarkah';</script>");
+					}
+			}else{
+					echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."datawarkah';</script>");
+			}
+		}else{
+					echo ("<script LANGUAGE='JavaScript'>window.alert('Bundel Tidak Ditemukan');window.location.href='".base_url()."datawarkah';</script>");
+		}
 	}
 
+	public function detail_warkah_desa(){
+		$kode_desa=$this->uri->segment('3');
+		$data['data_warkah'] = $this->M_warkah->data_warkah_desa($kode_desa);
+		$this->load->view('detail_warkah_desa',$data);
+	}
 
 
 }

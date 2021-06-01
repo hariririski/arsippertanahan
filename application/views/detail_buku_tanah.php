@@ -252,15 +252,36 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                  <?php
+                                                    $i=0;
+                                                    foreach($data_warkah_bt as $warkah){
+                                                    $i++;
+                                                  ?>
                                                     <tr>
-                                                        <td>Alvin</td>
-                                                        <td>Eclair</td>
-                                                        <td>$0.87</td>
-                                                        <td>$0.87</td>
-                                                        <td>$0.87</td>
-                                                        <td>$0.87</td>
-                                                        <td>$0.87</td>
+                                                        <td style="color: #000000"><?php echo $i; ?></td>
+                                                        <td style="color: #000000"><?php echo $warkah->nomor; ?></td>
+                                                        <td style="color: #000000"><?php echo $warkah->tahun; ?></td>
+                                                        <td style="color: #000000"><?php echo $warkah->nama_desa; ?></td>
+                                                        <td style="color: #000000"><?php echo $warkah->nama_kondisi; ?></td>
+                                                        <td style="color: #000000"><?php echo $warkah->nama_lemari; ?> - <?php echo $warkah->nama_baris; ?> <?php echo $warkah->nama_bundel; ?></td>
+                                                        <td>
+                                                          <?php
+                                                          if($warkah->status==0){
+                                                              echo '<span class="label label-success">Tersedia</span>';
+                                                            }else if($warkah->status==1){
+                                                              echo '<span class="label label-info">Di Pinjam</span>';
+                                                              echo '<a href="#" class="waves-effect waves-light btn green right  "> lihat Peminjaman</a>';
+                                                            }else if($warkah->status==2){
+                                                              echo '<span class="label label-warning">Belum Disusun</span>';
+                                                            }else if($warkah->status==3){
+                                                                echo '<span class="label label-danger">Hilang</span>';
+                                                            }
+                                                          ?>
+                                                        </td>
                                                     </tr>
+                                                    <?php
+                                                    }
+                                                    ?>
 
                                                 </tbody>
                                             </table>
@@ -309,7 +330,7 @@
                                               </div>
                                           </div>
                                           <div class="divider"></div>
-                                          
+
                                       </form>
                                   </div>
                               </div>

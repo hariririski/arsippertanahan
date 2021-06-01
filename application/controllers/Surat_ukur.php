@@ -61,6 +61,13 @@ class Surat_ukur extends CI_Controller {
 		}
 	}
 
+	public function detail_surat_ukur_desa()
+	{
+		$kode_desa=$this->uri->segment('3');
+		$data['data_surat_ukur'] = $this->M_surat_ukur->data_surat_ukur_desa($kode_desa);
+		$this->load->view('detail_surat_ukur_desa',$data);
+	}
+
 
 
 }

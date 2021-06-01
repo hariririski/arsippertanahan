@@ -118,7 +118,7 @@
                                   </div>
                                   <hr></hr>
                                   <h5>Link Buku Tanah (Jika ada)</h5>
-                                  
+
                                   <div class="row">
                                       <div class="input-field col s12">
                                         <select class="browser-default"  id="buku_tanah" name="id_buku_tanah" >
@@ -165,7 +165,7 @@
                                               <td  style="color: #000000;"><?php echo $i;?></td>
                                               <td  style="color: #000000;"><?php echo $desa->nama_kec; ?></td>
                                               <td  style="color: #000000;"><?php echo $desa->nama_desa; ?></td>
-                                              <td  style="color: #000000;"><a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah_desa/<?php echo $desa->kode_desa; ?>"><?php echo $desa->jumlah; ?></a></td>
+                                              <td  style="color: #000000;"><a href="<?php echo base_url(); ?>surat_ukur/detail_surat_ukur_desa/<?php echo $desa->kode_desa; ?>"><?php echo $desa->jumlah; ?></a></td>
                                           </tr>
                                           <?php
                                           }
@@ -218,7 +218,7 @@
         $('#desasu').change(function(){
           var id=$(this).val();
           $.ajax({
-            url : "<?php echo base_url();?>buku_tanah/getBukuTanah",
+            url : "<?php echo base_url();?>buku_tanah/getBukuTanahSuratUkur",
             method : "GET",
             data : {id: id},
             async : true,

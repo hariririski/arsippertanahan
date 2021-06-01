@@ -39,6 +39,7 @@ class Buku_tanah extends CI_Controller {
 		$id_buku_tanah=$this->uri->segment('3');
 		$data['data_buku_tanah'] = $this->M_buku_tanah->detail_buku_tanah($id_buku_tanah);
 		$data['data_su_bt'] = $this->M_buku_tanah->detail_su_bt($id_buku_tanah);
+		$data['data_warkah_bt'] = $this->M_buku_tanah->detail_warkah_bt($id_buku_tanah);
 		$this->load->view('detail_buku_tanah',$data);
 	}
 
@@ -78,9 +79,14 @@ class Buku_tanah extends CI_Controller {
 		$this->load->view('data_buku_tanah',$data);
 	}
 
-	function getBukuTanah(){
+	function getBukuTanahSuratUkur(){
         $id=$this->input->get('id');
-        $data=$this->M_buku_tanah->getBukuTanah($id);
+        $data=$this->M_buku_tanah->getBukuTanahSuratUkur($id);
+        echo json_encode($data);
+  }
+	function getBukuTanahWarkah(){
+        $id=$this->input->get('id');
+        $data=$this->M_buku_tanah->getBukuTanahWarkah($id);
         echo json_encode($data);
   }
 
