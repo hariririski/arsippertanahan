@@ -10,7 +10,7 @@
     <link href="dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
     <link href="dist/css/pages/authentication.css" rel="stylesheet">
-    
+
 </head>
 
 <body>
@@ -32,14 +32,14 @@
         <!-- ============================================================== -->
         <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(assets/images/big/auth-bg2.jpg) no-repeat left center;">
             <div class="container">
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col s12 l8 m6 demo-text">
                         <span class="db"><img src="assets/images/logo-icon.png" alt="logo" /></span>
                         <span class="db"><img src="assets/images/logo-text.png" alt="logo" /></span>
                         <h1 class="font-light m-t-40">Welcome to the <span class="font-medium black-text">Material Admin</span></h1>
 
                     </div>
-                </div>
+                </div> -->
                 <div class="auth-box auth-sidebar">
                     <div id="loginform">
                         <div class="p-l-10">

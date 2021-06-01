@@ -36,10 +36,6 @@ foreach($g1_warkah as $warkah){
   $i++;
 }
 
-
-
-print_r($jumlah_kondisi);
-
 ?>
 <script type="text/javascript">
 $(function() {
