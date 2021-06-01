@@ -30,7 +30,7 @@
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(assets/images/big/auth-bg2.jpg) no-repeat left center;">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(assets/images/big/bg.jpg) no-repeat left center;">
             <div class="container">
                 <!-- <div class="row">
                     <div class="col s12 l8 m6 demo-text">
