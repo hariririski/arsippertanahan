@@ -158,10 +158,10 @@
                                           $i++;
                                         ?>
                                           <tr class="gradeX">
-                                              <td><?php echo $i;?></td>
-                                              <td><?php echo $desa->nama_kec; ?></td>
-                                              <td><?php echo $desa->nama_desa; ?></td>
-                                              <td><a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah_desa/<?php echo $desa->kode_desa; ?>"><?php echo $desa->jumlah_hak; ?></a></td>
+                                              <td  style="color: #000000;"><?php echo $i;?></td>
+                                              <td  style="color: #000000;"><?php echo $desa->nama_kec; ?></td>
+                                              <td  style="color: #000000;"><?php echo $desa->nama_desa; ?></td>
+                                              <td  style="color: #000000;"><a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah_desa/<?php echo $desa->kode_desa; ?>"><?php echo $desa->jumlah_hak; ?></a></td>
 
                                           </tr>
                                           <?php

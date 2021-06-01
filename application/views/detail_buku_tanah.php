@@ -189,29 +189,43 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                              <?php
+                                                $i=0;
+                                                foreach($data_su_bt as $su){
+                                                $i++;
+                                              ?>
                                                 <tr>
-                                                    <td>Alvin</td>
-                                                    <td>Eclair</td>
-                                                    <td>$0.87</td>
-                                                    <td>$0.87</td>
-                                                    <td>$0.87</td>
-                                                    <td>$0.87</td>
-                                                    <td>$0.87</td>
-                                                    <td>$0.87</td>
+                                                    <td style="color: #000000"><?php echo $i; ?></td>
+                                                    <td style="color: #000000"><?php echo $su->nomor; ?></td>
+                                                    <td style="color: #000000"><?php echo $su->tahun; ?></td>
+                                                    <td style="color: #000000"><?php echo $su->nib; ?></td>
+                                                    <td style="color: #000000"><?php echo $su->nama_desa; ?></td>
+                                                    <td style="color: #000000"><?php echo $su->nama_kondisi; ?></td>
+                                                    <td style="color: #000000"><?php echo $su->nama_lemari; ?> - <?php echo $su->nama_baris; ?> <?php echo $su->nama_bundel; ?></td>
+                                                    <td>
+                                                      <?php
+                                                      if($su->status==0){
+                                                          echo '<span class="label label-success">Tersedia</span>';
+                                                        }else if($su->status==1){
+                                                          echo '<span class="label label-info">Di Pinjam</span>';
+                                                          echo '<a href="#" class="waves-effect waves-light btn green right  "> lihat Peminjaman</a>';
+                                                        }else if($su->status==2){
+                                                          echo '<span class="label label-warning">Belum Disusun</span>';
+                                                        }else if($su->status==3){
+                                                            echo '<span class="label label-danger">Hilang</span>';
+                                                        }
+                                                      ?>
+                                                    </td>
                                                 </tr>
+                                                <?php
+                                                }
+                                                ?>
 
                                             </tbody>
                                         </table>
                                       </div>
                                   </div>
-                                  <div class="divider"></div>
-                                  <div class="card-content">
-                                      <div class="form-action">
-                                          <button class="btn cyan waves-effect waves-light" type="submit" name="action">Tambah Surat Ukur
-                                          </button>
-
-                                      </div>
-                                  </div>
+                                  <div class="divider"></div
                               </form>
                           </div>
                       </div>

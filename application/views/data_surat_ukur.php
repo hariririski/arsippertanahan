@@ -57,11 +57,11 @@
                           <div class="card-content">
 
                               <h5 class="card-title activator">Tambah Surat Ukur<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
-                              <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>buku_tanah/tambah" method="post" enctype="multipart/form-data">
+                              <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>surat_ukur/tambah" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                       <div class="input-field col s12">
                                         <i class="material-icons prefix">chrome_reader_mode</i>
-                                        <select required name="kode_desa">
+                                        <select required id="desasu" name="kode_desa">
                                           <option value="" disabled selected>Pilih Desa</option>
                                           <?php
                                             foreach($data_desa as $data_desa){
@@ -74,7 +74,7 @@
                                   <div class="row">
                                       <div class="input-field col s12">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
-                                          <input   type="text" required name="nomor_hak" autofocus >
+                                          <input   type="text" required name="no_su" autofocus >
                                           <label for="uname">Nomor Surat Ukur *</label>
                                           <div class="errorTxt1"></div>
                                       </div>
@@ -82,7 +82,7 @@
                                   <div class="row">
                                       <div class="input-field col s12">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
-                                          <input   type="text" required name="nomor_hak" autofocus >
+                                          <input   type="text" required name="tahun" autofocus >
                                           <label for="uname">Tahun Surat Ukur*</label>
                                           <div class="errorTxt1"></div>
                                       </div>
@@ -118,42 +118,11 @@
                                   </div>
                                   <hr></hr>
                                   <h5>Link Buku Tanah (Jika ada)</h5>
-                                  <div class="row">
-                                    <div class="input-field col s2">
-                                      <select class="browser-default" required id="provinsi" name="id_prov">
-                                        <option value="" disabled selected>Pilih Provinsi</option>
-                                        <?php
-                                        foreach($data_provinsi as $data_provinsi){
-                                          ?>
-                                          <option value="<?php echo $data_provinsi->kode_prov; ?>"><?php echo $data_provinsi->nama_prov; ?></option>
-                                        <?php } ?>
-                                      </select>
-                                    </div>
-
-                                    <div class="input-field col s2">
-                                      <select class="browser-default" id="kota" name="id_kota">
-                                        <option value="" disabled selected>Pilihan Belum Tersedia</option>
-
-                                      </select>
-                                    </div>
-                                    <div class="input-field col s4">
-                                      <select class="browser-default" required id="kec" name="id_kec" class="getKec">
-                                        <option value="" disabled selected>Pilihan Belum Tersedia</option>
-
-                                      </select>
-                                    </div>
-
-                                    <div class="input-field col s4">
-                                      <select class="browser-default" required id="desa" name="desa" >
-                                        <option value="" disabled selected>Pilihan Belum Tersedia</option>
-
-                                      </select>
-                                    </div>
-                                  </div>
+                                  
                                   <div class="row">
                                       <div class="input-field col s12">
-                                        <select class="browser-default" required id="buku_tanah" name="$id_buku_tanah" >
-                                          <option value="" disabled selected>Pilihan Buku Tanah</option>
+                                        <select class="browser-default"  id="buku_tanah" name="id_buku_tanah" >
+                                          <option value="" disabled selected>Pilihan Belum Tersedia</option>
 
                                         </select>
                                       </div>
@@ -182,25 +151,24 @@
                                               <th>#</th>
                                               <th>Kecamatan</th>
                                               <th>Desa</th>
-                                              <th>Total Hak</th>
+                                              <th>Total Surat Ukur</th>
 
                                           </tr>
                                       </thead>
                                       <tbody>
                                         <?php
-                                          // $i=0;
-                                          // foreach($desa_tabel as $desa){
-                                          // $i++;
+                                          $i=0;
+                                          foreach($desa_tabel as $desa){
+                                          $i++;
                                         ?>
                                           <tr class="gradeX">
-                                              <td><?php// echo $i;?></td>
-                                              <td><?php //echo $desa->nama_kec; ?></td>
-                                              <td><?php //echo $desa->nama_kec; ?></td>
-                                              <td><?php //echo $desa->nama_kec; ?></td>
-
+                                              <td  style="color: #000000;"><?php echo $i;?></td>
+                                              <td  style="color: #000000;"><?php echo $desa->nama_kec; ?></td>
+                                              <td  style="color: #000000;"><?php echo $desa->nama_desa; ?></td>
+                                              <td  style="color: #000000;"><a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah_desa/<?php echo $desa->kode_desa; ?>"><?php echo $desa->jumlah; ?></a></td>
                                           </tr>
                                           <?php
-                                          //}
+                                          }
                                           ?>
                                       </tbody>
                                   </table>
@@ -244,82 +212,10 @@
         $('#editable-datatable').DataTable();
     });
     </script>
-    <!-- <script src="dist/js/jquery-3.3.1.js"></script> -->
+
     <script type="text/javascript">
       $(document).ready(function(){
-        $('#provinsi').change(function(){
-          var id=$(this).val();
-          $.ajax({
-            url : "<?php echo base_url();?>provinsi/getKota",
-            method : "GET",
-            data : {id: id},
-
-            dataType : 'json',
-            success: function(data){
-              var html = '';
-              var i;
-              html += '<select class="input-field col s12"><option value="" >Pilih Kota</option>';
-              for(i=0; i<data.length; i++){
-                html += '<option value="'+data[i].kode_kota+'">'+data[i].nama_kota+'</option>';
-              }
-              $('#kota').html(html);
-
-            }
-          });
-        });
-      });
-    </script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('#kota').change(function(){
-          var id=$(this).val();
-          $.ajax({
-            url : "<?php echo base_url();?>provinsi/getKec",
-            method : "GET",
-            data : {id: id},
-            async : true,
-            dataType : 'json',
-            success: function(data){
-              var html = '';
-              var i;
-              html += '<option value="">Pilih Kecamatan</option>';
-              for(i=0; i<data.length; i++){
-                html += '<option value="'+data[i].kode_kec+'">'+data[i].nama_kec+'</option>';
-              }
-              $('#kec').html(html);
-
-            }
-          });
-        });
-      });
-    </script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('#kec').change(function(){
-          var id=$(this).val();
-          $.ajax({
-            url : "<?php echo base_url();?>provinsi/getDesa",
-            method : "GET",
-            data : {id: id},
-            async : true,
-            dataType : 'json',
-            success: function(data){
-              var html = '';
-              var i;
-              html += '<option value="">Pilih Desa</option>';
-              for(i=0; i<data.length; i++){
-                html += '<option value="'+data[i].kode_desa+'">'+data[i].nama_desa+'</option>';
-              }
-              $('#desa').html(html);
-
-            }
-          });
-        });
-      });
-    </script>
-    <script type="text/javascript">
-      $(document).ready(function(){
-        $('#desa').change(function(){
+        $('#desasu').change(function(){
           var id=$(this).val();
           $.ajax({
             url : "<?php echo base_url();?>buku_tanah/getBukuTanah",

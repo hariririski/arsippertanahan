@@ -38,6 +38,7 @@ class Buku_tanah extends CI_Controller {
 	{
 		$id_buku_tanah=$this->uri->segment('3');
 		$data['data_buku_tanah'] = $this->M_buku_tanah->detail_buku_tanah($id_buku_tanah);
+		$data['data_su_bt'] = $this->M_buku_tanah->detail_su_bt($id_buku_tanah);
 		$this->load->view('detail_buku_tanah',$data);
 	}
 
@@ -57,7 +58,7 @@ class Buku_tanah extends CI_Controller {
 			$id_buku_tanah=$id;
 			$cek= $this->M_buku_tanah->add($id_buku_tanah);
 			if($cek>0){
-					echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."detailbukutanah?id=".$id_buku_tanah."';</script>");
+					echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."buku_tanah/detail_buku_tanah/".$id_buku_tanah."';</script>");
 			}else{
 					echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."databukutanah';</script>");
 		 	}

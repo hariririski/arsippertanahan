@@ -142,6 +142,10 @@
         $query=$this->db->query("SELECT kec.nama_kec, desa.id_desa, desa.nama_desa, desa.kode_desa, COUNT(buku_tanah.kode_desa) as jumlah_hak FROM kec INNER JOIN desa on desa.kode_kec=kec.kode_kec LEFT JOIN buku_tanah on buku_tanah.kode_desa=desa.kode_desa GROUP BY desa.kode_desa ORDER BY kec.id_kec");
         return $query->result();
       }
+      function data_desa_surat_ukur(){
+        $query=$this->db->query("SELECT kec.nama_kec, desa.id_desa, desa.nama_desa, desa.kode_desa, COUNT(surat_ukur.kode_desa) as jumlah FROM kec INNER JOIN desa on desa.kode_kec=kec.kode_kec LEFT JOIN surat_ukur on surat_ukur.kode_desa=desa.kode_desa GROUP BY desa.kode_desa ORDER BY kec.id_kec");
+        return $query->result();
+      }
 
 }
 
