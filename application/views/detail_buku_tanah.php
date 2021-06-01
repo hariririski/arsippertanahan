@@ -267,12 +267,7 @@
                                           </div>
                                       </div>
                                       <div class="divider"></div>
-                                      <div class="card-content">
-                                          <div class="form-action">
-                                              <button class="btn cyan waves-effect waves-light" type="submit" name="action">Tambah Data Warkah
-                                              </button>
-                                          </div>
-                                      </div>
+
                                   </form>
                               </div>
                           </div>
@@ -314,12 +309,7 @@
                                               </div>
                                           </div>
                                           <div class="divider"></div>
-                                          <div class="card-content">
-                                              <div class="form-action">
-                                                  <button class="btn cyan waves-effect waves-light" type="submit" name="action">Tambah Data Warkah
-                                                  </button>
-                                              </div>
-                                          </div>
+                                          
                                       </form>
                                   </div>
                               </div>
