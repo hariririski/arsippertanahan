@@ -52,10 +52,10 @@
             <!-- ============================================================== -->
             <div class="container-fluid">
                 <div class="row">
-                  <div class="col s12 l4">
+                  <div class="col s12 18">
                       <div class="card x-small">
                           <div class="card-content">
-                              <h5 class="card-title activator">File Input<i class="material-icons right tooltipped" data-position="left" data-delay="50" data-tooltip="Get Code">more_vert</i></h5>
+                              <h5 class="card-title activator">Upload CSV Buku Tanah dan Surat Ukur<i class="material-icons right tooltipped" data-position="left" data-delay="50" data-tooltip="Get Code">more_vert</i></h5>
                               <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>uploadcsv/bukutanah" method="post" enctype="multipart/form-data">
                                 <div class="row">
                                   <div class="file-field input-field">
