@@ -76,6 +76,7 @@ $route['databukutanah'] = 'Buku_tanah';
 // $route['bukutanah'] = 'Buku_tanah/buku_tanah';
 $route['datasuratukur'] = 'Surat_ukur';
 $route['datawarkah'] = 'Warkah';
+$route['uploadcsv'] = 'Uploadcsv';
 $route['profil'] = 'Admin/profil';
 
 $route['404_override'] = 'Rusak';

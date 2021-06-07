@@ -125,14 +125,16 @@
                                                 <b>
                                                   <?php
                                                   if($buku_tanah->status==0){
-                                                      echo '<span class="label label-success">Tersedia</span>';
+                                                      echo '<span class="label label-success">Belum Di Tentukan</span>';
                                                     }else if($buku_tanah->status==1){
+                                                      echo '<span class="label label-success">Tersedia</span>';
+                                                    }else if($buku_tanah->status==2){
                                                       echo '<span class="label label-info">Di Pinjam</span>';
                                                       echo '<br></br>';
                                                       echo '<a href="#" class="waves-effect waves-light btn green right  "> lihat Peminjaman</a>';
-                                                    }else if($buku_tanah->status==2){
-                                                      echo '<span class="label label-warning">Belum Disusun</span>';
                                                     }else if($buku_tanah->status==3){
+                                                      echo '<span class="label label-warning">Belum Disusun</span>';
+                                                    }else if($buku_tanah->status==4){
                                                         echo '<span class="label label-danger">Hilang</span>';
                                                     }
                                                   ?>
@@ -205,16 +207,20 @@
                                                     <td>
                                                       <?php
                                                       if($su->status==0){
-                                                          echo '<span class="label label-success">Tersedia</span>';
+                                                          echo '<span class="label label-success">Belum Di Tentukan</span>';
                                                         }else if($su->status==1){
-                                                          echo '<span class="label label-info">Di Pinjam</span>';
-                                                          echo '<a href="#" class="waves-effect waves-light btn green right  "> lihat Peminjaman</a>';
+                                                          echo '<span class="label label-success">Tersedia</span>';
                                                         }else if($su->status==2){
-                                                          echo '<span class="label label-warning">Belum Disusun</span>';
+                                                          echo '<span class="label label-info">Di Pinjam</span>';
+                                                          echo '<br></br>';
+                                                          echo '<a href="#" class="waves-effect waves-light btn green right  "> lihat Peminjaman</a>';
                                                         }else if($su->status==3){
+                                                          echo '<span class="label label-warning">Belum Disusun</span>';
+                                                        }else if($su->status==4){
                                                             echo '<span class="label label-danger">Hilang</span>';
                                                         }
                                                       ?>
+                                                      
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -267,13 +273,16 @@
                                                         <td>
                                                           <?php
                                                           if($warkah->status==0){
-                                                              echo '<span class="label label-success">Tersedia</span>';
+                                                              echo '<span class="label label-success">Belum Di Tentukan</span>';
                                                             }else if($warkah->status==1){
-                                                              echo '<span class="label label-info">Di Pinjam</span>';
-                                                              echo '<a href="#" class="waves-effect waves-light btn green right  "> lihat Peminjaman</a>';
+                                                              echo '<span class="label label-success">Tersedia</span>';
                                                             }else if($warkah->status==2){
-                                                              echo '<span class="label label-warning">Belum Disusun</span>';
+                                                              echo '<span class="label label-info">Di Pinjam</span>';
+                                                              echo '<br></br>';
+                                                              echo '<a href="#" class="waves-effect waves-light btn green right  "> lihat Peminjaman</a>';
                                                             }else if($warkah->status==3){
+                                                              echo '<span class="label label-warning">Belum Disusun</span>';
+                                                            }else if($warkah->status==4){
                                                                 echo '<span class="label label-danger">Hilang</span>';
                                                             }
                                                           ?>
