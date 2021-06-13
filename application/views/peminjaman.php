@@ -61,16 +61,16 @@
                                     <li class="tab"><a href="#test19">Warkah</a></li>
                                 <li class="indicator" style="left: 0px; right: 538px;"></li></ul>
                                 <div id="test16" class="active" style="display: block;">
-                                  <form class="row">
+                                  <div class="row">
                                     <div class="input-field col s10">
-                                        <input  type="text" autofocus>
+                                        <input name="barcode" id="barcode" required type="text" autofocus>
                                         <label for="icon_prefix">Barcode Buku Tanah/ Surat Ukur / Warkah</label>
                                     </div>
 
                                     <div class="input-field col s2">
-                                      <button  class="waves-effect waves-light btn-large" type="submit" name="action"><i class="material-icons left">search</i>Cari</button>
+                                      <button  class="waves-effect waves-light btn-large" id="cari_barcode"><i class="material-icons left">search</i>Cari</button>
                                     </div>
-                                  </form>
+                                  </div>
                                 </div>
                                 <div id="test17" class="" style="display: none;">
                                     <div class="row">
@@ -162,11 +162,13 @@
                             <div class="card-content">
 
                                 <div class="table-responsive">
-                                    <table  id="mydata" class="table table-bordered nowrap display">
+                                    <table  class="table table-bordered striped">
                                         <thead>
                                             <tr>
                                                 <th>NO</th>
                                                 <th>Hak/SU/warkah</th>
+                                                <th>Layanan</th>
+                                                <th>Pilih</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -275,35 +277,16 @@
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
-    <script src="<?php echo base_url(); ?>assets/extra-libs/DataTables/datatables.min.js"></script>
+
     <script src="<?php echo base_url(); ?>assets/extra-libs/prism/prism.js"></script>
     <!-- start - This is for export functionality only -->
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
-    <script>
-    //=============================================//
-    //    File export                              //
-    //=============================================//
-    $('#file_export').DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
-    });
+
+
     </script>
       <script type="text/javascript">
     	$(document).ready(function(){
-    		tampil_data_pinjam();	//pemanggilan fungsi tampil barang.
-
-    		$('#mydata').dataTable();
-
-
-    		//fungsi tampil barang
+    		tampil_data_pinjam();	//pemanggilan fungsi tampil pinjam.
+    		//fungsi tampil pinjam
     		function tampil_data_pinjam(){
     		    $.ajax({
     		        type  : 'GET',
@@ -318,15 +301,29 @@
                       var barang="";
                       if(data[i].id_warkah!=null){
                         barang="W - "+data[i].w_nomor+"/"+data[i].w_tahun;
-                      }else if (data[i].id_bt!=null) {
+                      }else if (data[i].id_buku_tanah!=null) {
                         barang="BT - "+data[i].jenis_hak+" "+data[i].bt_hak+" - "+data[i].bt_desa;
-                      }else if (data[i].id_su!=null) {
+                      }else if (data[i].id_surat_ukur!=null) {
                         barang="BT - "+data[i].su_nomor+"/"+data[i].su_tahun+" - "+data[i].su_desa;
                       }
     		                html += '<tr>'+
       		                  		'<td>'+nomor+'</td>'+
       		                  		'<td>'+barang+'</td>'+
-    		                        '<td style="text-align:right;">'+
+      		                  		'<td>'+data[i].pelayanan+" "+data[i].durasi+'(Hari)</td>'+
+      		                  		'<td>'+
+                                '<div class="input-field col s12">'+
+                                  '<select id="layanan" onchange="changeAction(this)" class="layanan" required name="layanan" style="display: table;">'+
+                                      '<option value="" disabled selected>Pilih Layanan</option>'+
+                                      <?php
+                                      foreach($data_waktu as $waktu){
+                                        ?>
+                                        '<option value="<?php echo $waktu->id_waktu; ?>/'+data[i].id_pinjam+'"><?php echo $waktu->pelayanan; ?> (<?php echo $waktu->durasi; ?> Hari)</option>'+
+                                      <?php } ?>
+                                  '</select>'+
+                              '</div>'+
+
+                                '</td>'+
+    		                        '<td style="text-align:left;">'+
                                         '<a  class="btn btn-danger btn-xs item_hapus" data="'+data[i].id_pinjam+'">Hapus</a>'+
                                     '</td>'+
     		                        '</tr>';
@@ -338,31 +335,11 @@
     		    });
     		}
 
-
-    		//GET UPDATE
-    		$('#show_data').on('click','.item_edit',function(){
-                var id=$(this).attr('data');
-                $.ajax({
-                    type : "GET",
-                    url  : "<?php echo base_url('index.php/barang/get_barang')?>",
-                    dataType : "JSON",
-                    data : {id:id},
-                    success: function(data){
-                    	$.each(data,function(barang_kode, barang_nama, barang_harga){
-                        	$('#ModalaEdit').modal('show');
-                			$('[name="kobar_edit"]').val(data.barang_kode);
-                			$('[name="nabar_edit"]').val(data.barang_nama);
-                			$('[name="harga_edit"]').val(data.barang_harga);
-                		});
-                    }
-                });
-                return false;
-            });
-
             //initialize all modals
         $('.modal').modal({
             dismissible: true
         });
+
     		//GET HAPUS
     		$('#show_data').on('click','.item_hapus',function(){
                 var id=$(this).attr('data');
@@ -370,51 +347,43 @@
                 $('[name="kode"]').val(id);
             });
 
-    		//Simpan Barang
-    		$('#btn_simpan').on('click',function(){
-                var kobar=$('#kode_barang').val();
-                var nabar=$('#nama_barang').val();
-                var harga=$('#harga').val();
+    		//cari arsip
+    		$('#cari_barcode').on('click',function(){
+                var barcode=$('#barcode').val();
                 $.ajax({
                     type : "POST",
-                    url  : "<?php echo base_url('index.php/barang/simpan_barang')?>",
+                    url  : "<?php echo base_url('pinjam/cari_barcode')?>/<?php echo $this->uri->segment('3');?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
                     dataType : "JSON",
-                    data : {kobar:kobar , nabar:nabar, harga:harga},
-                    success: function(data){
-                        $('[name="kobar"]').val("");
-                        $('[name="nabar"]').val("");
-                        $('[name="harga"]').val("");
-                        $('#ModalaAdd').modal('hide');
-                        tampil_data_barang();
+                      success: function(data){
+                        if(data==null){
+                          //kosong
+                        }else if (data==0) {
+                          alert("Format Barcode Tidak Sesuai");
+                        }else if (data==1) {
+                          alert("Data Tidak Ditemukan");
+                        }else if (data==2) {
+                          alert("Buku Tanah Belum Lengkap");
+                        }else if (data==3) {
+                          alert("Buku Tanah Telah Di Input");
+                        }else if ($data==4) {
+                          alert("Buku Tanah Proses Peminjaman Atau Telah Di Pinjam");
+                        }else if ($data==5) {
+                          alert("Buku Tanah Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kebali Sebelum dilakukan Proses Peminjaman");
+                        }else if($data==6)
+                          alert("Buku Tanah Hilang");
+                        else{
+                          tampil_data_pinjam();
+                        }
+                        const inputField = document.getElementById("barcode");
+                        inputField.value = " ";
+                        document.getElementById("barcode").focus();
                     }
+
                 });
                 return false;
             });
 
-            //Update Barang
-    		$('#btn_update').on('click',function(){
-                var kobar=$('#kode_barang2').val();
-                var nabar=$('#nama_barang2').val();
-                var harga=$('#harga2').val();
-                $.ajax({
-                    type : "POST",
-                    url  : "<?php echo base_url('index.php/barang/update_barang')?>",
-                    dataType : "JSON",
-                    data : {kobar:kobar , nabar:nabar, harga:harga},
-                    success: function(data){
-                        $('[name="kobar_edit"]').val("");
-                        $('[name="nabar_edit"]').val("");
-                        $('[name="harga_edit"]').val("");
-                        $('#ModalaEdit').modal('hide');
-                        tampil_data_barang();
-                    }
-                });
-                return false;
-            });
-
-            //Hapus Barang
-
-
+          //Hapus list pinjam
             $('#btn_hapus').on('click',function(){
                 var kode=$('#textkode').val();
                 $.ajax({
@@ -429,6 +398,19 @@
                     });
                     return false;
                 });
+
+                changeAction = function(select){
+                   var id=document.getElementById("layanan").action = select.value;
+                   $.ajax({
+                     url : "<?php echo base_url();?>pinjam/update_layanan_pinjam/"+id,
+                     method : "POST",
+                     data : {id: id},
+                     async : true,
+                     dataType : 'json',
+                   });
+                   tampil_data_pinjam();
+                }
+
 
     	});
     </script>

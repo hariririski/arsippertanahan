@@ -97,8 +97,10 @@
                                             <th>Invoice</th>
                                             <th>Tanggal Pinjam</th>
                                             <th>Tanggal Kembali</th>
-                                            <th>Status</th>
-                                            <th width="40%">Aksi</th>
+                                            <th>Keterlambatan</th>
+                                            <th>Operator</th>
+                                            <th>Pegawai</th>
+                                            <th >Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -109,8 +111,13 @@
                                               $i++;
                                             ?>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $data->id_pinjam; ?></td>
+                                            <td><?php echo $data->invoice; ?></td>
                                             <td><?php echo $data->tgl_pinjam; ?></td>
+                                            <td><?php echo $data->tgl_pinjam; ?></td>
+                                            <td><?php echo $data->tgl_pinjam; ?></td>
+                                            <td><?php echo $data->admin_tambah; ?></td>
+                                            <td><?php echo $data->tgl_pinjam; ?></td>
+                                            <td><a class="waves-effect waves-light btn  orange" href="<?php echo base_url(); ?>pinjam/peminjaman/<?php echo $data->invoice; ?>">Detail</a></td>
 
                                         </tr>
                                         <?php } ?>

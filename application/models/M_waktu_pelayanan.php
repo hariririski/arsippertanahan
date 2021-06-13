@@ -5,6 +5,10 @@
         $query=$this->db->query("SELECT * FROM `waktu`");
         return $query->result();
       }
+      function lihat_aktif(){
+        $query=$this->db->query("SELECT * FROM `waktu` where aktif=1");
+        return $query->result();
+      }
 
       function add(){
         $id_waktu= $this->input->post('id_waktu');
