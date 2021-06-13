@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo $this->load->view('share/icon', '', TRUE);?>
     <title>Perminjaman Arsip Pertanahan</title>
-    <link href="dist/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
-    <link href="dist/css/pages/data-table.css" rel="stylesheet">
-    
+    <link href="<?php echo base_url(); ?>dist/css/pages/data-table.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -63,25 +63,95 @@
                                 <div id="test16" class="active" style="display: block;">
                                   <form class="row">
                                     <div class="input-field col s10">
-                                        <i class="material-icons prefix">account_circle</i>
-                                        <input id="icon_prefix" type="text" autofocus
-                                        <label for="icon_prefix">First Name</label>
+                                        <input  type="text" autofocus>
+                                        <label for="icon_prefix">Barcode Buku Tanah/ Surat Ukur / Warkah</label>
                                     </div>
 
                                     <div class="input-field col s2">
-                                        <button class="btn cyan waves-effect waves-light" type="submit" name="action">Cari</button>
-
+                                      <button  class="waves-effect waves-light btn-large" type="submit" name="action"><i class="material-icons left">search</i>Cari</button>
                                     </div>
                                   </form>
                                 </div>
                                 <div id="test17" class="" style="display: none;">
-                                    <p class="p-15 p-b-0">Another Tab content</p>
+                                    <div class="row">
+                                      <div class="input-field col s4">
+                                        <i class="material-icons prefix">chrome_reader_mode</i>
+                                        <select required name="kode_desa">
+                                          <option value="" disabled selected>Pilih Desa</option>
+                                          <?php
+                                          foreach($data_desa as $desa_bt){
+                                            ?>
+                                            <option value="<?php echo $desa_bt->kode_desa; ?>"><?php echo $desa_bt->nama_kec; ?> -- <?php echo $desa_bt->nama_desa; ?></option>
+                                          <?php } ?>
+                                        </select>
+                                      </div>
+
+                                      <div class="input-field col s3">
+                                        <i class="material-icons prefix">chrome_reader_mode</i>
+                                        <select required name="id_jenis_hak">
+                                          <option value="" disabled selected>Pilih Jenis Hak</option>
+                                          <?php
+                                          foreach($data_jenis_hak as $data_jenis_hak){
+                                            ?>
+                                            <option value="<?php echo $data_jenis_hak->id_jenis_hak; ?>"><?php echo $data_jenis_hak->id_jenis_hak; ?> - <?php echo $data_jenis_hak->nama_jenis_hak; ?></option>
+                                          <?php } ?>
+                                        </select>
+                                      </div>
+
+                                      <div class="input-field col s3">
+                                        <i class="material-icons prefix">chrome_reader_mode</i>
+                                        <input  type="text" >
+                                        <label for="icon_prefix">Nomor Hak</label>
+                                      </div>
+                                      <div class="input-field col s2">
+                                          <button  class="waves-effect waves-light btn-large" type="submit" name="action"><i class="material-icons left">search</i>Cari</button>
+                                      </div>
+                                    </div>
                                 </div>
                                 <div id="test18" style="display: none;">
-                                    <p class="p-15 p-b-0">Test 3</p>
+                                    <div class="row">
+                                      <div class="input-field col s4">
+                                        <i class="material-icons prefix">chrome_reader_mode</i>
+                                        <select required name="kode_desa">
+                                          <option value="" disabled selected>Pilih Desa</option>
+                                          <?php
+                                          foreach($data_desa as $desa_su){
+                                            ?>
+                                            <option value="<?php echo $desa_su->kode_desa; ?>"><?php echo $desa_su->nama_kec; ?> -- <?php echo $desa_su->nama_desa; ?></option>
+                                          <?php } ?>
+                                        </select>
+                                      </div>
+                                      <div class="input-field col s3">
+                                        <i class="material-icons prefix">chrome_reader_mode</i>
+                                        <input  type="text" >
+                                        <label for="icon_prefix">Nomor SU</label>
+                                      </div>
+                                      <div class="input-field col s3">
+                                        <i class="material-icons prefix">chrome_reader_mode</i>
+                                        <input  type="text" >
+                                        <label for="icon_prefix">Tahun</label>
+                                      </div>
+                                      <div class="input-field col s2">
+                                          <button  class="waves-effect waves-light btn-large" type="submit" name="action"><i class="material-icons left">search</i>Cari</button>
+                                      </div>
+                                    </div>
                                 </div>
                                 <div id="test19" style="display: none;">
-                                    <p class="p-15 p-b-0">Test 4</p>
+                                  <div class="row">
+                                    <div class="input-field col s6">
+                                      <i class="material-icons prefix">chrome_reader_mode</i>
+                                      <input  type="text" >
+                                      <label for="icon_prefix">Nomor warkah</label>
+                                    </div>
+                                    <div class="input-field col s4">
+                                      <i class="material-icons prefix">chrome_reader_mode</i>
+                                      <input  type="text" >
+                                      <label for="icon_prefix">Tahun</label>
+                                    </div>
+                                    <div class="input-field col s2">
+                                        <button  class="waves-effect waves-light btn-large" type="submit" name="action"><i class="material-icons left">search</i>Cari</button>
+                                    </div>
+                                  </div>
                                 </div>
                             </div>
                         </div>
@@ -90,557 +160,19 @@
                     <div class="col l8 s12">
                         <div class="card">
                             <div class="card-content">
-                                <div class="d-flex no-block align-items-center">
-                                    <h5 class="card-title">All Contacts</h5>
-                                    <div class="ml-auto">
-                                        <a class="waves-effect waves-light btn blue-grey darken-4 modal-trigger" href="#modal2">Create New Contact</a>
-                                    </div>
-                                </div>
+
                                 <div class="table-responsive">
-                                    <table id="file_export" class="table table-bordered nowrap display">
+                                    <table  id="mydata" class="table table-bordered nowrap display">
                                         <thead>
                                             <tr>
-                                                <th> </th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>Role</th>
-                                                <th>Age</th>
-                                                <th>Joining date</th>
-                                                <th>Salery</th>
+                                                <th>NO</th>
+                                                <th>Hak/SU/warkah</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/1.jpg" alt="user" class="circle" width="30px" /> Genelia Deshmukh</a>
-                                                </td>
-                                                <td>genelia@gmail.com</td>
-                                                <td>+123 456 789</td>
-                                                <td><span class="label label-danger">Designer</span> </td>
-                                                <td>23</td>
-                                                <td>12-10-2014</td>
-                                                <td>$1200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/2.jpg" alt="user" class="circle" width="30px" /> Arijit Singh</a>
-                                                </td>
-                                                <td>arijit@gmail.com</td>
-                                                <td>+234 456 789</td>
-                                                <td><span class="label label-info">Developer</span> </td>
-                                                <td>26</td>
-                                                <td>10-09-2014</td>
-                                                <td>$1800</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/3.jpg" alt="user" class="circle" width="30px" /> Govinda jalan</a>
-                                                </td>
-                                                <td>govinda@gmail.com</td>
-                                                <td>+345 456 789</td>
-                                                <td><span class="label label-success">Accountant</span></td>
-                                                <td>28</td>
-                                                <td>1-10-2013</td>
-                                                <td>$2200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/4.jpg" alt="user" class="circle" width="30px" /> Hritik Roshan</a>
-                                                </td>
-                                                <td>hritik@gmail.com</td>
-                                                <td>+456 456 789</td>
-                                                <td><span class="label label-inverse">HR</span></td>
-                                                <td>25</td>
-                                                <td>2-10-2017</td>
-                                                <td>$200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/5.jpg" alt="user" class="circle" width="30px" /> John Abraham</a>
-                                                </td>
-                                                <td>john@gmail.com</td>
-                                                <td>+567 456 789</td>
-                                                <td><span class="label label-danger">Manager</span></td>
-                                                <td>23</td>
-                                                <td>10-9-2015</td>
-                                                <td>$1200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/6.jpg" alt="user" class="circle" width="30px" /> Pawandeep kumar</a>
-                                                </td>
-                                                <td>pawandeep@gmail.com</td>
-                                                <td>+678 456 789</td>
-                                                <td><span class="label label-warning">Chairman</span></td>
-                                                <td>29</td>
-                                                <td>10-5-2013</td>
-                                                <td>$1500</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/7.jpg" alt="user" class="circle" width="30px" /> Ritesh Deshmukh</a>
-                                                </td>
-                                                <td>ritesh@gmail.com</td>
-                                                <td>+123 456 789</td>
-                                                <td><span class="label label-danger">Designer</span></td>
-                                                <td>35</td>
-                                                <td>05-10-2012</td>
-                                                <td>$3200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/8.jpg" alt="user" class="circle" width="30px" /> Salman Khan</a>
-                                                </td>
-                                                <td>salman@gmail.com</td>
-                                                <td>+234 456 789</td>
-                                                <td><span class="label label-info">Developer</span></td>
-                                                <td>27</td>
-                                                <td>11-10-2014</td>
-                                                <td>$1800</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/1.jpg" alt="user" class="circle" width="30px" /> Govinda jalan</a>
-                                                </td>
-                                                <td>govinda@gmail.com</td>
-                                                <td>+345 456 789</td>
-                                                <td><span class="label label-success">Accountant</span></td>
-                                                <td>18</td>
-                                                <td>12-5-2017</td>
-                                                <td>$100</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/2.jpg" alt="user" class="circle" width="30px" /> Sonu Nigam</a>
-                                                </td>
-                                                <td>sonu@gmail.com</td>
-                                                <td>+456 456 789</td>
-                                                <td><span class="label label-inverse">HR</span></td>
-                                                <td>36</td>
-                                                <td>18-5-2009</td>
-                                                <td>$4200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/3.jpg" alt="user" class="circle" width="30px" /> Varun Dhawan</a>
-                                                </td>
-                                                <td>varun@gmail.com</td>
-                                                <td>+567 456 789</td>
-                                                <td><span class="label label-danger">Manager</span></td>
-                                                <td>43</td>
-                                                <td>12-10-2010</td>
-                                                <td>$5200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/4.jpg" alt="user" class="circle" width="30px" /> Genelia Deshmukh</a>
-                                                </td>
-                                                <td>genelia@gmail.com</td>
-                                                <td>+123 456 789</td>
-                                                <td><span class="label label-danger">Designer</span> </td>
-                                                <td>23</td>
-                                                <td>12-10-2014</td>
-                                                <td>$1200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/5.jpg" alt="user" class="circle" width="30px" /> Arijit Singh</a>
-                                                </td>
-                                                <td>arijit@gmail.com</td>
-                                                <td>+234 456 789</td>
-                                                <td><span class="label label-info">Developer</span> </td>
-                                                <td>26</td>
-                                                <td>10-09-2014</td>
-                                                <td>$1800</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/6.jpg" alt="user" class="circle" width="30px" /> Govinda jalan</a>
-                                                </td>
-                                                <td>govinda@gmail.com</td>
-                                                <td>+345 456 789</td>
-                                                <td><span class="label label-success">Accountant</span></td>
-                                                <td>28</td>
-                                                <td>1-10-2013</td>
-                                                <td>$2200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/1.jpg" alt="user" class="circle" width="30px" /> Genelia Deshmukh</a>
-                                                </td>
-                                                <td>genelia@gmail.com</td>
-                                                <td>+123 456 789</td>
-                                                <td><span class="label label-danger">Designer</span> </td>
-                                                <td>23</td>
-                                                <td>12-10-2014</td>
-                                                <td>$1200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/2.jpg" alt="user" class="circle" width="30px" /> Arijit Singh</a>
-                                                </td>
-                                                <td>arijit@gmail.com</td>
-                                                <td>+234 456 789</td>
-                                                <td><span class="label label-info">Developer</span> </td>
-                                                <td>26</td>
-                                                <td>10-09-2014</td>
-                                                <td>$1800</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/3.jpg" alt="user" class="circle" width="30px" /> Govinda jalan</a>
-                                                </td>
-                                                <td>govinda@gmail.com</td>
-                                                <td>+345 456 789</td>
-                                                <td><span class="label label-success">Accountant</span></td>
-                                                <td>28</td>
-                                                <td>1-10-2013</td>
-                                                <td>$2200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/4.jpg" alt="user" class="circle" width="30px" /> Hritik Roshan</a>
-                                                </td>
-                                                <td>hritik@gmail.com</td>
-                                                <td>+456 456 789</td>
-                                                <td><span class="label label-inverse">HR</span></td>
-                                                <td>25</td>
-                                                <td>2-10-2017</td>
-                                                <td>$200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/5.jpg" alt="user" class="circle" width="30px" /> John Abraham</a>
-                                                </td>
-                                                <td>john@gmail.com</td>
-                                                <td>+567 456 789</td>
-                                                <td><span class="label label-danger">Manager</span></td>
-                                                <td>23</td>
-                                                <td>10-9-2015</td>
-                                                <td>$1200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/6.jpg" alt="user" class="circle" width="30px" /> Pawandeep kumar</a>
-                                                </td>
-                                                <td>pawandeep@gmail.com</td>
-                                                <td>+678 456 789</td>
-                                                <td><span class="label label-warning">Chairman</span></td>
-                                                <td>29</td>
-                                                <td>10-5-2013</td>
-                                                <td>$1500</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/7.jpg" alt="user" class="circle" width="30px" /> Ritesh Deshmukh</a>
-                                                </td>
-                                                <td>ritesh@gmail.com</td>
-                                                <td>+123 456 789</td>
-                                                <td><span class="label label-danger">Designer</span></td>
-                                                <td>35</td>
-                                                <td>05-10-2012</td>
-                                                <td>$3200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/8.jpg" alt="user" class="circle" width="30px" /> Salman Khan</a>
-                                                </td>
-                                                <td>salman@gmail.com</td>
-                                                <td>+234 456 789</td>
-                                                <td><span class="label label-info">Developer</span></td>
-                                                <td>27</td>
-                                                <td>11-10-2014</td>
-                                                <td>$1800</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/1.jpg" alt="user" class="circle" width="30px" /> Govinda jalan</a>
-                                                </td>
-                                                <td>govinda@gmail.com</td>
-                                                <td>+345 456 789</td>
-                                                <td><span class="label label-success">Accountant</span></td>
-                                                <td>18</td>
-                                                <td>12-5-2017</td>
-                                                <td>$100</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <p>
-                                                        <label class="m-l-15">
-                                                            <input type="checkbox" />
-                                                            <span></span>
-                                                        </label>
-                                                    </p>
-                                                </td>
-                                                <td>
-                                                    <a href="app-contact-detail.html"><img src="assets/images/users/2.jpg" alt="user" class="circle" width="30px" /> Sonu Nigam</a>
-                                                </td>
-                                                <td>sonu@gmail.com</td>
-                                                <td>+456 456 789</td>
-                                                <td><span class="label label-inverse">HR</span></td>
-                                                <td>36</td>
-                                                <td>18-5-2009</td>
-                                                <td>$4200</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-sm btn-icon btn-pure btn-outline delete-row-btn" data-toggle="tooltip" data-original-title="Delete"><i class="ti-close" aria-hidden="true"></i></button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
+                                        <tbody id="show_data">
+
+                                  			</tbody>
                                     </table>
                                 </div>
                             </div>
@@ -648,124 +180,77 @@
                     </div>
                     <div class="col l4 s12">
                         <div class="card">
+
                             <div class="card-content">
-                                <a href="#modal1" class="waves-effect waves-light btn indigo modal-trigger" style="width: 100%;"><i class="fas fa-share-alt-square m-r-10"></i>Share With</a>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="card-content">
-                                <div class="row">
-                                    <form class="col s12">
-                                        <div class="input-field">
-                                            <i class="material-icons prefix">search</i>
-                                            <input id="icon_prefix" type="text" class="validate">
-                                            <label for="icon_prefix">Search Contact Here</label>
-                                        </div>
-                                    </form>
+
+                                <div class="collection">
+                                    <a href="#!" class="collection-item active indigo"><i class="ti-layers m-r-10"></i>Data Invoice</a>
+                                    <a href="#!" class="collection-item"><?php echo $this->uri->segment('3');?></a>
+
                                 </div>
                                 <div class="collection">
-                                    <a href="#!" class="collection-item active indigo"><i class="ti-layers m-r-10"></i>All Contacts</a>
-                                    <a href="#!" class="collection-item"><i class="ti-star m-r-10"></i>Favourite Contacts</a>
-                                    <a href="#!" class="collection-item"><i class="ti-bookmark m-r-10"></i>Recently Created</a>
+                                    <a href="#!" class="collection-item active indigo"><i class="ti-layers m-r-10"></i>Data Pegawai</a>
+                                      <?php
+                                      foreach($data_pegawai as $pegawai){
+                                        ?>
+                                        <a href="#!" class="collection-item">
+                                          <?php echo $pegawai->nip; ?>
+                                        </a>
+                                        <a href="#!" class="collection-item">
+                                          <?php echo $pegawai->nama_lengkap; ?>
+                                        </a>
+                                        <a href="#!" class="collection-item">
+                                          <?php echo $pegawai->jabatan; ?>
+                                        </a>
+                                        <a href="#!" class="collection-item">
+                                          <?php
+                                            if($pegawai->jenis=1){
+                                              echo "ASN";
+                                            }elseif ($pegawai->jenis=2) {
+                                              echo "PPNPN";
+                                            }elseif ($pegawai->jenis=3) {
+                                              echo "ASK";
+                                            }
+                                          ?>
+                                        </a>
+
+                                      <?php } ?>
+
+
                                 </div>
-                                <h5 class="card-title m-t-30">Groups</h5>
-                                <div class="collection">
-                                    <a href="#!" class="collection-item"><i class="ti-flag-alt-2 m-r-10"></i>Success Warriers<span class="new badge red">40</span></a>
-                                    <a href="#!" class="collection-item"><i class="ti-notepad m-r-10"></i>Project<span class="new badge blue">14</span></a>
-                                    <a href="#!" class="collection-item"><i class="ti-target m-r-10"></i>Envato Author<span class="new badge indigo">114</span></a>
-                                    <a href="#!" class="collection-item"><i class="ti-comments m-r-10"></i>IT Friends<span class="new badge red">120</span></a>
-                                </div>
-                                <h5 class="card-title m-t-30">More</h5>
-                                <div class="collection">
-                                    <a href="#!" class="collection-item"><i class="ti-import m-r-10"></i>Import Contacts</a>
-                                    <a href="#!" class="collection-item"><i class="ti-export m-r-10"></i>Export Contacts</a>
-                                    <a href="#!" class="collection-item"><i class="ti-share-alt m-r-10"></i>Restore Contacts</a>
-                                    <a href="#!" class="collection-item"><i class="ti-layers-alt m-r-10"></i>Duplicate Contacts</a>
-                                    <a href="#!" class="collection-item"><i class="ti-trash m-r-10"></i>Delete All Contacts</a>
-                                </div>
+
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Share Modal Structure -->
+            <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
             <div id="modal1" class="modal">
                 <div class="modal-content">
-                    <h5 class="card-title"><i class="material-icons m-r-10">share</i>Share With</h5>
+                    <h5 class="card-title">Konfirmasi</h5>
                     <div class="row">
-                        <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s9">
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input id="icon_prefi2" type="text" class="validate">
-                                    <label for="icon_prefi2">Enter Name Here</label>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="col s3 center-align">
-                            <a href="#Whatsapp">
-                                <i class="display-6 fab fa-whatsapp green-text"></i><h6 class="m-t-15">Whatsapp</h6>
-                            </a>
-                        </div>
-                        <div class="col s3 center-align">
-                            <a href="#Facebook">
-                                <i class="display-6 fab fa-facebook-f blue-text"></i><h6 class="m-t-15">Facebook</h6>
-                            </a>
-                        </div>
-                        <div class="col s3 center-align">
-                            <a href="#Instagram">
-                                <i class="display-6 fab fa-instagram red-text"></i><h6 class="m-t-15">Instagram</h6>
-                            </a>
-                        </div>
-                        <div class="col s3 center-align">
-                            <a href="#Skype">
-                                <i class="display-6 fab fa-skype"></i><h6 class="m-t-15">Skype</h6>
-                            </a>
-                        </div>
+                      <input type="hidden" name="kode" id="textkode" value="">
+                      <div class="alert alert-warning"><p>Apakah Anda yakin mau memhapus barang ini?</p></div>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text"><i class="fas fa-share"></i> Send</a>
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="btn_hapus"><i class="fas fa-share"></i> Hapus</a>
                         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text">Cancel</a>
+
                     </div>
                 </div>
             </div>
+
             <!-- Create Modal Structure -->
-            <div id="modal2" class="modal">
-                <div class="modal-content">
-                    <h5 class="card-title"> <i class="fas fa-phone-square m-r-10"></i>New Contact</h5>
-                    <div class="row">
-                        <form class="col s12">
-                            <div class="row">
-                                <div class="input-field col s9">
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input id="icon_prefix" type="text" class="validate">
-                                    <label for="icon_prefix">Enter Name Here</label>
-                                </div>
-                                <div class="input-field col s9">
-                                    <i class="material-icons prefix">phone</i>
-                                    <input id="icon_telephone" type="tel" class="validate">
-                                    <label for="icon_telephone">Telephone</label>
-                                </div>
-                                <div class="file-field input-field col s9">
-                                    <div class="btn indigo">
-                                        <span>File</span>
-                                        <input type="file">
-                                    </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat indigo white-text"><i class="far fa-save m-r-10"></i> Save Contact</a>
-                </div>
-            </div>
+
+
             <!-- ============================================================== -->
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <?php echo $this->load->view('share/footer', '', TRUE);?>
+
+
         </div>
         <!-- ============================================================== -->
 
@@ -774,23 +259,24 @@
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="dist/js/materialize.min.js"></script>
-    <script src="assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/materialize.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
     <!-- ============================================================== -->
     <!-- Apps -->
     <!-- ============================================================== -->
-    <script src="dist/js/app.js"></script>
-    <script src="dist/js/app.init.horizontal.js"></script>
-    <script src="dist/js/app-style-switcher.horizontal.js"></script>
+
+    <script src="<?php echo base_url(); ?>dist/js/app.init.horizontal.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/app-style-switcher.horizontal.js"></script>
     <!-- ============================================================== -->
     <!-- Custom js -->
     <!-- ============================================================== -->
-    <script src="dist/js/custom.min.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/custom.min.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
-    <script src="assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/extra-libs/DataTables/datatables.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/extra-libs/prism/prism.js"></script>
     <!-- start - This is for export functionality only -->
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
@@ -810,6 +296,143 @@
         ]
     });
     </script>
+      <script type="text/javascript">
+    	$(document).ready(function(){
+    		tampil_data_pinjam();	//pemanggilan fungsi tampil barang.
+
+    		$('#mydata').dataTable();
+
+
+    		//fungsi tampil barang
+    		function tampil_data_pinjam(){
+    		    $.ajax({
+    		        type  : 'GET',
+    		        url   : '<?php echo base_url()?>pinjam/data_pinjam/<?php echo $this->uri->segment('3');?>',
+    		        async : true,
+    		        dataType : 'json',
+    		        success : function(data){
+    		            var html = '';
+    		            var i;
+    		            var nomor=1;
+    		            for(i=0; i<data.length; i++){
+                      var barang="";
+                      if(data[i].id_warkah!=null){
+                        barang="W - "+data[i].w_nomor+"/"+data[i].w_tahun;
+                      }else if (data[i].id_bt!=null) {
+                        barang="BT - "+data[i].jenis_hak+" "+data[i].bt_hak+" - "+data[i].bt_desa;
+                      }else if (data[i].id_su!=null) {
+                        barang="BT - "+data[i].su_nomor+"/"+data[i].su_tahun+" - "+data[i].su_desa;
+                      }
+    		                html += '<tr>'+
+      		                  		'<td>'+nomor+'</td>'+
+      		                  		'<td>'+barang+'</td>'+
+    		                        '<td style="text-align:right;">'+
+                                        '<a  class="btn btn-danger btn-xs item_hapus" data="'+data[i].id_pinjam+'">Hapus</a>'+
+                                    '</td>'+
+    		                        '</tr>';
+                        nomor++;
+    		            }
+    		            $('#show_data').html(html);
+    		        }
+
+    		    });
+    		}
+
+
+    		//GET UPDATE
+    		$('#show_data').on('click','.item_edit',function(){
+                var id=$(this).attr('data');
+                $.ajax({
+                    type : "GET",
+                    url  : "<?php echo base_url('index.php/barang/get_barang')?>",
+                    dataType : "JSON",
+                    data : {id:id},
+                    success: function(data){
+                    	$.each(data,function(barang_kode, barang_nama, barang_harga){
+                        	$('#ModalaEdit').modal('show');
+                			$('[name="kobar_edit"]').val(data.barang_kode);
+                			$('[name="nabar_edit"]').val(data.barang_nama);
+                			$('[name="harga_edit"]').val(data.barang_harga);
+                		});
+                    }
+                });
+                return false;
+            });
+
+            //initialize all modals
+        $('.modal').modal({
+            dismissible: true
+        });
+    		//GET HAPUS
+    		$('#show_data').on('click','.item_hapus',function(){
+                var id=$(this).attr('data');
+                $('#modal1').modal('open');
+                $('[name="kode"]').val(id);
+            });
+
+    		//Simpan Barang
+    		$('#btn_simpan').on('click',function(){
+                var kobar=$('#kode_barang').val();
+                var nabar=$('#nama_barang').val();
+                var harga=$('#harga').val();
+                $.ajax({
+                    type : "POST",
+                    url  : "<?php echo base_url('index.php/barang/simpan_barang')?>",
+                    dataType : "JSON",
+                    data : {kobar:kobar , nabar:nabar, harga:harga},
+                    success: function(data){
+                        $('[name="kobar"]').val("");
+                        $('[name="nabar"]').val("");
+                        $('[name="harga"]').val("");
+                        $('#ModalaAdd').modal('hide');
+                        tampil_data_barang();
+                    }
+                });
+                return false;
+            });
+
+            //Update Barang
+    		$('#btn_update').on('click',function(){
+                var kobar=$('#kode_barang2').val();
+                var nabar=$('#nama_barang2').val();
+                var harga=$('#harga2').val();
+                $.ajax({
+                    type : "POST",
+                    url  : "<?php echo base_url('index.php/barang/update_barang')?>",
+                    dataType : "JSON",
+                    data : {kobar:kobar , nabar:nabar, harga:harga},
+                    success: function(data){
+                        $('[name="kobar_edit"]').val("");
+                        $('[name="nabar_edit"]').val("");
+                        $('[name="harga_edit"]').val("");
+                        $('#ModalaEdit').modal('hide');
+                        tampil_data_barang();
+                    }
+                });
+                return false;
+            });
+
+            //Hapus Barang
+
+
+            $('#btn_hapus').on('click',function(){
+                var kode=$('#textkode').val();
+                $.ajax({
+                type : "POST",
+                url  : "<?php echo base_url()?>pinjam/hapus_list_pinjam/"+kode,
+                dataType : "JSON",
+                        data : {kode: kode},
+                        success: function(data){
+                            $('#modal1').modal('close');
+                            tampil_data_pinjam();
+                        }
+                    });
+                    return false;
+                });
+
+    	});
+    </script>
+      <script src="<?php echo base_url(); ?>dist/js/app.js"></script>
 </body>
 
 </html>

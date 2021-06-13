@@ -5,6 +5,14 @@
         $query=$this->db->query("SELECT * FROM `pegawai`");
         return $query->result();
       }
+      function lihat_nip($nip){
+        $query=$this->db->query("SELECT * FROM `pegawai` where nip='$nip'");
+        return $query->result();
+      }
+      function lihat_aktif(){
+        $query=$this->db->query("SELECT * FROM `pegawai` where aktif=1");
+        return $query->result();
+      }
       function add(){
         $nip= $this->input->post('nip');
         $nama_lengkap= $this->input->post('nama_lengkap');

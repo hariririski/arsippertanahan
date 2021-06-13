@@ -51,6 +51,41 @@
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <div class="container-fluid">
+              <div class="row">
+                  <div class="col s12 ">
+                      <div class="card">
+                          <div class="card-content">
+                              <h5 class="card-title activator">Tambah Data Provinsi<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
+                              <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>pinjam/tambah" method="post" enctype="multipart/form-data">
+                                  <div class="row">
+                                      <div class="input-field col s4">
+                                          <i class="material-icons prefix">chrome_reader_mode</i>
+                                          <input  name="admin" type="text" required value="<?php echo $this->session->userdata("nama_lengkap"); ?>">
+                                          <label for="uname">Petugas</label>
+                                          <div class="errorTxt1"></div>
+                                      </div>
+
+                                      <div class="input-field col s4">
+                                        <select required name="nip">
+                                          <option value="" disabled selected>Pilih Pegawai</option>
+                                          <?php
+                                            foreach($pegawai as $pegawai){
+                                          ?>
+                                            <option value="<?php echo $pegawai->nip; ?>"><?php echo $pegawai->nama_lengkap; ?></option>
+                                          <?php } ?>
+                                        </select>
+                                      </div>
+
+                                      <div class="input-field col s2">
+                                          <button class="btn cyan waves-effect waves-light right submit" type="submit" name="action">Pinjam</button>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
                 <div class="row">
                     <div class="col s12">
                         <div class="card">
@@ -59,9 +94,9 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Kode</th>
-                                            <th>Provinsi</th>
-                                            <th>QR Code</th>
+                                            <th>Invoice</th>
+                                            <th>Tanggal Pinjam</th>
+                                            <th>Tanggal Kembali</th>
                                             <th>Status</th>
                                             <th width="40%">Aksi</th>
                                         </tr>
@@ -70,47 +105,13 @@
                                         <tr>
                                             <?php
                                               $i=0;
-                                              foreach($data_provinsi as $data_provinsi){
+                                              foreach($data as $data){
                                               $i++;
                                             ?>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $data_provinsi->id_prov; ?></td>
-                                            <td><?php echo $data_provinsi->nama_prov; ?></td>
-                                            <td>
-                                              <center>
-                                              <a href="<?php echo site_url('Code/QRcode/'.$data_provinsi->qrcode); ?>">
-                                                  <img src="<?php echo base_url('Code/QRcode/'.$data_provinsi->qrcode);?>" width="30%"><br>
-                                              </a>
-                                              <?php echo $data_provinsi->nama_prov; ?>
-                                              </center>
-                                            </td>
-                                            <td>
-                                              <?php
-                                              if($data_provinsi->aktif==1){
-                                                        echo '<span class="label label-success">Aktif</span>';
-                                                      }
-                                                        else{
-                                                        echo '<span class="label label-danger">Tidak Aktif</span>';
-                                                      }
-                                              ?>
-                                            </td>
-                                            <td>
-                                              <a href="<?php echo base_url(); ?>datakota?prov=<?php echo $data_provinsi->kode_prov; ?>" class="waves-effect waves-light btn green">Kota</a>
-                                              <a class="waves-effect waves-light btn orange">Edit</a>
-                                              <?php
-                                              if($data_provinsi->aktif==1){
-                                              ?>
-                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_prov/<?php echo $data_provinsi->kode_prov; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Me Non-Aktifkan <?php echo $data_provinsi->nama_prov; ?>?')"/>Non Aktifkan</a>
-                                              <?php
-                                                }else{
-                                              ?>
-                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_prov/<?php echo $data_provinsi->kode_prov; ?>/1" class="waves-effect waves-light btn purple " onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_provinsi->nama_prov; ?>?')"/>Aktifkan</a>
-                                              <?php
-                                                  }
-                                              ?>
-                                              <a  href="<?php echo base_url(); ?>provinsi/aktif_prov/<?php echo $data_provinsi->kode_prov; ?>/" class="waves-effect waves-light btn indigo" >Cetak Barcode</a>
-                                              <a href="<?php echo base_url(); ?>provinsi/hapus_prov/<?php echo $data_provinsi->kode_prov; ?>" type="submit" class="waves-effect waves-light btn red" onclick="return confirm('Apakah Anda Ingin Menghapus Provinsi <?php echo $data_provinsi->nama_prov; ?>?')"/>Hapus </a>
-                                            </td>
+                                            <td><?php echo $data->id_pinjam; ?></td>
+                                            <td><?php echo $data->tgl_pinjam; ?></td>
+
                                         </tr>
                                         <?php } ?>
                                     </tbody>
