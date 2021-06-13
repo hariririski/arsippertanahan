@@ -188,7 +188,6 @@
                                 <div class="collection">
                                     <a href="#!" class="collection-item active indigo"><i class="ti-layers m-r-10"></i>Data Invoice</a>
                                     <a href="#!" class="collection-item"><?php echo $this->uri->segment('3');?></a>
-
                                 </div>
                                 <div class="collection">
                                     <a href="#!" class="collection-item active indigo"><i class="ti-layers m-r-10"></i>Data Pegawai</a>
@@ -220,7 +219,10 @@
 
 
                                 </div>
-
+                                <div class="collection">
+                                    <button  class="waves-effect waves-light btn-large btn  green" type="submit" name="action"><i class="material-icons left">assignment_turned_in</i>Simpan</button>
+                                    <button  class="waves-effect waves-light btn-large right btn  red" type="submit" name="action"><i class="material-icons left">delete_forever</i>Batal</button>
+                                </div>
 
                             </div>
                         </div>

@@ -113,7 +113,7 @@
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $data->invoice; ?></td>
                                             <td><?php echo $data->tgl_pinjam; ?></td>
-                                            <td><?php echo $data->tgl_pinjam; ?></td>
+                                            <td><?php echo $data->tgl_kembali; ?></td>
                                             <td><?php echo $data->tgl_pinjam; ?></td>
                                             <td><?php echo $data->admin_tambah; ?></td>
                                             <td><?php echo $data->tgl_pinjam; ?></td>

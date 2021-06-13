@@ -2,7 +2,7 @@
     class M_pinjam extends CI_Model{
 
       function data(){
-        $query=$this->db->query("SELECT * FROM `pinjam`");
+        $query=$this->db->query("SELECT * FROM `pinjam` WHERE pinjam.id_buku_tanah IS null and pinjam.id_surat_ukur IS null and pinjam.id_warkah IS NULL");
         return $query->result();
       }
 
