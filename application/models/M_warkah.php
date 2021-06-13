@@ -19,6 +19,11 @@
         return $query->result();
       }
 
+      function ubah_status($id_warkah,$status){
+        $query=$this->db->query("UPDATE `warkah` SET `status`=$status WHERE id_warkah='$id_warkah'");
+        return $query;
+      }
+
 
 
 }

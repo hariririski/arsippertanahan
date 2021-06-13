@@ -61,16 +61,16 @@
                                     <li class="tab"><a href="#test19">Warkah</a></li>
                                 <li class="indicator" style="left: 0px; right: 538px;"></li></ul>
                                 <div id="test16" class="active" style="display: block;">
-                                  <div class="row">
+                                  <form class="row" action="javascript:cari_barcode()">
                                     <div class="input-field col s10">
                                         <input name="barcode" id="barcode" required type="text" autofocus>
                                         <label for="icon_prefix">Barcode Buku Tanah/ Surat Ukur / Warkah</label>
                                     </div>
 
                                     <div class="input-field col s2">
-                                      <button  class="waves-effect waves-light btn-large" id="cari_barcode"><i class="material-icons left">search</i>Cari</button>
+                                      <button  class="waves-effect waves-light btn-large" submit><i class="material-icons left">search</i>Cari</button>
                                     </div>
-                                  </div>
+                                  </form>
                                 </div>
                                 <div id="test17" class="" style="display: none;">
                                     <div class="row">
@@ -281,10 +281,45 @@
     <script src="<?php echo base_url(); ?>assets/extra-libs/prism/prism.js"></script>
     <!-- start - This is for export functionality only -->
 
-
-    </script>
       <script type="text/javascript">
-    	$(document).ready(function(){
+          function cari_barcode(){
+            var barcode=$('#barcode').val();
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo base_url('pinjam/cari_barcode')?>/<?php echo $this->uri->segment('3');?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
+                dataType : "JSON",
+                  success: function(data){
+                    if(data==null){
+                      //kosong
+                    }else if (data==0) {
+                      alert("Format Barcode Tidak Sesuai");
+                    }else if (data==1) {
+                      alert("Data Tidak Ditemukan");
+                    }else if (data==2) {
+                      alert("Arsip Belum Lengkap");
+                    }else if (data==3) {
+                      alert("Arsip Telah Di Input");
+                    }else if (data==4) {
+                      alert("Arsip Proses Peminjaman Atau Telah Di Pinjam");
+                    }else if (data==5) {
+                      alert("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kebali Sebelum dilakukan Proses Peminjaman");
+                    }else if(data==6)
+                      alert("Arsip Hilang");
+                    else{
+                      tampil_data_pinjam();
+                    }
+                    const inputField = document.getElementById("barcode");
+                    inputField.value = " ";
+                    document.getElementById("barcode").focus();
+                }
+
+            });
+            return false;
+          }
+      </script>
+
+      <script type="text/javascript">
+
     		tampil_data_pinjam();	//pemanggilan fungsi tampil pinjam.
     		//fungsi tampil pinjam
     		function tampil_data_pinjam(){
@@ -304,7 +339,7 @@
                       }else if (data[i].id_buku_tanah!=null) {
                         barang="BT - "+data[i].jenis_hak+" "+data[i].bt_hak+" - "+data[i].bt_desa;
                       }else if (data[i].id_surat_ukur!=null) {
-                        barang="BT - "+data[i].su_nomor+"/"+data[i].su_tahun+" - "+data[i].su_desa;
+                        barang="SU - "+data[i].su_nomor+"/"+data[i].su_tahun+" - "+data[i].su_desa;
                       }
     		                html += '<tr>'+
       		                  		'<td>'+nomor+'</td>'+
@@ -347,42 +382,6 @@
                 $('[name="kode"]').val(id);
             });
 
-    		//cari arsip
-    		$('#cari_barcode').on('click',function(){
-                var barcode=$('#barcode').val();
-                $.ajax({
-                    type : "POST",
-                    url  : "<?php echo base_url('pinjam/cari_barcode')?>/<?php echo $this->uri->segment('3');?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
-                    dataType : "JSON",
-                      success: function(data){
-                        if(data==null){
-                          //kosong
-                        }else if (data==0) {
-                          alert("Format Barcode Tidak Sesuai");
-                        }else if (data==1) {
-                          alert("Data Tidak Ditemukan");
-                        }else if (data==2) {
-                          alert("Buku Tanah Belum Lengkap");
-                        }else if (data==3) {
-                          alert("Buku Tanah Telah Di Input");
-                        }else if ($data==4) {
-                          alert("Buku Tanah Proses Peminjaman Atau Telah Di Pinjam");
-                        }else if ($data==5) {
-                          alert("Buku Tanah Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kebali Sebelum dilakukan Proses Peminjaman");
-                        }else if($data==6)
-                          alert("Buku Tanah Hilang");
-                        else{
-                          tampil_data_pinjam();
-                        }
-                        const inputField = document.getElementById("barcode");
-                        inputField.value = " ";
-                        document.getElementById("barcode").focus();
-                    }
-
-                });
-                return false;
-            });
-
           //Hapus list pinjam
             $('#btn_hapus').on('click',function(){
                 var kode=$('#textkode').val();
@@ -412,7 +411,7 @@
                 }
 
 
-    	});
+
     </script>
       <script src="<?php echo base_url(); ?>dist/js/app.js"></script>
 </body>

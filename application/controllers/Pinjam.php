@@ -17,6 +17,8 @@ class Pinjam extends CI_Controller {
 			$this->load->model('M_jenis_hak');
 			$this->load->model('M_waktu_pelayanan');
 			$this->load->model('M_buku_tanah');
+			$this->load->model('M_surat_ukur');
+			$this->load->model('M_warkah');
 	}
 
 	public function data_peminjaman()
@@ -63,7 +65,30 @@ class Pinjam extends CI_Controller {
 	}
 	function hapus_list_pinjam(){
 		$id_pinjam=$this->uri->segment('3');
-		$data=$this->M_pinjam->hapus_list_pinjam($id_pinjam);
+		//cari data buku tanah, SU, Warkah
+		$id_buku_tanah;
+		$id_surat_ukur;
+		$id_warkah;
+		$sql1="SELECT * from pinjam where id_pinjam='$id_pinjam'";
+		$query1 = $this->db->query($sql1);
+		$pinjam=$query1->result();
+		foreach ($pinjam as $data) {
+				$id_buku_tanah=$data->id_buku_tanah;
+				$id_surat_ukur=$data->id_surat_ukur;
+				$id_warkah=$data->id_warkah;
+		 }
+		 if(is_null($id_buku_tanah)==false){
+			 //update status buku tanah menjadi tersedia
+			 $data=$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+		 }elseif (is_null($id_surat_ukur)==false) {
+			 //update status surat ukur menjadi tersedia
+			 $data=$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+		 }elseif (is_null($id_warkah)==false) {
+			 //update status warkah menjadi tersedia
+			 $data=$this->M_warkah->ubah_status($id_warkah,1);
+		 }
+		 	// hapus list peminjaman
+			$data=$this->M_pinjam->hapus_list_pinjam($id_pinjam);
 		echo json_encode($data);
 	}
 	function update_layanan_pinjam(){
@@ -77,6 +102,7 @@ class Pinjam extends CI_Controller {
 		$type="BUKAN";
 		$data="null";
 		$barcode=$this->uri->segment('5');
+		$barcode=str_replace('%20', '', $barcode);
 		$admin=$this->uri->segment('4');
 		$invoice=$this->uri->segment('3');
 		$cek=strpos($barcode,"-");
@@ -151,11 +177,138 @@ class Pinjam extends CI_Controller {
 				 		break;
 				 }
 
+			}
+			elseif ($type=="SU") {
+				$sql="SELECT * from surat_ukur where id_surat_ukur='$id'";
+				$query = $this->db->query($sql);
+				$surat_ukur=$query->result();
+				$status=null;
+				foreach ($surat_ukur as $isi) {
+						$status=$isi->status;
+				 }
+				 switch ($status) {
+				 	case 0:
+				 		$data=2;
+				 		//break;
+				 		continue;
 
-			}elseif ($type=="SU") {
-				echo"su";
-			}elseif ($type=="W") {
-				echo"w";
+				 	case 1:
+						//mengambil dari dari invoice
+						$sql1="SELECT * from pinjam where invoice='$invoice'and pinjam.id_buku_tanah IS null and pinjam.id_surat_ukur IS null and pinjam.id_warkah IS NULL";
+						$query1 = $this->db->query($sql1);
+						$pinjam=$query1->result();
+						$nip;
+						foreach ($pinjam as $data) {
+								$nip=$data->nip;
+						 }
+						$tahun=date("Y");
+			 			$bulan=date("m");
+			 			$tanggal=date("d");
+						$tgl_pinjam=$tahun."-".$bulan."-".$tanggal;
+
+						//memeriksa apakah sudah pernah menambahkan ke peminjaman sedang berlangsung
+						$perintah="SELECT count(invoice)as jumlah from pinjam where invoice='$invoice'and id_surat_ukur='$id'";
+						$query2 = $this->db->query($perintah);
+						$cek=$query2->result();
+						$hasil_cek;
+						foreach ($cek as $data) {
+								$hasil_cek=$data->jumlah;
+						 }
+						 if($hasil_cek==0){
+							 //menambahkan buku_tanah dalam peminjaman
+							 $this->M_pinjam->tambah_su($invoice,$tgl_pinjam,$nip,$admin,$id);
+
+							 //mengubah status bukutanah
+							 $this->M_surat_ukur->ubah_status($id,2);
+
+						 }else{
+							 $data=3;
+						 }
+
+						break;
+
+					case 2:
+						$data=4;
+						break;
+
+					case 3:
+						$data=5;
+						break;
+
+					case 4:
+						$data=6;
+						break;
+
+				 	default:
+				 		$data=1;
+				 		break;
+				 }
+			}
+			elseif ($type=="W") {
+				$sql="SELECT * from warkah where id_warkah='$id'";
+				$query = $this->db->query($sql);
+				$warkah=$query->result();
+				$status=null;
+				foreach ($warkah as $isi) {
+						$status=$isi->status;
+				 }
+				 switch ($status) {
+				 	case 0:
+				 		$data=2;
+				 		//break;
+				 		continue;
+
+				 	case 1:
+						//mengambil dari dari invoice
+						$sql1="SELECT * from pinjam where invoice='$invoice'and pinjam.id_buku_tanah IS null and pinjam.id_surat_ukur IS null and pinjam.id_warkah IS NULL";
+						$query1 = $this->db->query($sql1);
+						$pinjam=$query1->result();
+						$nip;
+						foreach ($pinjam as $data) {
+								$nip=$data->nip;
+						 }
+						$tahun=date("Y");
+			 			$bulan=date("m");
+			 			$tanggal=date("d");
+						$tgl_pinjam=$tahun."-".$bulan."-".$tanggal;
+
+						//memeriksa apakah sudah pernah menambahkan ke peminjaman sedang berlangsung
+						$perintah="SELECT count(invoice)as jumlah from pinjam where invoice='$invoice'and id_warkah='$id'";
+						$query2 = $this->db->query($perintah);
+						$cek=$query2->result();
+						$hasil_cek;
+						foreach ($cek as $data) {
+								$hasil_cek=$data->jumlah;
+						 }
+						 if($hasil_cek==0){
+							 //menambahkan buku_tanah dalam peminjaman
+							 $this->M_pinjam->tambah_warkah($invoice,$tgl_pinjam,$nip,$admin,$id);
+
+							 //mengubah status bukutanah
+							 $this->M_warkah->ubah_status($id,2);
+
+						 }else{
+							 $data=3;
+						 }
+
+						break;
+
+					case 2:
+						$data=4;
+						break;
+
+					case 3:
+						$data=5;
+						break;
+
+					case 4:
+						$data=6;
+						break;
+
+				 	default:
+				 		$data=1;
+				 		break;
+				 }
 			}else{
 				$data=0;
 			}

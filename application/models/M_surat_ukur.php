@@ -20,6 +20,11 @@
         return $query->result();
       }
 
+      function ubah_status($id_surat_ukur,$status){
+        $query=$this->db->query("UPDATE `surat_ukur` SET `status`=$status WHERE id_surat_ukur='$id_surat_ukur'");
+        return $query;
+      }
+
 
 
 
