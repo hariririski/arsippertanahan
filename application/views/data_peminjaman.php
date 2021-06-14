@@ -117,7 +117,7 @@
                                             <td><?php echo $data->nama_lengkap; ?></td>
                                             <td>
                                               <?php
-                                              if($data->tatus==0){
+                                              if($data->status==0){
                                               ?>
                                               <a class="waves-effect waves-light btn  orange" href="<?php echo base_url(); ?>pinjam/peminjaman/<?php echo $data->invoice; ?>">Lanjutkan</a></td>
                                               <?php
