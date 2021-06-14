@@ -40,6 +40,18 @@ class Pinjam extends CI_Controller {
 		$this->load->view('peminjaman',$data);
 	}
 
+	public function detail_peminjaman()
+	{
+		$invoice=$this->uri->segment('3');
+		$pecah_invoice=explode("-",$invoice);
+		$nip=$pecah_invoice[1];
+		$data['data_waktu'] = $this->M_waktu_pelayanan->lihat_aktif();
+		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
+		$data['data_pegawai'] = $this->M_pegawai->lihat_nip($nip);
+		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
+		$this->load->view('detail_peminjaman',$data);
+	}
+
 	public function tambah()
 	{
 			$tahun=date("Y");
@@ -61,6 +73,12 @@ class Pinjam extends CI_Controller {
 	function data_pinjam(){
 		$invoice=$this->uri->segment('3');
 		$data=$this->M_pinjam->list_pinjam($invoice);
+		echo json_encode($data);
+	}
+
+	function detail_pinjam(){
+		$invoice=$this->uri->segment('3');
+		$data=$this->M_pinjam->detail_pinjam($invoice);
 		echo json_encode($data);
 	}
 	function hapus_list_pinjam(){

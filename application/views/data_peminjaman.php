@@ -123,7 +123,7 @@
                                               <?php
                                               }elseif ($data->status==1){
                                               ?>
-                                              <a class="waves-effect waves-light btn  green" href="<?php echo base_url(); ?>pinjam/peminjaman/<?php echo $data->invoice; ?>">Detail</a></td>
+                                              <a class="waves-effect waves-light btn  green" href="<?php echo base_url(); ?>pinjam/detail_peminjaman/<?php echo $data->invoice; ?>">Detail</a></td>
                                               <?php
                                               }
                                               ?>
