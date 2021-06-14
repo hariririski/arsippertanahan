@@ -117,8 +117,8 @@
                                             <th>Nama</th>
                                             <th>Jabatan</th>
                                             <th>Jenis</th>
-                                            <th>Status</th>
-                                            <th width="30%">Aksi</th>
+                                            <th width="10%">Status</th>
+                                            <th width="25%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>

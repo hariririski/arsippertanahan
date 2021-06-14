@@ -191,7 +191,7 @@
                               <h5 class="card-title">Data Peminjaman Terlambat</h5>
                               <h6 class="card-subtitle">Menapilkan Data dari H-3 keterlambatan</h6>
                               <div class="table-responsive">
-                                  <table class="table striped m-b-20" id="editable-datatable">
+                                  <table class="table striped m-b-20" >
                                       <thead>
                                           <tr>
                                               <th>NO</th>
