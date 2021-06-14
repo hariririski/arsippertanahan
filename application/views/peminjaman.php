@@ -381,7 +381,7 @@
                       tampil_data_pinjam();
                     }
                     const inputField = document.getElementById("barcode");
-                    inputField.value = " ";
+                    inputField.value ="";
                     document.getElementById("barcode").focus();
                 }
 
