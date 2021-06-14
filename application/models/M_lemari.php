@@ -5,6 +5,10 @@
         $query=$this->db->query("SELECT * FROM `lemari`");
         return $query->result();
       }
+      function lihat2(){
+        $query=$this->db->query("SELECT * FROM buku_tanah WHERE buku_tanah.kode_desa='H8uOB2fq9h'");
+        return $query->result();
+      }
 
       function lihat_lemari($id_lemari){
         $query=$this->db->query("SELECT * FROM `lemari` where lemari.id_lemari='$id_lemari'");

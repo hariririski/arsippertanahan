@@ -80,5 +80,7 @@ $route['datawarkah'] = 'Warkah';
 $route['uploadcsv'] = 'Uploadcsv';
 $route['profil'] = 'Admin/profil';
 
+$route['cetakqrcodesemualemari'] = 'cetak/qrcode_semua_lemari';
+
 $route['404_override'] = 'Rusak';
 $route['translate_uri_dashes'] = FALSE;

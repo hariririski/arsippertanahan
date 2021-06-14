@@ -47,6 +47,10 @@
     		$hasil=$this->db->query("UPDATE `pinjam` SET `id_waktu`=$id_waktu, `tgl_kembali`='$tgl_kembali' WHERE `id_pinjam`=$id_pinjam");
     		return $hasil;
     	}
+      function simpan_pinjam($invoice,$status){
+    		$hasil=$this->db->query("UPDATE `pinjam` SET `status`=$status WHERE `invoice`='$invoice'");
+    		return $hasil;
+    	}
 
 
 

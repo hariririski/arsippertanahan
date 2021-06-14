@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <?php echo $this->load->view('share/icon', '', TRUE);?>
+    <?php echo $this->load->view('share/icon', '', TRUE);?>
     <title>Data Peminjaman</title>
     <link href="dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
@@ -121,7 +121,7 @@
                                               ?>
                                               <a class="waves-effect waves-light btn  orange" href="<?php echo base_url(); ?>pinjam/peminjaman/<?php echo $data->invoice; ?>">Lanjutkan</a></td>
                                               <?php
-                                              }elseif (condition){
+                                              }elseif ($data->status==1){
                                               ?>
                                               <a class="waves-effect waves-light btn  green" href="<?php echo base_url(); ?>pinjam/peminjaman/<?php echo $data->invoice; ?>">Detail</a></td>
                                               <?php

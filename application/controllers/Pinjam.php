@@ -336,11 +336,39 @@ class Pinjam extends CI_Controller {
 				$jumlah_kosong=$data->tgl_kosong;
 		 }
 		if($jumlah_kosong==1){
-			//  $data=$this->M_pinjam->update_waktu_list_pinjam($id_pinjam,$id_waktu,$tgl_kembali);
+			$sql1="SELECT count(id_pinjam)as jumlah FROM `pinjam` where invoice='$invoice'";
+			$query1 = $this->db->query($sql1);
+			$pinjam=$query1->result();
+			$jumlah;
+			foreach ($pinjam as $data) {
+					$jumlah=$data->jumlah;
+			 }
+			 if($jumlah>1){
+				 $cek=$this->M_pinjam->simpan_pinjam($invoice,1);
+				 if($cek>0){
+		 				$data=3;
+			 		}else{
+						$data=4;
+			 		}
+			 }else{
+				 $data=2;
+			 }
 		}elseif ($jumlah_kosong>1) {
 			$data=1;
 		}
+		echo json_encode($data);
+	}
 
+
+	function hapus_invoice(){
+		$invoice=$this->uri->segment('3');
+		$sql1="DELETE FROM `pinjam` WHERE invoice='$invoice'";
+		$cek = $this->db->query($sql1);
+		if($cek>0){
+			 $data=1;
+		 }else{
+			 $data=2;
+		 }
 		echo json_encode($data);
 	}
 

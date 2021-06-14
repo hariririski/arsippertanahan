@@ -329,7 +329,11 @@
                       }else if (notif==1) {
                         alert("Layanan Masih Ada Belum Ditentukan");
                       }else if (notif==2) {
-
+                        alert("Belum Ada Arsip Yang Akan Dipinjam");
+                      }else if (notif==3) {
+                        window.location.href="<?php echo base_url()?>datapinjam";
+                      }else if (notif==4) {
+                        alert("Peminjaman Gagal Di Simpan");
                       }
 
                   }
@@ -338,15 +342,17 @@
       });
 
         $('#btn_batal').on('click',function(){
-            var kode=$('#textkode').val();
             $.ajax({
             type : "POST",
-            url  : "<?php echo base_url()?>pinjam/hapus_list_pinjam/"+kode,
+            url  : "<?php echo base_url()?>pinjam/hapus_invoice/<?php echo $this->uri->segment('3');?>",
             dataType : "JSON",
-                    data : {kode: kode},
-                    success: function(data){
+                    success: function(notif){
                         $('#modal3').modal('close');
-                        tampil_data_pinjam();
+                        if (notif==1) {
+                          window.location.href="<?php echo base_url()?>datapinjam";
+                        }else{
+                          alert("Peminjaman Gagal Di Hapus");
+                        }
                     }
                 });
                 return false;
