@@ -220,8 +220,8 @@
 
                                 </div>
                                 <div class="collection">
-                                    <button  class="waves-effect waves-light btn-large btn  green" type="submit" name="action"><i class="material-icons left">assignment_turned_in</i>Simpan</button>
-                                    <button  class="waves-effect waves-light btn-large right btn  red" type="submit" name="action"><i class="material-icons left">delete_forever</i>Batal</button>
+                                    <a onclick="simpan()" class="waves-effect waves-light btn-large btn  green"><i class="material-icons left">assignment_turned_in</i>Simpan</a>
+                                    <a onclick="batal()" class="waves-effect waves-light btn-large right btn  red" ><i class="material-icons left">delete_forever</i>Batal</a>
                                 </div>
 
                             </div>
@@ -240,6 +240,33 @@
                     </div>
                     <div class="modal-footer">
                         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="btn_hapus"><i class="fas fa-share"></i> Hapus</a>
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <h5 class="card-title">Konfirmasi</h5>
+                    <div class="row">
+                      <div class="alert alert-warning"><p>Apakah Anda yakin mau menyelesaikan peminjaman?</p></div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="btn_simpan"><i class="fas fa-share"></i>Lanjutkan </a>
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="modal3" class="modal">
+                <div class="modal-content">
+                    <h5 class="card-title">Konfirmasi</h5>
+                    <div class="row">
+                      <div class="alert alert-warning"><p>Apakah Anda yakin mau Membatalkan peminjaman?</p></div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="btn_batal"><i class="fas fa-share"></i>Lanjutkan</a>
                         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text">Cancel</a>
 
                     </div>
@@ -282,6 +309,49 @@
 
     <script src="<?php echo base_url(); ?>assets/extra-libs/prism/prism.js"></script>
     <!-- start - This is for export functionality only -->
+      <script>
+      function simpan() {
+        $('#modal2').modal('open');
+      }
+      function batal() {
+        $('#modal3').modal('open');
+      }
+
+      $('#btn_simpan').on('click',function(){
+          $.ajax({
+          type : "POST",
+          url  : "<?php echo base_url()?>pinjam/simpan_invoice/<?php echo $this->uri->segment('3');?>",
+          dataType : "JSON",
+                  success: function(notif){
+                      $('#modal2').modal('close');
+                      if(notif==null){
+                        //kosong
+                      }else if (notif==1) {
+                        alert("Layanan Masih Ada Belum Ditentukan");
+                      }else if (notif==2) {
+
+                      }
+
+                  }
+              });
+              return false;
+      });
+
+        $('#btn_batal').on('click',function(){
+            var kode=$('#textkode').val();
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url()?>pinjam/hapus_list_pinjam/"+kode,
+            dataType : "JSON",
+                    data : {kode: kode},
+                    success: function(data){
+                        $('#modal3').modal('close');
+                        tampil_data_pinjam();
+                    }
+                });
+                return false;
+        });
+      </script>
 
       <script type="text/javascript">
           function cari_barcode(){

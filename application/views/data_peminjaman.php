@@ -97,7 +97,6 @@
                                             <th>Invoice</th>
                                             <th>Tanggal Pinjam</th>
                                             <th>Tanggal Kembali</th>
-                                            <th>Keterlambatan</th>
                                             <th>Operator</th>
                                             <th>Pegawai</th>
                                             <th >Aksi</th>
@@ -114,11 +113,20 @@
                                             <td><?php echo $data->invoice; ?></td>
                                             <td><?php echo $data->tgl_pinjam; ?></td>
                                             <td><?php echo $data->tgl_kembali; ?></td>
-                                            <td><?php echo $data->tgl_pinjam; ?></td>
                                             <td><?php echo $data->admin_tambah; ?></td>
-                                            <td><?php echo $data->tgl_pinjam; ?></td>
-                                            <td><a class="waves-effect waves-light btn  orange" href="<?php echo base_url(); ?>pinjam/peminjaman/<?php echo $data->invoice; ?>">Detail</a></td>
-
+                                            <td><?php echo $data->nama_lengkap; ?></td>
+                                            <td>
+                                              <?php
+                                              if($data->tatus==0){
+                                              ?>
+                                              <a class="waves-effect waves-light btn  orange" href="<?php echo base_url(); ?>pinjam/peminjaman/<?php echo $data->invoice; ?>">Lanjutkan</a></td>
+                                              <?php
+                                              }elseif (condition){
+                                              ?>
+                                              <a class="waves-effect waves-light btn  green" href="<?php echo base_url(); ?>pinjam/peminjaman/<?php echo $data->invoice; ?>">Detail</a></td>
+                                              <?php
+                                              }
+                                              ?>
                                         </tr>
                                         <?php } ?>
                                     </tbody>

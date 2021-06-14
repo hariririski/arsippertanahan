@@ -2,7 +2,7 @@
     class M_pinjam extends CI_Model{
 
       function data(){
-        $query=$this->db->query("SELECT * FROM `pinjam` WHERE pinjam.id_buku_tanah IS null and pinjam.id_surat_ukur IS null and pinjam.id_warkah IS NULL");
+        $query=$this->db->query("SELECT * FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip WHERE pinjam.id_buku_tanah IS null and pinjam.id_surat_ukur IS null and pinjam.id_warkah IS NULL");
         return $query->result();
       }
 
@@ -43,8 +43,8 @@
     		return $hasil;
     	}
 
-      function update_waktu_list_pinjam($id_pinjam,$id_waktu){
-    		$hasil=$this->db->query("UPDATE `pinjam` SET `id_waktu`=$id_waktu WHERE `id_pinjam`=$id_pinjam");
+      function update_waktu_list_pinjam($id_pinjam,$id_waktu,$tgl_kembali){
+    		$hasil=$this->db->query("UPDATE `pinjam` SET `id_waktu`=$id_waktu, `tgl_kembali`='$tgl_kembali' WHERE `id_pinjam`=$id_pinjam");
     		return $hasil;
     	}
 

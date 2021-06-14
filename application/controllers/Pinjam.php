@@ -91,10 +91,20 @@ class Pinjam extends CI_Controller {
 			$data=$this->M_pinjam->hapus_list_pinjam($id_pinjam);
 		echo json_encode($data);
 	}
+
 	function update_layanan_pinjam(){
 		$id_waktu=$this->uri->segment('3');
 		$id_pinjam=$this->uri->segment('4');
-		$data=$this->M_pinjam->update_waktu_list_pinjam($id_pinjam,$id_waktu);
+		$sql1="SELECT * from waktu where id_waktu='$id_waktu'";
+		$query1 = $this->db->query($sql1);
+		$pinjam=$query1->result();
+		$durasi="+";
+		foreach ($pinjam as $data) {
+				echo $durasi=$durasi.$data->durasi." days";
+		 }
+		 $tgl1 = date("Y-m-d");// pendefinisian tanggal awal
+ 	 	 $tgl_kembali = date('Y-m-d', strtotime($durasi, strtotime($tgl1))); //operasi penjumlahan tanggal sebanyak .. hari
+		 $data=$this->M_pinjam->update_waktu_list_pinjam($id_pinjam,$id_waktu,$tgl_kembali);
 		echo json_encode($data);
 	}
 	function cari_barcode(){
@@ -314,4 +324,25 @@ class Pinjam extends CI_Controller {
 			}
 		 echo json_encode($data);
 	}
+
+	function simpan_invoice(){
+		$invoice=$this->uri->segment('3');
+		$data=null;
+		$sql1="SELECT count(id_pinjam)as tgl_kosong FROM `pinjam` where invoice='$invoice' and tgl_kembali is null";
+		$query1 = $this->db->query($sql1);
+		$pinjam=$query1->result();
+		$jumlah_kosong;
+		foreach ($pinjam as $data) {
+				$jumlah_kosong=$data->tgl_kosong;
+		 }
+		if($jumlah_kosong==1){
+			//  $data=$this->M_pinjam->update_waktu_list_pinjam($id_pinjam,$id_waktu,$tgl_kembali);
+		}elseif ($jumlah_kosong>1) {
+			$data=1;
+		}
+
+		echo json_encode($data);
+	}
+
+
 }
