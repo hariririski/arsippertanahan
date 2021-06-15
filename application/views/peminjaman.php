@@ -49,6 +49,8 @@
             <!-- ============================================================== -->
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
+            <div id="loading">
+            </div>
             <div class="container-fluid">
               <div class="row">
                     <div class="col s12">
@@ -165,11 +167,11 @@
                                     <table  class="table table-bordered striped">
                                         <thead>
                                             <tr>
-                                                <th>NO</th>
+                                                <th width="5%">NO</th>
                                                 <th>Hak/SU/warkah</th>
-                                                <th>Layanan</th>
-                                                <th>Pilih</th>
-                                                <th>Action</th>
+                                                <th width="10%">Layanan</th>
+                                                <th width="20%">Pilih</th>
+                                                <th width="5%">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody id="show_data">
@@ -357,6 +359,22 @@
                 });
                 return false;
         });
+
+        changeAction = function(select){
+           var id=document.getElementById("layanan").action = select.value;
+           $.ajax({
+             url : "<?php echo base_url();?>pinjam/update_layanan_pinjam/"+id,
+             method : "POST",
+             data : {id: id},
+             async : true,
+             dataType : 'json',
+             success: function(data){
+               tampil_data_pinjam();
+             }
+           });
+
+
+        }
       </script>
 
       <script type="text/javascript">
@@ -408,8 +426,10 @@
     		        dataType : 'json',
     		        success : function(data){
     		            var html = '';
+    		            var loading = '';
     		            var i;
     		            var nomor=1;
+                    var id_waktu;
     		            for(i=0; i<data.length; i++){
                       var barang="";
                       if(data[i].id_warkah!=null){
@@ -419,6 +439,7 @@
                       }else if (data[i].id_surat_ukur!=null) {
                         barang="SU - "+data[i].su_nomor+"/"+data[i].su_tahun+" - "+data[i].su_desa;
                       }
+
     		                html += '<tr>'+
       		                  		'<td>'+nomor+'</td>'+
       		                  		'<td>'+barang+'</td>'+
@@ -443,6 +464,7 @@
                         nomor++;
     		            }
     		            $('#show_data').html(html);
+
     		        }
 
     		    });
@@ -476,17 +498,7 @@
                     return false;
                 });
 
-                changeAction = function(select){
-                   var id=document.getElementById("layanan").action = select.value;
-                   $.ajax({
-                     url : "<?php echo base_url();?>pinjam/update_layanan_pinjam/"+id,
-                     method : "POST",
-                     data : {id: id},
-                     async : true,
-                     dataType : 'json',
-                   });
-                   tampil_data_pinjam();
-                }
+
 
 
 

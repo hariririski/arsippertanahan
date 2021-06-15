@@ -118,7 +118,7 @@ class Pinjam extends CI_Controller {
 		$pinjam=$query1->result();
 		$durasi="+";
 		foreach ($pinjam as $data) {
-				echo $durasi=$durasi.$data->durasi." days";
+				$durasi=$durasi.$data->durasi." days";
 		 }
 		 $tgl1 = date("Y-m-d");// pendefinisian tanggal awal
  	 	 $tgl_kembali = date('Y-m-d', strtotime($durasi, strtotime($tgl1))); //operasi penjumlahan tanggal sebanyak .. hari
