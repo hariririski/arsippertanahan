@@ -25,6 +25,10 @@ class Home extends CI_Controller {
 		$data['g1_surat_ukur'] = $this->M_home->kondisi_surat_ukur();
 		$data['g2_jenis_hak'] = $this->M_home->jenis_hak();
 		$data['data_kondisi'] = $this->M_kondisi->lihat();
+		$data['pinjam_buku_tanah'] = $this->M_home->pinjam_buku_tanah();
+		$data['pinjam_surat_ukur'] = $this->M_home->pinjam_surat_ukur();
+		$data['pinjam_warkah'] = $this->M_home->pinjam_warkah();
+		$data['tgl_pinjam'] = $this->M_home->tgl_pinjam();
 		$this->load->view('home',$data);
 	}
 

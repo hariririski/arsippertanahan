@@ -101,21 +101,21 @@ $(function() {
     new Chart(document.getElementById("chart1"), {
         type: 'line',
         data: {
-            labels: [4500, 3500, 3200, 3050, 2700, 2450, 2200, 1750, 1499, 2050],
+            labels: [<?php foreach ($tgl_pinjam as $data) {echo'"'.$data->tgl_pinjam.'"'.",";}?>],
             datasets: [{
-                data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
+                data: [<?php foreach ($pinjam_buku_tanah as $data) {echo $data->jumlah.",";}?>],
                 label: "Buku Tanah",
-                borderColor: "#3e95cd",
+                borderColor: "#ffeb3b",
                 fill: false
             }, {
-                data: [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267],
+                data: [<?php foreach ($pinjam_surat_ukur as $data) {echo $data->jumlah.",";}?>],
                 label: "Surat ukur",
-                borderColor: "#36a2eb",
+                borderColor: "#ff0000",
                 fill: false
             }, {
-                data: [168, 170, 178, 190, 203, 276, 408, 547, 675, 734],
+                data: [<?php foreach ($pinjam_warkah as $data) {echo $data->jumlah.",";}?>],
                 label: "Warkah",
-                borderColor: "#07b107",
+                borderColor: "#1bff08",
                 fill: false
             }]
         },

@@ -5,6 +5,23 @@
         $query=$this->db->query("SELECT COUNT(id_buku_tanah)as jumlah_buku_tanah FROM `buku_tanah`");
         return $query->result();
       }
+      function pinjam_buku_tanah(){
+        $query=$this->db->query("SELECT pinjam.tgl_pinjam, COUNT(id_pinjam)as jumlah From pinjam WHERE pinjam.id_buku_tanah is NOT null and pinjam.status=1 GROUP BY tgl_pinjam limit 30");
+        return $query->result();
+      }
+      function pinjam_surat_ukur(){
+        $query=$this->db->query("SELECT pinjam.tgl_pinjam, COUNT(id_pinjam)as jumlah From pinjam WHERE pinjam.id_surat_ukur is NOT null and pinjam.status=1 GROUP BY tgl_pinjam limit 30");
+        return $query->result();
+      }
+      function pinjam_warkah(){
+        $query=$this->db->query("SELECT pinjam.tgl_pinjam, COUNT(id_pinjam)as jumlah From pinjam WHERE pinjam.id_warkah is NOT null and pinjam.status=1 GROUP BY tgl_pinjam limit 30");
+        return $query->result();
+      }
+      function tgl_pinjam(){
+        $query=$this->db->query("SELECT tgl_pinjam FROM `pinjam` GROUP by tgl_pinjam LIMIT 30");
+        return $query->result();
+      }
+
 
       function jumlah_surat_ukur(){
         $query=$this->db->query("SELECT COUNT(id_surat_ukur)as jumlah_surat_ukur FROM `surat_ukur`");
