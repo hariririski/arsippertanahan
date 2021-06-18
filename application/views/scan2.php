@@ -87,9 +87,13 @@
         });
     </script>
     <script type="text/javascript">
-    $(function(){
-        $('.permisi').trigger('click');
-    });
+    tampil_data_pinjam();	//pemanggilan fungsi tampil pinjam.
+    //fungsi tampil pinjam
+    function tampil_data_pinjam(){
+      $(function(){
+          $('.permisi').trigger('click');
+      });
+    }
     </script>
 
 
