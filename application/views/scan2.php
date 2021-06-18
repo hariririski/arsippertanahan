@@ -56,7 +56,7 @@
     <!-- All Required js -->
     <!-- ============================================================== -->
     <script src="dist/js/jquery.min.js"></script>
-    <script src="dist/js/qrcode.min.js"></script>
+    <script src="dist/js/qrcode1.min.js"></script>
     <script>
         function docReady(fn) {
             // see if DOM is already available
@@ -87,11 +87,17 @@
         });
     </script>
     <script type="text/javascript">
-    tampil_data_pinjam();	//pemanggilan fungsi tampil pinjam.
+    permisi();	//pemanggilan fungsi tampil pinjam.
+    camera();	//pemanggilan fungsi tampil pinjam.
     //fungsi tampil pinjam
-    function tampil_data_pinjam(){
+    function permisi(){
       $(function(){
           $('.permisi').trigger('click');
+      });
+    }
+    function camera(){
+      $(function(){
+          $('.camera').trigger('click');
       });
     }
     </script>
