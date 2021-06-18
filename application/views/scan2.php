@@ -56,7 +56,7 @@
     <!-- All Required js -->
     <!-- ============================================================== -->
     <script src="dist/js/jquery.min.js"></script>
-    <script src="dist/js/html5-qrcode.min.js"></script>
+    <script src="dist/js/qrcode.min.js"></script>
     <script>
         function docReady(fn) {
             // see if DOM is already available
