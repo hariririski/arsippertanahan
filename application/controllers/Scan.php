@@ -21,6 +21,12 @@ class Scan extends CI_Controller {
 		$this->load->view('scan');
 	}
 
+	public function scan2()
+	{
+
+		$this->load->view('scan2');
+	}
+
 
 
 }

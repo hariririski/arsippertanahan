@@ -82,6 +82,7 @@ $route['profil'] = 'Admin/profil';
 
 $route['cetakqrcodesemualemari'] = 'cetak/qrcode_semua_lemari';
 $route['scan'] = 'Scan';
+$route['scan2'] = 'Scan/scan2';
 $route['kembali'] = 'Pinjam/kembali';
 $route['susun'] = 'Pinjam/susun';
 
