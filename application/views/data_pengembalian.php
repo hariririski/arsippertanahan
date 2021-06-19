@@ -423,7 +423,7 @@
                     success: function(notif){
                         $('#modal1').modal('close');
                         if (notif==1) {
-                          //tampil_data_pinjam();
+                          window.location.href="<?php echo base_url()?>kembali";
                         }else if(notif==2){
                           window.location.href="<?php echo base_url()?>kembali";
                         }else{

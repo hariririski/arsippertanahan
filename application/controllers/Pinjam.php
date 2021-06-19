@@ -174,10 +174,10 @@ class Pinjam extends CI_Controller {
 
 	function susunkan(){
 		$invoice=$this->uri->segment('3');
-		$admin_kembali=$this->uri->segment('4');
+		$admin_susun=$this->uri->segment('4');
 		$id_pinjam=$this->uri->segment('5');
 		$kode_bundel=$this->uri->segment('6');
-		$tgl_dikembalikan=date('Y-m-d');
+		$tgl_susun=date('Y-m-d');
 		$status=3;
 		$data;
 		$jumlah_tgl_dikembalikan;
@@ -210,25 +210,68 @@ class Pinjam extends CI_Controller {
 						$id_bundel_buku_tanah=$data->id_bundel_buku_tanah;
 						$id_bundel_surat_ukur=$data->id_bundel_surat_ukur;
 						$id_bundel_warkah=$data->id_bundel_warkah;
-						if($id_bundel_buku_tanah==$kode_bundel){
-								$cek=$this->M_pinjam->kembalikan($id_pinjam,$status,$tgl_dikembalikan,$admin_kembali);
-								if($cek>0){
-									if($id_buku_tanah!=null){
-										$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
-										$data=1;
-									}elseif ($id_surat_ukur!=null) {
-										$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
-										$data=1;
-									}elseif ($id_warkah!=null) {
-										$this->M_warkah->ubah_status($id_warkah,1);
-										$data=1;
-									}
-				 	 			}else{
-				 	 				$data=3;
-				 	 		 	}
-						}else{
-								$data=4;
+						if($id_buku_tanah!=null){
+							if($id_bundel_buku_tanah==$kode_bundel){
+									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_dikembalikan,$admin_susun);
+									if($cek>0){
+										if($id_buku_tanah!=null){
+											$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+											$data=1;
+										}elseif ($id_surat_ukur!=null) {
+											$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+											$data=1;
+										}elseif ($id_warkah!=null) {
+											$this->M_warkah->ubah_status($id_warkah,1);
+											$data=1;
+										}
+					 	 			}else{
+					 	 				$data=3;
+					 	 		 	}
+							}else{
+									$data=4;
+							}
+						}elseif ($id_surat_ukur!=null) {
+							if($id_bundel_surat_ukur==$kode_bundel){
+									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_susun,$admin_susun);
+									if($cek>0){
+										if($id_buku_tanah!=null){
+											$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+											$data=1;
+										}elseif ($id_surat_ukur!=null) {
+											$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+											$data=1;
+										}elseif ($id_warkah!=null) {
+											$this->M_warkah->ubah_status($id_warkah,1);
+											$data=1;
+										}
+					 	 			}else{
+					 	 				$data=3;
+					 	 		 	}
+							}else{
+									$data=4;
+							}
+						}elseif ($id_warkah!=null) {
+							if($id_bundel_warkah==$kode_bundel){
+									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_susun,$admin_susun);
+									if($cek>0){
+										if($id_buku_tanah!=null){
+											$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+											$data=1;
+										}elseif ($id_surat_ukur!=null) {
+											$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+											$data=1;
+										}elseif ($id_warkah!=null) {
+											$this->M_warkah->ubah_status($id_warkah,1);
+											$data=1;
+										}
+					 	 			}else{
+					 	 				$data=3;
+					 	 		 	}
+							}else{
+									$data=4;
+							}
 						}
+
 					}
 		 }else if($jumlah_tgl_dikembalikan==2){
 			 $id_pinjam;
@@ -246,25 +289,72 @@ class Pinjam extends CI_Controller {
 						$id_bundel_buku_tanah=$data->id_bundel_buku_tanah;
 						$id_bundel_surat_ukur=$data->id_bundel_surat_ukur;
 						$id_bundel_warkah=$data->id_bundel_warkah;
-						if($id_bundel_buku_tanah==$kode_bundel){
-								$cek=$this->M_pinjam->kembalikan($id_pinjam,$status,$tgl_dikembalikan,$admin_kembali);
-								$this->M_pinjam->ubah_status_induk($invoice,4);
-								if($cek>0){
-									if($id_buku_tanah!=null){
-										// 1 ready
-										$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
-									}elseif ($id_surat_ukur!=null) {
-										$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
-									}elseif ($id_warkah!=null) {
-										$this->M_warkah->ubah_status($id_warkah,1);
+
+						if($id_buku_tanah!=null){
+							if($id_bundel_buku_tanah==$kode_bundel){
+									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_susun,$admin_susun);
+									$this->M_pinjam->ubah_status_induk($invoice,4);
+									if($cek>0){
+										if($id_buku_tanah!=null){
+											$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+											$data=1;
+										}elseif ($id_surat_ukur!=null) {
+											$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+											$data=1;
+										}elseif ($id_warkah!=null) {
+											$this->M_warkah->ubah_status($id_warkah,1);
+											$data=1;
+										}
+									}else{
+										$data=3;
 									}
-			 	 					$data=2;
-				 	 			}else{
-				 	 				$data=3;
-				 	 		 	}
-						}else{
+							}else{
 									$data=4;
+							}
+						}elseif ($id_surat_ukur!=null) {
+							if($id_bundel_surat_ukur==$kode_bundel){
+									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_susun,$admin_susun);
+									$this->M_pinjam->ubah_status_induk($invoice,4);
+									if($cek>0){
+										if($id_buku_tanah!=null){
+											$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+											$data=1;
+										}elseif ($id_surat_ukur!=null) {
+											$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+											$data=1;
+										}elseif ($id_warkah!=null) {
+											$this->M_warkah->ubah_status($id_warkah,1);
+											$data=1;
+										}
+									}else{
+										$data=3;
+									}
+							}else{
+									$data=4;
+							}
+						}elseif ($id_warkah!=null) {
+							if($id_bundel_warkah==$kode_bundel){
+									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_susun,$admin_susun);
+									$this->M_pinjam->ubah_status_induk($invoice,4);
+									if($cek>0){
+										if($id_buku_tanah!=null){
+											$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+											$data=1;
+										}elseif ($id_surat_ukur!=null) {
+											$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+											$data=1;
+										}elseif ($id_warkah!=null) {
+											$this->M_warkah->ubah_status($id_warkah,1);
+											$data=1;
+										}
+									}else{
+										$data=3;
+									}
+							}else{
+									$data=4;
+							}
 						}
+
 		 		 }
 
 

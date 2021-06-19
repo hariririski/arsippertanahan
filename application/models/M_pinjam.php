@@ -75,8 +75,8 @@
         return $hasil;
     	}
 
-      function susun($id_pinjam,$status,$tgl_dikembalikan,$admin_susun){
-    		$perintah=("UPDATE `pinjam` SET `status`=$status, `tgl_dikembalikan`='$tgl_dikembalikan', `admin_susun`='$admin_susun' WHERE `id_pinjam`='$id_pinjam'");
+      function susun($id_pinjam,$status,$tgl_susun,$admin_susun){
+    		$perintah=("UPDATE `pinjam` SET `status`=$status, `tgl_susun`='$tgl_susun', `admin_susun`='$admin_susun' WHERE `id_pinjam`='$id_pinjam'");
         $hasil=$this->db->query($perintah);
         return $hasil;
     	}

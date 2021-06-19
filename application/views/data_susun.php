@@ -430,7 +430,7 @@
                     success: function(notif){
                         $('#modal1').modal('close');
                         if (notif==1) {
-                          //alert("sama");
+                          window.location.href="<?php echo base_url()?>susun";
                         }else if(notif==2){
                           window.location.href="<?php echo base_url()?>susun";
                         }else if(notif==3){
