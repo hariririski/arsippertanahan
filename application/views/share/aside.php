@@ -10,11 +10,13 @@
                 <?php
                 // (A) CHECK IF "MOBILE" EXISTS IN USER AGENT
                   $isMob = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), "mobile"));
-                  echo $isMob
-                    ? '<li>
-                        <a href="<?php echo base_url(); ?>scan" class="collapsible-header"><i class="material-icons">dashboard</i><span class="hide-menu">Qr Code</span></a>
-                    </li>'
-                    : "" ;
+                  if($isMob){
+                ?>
+                  <li>
+                    <a href="<?php echo base_url(); ?>scan" class="collapsible-header"><i class="material-icons">dashboard</i><span class="hide-menu">Qr Code</span></a>
+                  </li>'
+                  <?php
+                  }
                   ?>
 
                 <?php
