@@ -2,7 +2,7 @@
     <ul id="slide-out" class="sidenav">
         <li class="side-wrap">
             <ul class="collapsible">
-                <li class="small-cap"><span class="hide-menu">PERSONAL</span></li>
+                <li class="small-cap"><span class="hide-menu">Menu</span></li>
                 <li>
                     <a href="<?php echo base_url(); ?>home" class="collapsible-header"><i class="material-icons">dashboard</i><span class="hide-menu"> Dashboard</span></a>
 
@@ -14,11 +14,10 @@
                 ?>
                   <li>
                     <a href="<?php echo base_url(); ?>scan" class="collapsible-header"><i class="material-icons">dashboard</i><span class="hide-menu">Qr Code</span></a>
-                  </li>'
+                  </li>
                   <?php
                   }
                   ?>
-
                 <?php
                   if($this->session->userdata("level")==1 or $this->session->userdata("level")==2){
                 ?>
