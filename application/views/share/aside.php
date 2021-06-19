@@ -34,7 +34,6 @@
                     <div class="collapsible-body">
                         <ul>
                             <li><a href="<?php echo base_url(); ?>datapinjam"><i class="material-icons">library_add</i><span class="hide-menu">Data Peminjaman</span></a></li>
-                            <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">library_add</i><span class="hide-menu">Peminjaman</span></a></li>
                             <li><a href="<?php echo base_url(); ?>kembali"><i class="material-icons">library_add</i><span class="hide-menu">Pengembalian</span></a></li>
                             <li><a href="<?php echo base_url(); ?>susun"><i class="material-icons">library_add</i><span class="hide-menu">Arsip Belum Susun</span></a></li>
                         </ul>

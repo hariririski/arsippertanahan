@@ -477,6 +477,37 @@
             });
             return false;
           }
+
+          function cari_warkah(){
+            var jenis_hak=$('#nomor_warkah').val();
+            var nomor_hak=$('#tahun_warkah').val();
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo base_url('pinjam/cari_warkah')?>/<?php echo $this->uri->segment('3');?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+nomor_warkah+"/"+tahun_warkah,
+                dataType : "JSON",
+                  success: function(data){
+                    if(data==null){
+                      //kosong
+                    }else if (data==1) {
+                      tampil_data_pinjam();
+                    }else if (data==2) {
+                      alert('WarkahBelum Valid');
+                    }else if (data==3){
+                      alert('WarkahSedang / Proses Peminjaman ');
+                    }else if (data==4) {
+                      alert('WarkahLebih Dari 1, Mohon Menguhungi admin');
+                    }else if(data==5){
+                      alert('WarkahTidak Ditemukan');
+                    }
+                    const momor = document.getElementById("nomor_warkah");
+                    nomor.value ="";
+                    const tahun = document.getElementById("tahun_warkah");
+                    tahun.value ="";
+                }
+
+            });
+            return false;
+          }
       </script>
 
       <script type="text/javascript">

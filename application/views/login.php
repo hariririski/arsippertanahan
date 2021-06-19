@@ -18,65 +18,49 @@
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
         <!-- ============================================================== -->
-        <div class="preloader">
-            <div class="loader">
-                <div class="loader__figure"></div>
-                <p class="loader__label">Arsip Pertanahan</p>
-            </div>
-        </div>
+        <?php echo $this->load->view('share/loading', '', TRUE);?>
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- Login box.scss -->
         <!-- ============================================================== -->
-        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(assets/images/big/bg.jpg) no-repeat left center;">
-            <div class="container">
-                <!-- <div class="row">
-                    <div class="col s12 l8 m6 demo-text">
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(assets/images/big/auth-bg.jpg) no-repeat center center;">
+            <div class="auth-box">
+                <div id="loginform">
+                    <div class="logo">
                         <span class="db"><img src="assets/images/logo-icon.png" alt="logo" /></span>
-                        <span class="db"><img src="assets/images/logo-text.png" alt="logo" /></span>
-                        <h1 class="font-light m-t-40">Welcome to the <span class="font-medium black-text">Material Admin</span></h1>
-
+                        <h5 class="font-medium m-b-20">Aplikasi Arsip Pertanahan</h5>
                     </div>
-                </div> -->
-                <div class="auth-box auth-sidebar">
-                    <div id="loginform">
-                        <div class="p-l-10">
-                            <h5 class="font-medium m-b-0 m-t-40">Sign In to Admin</h5>
-
-                        </div>
-                        <!-- Form -->
-                        <div class="row">
-                            <form class="col s12" method="post" action="<?php echo base_url(); ?>Login/proses_login">
-                                <!-- email -->
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input  type="text" class="validate" required name="username" autofocus>
-                                        <label for="email">Username</label>
-                                    </div>
+                    <!-- Form -->
+                    <div class="row">
+                        <form class="col s12" method="post" action="<?php echo base_url(); ?>Login/proses_login">
+                            <!-- email -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" class="validate" required name="username" autofocus>
+                                    <label for="email">Username</label>
                                 </div>
-                                <!-- pwd -->
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input id="password" type="password" class="validate" required name="password">
-                                        <label for="password">Password</label>
-                                    </div>
+                            </div>
+                            <!-- pwd -->
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="password" type="password" class="validate" required  name="password">
+                                    <label for="password">Password</label>
                                 </div>
-                                <!-- pwd -->
+                            </div>
+                            <!-- pwd -->
 
-                                <!-- pwd -->
-                                <div class="row m-t-40">
-                                    <div class="col s12">
-                                        <button class="btn-large w100 blue accent-4" type="submit">Login</button>
-                                    </div>
+                            <!-- pwd -->
+                            <div class="row m-t-40">
+                                <div class="col s12">
+                                    <button class="btn-large w100 blue accent-4" type="submit">Login</button>
                                 </div>
-                            </form>
-                        </div>
-
+                            </div>
+                        </form>
                     </div>
-
                 </div>
+                
             </div>
         </div>
         <!-- ============================================================== -->
@@ -117,5 +101,6 @@
     });
     </script>
 </body>
+
 
 </html>

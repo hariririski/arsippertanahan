@@ -253,7 +253,7 @@
                               window.location.href="<?php echo base_url()?>datapinjam";
                             }else{
                               tampil_data_pinjam();
-                              alert("Peminjaman Gagal Di Hapus");
+                              alert("Peminjaman Gagal Di kembalikan");
                             }
 
                         }

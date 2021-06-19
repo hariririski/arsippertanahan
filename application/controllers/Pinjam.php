@@ -85,6 +85,7 @@ class Pinjam extends CI_Controller {
 		$data['pinjam'] = $this->M_pinjam->data_all();
 		$this->load->view('data_pengembalian',$data);
 	}
+
 	public function susun(){
 		$data['data_waktu'] = $this->M_waktu_pelayanan->lihat_aktif();
 		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
@@ -273,8 +274,8 @@ class Pinjam extends CI_Controller {
 				$status=$isi->status;
 		 }
 		 if($jumlah_surat_ukur==1 && $status==1){
-			 //$this->M_pinjam->tambah_bt($invoice,$tgl_pinjam,$nip,$admin_tambah,$id_surat_ukur);
-			 //$this->M_surat_ukur->ubah_status($id_surat_ukur,2);
+			 $this->M_pinjam->tambah_bt($invoice,$tgl_pinjam,$nip,$admin_tambah,$id_surat_ukur);
+			 $this->M_surat_ukur->ubah_status($id_surat_ukur,2);
 			 $data=1;
 		 }else if($jumlah_surat_ukur==1 && $status==0){
 			 $data=2;
@@ -287,6 +288,42 @@ class Pinjam extends CI_Controller {
 		 }
 		 echo json_encode($data);
 	}
+
+	function cari_warkah(){
+		$invoice=$this->uri->segment('3');
+		$pecah_invoice=explode("-",$invoice);
+		$nip=$pecah_invoice[1];
+		$admin_tambah=$this->uri->segment('4');
+		$nomor_warkah=$this->uri->segment('5');
+		$tahun_warkah=$this->uri->segment('6');
+		$tgl_pinjam=('Y-m-d');
+		$id_warkah;
+		$status;
+		$sql="SELECT count(id_warkah)as jumlah, id_warkah,status from buku_tanah where nomor='$nomor_warkah' and tahun=$tahun_warkah ";
+		$query = $this->db->query($sql);
+		$buku_tanah=$query->result();
+		$jumlah_warkah;
+		foreach ($warkah as $isi) {
+				echo $jumlah_warkah=$isi->jumlah;
+				$id_warkah=$isi->id_surat;
+				$status=$isi->status;
+		 }
+		 if($jumlah_warkah==1 && $status==1){
+			 $this->M_pinjam->tambah_warkah($invoice,$tgl_pinjam,$nip,$admin_tambah,$id_warkah);
+			 $this->M_warkah->ubah_status($id_warkah,2);
+			 $data=1;
+		 }else if($jumlah_warkah==1 && $status==0){
+			 $data=2;
+		 }elseif ($jumlah_warkah==1 && $status==2) {
+		 	 $data=3;
+		 }else if($jumlah_warkah>1){
+			 $data=4;
+		 }else{
+			 $data=5;
+		 }
+		 echo json_encode($data);
+	}
+
 
 	function cari_barcode(){
 		// ini_set('display_errors','off');
@@ -505,6 +542,261 @@ class Pinjam extends CI_Controller {
 				 }
 			}else{
 				$data=0;
+			}
+		 echo json_encode($data);
+	}
+
+	function cari_barcode_pengembalian(){
+		// ini_set('display_errors','off');
+		$type="BUKAN";
+		$data="null";
+		$barcode=$this->uri->segment('4');
+		$barcode=str_replace('%20', '', $barcode);
+		$admin=$this->uri->segment('3');
+		$cek=strpos($barcode,"-");
+		if($cek!=0){
+		$pecah_barcode=explode("-",$barcode);
+		$type=$pecah_barcode[0];
+		$id=$pecah_barcode[1];
+		}
+			if($type=="BT"){
+				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join buku_tanah on buku_tanah.id_buku_tanah=pinjam.id_buku_tanah left join desa on desa.kode_desa=buku_tanah.kode_desa left join pegawai on pinjam.nip=pegawai.nip left join jenis_hak on buku_tanah.id_jenis_hak=jenis_hak.id_jenis_hak where pinjam.id_buku_tanah='$id' and pinjam.status=2 and buku_tanah.status=2";
+				$query = $this->db->query($sql);
+				$data=$query->result();
+				$jumlah=0;
+				$no_hak;
+				$nama_desa;
+				$tgl_pinjam;
+				$tgl_kembali;
+				$id_pinjam;
+				$nama_lengkap;
+				$selisih;
+				$nama_jenis_hak;
+				$invoice;
+				foreach ($data as $isi) {
+						$jumlah=$isi->jumlah;
+						$no_hak=$isi->no_hak;
+						$nama_desa=$isi->nama_desa;
+						$tgl_pinjam=$isi->tgl_pinjam;
+						$tgl_kembali=$isi->tgl_kembali;
+						$nama_lengkap=$isi->nama_lengkap;
+						$id_pinjam=$isi->id_pinjam;
+						$nama_lengkap=$isi->nama_lengkap;
+						$selisih=$isi->selisih;
+						$nama_jenis_hak=$isi->nama_jenis_hak;
+						$invoice=$isi->invoice;
+				 }
+				 	if($jumlah==1){
+						$data=$no_hak.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$nama_jenis_hak.";"."BT".";".$invoice;
+					}else if($jumlah==0){
+						$data=null;
+					}else{
+						$data=null;
+					}
+		}
+			elseif ($type=="SU") {
+				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join surat_ukur on surat_ukur.id_surat_ukur=pinjam.id_surat_ukur left join desa on desa.kode_desa=surat_ukur.kode_desa left join pegawai on pinjam.nip=pegawai.nip  where pinjam.id_surat_ukur='$id' and pinjam.status=2 and surat_ukur.status=2";
+				$query = $this->db->query($sql);
+				$data=$query->result();
+				$jumlah=0;
+				$nomor;
+				$tahun;
+				$nama_desa;
+				$tgl_pinjam;
+				$tgl_kembali;
+				$id_pinjam;
+				$nama_lengkap;
+				$selisih;
+				$nama_jenis_hak;
+				$invoice;
+				foreach ($data as $isi) {
+						$jumlah=$isi->jumlah;
+						$nomor=$isi->nomor;
+						$tahun=$isi->tahun;
+						$nama_desa=$isi->nama_desa;
+						$tgl_pinjam=$isi->tgl_pinjam;
+						$tgl_kembali=$isi->tgl_kembali;
+						$nama_lengkap=$isi->nama_lengkap;
+						$id_pinjam=$isi->id_pinjam;
+						$nama_lengkap=$isi->nama_lengkap;
+						$selisih=$isi->selisih;
+						$invoice=$isi->invoice;
+				 }
+				 	if($jumlah==1){
+						$data=$nomor.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$tahun.";"."SU".";".$invoice;
+					}else if($jumlah==0){
+						$data=null;
+					}else{
+						$data=null;
+					}
+			}
+			elseif ($type=="W") {
+				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah left join desa on desa.kode_desa=warkah.kode_desa left join pegawai on pinjam.nip=pegawai.nip  where pinjam.id_warkah='$id' and pinjam.status=2 and warkah.status=2";
+				$query = $this->db->query($sql);
+				$data=$query->result();
+				$jumlah=0;
+				$nomor;
+				$tahun;
+				$nama_desa;
+				$tgl_pinjam;
+				$tgl_kembali;
+				$id_pinjam;
+				$nama_lengkap;
+				$selisih;
+				$nama_jenis_hak;
+				$invoice;
+				foreach ($data as $isi) {
+						$jumlah=$isi->jumlah;
+						$nomor=$isi->nomor;
+						$tahun=$isi->tahun;
+						$nama_desa=$isi->nama_desa;
+						$tgl_pinjam=$isi->tgl_pinjam;
+						$tgl_kembali=$isi->tgl_kembali;
+						$nama_lengkap=$isi->nama_lengkap;
+						$id_pinjam=$isi->id_pinjam;
+						$nama_lengkap=$isi->nama_lengkap;
+						$selisih=$isi->selisih;
+						$invoice=$isi->invoice;
+				 }
+				 	if($jumlah==1){
+						$data=$nomor.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$tahun.";"."W".";".$invoice;
+					}else if($jumlah==0){
+						$data=null;
+					}else{
+						$data=null;
+					}
+			}else{
+				$data=null;
+			}
+		 echo json_encode($data);
+	}
+
+	function cari_buku_tanah_pengembalian(){
+		$kode_desa=$this->uri->segment('3');
+		$id_jeni_hak=$this->uri->segment('4');
+		$no_hak=$this->uri->segment('5');
+		$tgl_pinjam=('Y-m-d');
+		$id_buku_tanah;
+		$status;
+		$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join buku_tanah on buku_tanah.id_buku_tanah=pinjam.id_buku_tanah left join desa on desa.kode_desa=buku_tanah.kode_desa left join pegawai on pinjam.nip=pegawai.nip left join jenis_hak on buku_tanah.id_jenis_hak=jenis_hak.id_jenis_hak where buku_tanah.no_hak='$no_hak' and pinjam.status=2 and buku_tanah.status=2 and buku_tanah.kode_desa='$kode_desa' and buku_tanah.id_jenis_hak='$id_jeni_hak'";
+		$query = $this->db->query($sql);
+		$data=$query->result();
+		$jumlah=0;
+		$no_hak;
+		$nama_desa;
+		$tgl_pinjam;
+		$tgl_kembali;
+		$id_pinjam;
+		$nama_lengkap;
+		$selisih;
+		$nama_jenis_hak;
+		$invoice;
+		foreach ($data as $isi) {
+				$jumlah=$isi->jumlah;
+				$no_hak=$isi->no_hak;
+				$nama_desa=$isi->nama_desa;
+				$tgl_pinjam=$isi->tgl_pinjam;
+				$tgl_kembali=$isi->tgl_kembali;
+				$nama_lengkap=$isi->nama_lengkap;
+				$id_pinjam=$isi->id_pinjam;
+				$nama_lengkap=$isi->nama_lengkap;
+				$selisih=$isi->selisih;
+				$nama_jenis_hak=$isi->nama_jenis_hak;
+				$invoice=$isi->invoice;
+		 }
+			if($jumlah==1){
+				$data=$no_hak.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$nama_jenis_hak.";"."BT".";".$invoice;
+			}else if($jumlah==0){
+				$data=null;
+			}else{
+				$data=null;
+			}
+		 echo json_encode($data);
+	}
+
+	function cari_surat_ukur_pengembalian(){
+		$kode_desa=$this->uri->segment('3');
+		$nomor=$this->uri->segment('4');
+		$tahun=$this->uri->segment('5');
+		$tgl_pinjam=('Y-m-d');
+		$id_surat_ukur;
+		$status;
+		$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join surat_ukur on surat_ukur.id_surat_ukur=pinjam.id_surat_ukur left join desa on desa.kode_desa=surat_ukur.kode_desa left join pegawai on pinjam.nip=pegawai.nip  where surat_ukur.nomor='$nomor' and pinjam.status=2 and surat_ukur.status=2 and surat_ukur.tahun='$tahun'";
+		$query = $this->db->query($sql);
+		$data=$query->result();
+		$jumlah=0;
+		$nomor;
+		$tahun;
+		$nama_desa;
+		$tgl_pinjam;
+		$tgl_kembali;
+		$id_pinjam;
+		$nama_lengkap;
+		$selisih;
+		$nama_jenis_hak;
+		$invoice;
+		foreach ($data as $isi) {
+				$jumlah=$isi->jumlah;
+				$nomor=$isi->nomor;
+				$tahun=$isi->tahun;
+				$nama_desa=$isi->nama_desa;
+				$tgl_pinjam=$isi->tgl_pinjam;
+				$tgl_kembali=$isi->tgl_kembali;
+				$nama_lengkap=$isi->nama_lengkap;
+				$id_pinjam=$isi->id_pinjam;
+				$nama_lengkap=$isi->nama_lengkap;
+				$selisih=$isi->selisih;
+				$invoice=$isi->invoice;
+		 }
+			if($jumlah==1){
+				$data=$nomor.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$tahun.";"."SU".";".$invoice;
+			}else if($jumlah==0){
+				$data=null;
+			}else{
+				$data=null;
+			}
+		 echo json_encode($data);
+	}
+
+	function cari_warkah_pengembalian(){
+		$nomor=$this->uri->segment('3');
+		$tahun=$this->uri->segment('4');
+		$tgl_pinjam=('Y-m-d');
+		$id_surat_ukur;
+		$status;
+		$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah left join desa on desa.kode_desa=warkah.kode_desa left join pegawai on pinjam.nip=pegawai.nip  where warkah.nomor='$nomor' and pinjam.status=2 and warkah.status=2 and warkah.tahun='$tahun'";
+		$query = $this->db->query($sql);
+		$data=$query->result();
+		$jumlah=0;
+		$nomor;
+		$tahun;
+		$nama_desa;
+		$tgl_pinjam;
+		$tgl_kembali;
+		$id_pinjam;
+		$nama_lengkap;
+		$selisih;
+		$nama_jenis_hak;
+		$invoice;
+		foreach ($data as $isi) {
+				$jumlah=$isi->jumlah;
+				$nomor=$isi->nomor;
+				$tahun=$isi->tahun;
+				$nama_desa=$isi->nama_desa;
+				$tgl_pinjam=$isi->tgl_pinjam;
+				$tgl_kembali=$isi->tgl_kembali;
+				$nama_lengkap=$isi->nama_lengkap;
+				$id_pinjam=$isi->id_pinjam;
+				$nama_lengkap=$isi->nama_lengkap;
+				$selisih=$isi->selisih;
+				$invoice=$isi->invoice;
+		 }
+			if($jumlah==1){
+				$data=$nomor.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$tahun.";"."W".";".$invoice;
+			}else if($jumlah==0){
+				$data=null;
+			}else{
+				$data=null;
 			}
 		 echo json_encode($data);
 	}
