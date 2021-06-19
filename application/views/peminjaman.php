@@ -170,7 +170,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col l8 s12">
                         <div class="card">
                             <div class="card-content">
@@ -350,7 +350,8 @@
                       if(notif==null){
                         //kosong
                       }else if (notif==1) {
-                        alert("Layanan Masih Ada Belum Ditentukan");
+                        layanan_kosong()
+                        //alert("Layanan Masih Ada Belum Ditentukan");
                       }else if (notif==2) {
                         alert("Belum Ada Arsip Yang Akan Dipinjam");
                       }else if (notif==3) {
@@ -641,6 +642,9 @@
         }
         function berhasil_hapus() {
           toastr.success('Berhasil Hapus Peminjaman!', '', { "progressBar": true });
+        }
+        function layanan_kosong() {
+          toastr.warning('Layanan / Lama Peminjaman Masih Kosong.', 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
         }
       </script>
 </body>
