@@ -498,9 +498,9 @@ class Pinjam extends CI_Controller {
 		$warkah=$query->result();
 		$jumlah_warkah;
 		foreach ($warkah as $isi) {
-				echo $jumlah_warkah=$isi->jumlah;
+				$jumlah_warkah=$isi->jumlah;
 				$id_warkah=$isi->id_warkah;
-				echo$status=$isi->status;
+				$status=$isi->status;
 		 }
 		 if($jumlah_warkah==1 && $status==1){
 			 $this->M_pinjam->tambah_warkah($invoice,$tgl_pinjam,$nip,$admin_tambah,$id_warkah);

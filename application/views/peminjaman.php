@@ -20,6 +20,7 @@
         padding: 16px 12px;
       }
     </style>
+    <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -169,7 +170,7 @@
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="col l8 s12">
                         <div class="card">
                             <div class="card-content">
@@ -390,6 +391,7 @@
              dataType : 'json',
              success: function(data){
                tampil_data_pinjam();
+               berhasil_layanan();
              }
            });
 
@@ -423,6 +425,7 @@
                       alert("Arsip Hilang");
                     else{
                       tampil_data_pinjam();
+                      berhasil_add();
                     }
                     const inputField = document.getElementById("barcode");
                     inputField.value ="";
@@ -447,6 +450,7 @@
                       //kosong
                     }else if (data==1) {
                       tampil_data_pinjam();
+                      berhasil_add();
                     }else if (data==2) {
                       alert('Buku Tanah Belum Valid');
                     }else if (data==3){
@@ -479,6 +483,7 @@
                       //kosong
                     }else if (data==1) {
                       tampil_data_pinjam();
+                      berhasil_add();
                     }else if (data==2) {
                       alert('Surat Ukur Belum Valid');
                     }else if (data==3){
@@ -512,6 +517,7 @@
                       //kosong
                     }else if (data==1) {
                       tampil_data_pinjam();
+                      berhasil_add();
                     }else if (data==2) {
                       alert('Warkah Belum Valid');
                     }else if (data==3){
@@ -613,6 +619,7 @@
                         success: function(data){
                             $('#modal1').modal('close');
                             tampil_data_pinjam();
+                            berhasil_hapus();
                         }
                     });
                     return false;
@@ -624,6 +631,18 @@
 
     </script>
       <script src="<?php echo base_url(); ?>dist/js/app.js"></script>
+      <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+      <script>
+        function berhasil_add() {
+          toastr.success('Berhasil Menambah Peminjaman!', '', { "progressBar": true });
+        }
+        function berhasil_layanan() {
+          toastr.success('Berhasil Menambah lama Peminjaman!', '', { "progressBar": true });
+        }
+        function berhasil_hapus() {
+          toastr.success('Berhasil Hapus Peminjaman!', '', { "progressBar": true });
+        }
+      </script>
 </body>
 
 </html>
