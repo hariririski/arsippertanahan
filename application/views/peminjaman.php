@@ -9,8 +9,17 @@
     <title>Perminjaman Arsip Pertanahan</title>
     <link href="<?php echo base_url(); ?>dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
+    <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>dist/css/pages/data-table.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+    <style>
+      .selectize-input {
+        min-height: 44px;
+      }
+      .selectize-input {
+        padding: 16px 12px;
+      }
+    </style>
 </head>
 
 <body>
@@ -294,7 +303,16 @@
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
-    <script src="<?php echo base_url(); ?>assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function () {
+          $('select').selectize({
+              sortField: 'text'
+          });
+      });
+    </script>
+    <!-- <script src="<?php echo base_url(); ?>assets/libs/jquery/dist/jquery.min.js"></script> -->
     <script src="<?php echo base_url(); ?>dist/js/materialize.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
     <!-- ============================================================== -->
@@ -479,8 +497,8 @@
           }
 
           function cari_warkah(){
-            var jenis_hak=$('#nomor_warkah').val();
-            var nomor_hak=$('#tahun_warkah').val();
+            var nomor_warkah=$('#nomor_warkah').val();
+            var tahun_warkah=$('#tahun_warkah').val();
             $.ajax({
                 type : "POST",
                 url  : "<?php echo base_url('pinjam/cari_warkah')?>/<?php echo $this->uri->segment('3');?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+nomor_warkah+"/"+tahun_warkah,
@@ -499,7 +517,7 @@
                     }else if(data==5){
                       alert('WarkahTidak Ditemukan');
                     }
-                    const momor = document.getElementById("nomor_warkah");
+                    const nomor = document.getElementById("nomor_warkah");
                     nomor.value ="";
                     const tahun = document.getElementById("tahun_warkah");
                     tahun.value ="";

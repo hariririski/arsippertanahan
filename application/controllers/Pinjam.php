@@ -299,13 +299,13 @@ class Pinjam extends CI_Controller {
 		$tgl_pinjam=('Y-m-d');
 		$id_warkah;
 		$status;
-		$sql="SELECT count(id_warkah)as jumlah, id_warkah,status from buku_tanah where nomor='$nomor_warkah' and tahun=$tahun_warkah ";
+		$sql="SELECT count(id_warkah)as jumlah, id_warkah,status from warkah where nomor='$nomor_warkah' and tahun=$tahun_warkah ";
 		$query = $this->db->query($sql);
-		$buku_tanah=$query->result();
+		$warkah=$query->result();
 		$jumlah_warkah;
 		foreach ($warkah as $isi) {
-				echo $jumlah_warkah=$isi->jumlah;
-				$id_warkah=$isi->id_surat;
+				$jumlah_warkah=$isi->jumlah;
+				$id_warkah=$isi->id_warkah;
 				$status=$isi->status;
 		 }
 		 if($jumlah_warkah==1 && $status==1){
