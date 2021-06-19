@@ -10,9 +10,6 @@
                 <li>
                     <a href="<?php echo base_url(); ?>scan" class="collapsible-header"><i class="material-icons">dashboard</i><span class="hide-menu">Qr Code</span></a>
                 </li>
-                <li>
-                    <a href="<?php echo base_url(); ?>scan2" class="collapsible-header"><i class="material-icons">dashboard</i><span class="hide-menu">Qr Code 2</span></a>
-                </li>
                 <?php
                   if($this->session->userdata("level")==1 or $this->session->userdata("level")==2){
                 ?>

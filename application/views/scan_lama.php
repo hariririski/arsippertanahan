@@ -9,7 +9,12 @@
     <title>Scan Qr Code</title>
     <link href="dist/css/style2.css" rel="stylesheet">
     <link href="dist/css/pages/dashboard3.css" rel="stylesheet">
-
+    <style>
+      #preview{
+         width:100%;
+         margin:0px auto;
+      }
+    </style>
 </head>
 
 <body>
@@ -39,8 +44,7 @@
             <div class="card info-gradient m-t-0 m-b-0">
                 <div class="card-content">
                     <div class="p-b-40 p-t-20">
-                      <div id="qr-reader" style="width:100%"></div>
-                      <div id="qr-reader-results"></div>
+                        <video id="preview"></video>
                         <h3 class="white-text center">Scann QR Code</h3>
                         <p class="white-text op-7 m-b-20 Center">Manajemen Arsip Lebih Mudah, Cepat, Mudah dan Efektif</p>
 
@@ -56,50 +60,28 @@
     <!-- All Required js -->
     <!-- ============================================================== -->
     <script src="dist/js/jquery.min.js"></script>
-    <script src="dist/js/qrcode_scan3.min.js"></script>
-    <script>
-        function docReady(fn) {
-            // see if DOM is already available
-            if (document.readyState === "complete"
-                || document.readyState === "interactive") {
-                // call on next available tick
-                setTimeout(fn, 1);
-            } else {
-                document.addEventListener("DOMContentLoaded", fn);
-            }
-        }
-
-        docReady(function () {
-            var resultContainer = document.getElementById('qr-reader-results');
-            var lastResult, countResults = 0;
-            function onScanSuccess(decodedText, decodedResult) {
-                if (decodedText !== lastResult) {
-                    ++countResults;
-                    lastResult = decodedText;
-                    // Handle on success condition with the decoded message.
-                    console.log(`Scan result ${decodedText}`, decodedResult);
-                    alert(lastResult);
-                }
-            }
-
-            var html5QrcodeScanner = new Html5QrcodeScanner(
-                "qr-reader", { fps: 10, qrbox: 250 });
-            html5QrcodeScanner.render(onScanSuccess);
-        });
-    </script>
+    <script src="dist/js/instascan.min.js"></script>
     <script type="text/javascript">
-    permisi();
-  function permisi(){
-      $(function(){
-          $('.permisi').trigger('click');
-      });
-    }
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview'),mirror: false });
+      scanner.addListener('scan', function (content) {
+    	alert(content);
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+      alert(cameras.length);
+    	if (cameras.length > 0) {
 
-  function camera(){
-    $(function(){
-        $('#camera').trigger('click');
-    });
-  }
+        if(cameras.length==1){
+    	     scanner.start(cameras[0]);
+        }else if(cameras.length>1){
+          var kamera=cameras.length-1;
+          scanner.start(cameras[kamera]);
+        }
+    	} else {
+    	  alert.error('No cameras found.');
+    	}
+      }).catch(function (e) {
+    	alert.error(e);
+      });
     </script>
 
 
