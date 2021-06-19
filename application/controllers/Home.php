@@ -18,8 +18,11 @@ class Home extends CI_Controller {
 	public function index()
 	{
 		$data['jumlah_buku_tanah'] = $this->M_home->jumlah_buku_tanah();
+		$data['jumlah_buku_tanah_valid'] = $this->M_home->jumlah_buku_tanah_valid();
 		$data['jumlah_warkah'] = $this->M_home->jumlah_warkah();
+		$data['jumlah_warkah_valid'] = $this->M_home->jumlah_warkah_valid();
 		$data['jumlah_surat_ukur'] = $this->M_home->jumlah_surat_ukur();
+		$data['jumlah_surat_ukur_valid'] = $this->M_home->jumlah_surat_ukur_valid();
 		$data['g1_buku_tanah'] = $this->M_home->kondisi_buku_tanah();
 		$data['g1_warkah'] = $this->M_home->kondisi_warkah();
 		$data['g1_surat_ukur'] = $this->M_home->kondisi_surat_ukur();

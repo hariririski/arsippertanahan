@@ -91,7 +91,17 @@
                                             </span>
                                           </span>
                                         </p>
-                                        <p><span class="white-text op-6">Validasi <span class="right">$158</span></span></p>
+                                        <p>
+                                          <span class="white-text op-6">Validasi
+                                              <span class="right">
+                                                <?php
+                                                foreach($jumlah_buku_tanah_valid as $data){
+                                                  echo $data->jumlah_buku_tanah;
+                                                }
+                                                ?>
+                                              </span>
+                                            </span>
+                                        </p>
 
                                     </div>
                                     <div id="revenue" style="height:75px; width:100%;"></div>
@@ -113,7 +123,17 @@
                                             </span>
                                           </span>
                                         </p>
-                                        <p><span class="white-text op-6">Validasi <span class="right">1470</span></span></p>
+                                        <p>
+                                          <span class="white-text op-6">Validasi
+                                            <span class="right">
+                                              <?php
+                                                foreach($jumlah_surat_ukur_valid as $data){
+                                                  echo $data->jumlah_surat_ukur;
+                                                }
+                                              ?>
+                                            </span>
+                                          </span>
+                                        </p>
                                     </div>
                                     <div class="center-align">
                                         <div id="visits"></div>
@@ -171,7 +191,17 @@
                                             </span>
                                           </span>
                                         </p>
-                                        <p><span class="white-text op-6">Validasi <span class="right">75%</span></span></p>
+                                        <p>
+                                          <span class="white-text op-6">Validasi
+                                          <span class="right">
+                                            <?php
+                                              foreach($jumlah_warkah_valid as $data){
+                                                echo $data->jumlah_warkah;
+                                              }
+                                            ?>
+                                          </span>
+                                          </span>
+                                        </p>
                                     </div>
                                     <div id="sales" style="height:60px; width:100%;"></div>
                                 </div>
