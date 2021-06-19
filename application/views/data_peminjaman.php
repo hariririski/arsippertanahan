@@ -11,6 +11,15 @@
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
     <link href="dist/css/pages/data-table.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+    <style>
+      .selectize-input {
+        min-height: 44px;
+      }
+      .selectize-input {
+        padding: 16px 12px;
+      }
+    </style>
 </head>
 
 <body>
@@ -64,8 +73,8 @@
                                           <div class="errorTxt1"></div>
                                       </div>
 
-                                      <div class="input-field col s4">
-                                        <select required name="nip" >
+                                      <div class="input-field col s6">
+                                        <select required name="nip" class="browser-default">
                                           <option value="" disabled selected>Pilih Pegawai</option>
                                           <?php
                                             foreach($pegawai as $pegawai){
@@ -76,7 +85,7 @@
                                       </div>
 
                                       <div class="input-field col s2">
-                                          <button class="btn cyan waves-effect waves-light right submit" type="submit" name="action">Pinjam</button>
+                                          <button class="waves-effect waves-light btn-large" submit=""><i class="material-icons left">search</i>Pinjam</button>
                                       </div>
                                   </div>
                               </form>
