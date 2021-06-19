@@ -183,14 +183,14 @@
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
 
-    
+
     <script>
     /****************************************
      *       Basic Table                   *
      ****************************************/
     $('#zero_config').DataTable();
     </script>
-    <?php echo $this->load->view('share/home', '', TRUE);?>
+    
 
 </body>
 
