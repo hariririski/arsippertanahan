@@ -192,7 +192,17 @@
                                               $i++;
                                             ?>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $data->invoice; ?></td>
+                                            <td>
+                                              <?php
+                                              if($data->id_buku_tanah!=null){
+                                                echo "BT - ".$data->desa_bt."/".$data->nama_jenis_hak."/".$data->no_hak;
+                                              }else if($data->id_surat_ukur!=null){
+                                                echo "SU - ".$data->desa_su."/".$data->nomor_su."/".$data->tahun_su;
+                                              }else if($data->id_warkah!=null){
+                                                echo "W - ".$data->nomor_w."/".$data->tahun_w;
+                                              }
+                                              ?>
+                                            </td>
                                             <td><?php echo $data->tgl_pinjam; ?></td>
                                             <td><?php echo $data->admin_tambah; ?></td>
                                             <td><?php echo $data->nama_lengkap; ?></td>
@@ -215,7 +225,17 @@
                                               <?php
                                             }else if ($data->status==2){
                                               ?>
-                                              <a class="waves-effect waves-light btn  orange" href="<?php echo base_url(); ?>pinjam/detail_peminjaman/<?php echo $data->invoice; ?>">Kembalikan</a></td>
+                                              <?php
+                                              $barcode;
+                                              if($data->id_buku_tanah!=null){
+                                                $barcode="BT-".$data->id_buku_tanah;
+                                              }else if($data->id_surat_ukur!=null){
+                                                $barcode="SU-".$data->id_surat_ukur;
+                                              }else if($data->id_warkah!=null){
+                                                $barcode="W-".$data->id_warkah;
+                                              }
+                                              ?>
+                                              <button class="waves-effect waves-light btn  orange" onclick="tabel('<?php echo $barcode ?>')">Kembalikan</button></td>
                                               <?php
                                             }else if ($data->status>2) {
                                               ?>
@@ -362,6 +382,18 @@
 
         function cari_barcode(){
           var barcode=$('#barcode').val();
+          $.ajax({
+              type : "POST",
+              url  : "<?php echo base_url('pinjam/cari_barcode_pengembalian')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
+              dataType : "JSON",
+                success: function(data){
+                  data_modal(data);
+              }
+          });
+          return false;
+        }
+
+        function tabel(barcode){
           $.ajax({
               type : "POST",
               url  : "<?php echo base_url('pinjam/cari_barcode_pengembalian')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,

@@ -455,6 +455,8 @@
                       alert('Buku Tanah Lebih Dari 1, Mohon Menguhungi admin');
                     }else if(data==5){
                       alert('Buku Tanah Tidak Ditemukan');
+                    }else{
+                      alert("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kembali Sebelum dilakukan Proses Peminjaman");
                     }
                     const inputField = document.getElementById("nomor_hak");
                     inputField.value ="";
@@ -485,6 +487,8 @@
                       alert('Surat Ukur Lebih Dari 1, Mohon Menguhungi admin');
                     }else if(data==5){
                       alert('Surat Ukur Tidak Ditemukan');
+                    }else{
+                      alert("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kembali Sebelum dilakukan Proses Peminjaman");
                     }
                     const momor = document.getElementById("nomor_surat_ukur");
                     nomor.value ="";
@@ -509,13 +513,15 @@
                     }else if (data==1) {
                       tampil_data_pinjam();
                     }else if (data==2) {
-                      alert('WarkahBelum Valid');
+                      alert('Warkah Belum Valid');
                     }else if (data==3){
-                      alert('WarkahSedang / Proses Peminjaman ');
+                      alert('Warkah Sedang / Proses Peminjaman ');
                     }else if (data==4) {
-                      alert('WarkahLebih Dari 1, Mohon Menguhungi admin');
+                      alert('Warkah Lebih Dari 1, Mohon Menguhungi admin');
                     }else if(data==5){
-                      alert('WarkahTidak Ditemukan');
+                      alert('Warkah Tidak Ditemukan');
+                    }else{
+                      alert("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kembali Sebelum dilakukan Proses Peminjaman");
                     }
                     const nomor = document.getElementById("nomor_warkah");
                     nomor.value ="";

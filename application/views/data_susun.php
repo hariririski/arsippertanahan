@@ -192,7 +192,17 @@
                                               $i++;
                                             ?>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo $data->invoice; ?></td>
+                                            <td>
+                                              <?php
+                                              if($data->id_buku_tanah!=null){
+                                                echo "BT - ".$data->desa_bt."/".$data->nama_jenis_hak."/".$data->no_hak;
+                                              }else if($data->id_surat_ukur!=null){
+                                                echo "SU - ".$data->desa_su."/".$data->nomor_su."/".$data->tahun_su;
+                                              }else if($data->id_warkah!=null){
+                                                echo "W - ".$data->nomor_w."/".$data->tahun_w;
+                                              }
+                                              ?>
+                                            </td>
                                             <td><?php echo $data->tgl_pinjam; ?></td>
                                             <td><?php echo $data->admin_tambah; ?></td>
                                             <td><?php echo $data->nama_lengkap; ?></td>
@@ -217,9 +227,19 @@
                                               ?>
                                               <a class="waves-effect waves-light btn  orange" href="<?php echo base_url(); ?>pinjam/detail_peminjaman/<?php echo $data->invoice; ?>">Kembalikan</a></td>
                                               <?php
-                                            }else if ($data->status>2) {
+                                            }else if ($data->status=3) {
                                               ?>
-                                              <a class="waves-effect waves-light btn  green" href="<?php echo base_url(); ?>pinjam/detail_peminjaman/<?php echo $data->invoice; ?>">detail</a></td>
+                                              <?php
+                                              $barcode;
+                                              if($data->id_buku_tanah!=null){
+                                                $barcode="BT-".$data->id_buku_tanah;
+                                              }else if($data->id_surat_ukur!=null){
+                                                $barcode="SU-".$data->id_surat_ukur;
+                                              }else if($data->id_warkah!=null){
+                                                $barcode="W-".$data->id_warkah;
+                                              }
+                                              ?>
+                                              <button class="waves-effect waves-light btn green" onclick="tabel('<?php echo $barcode ?>')">Susun</button></td>
                                               <?php
                                             }
                                               ?>
@@ -237,9 +257,52 @@
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <?php echo $this->load->view('share/footer', '', TRUE);?>
+
         </div>
 
 
+    </div>
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h5 class="card-title">Penysusunan Arsip</h5>
+            <div class="row">
+              <table  class="striped">
+                <tr style="padding: 0px 0px;">
+                  <td style="padding: 0px 0px;">Desa/Jenis Hak/Nomor Hak/SU/WARKAH/</td>
+                  <td style="padding: 0px 0px;">
+                    <P id="id"></P>
+                  </td>
+                </tr>
+                <tr style="padding: 0px 0px;">
+                  <td style="padding: 0px 0px;">Tanggal Pinjam</td>
+                  <td style="padding: 0px 0px;"><P id="tgl_pinjam"></P></td>
+                </tr>
+                <tr style="padding: 0px 0px;">
+                  <td style="padding: 0px 0px;">Tanggal Kembali</td>
+                  <td style="padding: 0px 0px;"><P id="tgl_kembali"></P></td>
+                </tr>
+                <tr style="padding: 0px 0px;">
+                  <td style="padding: 0px 0px;">Tanggak Keterlambatan</td>
+                  <td style="padding: 0px 0px;"><P id="selisih"></P></td>
+                </tr>
+                <tr style="padding: 0px 0px;">
+                  <td style="padding: 0px 0px;">Peminjam</td>
+                  <td style="padding: 0px 0px;"><P id="nama_lengkap"></P></td>
+                </tr>
+              </table>
+              <form action="javascript:susun()">
+              <input type="hidden" name="id_pinjam" id="textkode" value="">
+              <input type="text" name="kode_bundel" id="kode_bundel" required autofocus="on">
+              <label for="icon_prefix">Scan Kode Pada Bundel</label>
+              <div class="alert alert-warning"><p>Apakah Anda yakin mau menyelesaikan peminjaman?</p></div>
+            </div>
+            <div class="modal-footer">
+                <button href="#!" class="waves-effect waves-green btn-flat blue white-text" type="submit" ><i class="fas fa-share"></i>Kembalikan</button>
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
+
+            </div>
+          </form>
+        </div>
     </div>
     <!-- ============================================================== -->
     <!-- All Required js -->
@@ -273,6 +336,180 @@
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
+    <script type="text/javascript">
+        setFocus();
+        const inputField = document.getElementById("barcode");
+        function setFocus(){
+          document.getElementById("barcode").focus();
+        }
+
+        function data_modal(data){
+          if(data!=null){
+            pecah=data.split(";",10);
+            simpan();
+            if(pecah[8]=="BT"){
+              pecah[4]=pecah[4]+";"+pecah[9];
+              $('[name="id_pinjam"]').val(pecah[4]);
+              pecah[0]=pecah[1]+" / "+pecah[7]+" / "+pecah[0];
+              $('#id').html(pecah[0]);
+              $('#tgl_pinjam').html(pecah[2]);
+              $('#tgl_kembali').html(pecah[3]);
+              $('#nama_lengkap').html(pecah[5]);
+              $('#selisih').html(pecah[6]);
+            }else if(pecah[8]=="SU"){
+              pecah[4]=pecah[4]+";"+pecah[9];
+              $('[name="id_pinjam"]').val(pecah[4]);
+              pecah[0]=pecah[1]+" / "+pecah[0]+" / "+pecah[7];
+              $('#id').html(pecah[0]);
+              $('#desa').html(pecah[1]);
+              $('#tgl_pinjam').html(pecah[2]);
+              $('#tgl_kembali').html(pecah[3]);
+              $('#nama_lengkap').html(pecah[5]);
+              $('#selisih').html(pecah[6]);
+            }else if(pecah[8]=="W"){
+              pecah[4]=pecah[4]+";"+pecah[9];
+              $('[name="id_pinjam"]').val(pecah[4]);
+              pecah[0]=pecah[0]+" / "+pecah[7];
+              $('#id').html(pecah[0]);
+              $('#desa').html(pecah[1]);
+              $('#tgl_pinjam').html(pecah[2]);
+              $('#tgl_kembali').html(pecah[3]);
+              $('#nama_lengkap').html(pecah[5]);
+              $('#selisih').html(pecah[6]);
+            }
+          }else{
+            alert("Arsip Tidak Sedang Di Pinjam");
+          }
+        }
+
+
+        function cari_barcode(){
+          var barcode=$('#barcode').val();
+          $.ajax({
+              type : "POST",
+              url  : "<?php echo base_url('pinjam/cari_barcode_susun')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
+              dataType : "JSON",
+                success: function(data){
+                  data_modal(data);
+              }
+          });
+          return false;
+        }
+
+        function tabel(barcode){
+          $.ajax({
+              type : "POST",
+              url  : "<?php echo base_url('pinjam/cari_barcode_susun')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
+              dataType : "JSON",
+                success: function(data){
+                  data_modal(data);
+              }
+          });
+          return false;
+        }
+
+        function simpan() {
+          $('#modal2').modal('open');
+          document.getElementById("kode_bundel").focus();
+        }
+
+        function susun(){
+            $('#modal2').modal('close');
+            var kode=$('#textkode').val();
+            var kode_bundel=$('#kode_bundel').val();
+            pecah=kode.split(";",2);
+            //alert(kode);
+            setFocus();
+            const bundel = document.getElementById("kode_bundel");
+            bundel.value ="";
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url()?>pinjam/susunkan/"+pecah[1]+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+pecah[0]+"/"+kode_bundel,
+            dataType : "JSON",
+                    data : {kode: kode},
+                    success: function(notif){
+                        $('#modal1').modal('close');
+                        if (notif==1) {
+                          //alert("sama");
+                        }else if(notif==2){
+                          window.location.href="<?php echo base_url()?>susun";
+                        }else if(notif==3){
+                          alert("Arsip Gagal Di Susun");
+                        }else if(notif==4){
+                          alert("Bundel Tidak Sesuai, Arsip Gagal Di Susun");
+                        }else{
+                          //tampil_data_pinjam();
+                          alert("Arsip Gagal Di Susun");
+                        }
+
+                    }
+                });
+                return false;
+
+        }
+        $('#btn_batal').on('click',function(){
+            $('#modal2').modal('close');
+            setFocus();
+            inputField.value ="";
+        });
+    </script>
+
+    <script type="text/javascript">
+        function cari_buku_tanah(){
+          var desa_buku_tanah=$('#desa_buku_tanah').val();
+          var jenis_hak=$('#jenis_hak').val();
+          var nomor_hak=$('#nomor_hak').val();
+          $.ajax({
+              type : "POST",
+              url  : "<?php echo base_url('pinjam/cari_buku_tanah_susun')?>/"+desa_buku_tanah+"/"+jenis_hak+"/"+nomor_hak,
+              dataType : "JSON",
+              success: function(data){
+                data_modal(data);
+            }
+          });
+          return false;
+        }
+
+        function cari_surat_ukur(){
+          var desa_surat_ukur=$('#desa_surat_ukur').val();
+          var nomor=$('#nomor_surat_ukur').val();
+          var tahun=$('#tahun_surat_ukur').val();
+          $.ajax({
+              type : "POST",
+              url  : "<?php echo base_url('pinjam/cari_surat_ukur_susun')?>/"+desa_surat_ukur+"/"+nomor+"/"+tahun,
+              dataType : "JSON",
+              success: function(data){
+                data_modal(data);
+            }
+          });
+          return false;
+        }
+
+        function cari_warkah(){
+          var nomor_warkah=$('#nomor_warkah').val();
+          var tahun_warkah=$('#tahun_warkah').val();
+          $.ajax({
+              type : "POST",
+              url  : "<?php echo base_url('pinjam/cari_warkah_susun')?>/"+nomor_warkah+"/"+tahun_warkah,
+              dataType : "JSON",
+              success: function(data){
+                data_modal(data);
+            }
+          });
+          return false;
+        }
+
+
+    </script>
+    <!-- Latest compiled and minified CSS -->
+    <script>
+    /****************************************
+     *       Basic Table                   *
+     ****************************************/
+    $('#zero_config').DataTable();
+    </script>
+
+
 
 
 </body>
