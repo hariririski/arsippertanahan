@@ -161,8 +161,16 @@
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
-
-    <script src="assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function () {
+          $('browser-default').selectize({
+              sortField: 'text'
+          });
+      });
+    </script>
+    <!-- <script src="assets/libs/jquery/dist/jquery.min.js"></script> -->
     <script src="dist/js/materialize.min.js"></script>
     <script src="assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
     <!-- ============================================================== -->
@@ -190,7 +198,7 @@
      ****************************************/
     $('#zero_config').DataTable();
     </script>
-    
+
 
 </body>
 
