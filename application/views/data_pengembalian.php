@@ -172,7 +172,7 @@
                     <div class="col s12">
                         <div class="card">
                             <div class="card-content">
-                              <table  class="responsive-table display" style="width:100%">
+                              <table id="zero_config"  class="responsive-table display" style="width:100%">
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -459,7 +459,12 @@
 
     </script>
     <!-- Latest compiled and minified CSS -->
-
+    <script>
+    /****************************************
+     *       Basic Table                   *
+     ****************************************/
+    $('#zero_config').DataTable();
+    </script>
 
 
 
