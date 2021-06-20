@@ -20,6 +20,7 @@
         padding: 16px 12px;
       }
     </style>
+    <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -375,7 +376,7 @@
               $('#selisih').html(pecah[6]);
             }
           }else{
-            alert("Arsip Tidak Sedang Di Pinjam");
+            peringatan("Arsip Tidak Sedang Di Pinjam");
           }
         }
 
@@ -423,12 +424,14 @@
                     success: function(notif){
                         $('#modal1').modal('close');
                         if (notif==1) {
-                          window.location.href="<?php echo base_url()?>kembali";
+                          berhasil("Peminjaman Berhasil Di kembalikan!.");
+                          setTimeout("location.href = '<?php echo base_url()?>kembali';",1500);
                         }else if(notif==2){
-                          window.location.href="<?php echo base_url()?>kembali";
+                          berhasil("Peminjaman Berhasil Di kembalikan!.");
+                          setTimeout("location.href = '<?php echo base_url()?>kembali';",1500);
                         }else{
                           //tampil_data_pinjam();
-                          alert("Peminjaman Gagal Di kembalikan");
+                          gagal("Peminjaman Gagal Di kembalikan");
                         }
 
                     }
@@ -496,6 +499,18 @@
      *       Basic Table                   *
      ****************************************/
     $('#zero_config').DataTable();
+    </script>
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script>
+      function berhasil(notif) {
+        toastr.success(notif, '', { "progressBar": true });
+      }
+      function peringatan(notif) {
+        toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+      function gagal(notif) {
+        toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
     </script>
 
 

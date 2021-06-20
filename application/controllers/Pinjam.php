@@ -180,7 +180,8 @@ class Pinjam extends CI_Controller {
 		$tgl_susun=date('Y-m-d');
 		$status=3;
 		$data;
-		$jumlah_tgl_dikembalikan;
+		$jumlah_status2;
+		$jumlah_status3;
 		$id_pinjam;
 		$id_buku_tanah;
 		$id_surat_ukur;
@@ -189,91 +190,21 @@ class Pinjam extends CI_Controller {
 		$id_bundel_surat_ukur;
 		$id_bundel_warkah;
 		// 1 dipinjam, 2 dikembalikan, 3 dkembalikan dan disusun di tempatnya
-		$sql1="SELECT count(id_pinjam) as jumlah from pinjam where invoice='$invoice' and pinjam.status=3";
+		$sql1="SELECT count(id_pinjam) as jumlah from pinjam where invoice='$invoice' and pinjam.status=3 and induk=0";
 		$query1 = $this->db->query($sql1);
 		$pinjam=$query1->result();
 		foreach ($pinjam as $data) {
-				$jumlah_tgl_dikembalikan=$data->jumlah;
+				$jumlah_status3=$data->jumlah;
 		 }
-		 if($jumlah_tgl_dikembalikan>2){
-			 $status=4;
-			 $tgl_dikembalikan=date('Y-m-d');
-			 $admin_kembali=$this->uri->segment('4');
-				$sql1="SELECT pinjam.status, pinjam.tgl_pinjam, pinjam.admin_tambah, pegawai.nama_lengkap, pinjam.id_pinjam, pinjam.invoice, buku_tanah.no_hak, surat_ukur.nomor as nomor_su, surat_ukur.tahun as tahun_su, warkah.nomor as nomor_w, warkah.tahun as tahun_w, pinjam.id_buku_tanah, pinjam.id_surat_ukur, pinjam.id_warkah, desa_bt.nama_desa as desa_bt, desa_su.nama_desa as desa_su, jenis_hak.nama_jenis_hak, buku_tanah.id_bundel as id_bundel_buku_tanah, surat_ukur.id_bundel as id_bundel_surat_ukur, warkah.id_bundel as id_bundel_warkah FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip left join buku_tanah on buku_tanah.id_buku_tanah=pinjam.id_buku_tanah left JOIN surat_ukur on surat_ukur.id_surat_ukur=pinjam.id_surat_ukur left JOIN warkah on warkah.id_warkah=pinjam.id_warkah LEFT JOIN desa as desa_bt on buku_tanah.kode_desa=desa_bt.kode_desa LEFT join desa as desa_su on surat_ukur.kode_desa=desa_su.kode_desa left join jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak left join waktu on waktu.id_waktu=pinjam.id_waktu  where pinjam.id_pinjam='$id_pinjam' and pinjam.status=3";
-		 		$query1 = $this->db->query($sql1);
-				$pinjam=$query1->result();
-		 		foreach ($pinjam as $data) {
-		 				$id_pinjam=$data->id_pinjam;
-						$id_buku_tanah=$data->id_buku_tanah;
-						$id_surat_ukur=$data->id_surat_ukur;
-						$id_warkah=$data->id_warkah;
-						$id_bundel_buku_tanah=$data->id_bundel_buku_tanah;
-						$id_bundel_surat_ukur=$data->id_bundel_surat_ukur;
-						$id_bundel_warkah=$data->id_bundel_warkah;
-						if($id_buku_tanah!=null){
-							if($id_bundel_buku_tanah==$kode_bundel){
-									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_dikembalikan,$admin_susun);
-									if($cek>0){
-										if($id_buku_tanah!=null){
-											$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
-											$data=1;
-										}elseif ($id_surat_ukur!=null) {
-											$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
-											$data=1;
-										}elseif ($id_warkah!=null) {
-											$this->M_warkah->ubah_status($id_warkah,1);
-											$data=1;
-										}
-					 	 			}else{
-					 	 				$data=3;
-					 	 		 	}
-							}else{
-									$data=4;
-							}
-						}elseif ($id_surat_ukur!=null) {
-							if($id_bundel_surat_ukur==$kode_bundel){
-									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_susun,$admin_susun);
-									if($cek>0){
-										if($id_buku_tanah!=null){
-											$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
-											$data=1;
-										}elseif ($id_surat_ukur!=null) {
-											$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
-											$data=1;
-										}elseif ($id_warkah!=null) {
-											$this->M_warkah->ubah_status($id_warkah,1);
-											$data=1;
-										}
-					 	 			}else{
-					 	 				$data=3;
-					 	 		 	}
-							}else{
-									$data=4;
-							}
-						}elseif ($id_warkah!=null) {
-							if($id_bundel_warkah==$kode_bundel){
-									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_susun,$admin_susun);
-									if($cek>0){
-										if($id_buku_tanah!=null){
-											$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
-											$data=1;
-										}elseif ($id_surat_ukur!=null) {
-											$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
-											$data=1;
-										}elseif ($id_warkah!=null) {
-											$this->M_warkah->ubah_status($id_warkah,1);
-											$data=1;
-										}
-					 	 			}else{
-					 	 				$data=3;
-					 	 		 	}
-							}else{
-									$data=4;
-							}
-						}
 
-					}
-		 }else if($jumlah_tgl_dikembalikan==2){
+		$sql1="SELECT count(id_pinjam) as jumlah from pinjam where invoice='$invoice' and pinjam.status=2 and induk=0";
+ 		$query1 = $this->db->query($sql1);
+ 		$pinjam=$query1->result();
+ 		foreach ($pinjam as $data) {
+ 				$jumlah_status2=$data->jumlah;
+ 		 }
+		 $jumlah_status=$jumlah_status2+$jumlah_status3;
+		 if($jumlah_status==1){
 			 $id_pinjam;
 			 $status=4;
 			 $tgl_dikembalikan=date('Y-m-d');
@@ -289,7 +220,6 @@ class Pinjam extends CI_Controller {
 						$id_bundel_buku_tanah=$data->id_bundel_buku_tanah;
 						$id_bundel_surat_ukur=$data->id_bundel_surat_ukur;
 						$id_bundel_warkah=$data->id_bundel_warkah;
-
 						if($id_buku_tanah!=null){
 							if($id_bundel_buku_tanah==$kode_bundel){
 									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_susun,$admin_susun);
@@ -356,9 +286,87 @@ class Pinjam extends CI_Controller {
 						}
 
 		 		 }
-
-
 		 }
+		 else{
+			 $status=4;
+			 $tgl_dikembalikan=date('Y-m-d');
+			 $admin_kembali=$this->uri->segment('4');
+				$sql1="SELECT pinjam.status, pinjam.tgl_pinjam, pinjam.admin_tambah, pegawai.nama_lengkap, pinjam.id_pinjam, pinjam.invoice, buku_tanah.no_hak, surat_ukur.nomor as nomor_su, surat_ukur.tahun as tahun_su, warkah.nomor as nomor_w, warkah.tahun as tahun_w, pinjam.id_buku_tanah, pinjam.id_surat_ukur, pinjam.id_warkah, desa_bt.nama_desa as desa_bt, desa_su.nama_desa as desa_su, jenis_hak.nama_jenis_hak, buku_tanah.id_bundel as id_bundel_buku_tanah, surat_ukur.id_bundel as id_bundel_surat_ukur, warkah.id_bundel as id_bundel_warkah FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip left join buku_tanah on buku_tanah.id_buku_tanah=pinjam.id_buku_tanah left JOIN surat_ukur on surat_ukur.id_surat_ukur=pinjam.id_surat_ukur left JOIN warkah on warkah.id_warkah=pinjam.id_warkah LEFT JOIN desa as desa_bt on buku_tanah.kode_desa=desa_bt.kode_desa LEFT join desa as desa_su on surat_ukur.kode_desa=desa_su.kode_desa left join jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak left join waktu on waktu.id_waktu=pinjam.id_waktu  where pinjam.id_pinjam='$id_pinjam' and pinjam.status=3";
+		 		$query1 = $this->db->query($sql1);
+				$pinjam=$query1->result();
+		 		foreach ($pinjam as $data) {
+		 				$id_pinjam=$data->id_pinjam;
+						$id_buku_tanah=$data->id_buku_tanah;
+						$id_surat_ukur=$data->id_surat_ukur;
+						$id_warkah=$data->id_warkah;
+						$id_bundel_buku_tanah=$data->id_bundel_buku_tanah;
+						$id_bundel_surat_ukur=$data->id_bundel_surat_ukur;
+						$id_bundel_warkah=$data->id_bundel_warkah;
+						if($id_buku_tanah!=null){
+							if($id_bundel_buku_tanah==$kode_bundel){
+									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_dikembalikan,$admin_susun);
+									if($cek>0){
+										if($id_buku_tanah!=null){
+											$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+											$data=1;
+										}elseif ($id_surat_ukur!=null) {
+											$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+											$data=1;
+										}elseif ($id_warkah!=null) {
+											$this->M_warkah->ubah_status($id_warkah,1);
+											$data=1;
+										}
+					 	 			}else{
+					 	 				$data=3;
+					 	 		 	}
+							}else{
+									$data=4;
+							}
+						}
+						elseif ($id_surat_ukur!=null) {
+							if($id_bundel_surat_ukur==$kode_bundel){
+									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_susun,$admin_susun);
+									if($cek>0){
+										if($id_buku_tanah!=null){
+											$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+											$data=1;
+										}elseif ($id_surat_ukur!=null) {
+											$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+											$data=1;
+										}elseif ($id_warkah!=null) {
+											$this->M_warkah->ubah_status($id_warkah,1);
+											$data=1;
+										}
+					 	 			}else{
+					 	 				$data=3;
+					 	 		 	}
+							}else{
+									$data=4;
+							}
+						}elseif ($id_warkah!=null) {
+							if($id_bundel_warkah==$kode_bundel){
+									$cek=$this->M_pinjam->susun($id_pinjam,$status,$tgl_susun,$admin_susun);
+									if($cek>0){
+										if($id_buku_tanah!=null){
+											$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+											$data=1;
+										}elseif ($id_surat_ukur!=null) {
+											$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+											$data=1;
+										}elseif ($id_warkah!=null) {
+											$this->M_warkah->ubah_status($id_warkah,1);
+											$data=1;
+										}
+					 	 			}else{
+					 	 				$data=3;
+					 	 		 	}
+							}else{
+									$data=4;
+							}
+						}
+		 		}
+		 }
+
 		echo json_encode($data);
 	}
 

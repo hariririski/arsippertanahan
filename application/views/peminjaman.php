@@ -350,14 +350,15 @@
                       if(notif==null){
                         //kosong
                       }else if (notif==1) {
-                        layanan_kosong()
+                        peringatan("Waktu Peminjaman Belum Dipilih!.")
                         //alert("Layanan Masih Ada Belum Ditentukan");
                       }else if (notif==2) {
-                        alert("Belum Ada Arsip Yang Akan Dipinjam");
+                        peringatan("Belum Ada Arsip Yang Akan Dipinjam!.")
                       }else if (notif==3) {
-                        window.location.href="<?php echo base_url()?>datapinjam";
+                        berhasil("Peminjaman Berhasil Di Simpan!.");
+                        setTimeout("location.href = '<?php echo base_url()?>datapinjam';",1500);
                       }else if (notif==4) {
-                        alert("Peminjaman Gagal Di Simpan");
+                        gagal("Peminjaman Gagal Di Simpan");
                       }
 
                   }
@@ -373,9 +374,10 @@
                     success: function(notif){
                         $('#modal3').modal('close');
                         if (notif==1) {
-                          window.location.href="<?php echo base_url()?>datapinjam";
+                          berhasil("Peminjaman Berhasil Di Batalkan!.");
+                          setTimeout("location.href = '<?php echo base_url()?>datapinjam';",1500);
                         }else{
-                          alert("Peminjaman Gagal Di Hapus");
+                          gagal("Peminjaman Gagal Di Hapus");
                         }
                     }
                 });
@@ -392,7 +394,7 @@
              dataType : 'json',
              success: function(data){
                tampil_data_pinjam();
-               berhasil_layanan();
+               berhasil("Waktu Peminjaman Berhasil Di Simpan");
              }
            });
 
@@ -411,22 +413,22 @@
                     if(data==null){
                       //kosong
                     }else if (data==0) {
-                      alert("Format Barcode Tidak Sesuai");
+                      peringatan("Format Barcode Tidak Sesuai");
                     }else if (data==1) {
-                      alert("Data Tidak Ditemukan");
+                      peringatan("Data Tidak Ditemukan");
                     }else if (data==2) {
-                      alert("Arsip Belum Lengkap");
+                      peringatan("Arsip Belum Lengkap");
                     }else if (data==3) {
-                      alert("Arsip Telah Di Input");
+                      peringatan("Arsip Telah Di Input");
                     }else if (data==4) {
-                      alert("Arsip Proses Peminjaman Atau Telah Di Pinjam");
+                      peringatan("Arsip Proses Peminjaman Atau Telah Di Pinjam");
                     }else if (data==5) {
-                      alert("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kembali Sebelum dilakukan Proses Peminjaman");
+                      peringatan("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kembali Sebelum dilakukan Proses Peminjaman");
                     }else if(data==6)
-                      alert("Arsip Hilang");
+                      gagal("Arsip Hilang");
                     else{
                       tampil_data_pinjam();
-                      berhasil_add();
+                      berhasil("Bermasil Menambahkan Arsip");
                     }
                     const inputField = document.getElementById("barcode");
                     inputField.value ="";
@@ -451,17 +453,17 @@
                       //kosong
                     }else if (data==1) {
                       tampil_data_pinjam();
-                      berhasil_add();
+                      berhasil("Arsip Berhasil Di Tambahkan");
                     }else if (data==2) {
-                      alert('Buku Tanah Belum Valid');
+                      peringatan('Buku Tanah Belum Valid');
                     }else if (data==3){
-                      alert('Buku Tanah Sedang / Proses Peminjaman ');
+                      peringatan('Buku Tanah Sedang / Proses Peminjaman ');
                     }else if (data==4) {
-                      alert('Buku Tanah Lebih Dari 1, Mohon Menguhungi admin');
+                      gagal('Buku Tanah Lebih Dari 1, Mohon Menguhungi admin');
                     }else if(data==5){
-                      alert('Buku Tanah Tidak Ditemukan');
+                      gagal('Buku Tanah Tidak Ditemukan');
                     }else{
-                      alert("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kembali Sebelum dilakukan Proses Peminjaman");
+                      peringatan("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kembali Sebelum dilakukan Proses Peminjaman");
                     }
                     const inputField = document.getElementById("nomor_hak");
                     inputField.value ="";
@@ -484,17 +486,17 @@
                       //kosong
                     }else if (data==1) {
                       tampil_data_pinjam();
-                      berhasil_add();
+                      berhasil("Arsip Berhasil Di Tambahkan");
                     }else if (data==2) {
-                      alert('Surat Ukur Belum Valid');
+                      peringatan('Surat Ukur Belum Valid');
                     }else if (data==3){
-                      alert('Surat Ukur Sedang / Proses Peminjaman ');
+                      peringatan('Surat Ukur Sedang / Proses Peminjaman ');
                     }else if (data==4) {
-                      alert('Surat Ukur Lebih Dari 1, Mohon Menguhungi admin');
+                      gagal('Surat Ukur Lebih Dari 1, Mohon Menguhungi admin');
                     }else if(data==5){
-                      alert('Surat Ukur Tidak Ditemukan');
+                      gagal('Surat Ukur Tidak Ditemukan');
                     }else{
-                      alert("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kembali Sebelum dilakukan Proses Peminjaman");
+                      peringatan("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kembali Sebelum dilakukan Proses Peminjaman");
                     }
                     const momor = document.getElementById("nomor_surat_ukur");
                     nomor.value ="";
@@ -518,17 +520,17 @@
                       //kosong
                     }else if (data==1) {
                       tampil_data_pinjam();
-                      berhasil_add();
+                      berhasil("Arsip Berhasil Di Tambahkan");
                     }else if (data==2) {
-                      alert('Warkah Belum Valid');
+                      peringatan('Warkah Belum Valid');
                     }else if (data==3){
-                      alert('Warkah Sedang / Proses Peminjaman ');
+                      peringatan('Warkah Sedang / Proses Peminjaman ');
                     }else if (data==4) {
-                      alert('Warkah Lebih Dari 1, Mohon Menguhungi admin');
+                      gagal('Warkah Lebih Dari 1, Mohon Menguhungi admin');
                     }else if(data==5){
-                      alert('Warkah Tidak Ditemukan');
+                      gagal('Warkah Tidak Ditemukan');
                     }else{
-                      alert("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kembali Sebelum dilakukan Proses Peminjaman");
+                      peringatan("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kembali Sebelum dilakukan Proses Peminjaman");
                     }
                     const nomor = document.getElementById("nomor_warkah");
                     nomor.value ="";
@@ -620,7 +622,7 @@
                         success: function(data){
                             $('#modal1').modal('close');
                             tampil_data_pinjam();
-                            berhasil_hapus();
+                            berhasil("Berhasil Menghapus Arsip");
                         }
                     });
                     return false;
@@ -634,17 +636,14 @@
       <script src="<?php echo base_url(); ?>dist/js/app.js"></script>
       <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
       <script>
-        function berhasil_add() {
-          toastr.success('Berhasil Menambah Peminjaman!', '', { "progressBar": true });
+        function berhasil(notif) {
+          toastr.success(notif, '', { "progressBar": true });
         }
-        function berhasil_layanan() {
-          toastr.success('Berhasil Menambah lama Peminjaman!', '', { "progressBar": true });
+        function peringatan(notif) {
+          toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
         }
-        function berhasil_hapus() {
-          toastr.success('Berhasil Hapus Peminjaman!', '', { "progressBar": true });
-        }
-        function layanan_kosong() {
-          toastr.warning('Layanan / Lama Peminjaman Masih Kosong.', 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+        function gagal(notif) {
+          toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
         }
       </script>
 </body>
