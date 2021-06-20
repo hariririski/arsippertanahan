@@ -200,6 +200,7 @@
 
 
         function tabel(barcode){
+          alert("<?php echo base_url('pinjam/cari_barcode_pengembalian')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode);
           $.ajax({
               type : "POST",
               url  : "<?php echo base_url('pinjam/cari_barcode_pengembalian')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
@@ -250,7 +251,7 @@
             inputField.value ="";
         });
     </script>
-    
+
     <!-- Latest compiled and minified CSS -->
     <script>
     /****************************************
@@ -295,7 +296,7 @@
                     // Handle on success condition with the decoded message.
                     console.log(`Scan result ${decodedText}`, decodedResult);
                     audio.play();
-                    tabel("SU-04TVZvDGNaORx7PJfeUy");
+                    tabel(decodedResult);
                 }
             }
 
