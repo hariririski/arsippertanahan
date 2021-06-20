@@ -211,6 +211,9 @@
           });
           return false;
         }
+        function clear(barcode){
+
+        }
 
         function simpan() {
           $('#modal2').modal('open');
@@ -291,12 +294,12 @@
               var audio = new Audio('dist/qr.mp3');
                 if (decodedText !== lastResult) {
                     ++countResults;
-                    lastResult = decodedText;
+                     = decodedText;
                     // Handle on success condition with the decoded message.
                     //console.log(`Scan result ${decodedText}`, decodedResult);
                     audio.play();
+                    lastResult="aa";
                     tabel(lastResult);
-
                 }
             }
 
