@@ -277,7 +277,7 @@
             if (document.readyState === "complete"
                 || document.readyState === "interactive") {
                 // call on next available tick
-                //setTimeout(fn, 1);
+                setTimeout(fn, 1);
             } else {
                 document.addEventListener("DOMContentLoaded", fn);
             }
@@ -291,7 +291,8 @@
               audio.play();
               lastResult=1;
               tabel(decodedText);
-              alert(`Scan result ${decodedText}`, decodedResult);
+              setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
+              //alert(`Scan result ${decodedText}`, decodedResult);
 
                 // if (decodedText !== lastResult) {
                 //     ++countResults;
