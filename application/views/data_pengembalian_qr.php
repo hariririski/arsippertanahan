@@ -288,6 +288,7 @@
             var lastResult, countResults = 0;
             function onScanSuccess(decodedText, decodedResult) {
               var audio = new Audio('dist/qr.mp3');
+                alert(lastResult);
                 if (decodedText !== lastResult) {
                     ++countResults;
                     lastResult = decodedText;
