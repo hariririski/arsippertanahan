@@ -288,18 +288,19 @@
             var lastResult, countResults = 0;
             function onScanSuccess(decodedText, decodedResult) {
               var audio = new Audio('dist/qr.mp3');
-                // if (decodedText !== lastResult) {
-                //     ++countResults;
-                //     lastResult = decodedText;
-                //     // Handle on success condition with the decoded message.
-                //     //console.log(`Scan result ${decodedText}`, decodedResult);
-                //
-                // }
-                if(countResults=0){
-                audio.play();
-                tabel(lastResult);
-                countResults++;
+                if (decodedText !== lastResult) {
+                    ++countResults;
+                    lastResult = decodedText;
+                    // Handle on success condition with the decoded message.
+                    //console.log(`Scan result ${decodedText}`, decodedResult);
+
+                }else {
+                  if(countResults=0){
+                  audio.play();
+                  tabel(lastResult);
+                  //countResults++;
                 }
+              }
             }
 
             var html5QrcodeScanner = new Html5QrcodeScanner(
