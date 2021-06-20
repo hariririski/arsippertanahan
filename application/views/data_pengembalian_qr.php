@@ -151,13 +151,6 @@
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
 
     <script type="text/javascript">
-
-        setFocus();
-        const inputField = document.getElementById("barcode");
-        function setFocus(){
-          document.getElementById("barcode").focus();
-        }
-
         function data_modal(data){
           alert(data);
           if(data!=null){
@@ -200,7 +193,6 @@
 
 
         function tabel(barcode){
-
           $.ajax({
               type : "POST",
               url  : "<?php echo base_url('pinjam/cari_barcode_pengembalian')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
