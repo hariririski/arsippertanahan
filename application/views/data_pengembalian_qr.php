@@ -211,9 +211,6 @@
           });
           return false;
         }
-        function clear(barcode){
-
-        }
 
         function simpan() {
           $('#modal2').modal('open');
@@ -280,7 +277,7 @@
             if (document.readyState === "complete"
                 || document.readyState === "interactive") {
                 // call on next available tick
-                setTimeout(fn, 1);
+                //setTimeout(fn, 1);
             } else {
                 document.addEventListener("DOMContentLoaded", fn);
             }
@@ -288,19 +285,17 @@
 
         docReady(function () {
             var resultContainer = document.getElementById('qr-reader-results');
-            var lastResult;
-            var countResults = 0;
+            var lastResult, countResults = 0;
             function onScanSuccess(decodedText, decodedResult) {
               var audio = new Audio('dist/qr.mp3');
                 if (decodedText !== lastResult) {
                     ++countResults;
-                     = decodedText;
+                    //lastResult = decodedText;
                     // Handle on success condition with the decoded message.
                     //console.log(`Scan result ${decodedText}`, decodedResult);
                     audio.play();
-                    barcode=lastResult;
-                    lastResult="aa";
-                    tabel(barcode);
+                    tabel(decodedText);
+
                 }
             }
 
