@@ -261,7 +261,7 @@
         toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
       }
     </script>
-    <script src="dist/js/qrcode_scan6.min.js"></script>
+    <script src="dist/js/qrcode_scan.min.js"></script>
     <script>
 
         function docReady(fn) {
