@@ -271,7 +271,7 @@
             if (document.readyState === "complete"
                 || document.readyState === "interactive") {
                 // call on next available tick
-                setTimeout(fn, 1);
+                //setTimeout(fn, 1);
             } else {
                 document.addEventListener("DOMContentLoaded", fn);
             }
@@ -286,12 +286,9 @@
                     ++countResults;
                     lastResult = decodedText;
                     // Handle on success condition with the decoded message.
-                    console.log(`Scan result ${decodedText}`, decodedResult);
+                    //console.log(`Scan result ${decodedText}`, decodedResult);
                     audio.play();
                     tabel(lastResult);
-                }else if(decodedText == lastResult){
-                  audio.play();
-                  tabel(lastResult);
                 }
             }
 
