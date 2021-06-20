@@ -54,16 +54,12 @@
                   <div class="col l8 s12">
                         <div class="card">
                             <div class="card-content">
-
                                 <div class="table-responsive">
                                     <table  class="table table-bordered striped">
                                         <thead>
                                             <tr>
                                                 <th>NO</th>
                                                 <th>Hak/SU/warkah</th>
-                                                <th>Layanan</th>
-                                                <th>Tgl Pinjam</th>
-                                                <th>Tgl Kembali</th>
                                                 <th>Keterlambatan</th>
                                                 <th>Tanggal Dikembalikan</th>
                                                 <th>Action</th>
@@ -215,7 +211,7 @@
     		            var html = '';
     		            var i;
     		            var nomor=1;
-                    var telat;
+
     		            for(i=0; i<data.length; i++){
                       var barang="";
                       if(data[i].id_warkah!=null){
@@ -227,11 +223,9 @@
                       }
     		                html += '<tr>'+
       		                  		'<td>'+nomor+'</td>'+
-      		                  		'<td>'+barang+'</td>'+
-      		                  		'<td>'+data[i].pelayanan+" "+data[i].durasi+'(Hari)</td>'+
-      		                  		'<td>'+data[i].tgl_pinjam+'</td>'+
-      		                  		'<td>'+data[i].tgl_kembali+'</td>'+
-      		                  		'<td>'+telat+'</td>'+
+      		                  		'<td>'+barang+'<br>'+data[i].pelayanan+" "+data[i].durasi+'(Hari)<br>'+
+      		                  		      data[i].tgl_pinjam+' s/d '+data[i].tgl_kembali+'</td>'+
+      		                  		'<td>'+data[i].selisih+' Hari</td>'+
       		                  		'<td>'+data[i].tgl_dikembalikan+'</td>'+
     		                        '<td style="text-align:left;">'+
                                         '<a  class="btn btn-danger btn-xs item_hapus" data="'+data[i].id_pinjam+'">Kembalikan</a>'+
