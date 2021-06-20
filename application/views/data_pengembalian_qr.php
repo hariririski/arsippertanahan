@@ -79,7 +79,7 @@
 
 
     </div>
-    <div id="modal2" class="modal" data-keyboard="false" data-backdrop="static">
+    <div id="modal2" class="modal" >
         <div class="modal-content">
             <h5 class="card-title">Pengembalian</h5>
             <div class="row">
@@ -151,7 +151,6 @@
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
 
     <script type="text/javascript">
-    
         function data_modal(data){
           if(data!=null){
             pecah=data.split(";",10);
