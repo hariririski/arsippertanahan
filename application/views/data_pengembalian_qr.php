@@ -296,7 +296,7 @@
                     audio.play();
                     tabel(lastResult);
                 }else {
-                  if(countResults==1){
+                  if(countResults>0){
                   audio.play();
                   tabel(lastResult);
                   countResults=0;
