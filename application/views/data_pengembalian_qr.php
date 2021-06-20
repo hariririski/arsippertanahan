@@ -21,6 +21,12 @@
       }
     </style>
     <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
+    <script>
+    window.onload = Scrolldown;
+    function Scrolldown() {
+    window.location.hash = '#qr-reader';
+  }
+    </script>
 </head>
 
 <body>
@@ -50,10 +56,10 @@
             <div class="page-titles">
                 <div class="d-flex align-items-center">
                     <h5 class="font-medium m-b-0">Kembalikan Arsip</h5>
-                    <div class="custom-breadcrumb ml-auto">
+                    <!-- <div class="custom-breadcrumb ml-auto">
                         <a href="#!" class="breadcrumb">Home</a>
                         <a href="#!" class="breadcrumb">Data Peminjaman</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -151,6 +157,8 @@
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
 
     <script type="text/javascript">
+
+
         function data_modal(data){
           if(data!=null){
             pecah=data.split(";",10);
@@ -300,17 +308,17 @@
     </script>
     <script type="text/javascript">
     permisi();
-  function permisi(){
-      $(function(){
-          $('.permisi').trigger('click');
-      });
-    }
+      function permisi(){
+          $(function(){
+              $('.permisi').trigger('click');
+          });
+        }
 
-  function camera(){
-    $(function(){
-        $('#camera').trigger('click');
-    });
-  }
+      function camera(){
+        $(function(){
+            $('#camera').trigger('click');
+        });
+      }
     </script>
 
 
