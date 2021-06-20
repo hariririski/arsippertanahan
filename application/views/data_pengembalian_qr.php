@@ -187,7 +187,7 @@
             }
           }else{
             peringatan("Arsip Tidak Sedang Di Pinjam");
-            setTimeout("location.href = '<?php echo base_url()?>kembaliqr';",1);
+            $('#stop').trigger('click');
           }
         }
 
