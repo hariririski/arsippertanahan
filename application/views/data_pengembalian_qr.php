@@ -205,6 +205,8 @@
 
         function simpan() {
           $('#modal2').modal('open');
+          $('#stop').trigger('click');
+
         }
 
         $('#btn_simpan').on('click',function(){
@@ -235,8 +237,7 @@
         });
         $('#btn_batal').on('click',function(){
             $('#modal2').modal('close');
-            setFocus();
-            inputField.value ="";
+            camera();
         });
     </script>
 
@@ -259,7 +260,7 @@
         toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
       }
     </script>
-    <script src="dist/js/qrcode_scan5.min.js"></script>
+    <script src="dist/js/qrcode_scan6.min.js"></script>
     <script>
 
         function docReady(fn) {

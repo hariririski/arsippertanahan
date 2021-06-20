@@ -41,7 +41,7 @@
                     <div class="p-b-40 p-t-20">
                       <div id="qr-reader" style="width:100%"></div>
                       <div id="qr-reader-results"></div>
-                      
+
                         <p class="white-text op-7 m-b-20 Center">Manajemen Arsip Lebih Mudah, Cepat, Mudah dan Efektif</p>
 
                     </div>
@@ -56,7 +56,7 @@
     <!-- All Required js -->
     <!-- ============================================================== -->
     <script src="dist/js/jquery.min.js"></script>
-    <script src="dist/js/qrcode_scan5.min.js"></script>
+    <script src="dist/js/qrcode_scan6.min.js"></script>
     <script>
         function docReady(fn) {
             // see if DOM is already available
