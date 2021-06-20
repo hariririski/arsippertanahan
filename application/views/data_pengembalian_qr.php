@@ -151,8 +151,8 @@
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
 
     <script type="text/javascript">
+    tabel("W-2hg1LCKyuZl7ifFQk95w");
         function data_modal(data){
-          alert(data);
           if(data!=null){
             pecah=data.split(";",10);
             simpan();
@@ -288,6 +288,7 @@
                     // Handle on success condition with the decoded message.
                     //console.log(`Scan result ${decodedText}`, decodedResult);
                     audio.play();
+
                     tabel(lastResult);
                 }
             }
