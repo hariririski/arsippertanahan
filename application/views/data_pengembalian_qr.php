@@ -145,14 +145,12 @@
                     console.log(`Scan result ${decodedText}`, decodedResult);
                     var audio = new Audio('dist/qr.mp3');
                     audio.play();
-                    alert(decodedResult);
-                    alert(decodedText);
-                    alert(lastResult);
+                    tabel(decodedText);
                 }
             }
 
             var html5QrcodeScanner = new Html5QrcodeScanner(
-                "qr-reader", { fps: 2, qrbox: 250 });
+                "qr-reader", { fps: 50, qrbox: 250 });
             html5QrcodeScanner.render(onScanSuccess);
         });
     </script>
