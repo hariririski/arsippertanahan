@@ -331,6 +331,7 @@
     </script>
     <script src="dist/js/qrcode_scan5.min.js"></script>
     <script>
+
         function docReady(fn) {
             // see if DOM is already available
             if (document.readyState === "complete"
@@ -353,7 +354,9 @@
                     // Handle on success condition with the decoded message.
                     console.log(`Scan result ${decodedText}`, decodedResult);
                     audio.play();
-                    tabel("SU-04TVZvDGNaORx7PJfeUy");
+
+                }else{
+                  tabel("SU-04TVZvDGNaORx7PJfeUy");
                 }
             }
 
