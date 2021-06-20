@@ -31,6 +31,9 @@
                           <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Kondisi Surat Ukur</span></a></li>
                           <li><a href="<?php echo base_url(); ?>datawarkah"><i class="material-icons">event_note</i><span class="hide-menu">Data Warkah</span></a></li>
                           <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Kondisi Warkah</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Arsip Belum Link</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Valid Arsip QR</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Valid Arsip</span></a></li>
                         </ul>
                     </div>
                 </li>
@@ -38,9 +41,11 @@
                     <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">library_add</i><span class="hide-menu">Peminjaman</span></a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="<?php echo base_url(); ?>datapinjam"><i class="material-icons">library_add</i><span class="hide-menu">Data Peminjaman</span></a></li>
-                            <li><a href="<?php echo base_url(); ?>kembali"><i class="material-icons">library_add</i><span class="hide-menu">Pengembalian</span></a></li>
-                            <li><a href="<?php echo base_url(); ?>susun"><i class="material-icons">library_add</i><span class="hide-menu">Arsip Belum Susun</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>datapinjam"><i class="material-icons">library_add</i><span class="hide-menu">Peminjaman Arsip</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>kembali"><i class="material-icons">library_add</i><span class="hide-menu">Pengembalian Arsip</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>kembaliqr"><i class="material-icons">library_add</i><span class="hide-menu">Pengembalian Arsip QR</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>susun"><i class="material-icons">library_add</i><span class="hide-menu">Susun Arsip</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>susunqr"><i class="material-icons">library_add</i><span class="hide-menu">Susun Arsip QR</span></a></li>
                         </ul>
                     </div>
                 </li>
@@ -48,7 +53,10 @@
                     <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">assignment</i><span class="hide-menu">Laporan</span></a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">library_add</span></a></li>
+                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Laporan Peminjaman</span></a></li>
+                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Laporan Keterlambatan</span></a></li>
+                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Cetak QR Per Desa</span></a></li>
+                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Cetak QR Satuan</span></a></li>
                         </ul>
                     </div>
                 </li>

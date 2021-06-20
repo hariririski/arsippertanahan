@@ -86,6 +86,14 @@ class Pinjam extends CI_Controller {
 		$this->load->view('data_pengembalian',$data);
 	}
 
+	public function kembaliqr(){
+		$data['data_waktu'] = $this->M_waktu_pelayanan->lihat_aktif();
+		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
+		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
+		$data['pinjam'] = $this->M_pinjam->data_all();
+		$this->load->view('data_pengembalian_qr',$data);
+	}
+
 	public function susun(){
 		$data['data_waktu'] = $this->M_waktu_pelayanan->lihat_aktif();
 		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
