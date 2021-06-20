@@ -214,7 +214,7 @@
 
         function simpan() {
           $('#modal2').modal('open');
-          $('#stop').trigger('click');
+          //$('#stop').trigger('click');
 
         }
 
