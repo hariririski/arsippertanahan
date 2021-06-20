@@ -159,57 +159,45 @@
         }
 
         function data_modal(data){
-          if(data!=null){
-            pecah=data.split(";",10);
-            simpan();
-            // if(pecah[8]=="BT"){
-            //   pecah[4]=pecah[4]+";"+pecah[9];
-            //   $('[name="id_pinjam"]').val(pecah[4]);
-            //   pecah[0]=pecah[1]+" / "+pecah[7]+" / "+pecah[0];
-            //   $('#id').html(pecah[0]);
-            //   $('#tgl_pinjam').html(pecah[2]);
-            //   $('#tgl_kembali').html(pecah[3]);
-            //   $('#nama_lengkap').html(pecah[5]);
-            //   $('#selisih').html(pecah[6]);
-            // }else if(pecah[8]=="SU"){
-            //   pecah[4]=pecah[4]+";"+pecah[9];
-            //   $('[name="id_pinjam"]').val(pecah[4]);
-            //   pecah[0]=pecah[1]+" / "+pecah[0]+" / "+pecah[7];
-            //   $('#id').html(pecah[0]);
-            //   $('#desa').html(pecah[1]);
-            //   $('#tgl_pinjam').html(pecah[2]);
-            //   $('#tgl_kembali').html(pecah[3]);
-            //   $('#nama_lengkap').html(pecah[5]);
-            //   $('#selisih').html(pecah[6]);
-            // }else if(pecah[8]=="W"){
-            //   pecah[4]=pecah[4]+";"+pecah[9];
-            //   $('[name="id_pinjam"]').val(pecah[4]);
-            //   pecah[0]=pecah[0]+" / "+pecah[7];
-            //   $('#id').html(pecah[0]);
-            //   $('#desa').html(pecah[1]);
-            //   $('#tgl_pinjam').html(pecah[2]);
-            //   $('#tgl_kembali').html(pecah[3]);
-            //   $('#nama_lengkap').html(pecah[5]);
-            //   $('#selisih').html(pecah[6]);
-            // }
-          }else{
-            peringatan("Arsip Tidak Sedang Di Pinjam");
-          }
+          alert(data);
+          // if(data!=null){
+          //   pecah=data.split(";",10);
+          //   simpan();
+          //   if(pecah[8]=="BT"){
+          //     pecah[4]=pecah[4]+";"+pecah[9];
+          //     $('[name="id_pinjam"]').val(pecah[4]);
+          //     pecah[0]=pecah[1]+" / "+pecah[7]+" / "+pecah[0];
+          //     $('#id').html(pecah[0]);
+          //     $('#tgl_pinjam').html(pecah[2]);
+          //     $('#tgl_kembali').html(pecah[3]);
+          //     $('#nama_lengkap').html(pecah[5]);
+          //     $('#selisih').html(pecah[6]);
+          //   }else if(pecah[8]=="SU"){
+          //     pecah[4]=pecah[4]+";"+pecah[9];
+          //     $('[name="id_pinjam"]').val(pecah[4]);
+          //     pecah[0]=pecah[1]+" / "+pecah[0]+" / "+pecah[7];
+          //     $('#id').html(pecah[0]);
+          //     $('#desa').html(pecah[1]);
+          //     $('#tgl_pinjam').html(pecah[2]);
+          //     $('#tgl_kembali').html(pecah[3]);
+          //     $('#nama_lengkap').html(pecah[5]);
+          //     $('#selisih').html(pecah[6]);
+          //   }else if(pecah[8]=="W"){
+          //     pecah[4]=pecah[4]+";"+pecah[9];
+          //     $('[name="id_pinjam"]').val(pecah[4]);
+          //     pecah[0]=pecah[0]+" / "+pecah[7];
+          //     $('#id').html(pecah[0]);
+          //     $('#desa').html(pecah[1]);
+          //     $('#tgl_pinjam').html(pecah[2]);
+          //     $('#tgl_kembali').html(pecah[3]);
+          //     $('#nama_lengkap').html(pecah[5]);
+          //     $('#selisih').html(pecah[6]);
+          //   }
+          // }else{
+          //   peringatan("Arsip Tidak Sedang Di Pinjam");
+          // }
         }
 
-
-        function cari_barcode(){
-          var barcode=$('#barcode').val();
-          $.ajax({
-              type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_barcode_pengembalian')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
-              dataType : "JSON",
-                success: function(data){
-                  data_modal(data);
-              }
-          });
-          return false;
-        }
 
         function tabel(barcode){
           $.ajax({
@@ -262,54 +250,7 @@
             inputField.value ="";
         });
     </script>
-
-    <script type="text/javascript">
-        function cari_buku_tanah(){
-          var desa_buku_tanah=$('#desa_buku_tanah').val();
-          var jenis_hak=$('#jenis_hak').val();
-          var nomor_hak=$('#nomor_hak').val();
-          $.ajax({
-              type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_buku_tanah_pengembalian')?>/"+desa_buku_tanah+"/"+jenis_hak+"/"+nomor_hak,
-              dataType : "JSON",
-              success: function(data){
-                data_modal(data);
-            }
-          });
-          return false;
-        }
-
-        function cari_surat_ukur(){
-          var desa_surat_ukur=$('#desa_surat_ukur').val();
-          var nomor=$('#nomor_surat_ukur').val();
-          var tahun=$('#tahun_surat_ukur').val();
-          $.ajax({
-              type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_surat_ukur_pengembalian')?>/"+desa_surat_ukur+"/"+nomor+"/"+tahun,
-              dataType : "JSON",
-              success: function(data){
-                data_modal(data);
-            }
-          });
-          return false;
-        }
-
-        function cari_warkah(){
-          var nomor_warkah=$('#nomor_warkah').val();
-          var tahun_warkah=$('#tahun_warkah').val();
-          $.ajax({
-              type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_warkah_pengembalian')?>/"+nomor_warkah+"/"+tahun_warkah,
-              dataType : "JSON",
-              success: function(data){
-                data_modal(data);
-            }
-          });
-          return false;
-        }
-
-
-    </script>
+    
     <!-- Latest compiled and minified CSS -->
     <script>
     /****************************************
