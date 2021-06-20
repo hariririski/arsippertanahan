@@ -290,7 +290,7 @@
               var audio = new Audio('dist/qr.mp3');
                 if (decodedText !== lastResult) {
                     ++countResults;
-                    //lastResult = decodedText;
+                    lastResult = decodedText;
                     // Handle on success condition with the decoded message.
                     //console.log(`Scan result ${decodedText}`, decodedResult);
                     audio.play();
