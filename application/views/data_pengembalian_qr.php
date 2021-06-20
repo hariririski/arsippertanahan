@@ -285,7 +285,9 @@
 
         docReady(function () {
             var resultContainer = document.getElementById('qr-reader-results');
-            var lastResult, countResults = 0;
+            var lastResult;
+            alert(lastResult);
+            var countResults = 0;
             function onScanSuccess(decodedText, decodedResult) {
               var audio = new Audio('dist/qr.mp3');
                 if (decodedText !== lastResult) {
@@ -295,7 +297,7 @@
                     //console.log(`Scan result ${decodedText}`, decodedResult);
                     audio.play();
                     tabel(lastResult);
-                    break;
+
                 }
             }
 
