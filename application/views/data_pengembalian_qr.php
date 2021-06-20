@@ -296,10 +296,10 @@
                     audio.play();
                     tabel(lastResult);
                 }else {
-                  if(countResults>0){
+                  if(countResults==1){
                   audio.play();
                   tabel(lastResult);
-                  countResults=0;
+                  countResults--;
                   //countResults++;
                 }
               }
