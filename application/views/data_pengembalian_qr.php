@@ -79,7 +79,7 @@
 
 
     </div>
-    <div id="modal2" class="modal">
+    <div id="modal2" class="modal" data-keyboard="false" data-backdrop="static">
         <div class="modal-content">
             <h5 class="card-title">Pengembalian</h5>
             <div class="row">
@@ -151,7 +151,7 @@
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
 
     <script type="text/javascript">
-    tabel("W-2hg1LCKyuZl7ifFQk95w");
+    
         function data_modal(data){
           if(data!=null){
             pecah=data.split(";",10);
@@ -220,10 +220,10 @@
                         $('#modal1').modal('close');
                         if (notif==1) {
                           berhasil("Peminjaman Berhasil Di kembalikan!.");
-                          setTimeout("location.href = '<?php echo base_url()?>kembali';",1500);
+                          setTimeout("location.href = '<?php echo base_url()?>kembaliqr';",1500);
                         }else if(notif==2){
                           berhasil("Peminjaman Berhasil Di kembalikan!.");
-                          setTimeout("location.href = '<?php echo base_url()?>kembali';",1500);
+                          setTimeout("location.href = '<?php echo base_url()?>kembaliqr';",1500);
                         }else{
                           //tampil_data_pinjam();
                           gagal("Peminjaman Gagal Di kembalikan");
