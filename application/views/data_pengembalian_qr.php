@@ -299,6 +299,7 @@
                     tabel(lastResult);
 
                 }
+                lastResult="";
                 alert(lastResult);
             }
 
