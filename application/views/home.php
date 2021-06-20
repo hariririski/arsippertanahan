@@ -144,6 +144,20 @@
                                 <div class="card success-gradient card-hover">
                                     <div class="card-content">
                                         <h5 class="card-title  white-text">Keterlambatan</h5>
+                                        <?php
+                                          $menuju=0;
+                                          $telat=0;
+                                          foreach($pinjam_telat as $pinjam){
+                                            if($pinjam->selisih >-2 && $pinjam->selisih <1 ){
+                                              $menuju++;
+                                            }else if($pinjam->selisih >0){
+                                              $telat++;
+                                            }
+                                          }
+                                          $total=$menuju+$telat;
+                                          $persen_menuju=round(($menuju/$total)*100);
+                                          $persen_telat=round(($telat/$total)*100);
+                                        ?>
                                         <ul class="m-t-15">
                                             <li>
                                                 <div class="d-flex no-block align-items-center">
@@ -151,11 +165,11 @@
                                                         <span class="m-b-0 white-text op-6">Telah Jatuh Tempo</span>
                                                     </div>
                                                     <div class="ml-auto">
-                                                        <span class="m-b-0 white-text">26</span>
+                                                        <span class="m-b-0 white-text"><?php echo $persen_telat?>%</span>
                                                     </div>
                                                 </div>
                                                 <div class="progress m-t-10" style="background-color: rgba(0,0,0,.1);">
-                                                    <div class="determinate white" style="width: 26%"></div>
+                                                    <div class="determinate white" style="width: <?php echo $persen_telat?>%"></div>
                                                 </div>
                                             </li>
                                             <li class="m-t-25">
@@ -164,11 +178,11 @@
                                                         <span class="m-b-0 white-text op-6">Menuju Keterlambatan</span>
                                                     </div>
                                                     <div class="ml-auto">
-                                                        <span class="m-b-0 white-text">15</span>
+                                                        <span class="m-b-0 white-text"><?php echo $persen_menuju?></span>
                                                     </div>
                                                 </div>
                                                 <div class="progress m-t-10" style="background-color: rgba(0,0,0,.1);">
-                                                    <div class="determinate white" style="width: 15%"></div>
+                                                    <div class="determinate white" style="width: <?php echo $persen_menuju?>%"></div>
                                                 </div>
                                             </li>
                                         </ul>
@@ -240,7 +254,7 @@
                                           if($pinjam_telat->selisih >-2){
                                           ?>
                                           <tr <?php if($pinjam_telat->selisih >0){echo 'style="background-color: #ff2525;"';}?>>
-                                            <td <?php if($pinjam_telat->selisih >0){echo 'style="color: #ffffff;"';}?> ><?php echo $i; ?></td>
+                                            <td <?php if($pinjam_telat->selisih >0){echo 'style="color: #ffffff;"';}?>><?php echo $i; ?></td>
                                             <td <?php if($pinjam_telat->selisih >0){echo 'style="color: #ffffff;"';}?> ><?php echo $pinjam_telat->nama_lengkap; ?></td>
                                             <td <?php if($pinjam_telat->selisih >0){echo 'style="color: #ffffff;"';}?> ><?php echo $pinjam_telat->tgl_pinjam; ?></td>
                                             <td <?php if($pinjam_telat->selisih >0){echo 'style="color: #ffffff;"';}?> ><?php echo $pinjam_telat->pelayanan; ?>(<?php echo $pinjam_telat->durasi; ?> Hari) </td>
