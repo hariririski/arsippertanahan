@@ -49,7 +49,7 @@
             <!-- ============================================================== -->
             <div class="page-titles">
                 <div class="d-flex align-items-center">
-                    <h5 class="font-medium m-b-0">Data Peminjaman Arsip Belum Dikembalikan</h5>
+                    <h5 class="font-medium m-b-0">Kembalikan Arsip</h5>
                     <div class="custom-breadcrumb ml-auto">
                         <a href="#!" class="breadcrumb">Home</a>
                         <a href="#!" class="breadcrumb">Data Peminjaman</a>
