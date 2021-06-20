@@ -9,7 +9,9 @@
     <title>Scan Qr Code</title>
     <link href="dist/css/style2.css" rel="stylesheet">
     <link href="dist/css/pages/dashboard3.css" rel="stylesheet">
-
+    <script>
+    $(window).scrollTop($('#qr-reader').offset().top);
+    </script>
 </head>
 
 <body>
