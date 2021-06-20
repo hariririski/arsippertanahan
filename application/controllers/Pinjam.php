@@ -770,7 +770,6 @@ class Pinjam extends CI_Controller {
 			$type=$pecah_barcode[0];
 			$id=$pecah_barcode[1];
 		}
-		//$data=$type;
 			if($type=="BT"){
 				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join buku_tanah on buku_tanah.id_buku_tanah=pinjam.id_buku_tanah left join desa on desa.kode_desa=buku_tanah.kode_desa left join pegawai on pinjam.nip=pegawai.nip left join jenis_hak on buku_tanah.id_jenis_hak=jenis_hak.id_jenis_hak where pinjam.id_buku_tanah='$id' and pinjam.status=2 and buku_tanah.status=2";
 				$query = $this->db->query($sql);
