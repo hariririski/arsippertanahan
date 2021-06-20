@@ -285,6 +285,7 @@
 
         docReady(function () {
             var resultContainer = document.getElementById('qr-reader-results');
+            alert(resultContainer);
             var lastResult, countResults = 0;
             function onScanSuccess(decodedText, decodedResult) {
               var audio = new Audio('dist/qr.mp3');
@@ -293,9 +294,10 @@
                     lastResult = decodedText;
                     // Handle on success condition with the decoded message.
                     //console.log(`Scan result ${decodedText}`, decodedResult);
-                    audio.play();
-                    tabel(lastResult);
+
                 }
+                audio.play();
+                tabel(lastResult);
             }
 
             var html5QrcodeScanner = new Html5QrcodeScanner(
