@@ -296,8 +296,11 @@
                     //console.log(`Scan result ${decodedText}`, decodedResult);
 
                 }
+                if(countResults=0){
                 audio.play();
                 tabel(lastResult);
+                countResults++;
+                }
             }
 
             var html5QrcodeScanner = new Html5QrcodeScanner(
