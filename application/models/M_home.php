@@ -22,6 +22,11 @@
         return $query->result();
       }
 
+      function pinjam_telat(){
+        $query=$this->db->query("SELECT *, datediff(current_date(),pinjam.tgl_kembali) as selisih from pinjam left JOIN pegawai on pegawai.nip=pinjam.nip LEFT join waktu on waktu.id_waktu=pinjam.id_waktu WHERE pinjam.tgl_dikembalikan is null and pinjam.induk=0 and pinjam.status=1 order by datediff(current_date(),pinjam.tgl_kembali) desc ");
+        return $query->result();
+      }
+
 
       function jumlah_surat_ukur(){
         $query=$this->db->query("SELECT COUNT(id_surat_ukur)as jumlah_surat_ukur FROM `surat_ukur`");

@@ -191,7 +191,7 @@
                               <h5 class="card-title">Data Peminjaman Terlambat</h5>
                               <h6 class="card-subtitle">Menapilkan Data dari H-3 keterlambatan</h6>
                               <div class="table-responsive">
-                                  <table class="table striped m-b-20" >
+                                  <table class="table product-overview" id="zero_config" >
                                       <thead>
                                           <tr>
                                               <th>NO</th>
@@ -199,16 +199,27 @@
                                               <th>Tanggal Pinjam</th>
                                               <th>Waktu Peminjaman</th>
                                               <th>Keterlambatan</th>
+                                              <th>Operator</th>
                                           </tr>
                                       </thead>
                                       <tbody>
-                                          <tr id="1" class="gradeX">
-                                              <td>Trident</td>
-                                              <td>Internet Explorer 4.0 </td>
-                                              <td>Win 95+</td>
-                                              <td class="center">4</td>
-                                              <td class="center">X</td>
+                                        <?php
+                                          $i=0;
+                                          foreach($pinjam_telat as $pinjam_telat){
+                                          $i++;
+                                          if($pinjam_telat->selisih >-2){
+                                          ?>
+                                          <tr <?php if($pinjam_telat->selisih >0){echo 'style="background-color: #ff2525;"';}?>>
+                                            <td <?php if($pinjam_telat->selisih >0){echo 'style="color: #ffffff;"';}?> ><?php echo $i; ?></td>
+                                            <td <?php if($pinjam_telat->selisih >0){echo 'style="color: #ffffff;"';}?> ><?php echo $pinjam_telat->nama_lengkap; ?></td>
+                                            <td <?php if($pinjam_telat->selisih >0){echo 'style="color: #ffffff;"';}?> ><?php echo $pinjam_telat->tgl_pinjam; ?></td>
+                                            <td <?php if($pinjam_telat->selisih >0){echo 'style="color: #ffffff;"';}?> ><?php echo $pinjam_telat->pelayanan; ?>(<?php echo $pinjam_telat->durasi; ?> Hari) </td>
+                                            <td <?php if($pinjam_telat->selisih >0){echo 'style="color: #ffffff;"';}?> ><?php echo $pinjam_telat->selisih; ?> Hari</td>
+                                            <td <?php if($pinjam_telat->selisih >0){echo 'style="color: #ffffff;"';}?> ><?php echo $pinjam_telat->admin_tambah; ?></td>
                                           </tr>
+                                        <?php }
+                                          } ?>
+
                                       </tbody>
                                   </table>
                               </div>
@@ -290,11 +301,10 @@
     <script src="assets/extra-libs/tiny-editable/mindmup-editabletable.js"></script>
     <script src="assets/extra-libs/tiny-editable/numeric-input-example.js"></script>
     <script>
-    $('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
-    $('#editable-datatable').editableTableWidget().numericInputExample().find('td:first').focus();
-    $(function() {
-        $('#editable-datatable').DataTable();
-    });
+    /****************************************
+     *       Basic Table                   *
+     ****************************************/
+    $('#zero_config').DataTable();
     </script>
     <?php echo $this->load->view('share/home', '', TRUE);?>
 </body>

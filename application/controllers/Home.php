@@ -29,6 +29,7 @@ class Home extends CI_Controller {
 		$data['pinjam_surat_ukur'] = $this->M_home->pinjam_surat_ukur();
 		$data['pinjam_warkah'] = $this->M_home->pinjam_warkah();
 		$data['tgl_pinjam'] = $this->M_home->tgl_pinjam();
+		$data['pinjam_telat'] = $this->M_home->pinjam_telat();
 		$this->load->view('home',$data);
 	}
 
