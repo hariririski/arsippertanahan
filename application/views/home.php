@@ -46,8 +46,8 @@
             <div class="card info-gradient m-t-0 m-b-0">
                 <div class="card-content">
                     <div class="p-b-40 p-t-20">
-                        <h3 class="white-text">Welcome back <?php echo $this->session->userdata("nama_lengkap"); ?>!</h3>
-                        <p class="white-text op-7 m-b-20">Success is not a destination, its a Journey!!!</p>
+                        <h3 class="white-text">Selamat Datang <?php echo $this->session->userdata("nama_lengkap"); ?>!</h3>
+                        <p class="white-text op-7 m-b-20">Manajemen Arsip Lebih Mudah, Cepat, Mudah dan Efektif</p>
                     </div>
                 </div>
             </div>
@@ -195,7 +195,7 @@
                                       <thead>
                                           <tr>
                                               <th>NO</th>
-                                              <th>Nama</th>
+                                              <th>Nama Peminjam</th>
                                               <th>Tanggal Pinjam</th>
                                               <th>Waktu Peminjaman</th>
                                               <th>Keterlambatan</th>
