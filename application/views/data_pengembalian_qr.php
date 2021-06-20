@@ -285,17 +285,16 @@
 
         docReady(function () {
             var resultContainer = document.getElementById('qr-reader-results');
-            alert(resultContainer);
             var lastResult, countResults = 0;
             function onScanSuccess(decodedText, decodedResult) {
               var audio = new Audio('dist/qr.mp3');
-                if (decodedText !== lastResult) {
-                    ++countResults;
-                    lastResult = decodedText;
-                    // Handle on success condition with the decoded message.
-                    //console.log(`Scan result ${decodedText}`, decodedResult);
-
-                }
+                // if (decodedText !== lastResult) {
+                //     ++countResults;
+                //     lastResult = decodedText;
+                //     // Handle on success condition with the decoded message.
+                //     //console.log(`Scan result ${decodedText}`, decodedResult);
+                //
+                // }
                 if(countResults=0){
                 audio.play();
                 tabel(lastResult);
