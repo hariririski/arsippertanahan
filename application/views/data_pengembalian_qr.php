@@ -143,6 +143,8 @@
                     lastResult = decodedText;
                     // Handle on success condition with the decoded message.
                     console.log(`Scan result ${decodedText}`, decodedResult);
+                    var audio = new Audio('dist/qr.mp3');
+                    audio.play();
                     tabel(lastResult);
                 }
             }
