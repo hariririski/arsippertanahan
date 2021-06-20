@@ -147,6 +147,8 @@
                     audio.play();
                     alert();
                     tabel(decodedResult);
+                    tabel(decodedText);
+                    tabel(lastResult);
                 }
             }
 
