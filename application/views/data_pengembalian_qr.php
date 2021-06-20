@@ -300,7 +300,6 @@
 
                 }
                 lastResult="";
-                alert(lastResult);
             }
 
             var html5QrcodeScanner = new Html5QrcodeScanner(
