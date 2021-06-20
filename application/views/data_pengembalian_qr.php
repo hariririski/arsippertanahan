@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo $this->load->view('share/icon', '', TRUE);?>
-    <title>Data Peminjaman QR</title>
+    <title>Data Peminjaman</title>
     <link href="dist/css/style2.css" rel="stylesheet">
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
@@ -49,7 +49,7 @@
             <!-- ============================================================== -->
             <div class="page-titles">
                 <div class="d-flex align-items-center">
-                    <h5 class="font-medium m-b-0">Kembalikan Arsip</h5>
+                    <h5 class="font-medium m-b-0">Data Peminjaman Arsip Belum Dikembalikan</h5>
                     <div class="custom-breadcrumb ml-auto">
                         <a href="#!" class="breadcrumb">Home</a>
                         <a href="#!" class="breadcrumb">Data Peminjaman</a>
@@ -120,58 +120,6 @@
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
-    <script src="dist/js/jquery.min.js"></script>
-    <script src="dist/js/qrcode_scan5.min.js"></script>
-    <script>
-        function docReady(fn) {
-            // see if DOM is already available
-            if (document.readyState === "complete"
-                || document.readyState === "interactive") {
-                // call on next available tick
-                setTimeout(fn, 1);
-            } else {
-                document.addEventListener("DOMContentLoaded", fn);
-            }
-        }
-
-        docReady(function () {
-            var resultContainer = document.getElementById('qr-reader-results');
-            var lastResult, countResults = 0;
-            function onScanSuccess(decodedText, decodedResult) {
-                if (decodedText !== lastResult) {
-                    ++countResults;
-                    lastResult = decodedText;
-                    // Handle on success condition with the decoded message.
-                    console.log(`Scan result ${decodedText}`, decodedResult);
-                    var audio = new Audio('dist/qr.mp3');
-                    audio.play();
-                    tabel(decodedText);
-                }else{
-                  var audio = new Audio('dist/qr.mp3');
-                  audio.play();
-                  tabel(decodedText);
-                }
-            }
-
-            var html5QrcodeScanner = new Html5QrcodeScanner(
-                "qr-reader", { fps: 50, qrbox: 250 });
-            html5QrcodeScanner.render(onScanSuccess);
-        });
-    </script>
-    <script type="text/javascript">
-        permisi();
-      function permisi(){
-          $(function(){
-              $('.permisi').trigger('click');
-          });
-        }
-
-      function camera(){
-        $(function(){
-            $('#camera').trigger('click');
-        });
-      }
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
     <script>
@@ -203,6 +151,7 @@
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
 
     <script type="text/javascript">
+
         setFocus();
         const inputField = document.getElementById("barcode");
         function setFocus(){
@@ -213,41 +162,54 @@
           if(data!=null){
             pecah=data.split(";",10);
             simpan();
-          //   if(pecah[8]=="BT"){
-          //     pecah[4]=pecah[4]+";"+pecah[9];
-          //     $('[name="id_pinjam"]').val(pecah[4]);
-          //     pecah[0]=pecah[1]+" / "+pecah[7]+" / "+pecah[0];
-          //     $('#id').html(pecah[0]);
-          //     $('#tgl_pinjam').html(pecah[2]);
-          //     $('#tgl_kembali').html(pecah[3]);
-          //     $('#nama_lengkap').html(pecah[5]);
-          //     $('#selisih').html(pecah[6]);
-          //   }else if(pecah[8]=="SU"){
-          //     pecah[4]=pecah[4]+";"+pecah[9];
-          //     $('[name="id_pinjam"]').val(pecah[4]);
-          //     pecah[0]=pecah[1]+" / "+pecah[0]+" / "+pecah[7];
-          //     $('#id').html(pecah[0]);
-          //     $('#desa').html(pecah[1]);
-          //     $('#tgl_pinjam').html(pecah[2]);
-          //     $('#tgl_kembali').html(pecah[3]);
-          //     $('#nama_lengkap').html(pecah[5]);
-          //     $('#selisih').html(pecah[6]);
-          //   }else if(pecah[8]=="W"){
-          //     pecah[4]=pecah[4]+";"+pecah[9];
-          //     $('[name="id_pinjam"]').val(pecah[4]);
-          //     pecah[0]=pecah[0]+" / "+pecah[7];
-          //     $('#id').html(pecah[0]);
-          //     $('#desa').html(pecah[1]);
-          //     $('#tgl_pinjam').html(pecah[2]);
-          //     $('#tgl_kembali').html(pecah[3]);
-          //     $('#nama_lengkap').html(pecah[5]);
-          //     $('#selisih').html(pecah[6]);
-          //   }
-          // }else{
-          //   peringatan("Arsip Tidak Sedang Di Pinjam");
-          // }
+            if(pecah[8]=="BT"){
+              pecah[4]=pecah[4]+";"+pecah[9];
+              $('[name="id_pinjam"]').val(pecah[4]);
+              pecah[0]=pecah[1]+" / "+pecah[7]+" / "+pecah[0];
+              $('#id').html(pecah[0]);
+              $('#tgl_pinjam').html(pecah[2]);
+              $('#tgl_kembali').html(pecah[3]);
+              $('#nama_lengkap').html(pecah[5]);
+              $('#selisih').html(pecah[6]);
+            }else if(pecah[8]=="SU"){
+              pecah[4]=pecah[4]+";"+pecah[9];
+              $('[name="id_pinjam"]').val(pecah[4]);
+              pecah[0]=pecah[1]+" / "+pecah[0]+" / "+pecah[7];
+              $('#id').html(pecah[0]);
+              $('#desa').html(pecah[1]);
+              $('#tgl_pinjam').html(pecah[2]);
+              $('#tgl_kembali').html(pecah[3]);
+              $('#nama_lengkap').html(pecah[5]);
+              $('#selisih').html(pecah[6]);
+            }else if(pecah[8]=="W"){
+              pecah[4]=pecah[4]+";"+pecah[9];
+              $('[name="id_pinjam"]').val(pecah[4]);
+              pecah[0]=pecah[0]+" / "+pecah[7];
+              $('#id').html(pecah[0]);
+              $('#desa').html(pecah[1]);
+              $('#tgl_pinjam').html(pecah[2]);
+              $('#tgl_kembali').html(pecah[3]);
+              $('#nama_lengkap').html(pecah[5]);
+              $('#selisih').html(pecah[6]);
+            }
+          }else{
+            peringatan("Arsip Tidak Sedang Di Pinjam");
+          }
         }
 
+
+        function cari_barcode(){
+          var barcode=$('#barcode').val();
+          $.ajax({
+              type : "POST",
+              url  : "<?php echo base_url('pinjam/cari_barcode_pengembalian')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
+              dataType : "JSON",
+                success: function(data){
+                  data_modal(data);
+              }
+          });
+          return false;
+        }
 
         function tabel(barcode){
           $.ajax({
@@ -366,6 +328,53 @@
       function gagal(notif) {
         toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
       }
+    </script>
+    <script src="dist/js/qrcode_scan5.min.js"></script>
+    <script>
+        function docReady(fn) {
+            // see if DOM is already available
+            if (document.readyState === "complete"
+                || document.readyState === "interactive") {
+                // call on next available tick
+                setTimeout(fn, 1);
+            } else {
+                document.addEventListener("DOMContentLoaded", fn);
+            }
+        }
+
+        docReady(function () {
+            var resultContainer = document.getElementById('qr-reader-results');
+            var lastResult, countResults = 0;
+            function onScanSuccess(decodedText, decodedResult) {
+              var audio = new Audio('dist/qr.mp3');
+                if (decodedText !== lastResult) {
+                    ++countResults;
+                    lastResult = decodedText;
+                    // Handle on success condition with the decoded message.
+                    console.log(`Scan result ${decodedText}`, decodedResult);
+                    audio.play();
+                    tabel("SU-04TVZvDGNaORx7PJfeUy");
+                }
+            }
+
+            var html5QrcodeScanner = new Html5QrcodeScanner(
+                "qr-reader", { fps: 10, qrbox: 250 });
+            html5QrcodeScanner.render(onScanSuccess);
+        });
+    </script>
+    <script type="text/javascript">
+    permisi();
+  function permisi(){
+      $(function(){
+          $('.permisi').trigger('click');
+      });
+    }
+
+  function camera(){
+    $(function(){
+        $('#camera').trigger('click');
+    });
+  }
     </script>
 
 
