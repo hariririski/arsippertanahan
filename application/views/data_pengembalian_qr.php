@@ -146,6 +146,10 @@
                     var audio = new Audio('dist/qr.mp3');
                     audio.play();
                     tabel(decodedText);
+                }else{
+                  var audio = new Audio('dist/qr.mp3');
+                  audio.play();
+                  tabel(decodedText);
                 }
             }
 
@@ -259,6 +263,7 @@
         }
 
         function tabel(barcode){
+          alert(barcode);
           $.ajax({
               type : "POST",
               url  : "<?php echo base_url('pinjam/cari_barcode_pengembalian')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
