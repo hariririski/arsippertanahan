@@ -195,7 +195,7 @@
             }
           }else{
             peringatan("Arsip Tidak Sedang Di Pinjam");
-            //$('#stop').trigger('click');
+            $('#stop').trigger('click');
           }
         }
 
