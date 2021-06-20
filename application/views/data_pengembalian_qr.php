@@ -145,7 +145,8 @@
                     console.log(`Scan result ${decodedText}`, decodedResult);
                     var audio = new Audio('dist/qr.mp3');
                     audio.play();
-                    tabel(lastResult);
+                    alert();
+                    tabel(decodedResult);
                 }
             }
 
