@@ -160,47 +160,47 @@
 
         function data_modal(data){
           alert(data);
-          // if(data!=null){
-          //   pecah=data.split(";",10);
-          //   simpan();
-          //   if(pecah[8]=="BT"){
-          //     pecah[4]=pecah[4]+";"+pecah[9];
-          //     $('[name="id_pinjam"]').val(pecah[4]);
-          //     pecah[0]=pecah[1]+" / "+pecah[7]+" / "+pecah[0];
-          //     $('#id').html(pecah[0]);
-          //     $('#tgl_pinjam').html(pecah[2]);
-          //     $('#tgl_kembali').html(pecah[3]);
-          //     $('#nama_lengkap').html(pecah[5]);
-          //     $('#selisih').html(pecah[6]);
-          //   }else if(pecah[8]=="SU"){
-          //     pecah[4]=pecah[4]+";"+pecah[9];
-          //     $('[name="id_pinjam"]').val(pecah[4]);
-          //     pecah[0]=pecah[1]+" / "+pecah[0]+" / "+pecah[7];
-          //     $('#id').html(pecah[0]);
-          //     $('#desa').html(pecah[1]);
-          //     $('#tgl_pinjam').html(pecah[2]);
-          //     $('#tgl_kembali').html(pecah[3]);
-          //     $('#nama_lengkap').html(pecah[5]);
-          //     $('#selisih').html(pecah[6]);
-          //   }else if(pecah[8]=="W"){
-          //     pecah[4]=pecah[4]+";"+pecah[9];
-          //     $('[name="id_pinjam"]').val(pecah[4]);
-          //     pecah[0]=pecah[0]+" / "+pecah[7];
-          //     $('#id').html(pecah[0]);
-          //     $('#desa').html(pecah[1]);
-          //     $('#tgl_pinjam').html(pecah[2]);
-          //     $('#tgl_kembali').html(pecah[3]);
-          //     $('#nama_lengkap').html(pecah[5]);
-          //     $('#selisih').html(pecah[6]);
-          //   }
-          // }else{
-          //   peringatan("Arsip Tidak Sedang Di Pinjam");
-          // }
+          if(data!=null){
+            pecah=data.split(";",10);
+            simpan();
+            if(pecah[8]=="BT"){
+              pecah[4]=pecah[4]+";"+pecah[9];
+              $('[name="id_pinjam"]').val(pecah[4]);
+              pecah[0]=pecah[1]+" / "+pecah[7]+" / "+pecah[0];
+              $('#id').html(pecah[0]);
+              $('#tgl_pinjam').html(pecah[2]);
+              $('#tgl_kembali').html(pecah[3]);
+              $('#nama_lengkap').html(pecah[5]);
+              $('#selisih').html(pecah[6]);
+            }else if(pecah[8]=="SU"){
+              pecah[4]=pecah[4]+";"+pecah[9];
+              $('[name="id_pinjam"]').val(pecah[4]);
+              pecah[0]=pecah[1]+" / "+pecah[0]+" / "+pecah[7];
+              $('#id').html(pecah[0]);
+              $('#desa').html(pecah[1]);
+              $('#tgl_pinjam').html(pecah[2]);
+              $('#tgl_kembali').html(pecah[3]);
+              $('#nama_lengkap').html(pecah[5]);
+              $('#selisih').html(pecah[6]);
+            }else if(pecah[8]=="W"){
+              pecah[4]=pecah[4]+";"+pecah[9];
+              $('[name="id_pinjam"]').val(pecah[4]);
+              pecah[0]=pecah[0]+" / "+pecah[7];
+              $('#id').html(pecah[0]);
+              $('#desa').html(pecah[1]);
+              $('#tgl_pinjam').html(pecah[2]);
+              $('#tgl_kembali').html(pecah[3]);
+              $('#nama_lengkap').html(pecah[5]);
+              $('#selisih').html(pecah[6]);
+            }
+          }else{
+            peringatan("Arsip Tidak Sedang Di Pinjam");
+          }
         }
 
 
         function tabel(barcode){
-          
+
           $.ajax({
               type : "POST",
               url  : "<?php echo base_url('pinjam/cari_barcode_pengembalian')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
@@ -296,7 +296,7 @@
                     // Handle on success condition with the decoded message.
                     console.log(`Scan result ${decodedText}`, decodedResult);
                     audio.play();
-                    tabel(lastResult);
+                    tabel(decodedResult);
                 }
             }
 

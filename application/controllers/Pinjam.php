@@ -834,14 +834,13 @@ class Pinjam extends CI_Controller {
 						$selisih=$isi->selisih;
 						$invoice=$isi->invoice;
 				 }
-				 	$data=$jumlah;
-				 	// if($jumlah==1){
-					// 	$data=$nomor.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$tahun.";"."SU".";".$invoice;
-					// }else if($jumlah==0){
-					// 	$data=null;
-					// }else{
-					// 	$data=null;
-					// }
+				 	if($jumlah==1){
+						$data=$nomor.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$tahun.";"."SU".";".$invoice;
+					}else if($jumlah==0){
+						$data=null;
+					}else{
+						$data=null;
+					}
 			}
 			elseif ($type=="W") {
 				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah left join desa on desa.kode_desa=warkah.kode_desa left join pegawai on pinjam.nip=pegawai.nip  where pinjam.id_warkah='$id' and pinjam.status=2 and warkah.status=2";
