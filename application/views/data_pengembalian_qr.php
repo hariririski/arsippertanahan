@@ -285,6 +285,9 @@
                     //console.log(`Scan result ${decodedText}`, decodedResult);
                     audio.play();
                     tabel(lastResult);
+                }else{
+                  audio.play();
+                  tabel(lastResult);
                 }
             }
 
