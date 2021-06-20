@@ -288,7 +288,7 @@
                     // Handle on success condition with the decoded message.
                     console.log(`Scan result ${decodedText}`, decodedResult);
                     audio.play();
-                    tabel("W-2hg1LCKyuZl7ifFQk95w");
+                    tabel(lastResult);
                 }
             }
 
