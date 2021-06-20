@@ -21,6 +21,7 @@
       }
     </style>
     <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -263,7 +264,7 @@
 
 
     </div>
-    <div id="modal2" class="modal">
+    <div id="modal2" class="modal" data-keyboard="false" data-backdrop="static">
         <div class="modal-content">
             <h5 class="card-title">Penysusunan Arsip</h5>
             <div class="row">
@@ -410,7 +411,7 @@
         }
 
         function simpan() {
-          $('#modal2').modal('open');
+          $('#modal2').modal('open'); 
           document.getElementById("kode_bundel").focus();
         }
 
