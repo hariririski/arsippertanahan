@@ -211,9 +211,6 @@
         $('#btn_simpan').on('click',function(){
             var kode=$('#textkode').val();
             pecah=kode.split(";",2);
-            $('#modal2').modal('close');
-            setFocus();
-            inputField.value ="";
             $.ajax({
             type : "POST",
             url  : "<?php echo base_url()?>pinjam/kembalikan/"+pecah[1]+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+pecah[0],
