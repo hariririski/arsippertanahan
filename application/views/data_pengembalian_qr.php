@@ -198,6 +198,7 @@
               url  : "<?php echo base_url('pinjam/cari_barcode_pengembalian')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
               dataType : "JSON",
                 success: function(data){
+                  alert(data);
                   data_modal(data);
               }
           });
