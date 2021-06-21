@@ -43,9 +43,25 @@
                         <ul>
                             <li><a href="<?php echo base_url(); ?>datapinjam"><i class="material-icons">library_add</i><span class="hide-menu">Peminjaman Arsip</span></a></li>
                             <li><a href="<?php echo base_url(); ?>kembali"><i class="material-icons">library_add</i><span class="hide-menu">Pengembalian Arsip</span></a></li>
+                            <?php
+                            // (A) CHECK IF "MOBILE" EXISTS IN USER AGENT
+                              $isMob = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), "mobile"));
+                              if($isMob){
+                            ?>
                             <li><a href="<?php echo base_url(); ?>kembaliqr"><i class="material-icons">library_add</i><span class="hide-menu">Pengembalian Arsip QR</span></a></li>
+                            <?php
+                            }
+                            ?>
                             <li><a href="<?php echo base_url(); ?>susun"><i class="material-icons">library_add</i><span class="hide-menu">Susun Arsip</span></a></li>
+                            <?php
+                            // (A) CHECK IF "MOBILE" EXISTS IN USER AGENT
+                              $isMob = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), "mobile"));
+                              if($isMob){
+                            ?>
                             <li><a href="<?php echo base_url(); ?>susunqr"><i class="material-icons">library_add</i><span class="hide-menu">Susun Arsip QR</span></a></li>
+                            <?php
+                            }
+                            ?>
                         </ul>
                     </div>
                 </li>

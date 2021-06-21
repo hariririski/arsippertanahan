@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo $this->load->view('share/icon', '', TRUE);?>
-    <title>Data Peminjaman</title>
+    <title>Detail Buku Tanah</title>
     <link href="<?php echo base_url(); ?>/dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
     <link href="<?php echo base_url(); ?>/assets/extra-libs/prism/prism.css" rel="stylesheet">
@@ -220,7 +220,7 @@
                                                             echo '<span class="label label-danger">Hilang</span>';
                                                         }
                                                       ?>
-                                                      
+
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -315,24 +315,48 @@
                                                     <thead>
                                                         <tr>
                                                             <th>No</th>
-                                                            <th>Nomor</th>
-                                                            <th>Tahun</th>
-                                                            <th>Desa</th>
-                                                            <th>Kondisi</th>
-                                                            <th>Penyimpanan</th>
-                                                            <th>status</th>
+                                                            <th>Tanggal Pinjam</th>
+                                                            <th>Tanggal Kembali</th>
+                                                            <th>Tanggal Dikembalikan</th>
+                                                            <th>Telat</th>
+                                                            <th>Pegawai</th>
+                                                            <th>Status</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                      <?php
+                                                        $i=0;
+                                                        foreach($histori as $histori){
+                                                        $i++;
+                                                      ?>
                                                         <tr>
-                                                            <td>Alvin</td>
-                                                            <td>Eclair</td>
-                                                            <td>$0.87</td>
-                                                            <td>$0.87</td>
-                                                            <td>$0.87</td>
-                                                            <td>$0.87</td>
-                                                            <td>$0.87</td>
+                                                            <td style="color: #000000"><?php echo $i; ?></td>
+                                                            <td style="color: #000000"><?php echo $histori->tgl_pinjam; ?></td>
+                                                            <td style="color: #000000"><?php echo $histori->tgl_kembali; ?></td>
+                                                            <td style="color: #000000"><?php echo $histori->tgl_dikembalikan; ?></td>
+                                                            <td style="color: #000000"><?php echo $histori->selisih; ?></td>
+                                                            <td style="color: #000000"><?php echo $histori->nama_lengkap; ?></td>
+                                                            <td>
+                                                              <?php
+                                                              if($histori->status==0){
+                                                                  echo '<span class="label label-success">Belum Di Tentukan</span>';
+                                                                }else if($histori->status==1){
+                                                                  echo '<span class="label label-success">Tersedia</span>';
+                                                                }else if($histori->status==2){
+                                                                  echo '<span class="label label-info">Di Pinjam</span>';
+                                                                  echo '<br></br>';
+                                                                  echo '<a href="#" class="waves-effect waves-light btn green right  "> lihat Peminjaman</a>';
+                                                                }else if($histori->status==3){
+                                                                  echo '<span class="label label-warning">Belum Disusun</span>';
+                                                                }else if($histori->status==4){
+                                                                    echo '<span class="label label-success">Selesai</span>';
+                                                                }
+                                                              ?>
+                                                            </td>
                                                         </tr>
+                                                        <?php
+                                                        }
+                                                        ?>
 
                                                     </tbody>
                                                 </table>

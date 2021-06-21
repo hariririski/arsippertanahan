@@ -15,11 +15,11 @@ class Buku_tanah extends CI_Controller {
 			$this->load->model('M_jenis_hak');
 			$this->load->model('M_kondisi');
 			$this->load->model('M_buku_tanah');
+			$this->load->model('M_pinjam');
 			$this->load->helper('string');
 
 	}
-	public function index()
-	{
+	public function index(){
 
 		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
 		$data['data_kondisi'] = $this->M_kondisi->lihat();
@@ -27,24 +27,23 @@ class Buku_tanah extends CI_Controller {
 		$data['desa_tabel'] = $this->M_provinsi->data_desa_buku_tanah();
 		$this->load->view('data_buku_tanah',$data);
 	}
-	public function detail_buku_tanah_desa()
-	{
+
+	public function detail_buku_tanah_desa(){
 		$kode_desa=$this->uri->segment('3');
 		$data['data_buku_tanah'] = $this->M_buku_tanah->data_buku_tanah_desa($kode_desa);
 		$this->load->view('detail_buku_tanah_desa',$data);
 	}
 
-	public function detail_buku_tanah()
-	{
+	public function detail_buku_tanah(){
 		$id_buku_tanah=$this->uri->segment('3');
 		$data['data_buku_tanah'] = $this->M_buku_tanah->detail_buku_tanah($id_buku_tanah);
 		$data['data_su_bt'] = $this->M_buku_tanah->detail_su_bt($id_buku_tanah);
 		$data['data_warkah_bt'] = $this->M_buku_tanah->detail_warkah_bt($id_buku_tanah);
+		$data['histori'] = $this->M_pinjam->histori($id_buku_tanah);
 		$this->load->view('detail_buku_tanah',$data);
 	}
 
-	public function tambah()
-	{
+	public function tambah(){
 		$id_bundel = $this->input->post('id_bundel');
 		$sql="SELECT COUNT(id_bundel) as jumlah FROM `bundel` WHERE id_bundel='$id_bundel'";
 		$query = $this->db->query($sql);
@@ -68,8 +67,8 @@ class Buku_tanah extends CI_Controller {
 		}
 
 	}
-	public function data()
-	{
+
+	public function data(){
 		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
 		$data['data_kondisi'] = $this->M_kondisi->lihat();
 		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
@@ -84,6 +83,7 @@ class Buku_tanah extends CI_Controller {
         $data=$this->M_buku_tanah->getBukuTanahSuratUkur($id);
         echo json_encode($data);
   }
+
 	function getBukuTanahWarkah(){
         $id=$this->input->get('id');
         $data=$this->M_buku_tanah->getBukuTanahWarkah($id);
