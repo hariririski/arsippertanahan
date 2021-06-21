@@ -85,6 +85,7 @@ $route['scan'] = 'Scan';
 $route['scan2'] = 'Scan/scan2';
 $route['kembali'] = 'Pinjam/kembali';
 $route['susun'] = 'Pinjam/susun';
+$route['susunqr'] = 'Pinjam/susunqr';
 $route['kembaliqr'] = 'Pinjam/kembaliqr';
 
 $route['404_override'] = 'Rusak';
