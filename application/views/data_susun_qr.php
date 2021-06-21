@@ -151,11 +151,7 @@
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
     <script type="text/javascript">
-        setFocus();
-        const inputField = document.getElementById("barcode");
-        function setFocus(){
-          document.getElementById("barcode").focus();
-        }
+        
 
         function data_modal(data){
           if(data!=null){
@@ -225,7 +221,7 @@
 
         function simpan() {
           $('#modal2').modal('open');
-          document.getElementById("kode_bundel").focus();
+          $('#stop').trigger('click');
         }
 
         function susun(){
@@ -233,10 +229,7 @@
             var kode=$('#textkode').val();
             var kode_bundel=$('#kode_bundel').val();
             pecah=kode.split(";",2);
-            //alert(kode);
-            setFocus();
-            const bundel = document.getElementById("kode_bundel");
-            bundel.value ="";
+
             $.ajax({
             type : "POST",
             url  : "<?php echo base_url()?>pinjam/susunkan/"+pecah[1]+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+pecah[0]+"/"+kode_bundel,
