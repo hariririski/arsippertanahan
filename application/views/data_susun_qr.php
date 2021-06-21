@@ -193,6 +193,7 @@
             }
           }else{
             peringatan("Arsip Tidak Sedang Di Pinjam");
+            $('#stop').trigger('click');
           }
         }
 
@@ -265,58 +266,10 @@
         }
         $('#btn_batal').on('click',function(){
             $('#modal2').modal('close');
-            setFocus();
-            inputField.value ="";
         });
     </script>
 
-    <script type="text/javascript">
-        function cari_buku_tanah(){
-          var desa_buku_tanah=$('#desa_buku_tanah').val();
-          var jenis_hak=$('#jenis_hak').val();
-          var nomor_hak=$('#nomor_hak').val();
-          $.ajax({
-              type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_buku_tanah_susun')?>/"+desa_buku_tanah+"/"+jenis_hak+"/"+nomor_hak,
-              dataType : "JSON",
-              success: function(data){
-                data_modal(data);
-            }
-          });
-          return false;
-        }
 
-        function cari_surat_ukur(){
-          var desa_surat_ukur=$('#desa_surat_ukur').val();
-          var nomor=$('#nomor_surat_ukur').val();
-          var tahun=$('#tahun_surat_ukur').val();
-          $.ajax({
-              type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_surat_ukur_susun')?>/"+desa_surat_ukur+"/"+nomor+"/"+tahun,
-              dataType : "JSON",
-              success: function(data){
-                data_modal(data);
-            }
-          });
-          return false;
-        }
-
-        function cari_warkah(){
-          var nomor_warkah=$('#nomor_warkah').val();
-          var tahun_warkah=$('#tahun_warkah').val();
-          $.ajax({
-              type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_warkah_susun')?>/"+nomor_warkah+"/"+tahun_warkah,
-              dataType : "JSON",
-              success: function(data){
-                data_modal(data);
-            }
-          });
-          return false;
-        }
-
-
-    </script>
     <!-- Latest compiled and minified CSS -->
     <script>
     /****************************************
