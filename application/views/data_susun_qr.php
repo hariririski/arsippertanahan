@@ -151,7 +151,7 @@
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
     <script type="text/javascript">
-        
+
 
         function data_modal(data){
           if(data!=null){
@@ -259,6 +259,7 @@
         }
         $('#btn_batal').on('click',function(){
             $('#modal2').modal('close');
+            $('#camera').trigger('click');
         });
     </script>
 
@@ -305,16 +306,7 @@
               lastResult=1;
               tabel(decodedText);
               setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
-              //alert(`Scan result ${decodedText}`, decodedResult);
 
-                // if (decodedText !== lastResult) {
-                //     ++countResults;
-                //     lastResult = decodedText;
-                //     // Handle on success condition with the decoded message.
-                //     //console.log(`Scan result ${decodedText}`, decodedResult);
-                //
-                //
-                // }
             }
 
             var html5QrcodeScanner = new Html5QrcodeScanner(
