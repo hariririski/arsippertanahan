@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo $this->load->view('share/icon', '', TRUE);?>
     <title>Detail Buku Tanah</title>
-    <link href="<?php echo base_url(); ?>/dist/css/style.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
-    <link href="<?php echo base_url(); ?>/assets/extra-libs/prism/prism.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/dist/css/pages/data-table.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>/dist/css/pages/form-page.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/extra-libs/prism/prism.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>dist/css/pages/data-table.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>dist/css/pages/form-page.css" rel="stylesheet">
 
 </head>
 
@@ -117,6 +117,24 @@
                                       <div class="row">
                                           <div class="col s3">
                                               <div class="h-form-label">
+                                                  <label for="icon_prefix3">Valid</label>
+                                              </div>
+                                          </div>
+                                          <div class="input-field col s9">
+                                              <label for="icon_prefix1" style="color: #000000"><b>
+                                                <?php
+                                                if($buku_tanah->valid==0){
+                                                    echo '<span class="label label-danger">Belum Valid</span>';
+                                                  }else if($buku_tanah->valid==1){
+                                                    echo '<span class="label label-success">Telah Valid</span>';
+                                                  }
+                                                ?>
+                                              </b></label>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col s3">
+                                              <div class="h-form-label">
                                                   <label for="icon_prefix3">status</label>
                                               </div>
                                           </div>
@@ -154,7 +172,7 @@
                                             $qrcode="BT-".$buku_tanah->id_buku_tanah;
                                             ?>
                                             <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
-                                                <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="30%"><br>
+                                                <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="133px"><br>
                                             </a>
                                             <a href="<?php echo base_url(); ?>" class="waves-effect waves-light btn green "> Cetak Barcode</a>
                                           </div>
@@ -180,14 +198,15 @@
                                         <table class="responsive-table striped">
                                             <thead>
                                                 <tr>
-                                                    <th>No</th>
                                                     <th>Nomor</th>
                                                     <th>Tahun</th>
                                                     <th>NIB</th>
                                                     <th>Desa</th>
                                                     <th>Kondisi</th>
                                                     <th>Penyimpanan</th>
-                                                    <th>status</th>
+                                                    <th>Status</th>
+                                                    <th>Valid</th>
+                                                    <th width="100px">QR</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -197,23 +216,20 @@
                                                 $i++;
                                               ?>
                                                 <tr>
-                                                    <td style="color: #000000"><?php echo $i; ?></td>
                                                     <td style="color: #000000"><?php echo $su->nomor; ?></td>
                                                     <td style="color: #000000"><?php echo $su->tahun; ?></td>
                                                     <td style="color: #000000"><?php echo $su->nib; ?></td>
                                                     <td style="color: #000000"><?php echo $su->nama_desa; ?></td>
                                                     <td style="color: #000000"><?php echo $su->nama_kondisi; ?></td>
-                                                    <td style="color: #000000"><?php echo $su->nama_lemari; ?> - <?php echo $su->nama_baris; ?> <?php echo $su->nama_bundel; ?></td>
+                                                    <td style="color: #000000"><?php echo $su->nama_lemari; ?> / <?php echo $su->nama_baris; ?> / <?php echo $su->nama_bundel; ?></td>
                                                     <td>
                                                       <?php
                                                       if($su->status==0){
-                                                          echo '<span class="label label-success">Belum Di Tentukan</span>';
+                                                          echo '<span class="label label-danger">Belum Di Tentukan</span>';
                                                         }else if($su->status==1){
                                                           echo '<span class="label label-success">Tersedia</span>';
                                                         }else if($su->status==2){
                                                           echo '<span class="label label-info">Di Pinjam</span>';
-                                                          echo '<br></br>';
-                                                          echo '<a href="#" class="waves-effect waves-light btn green right  "> lihat Peminjaman</a>';
                                                         }else if($su->status==3){
                                                           echo '<span class="label label-warning">Belum Disusun</span>';
                                                         }else if($su->status==4){
@@ -221,6 +237,23 @@
                                                         }
                                                       ?>
 
+                                                    </td>
+                                                    <td style="color: #000000">
+                                                      <?php
+                                                      if($su->valid==0){
+                                                          echo '<span class="label label-danger">Belum Valid</span>';
+                                                        }else if($su->valid==1){
+                                                          echo '<span class="label label-success">Telah Valid</span>';
+                                                        }
+                                                      ?>
+                                                    </td>
+                                                    <td style="color: #000000">
+                                                      <?php
+                                                      $qrcode="SU-".$su->id_surat_ukur;
+                                                      ?>
+                                                      <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
+                                                          <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px"><br>
+                                                      </a>
                                                     </td>
                                                 </tr>
                                                 <?php
@@ -248,13 +281,14 @@
                                             <table class="responsive-table striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>No</th>
                                                         <th>Nomor</th>
                                                         <th>Tahun</th>
                                                         <th>Desa</th>
                                                         <th>Kondisi</th>
                                                         <th>Penyimpanan</th>
-                                                        <th>status</th>
+                                                        <th>Status</th>
+                                                        <th>Valid</th>
+                                                        <th width="100px%">QR</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -264,28 +298,42 @@
                                                     $i++;
                                                   ?>
                                                     <tr>
-                                                        <td style="color: #000000"><?php echo $i; ?></td>
                                                         <td style="color: #000000"><?php echo $warkah->nomor; ?></td>
                                                         <td style="color: #000000"><?php echo $warkah->tahun; ?></td>
                                                         <td style="color: #000000"><?php echo $warkah->nama_desa; ?></td>
                                                         <td style="color: #000000"><?php echo $warkah->nama_kondisi; ?></td>
-                                                        <td style="color: #000000"><?php echo $warkah->nama_lemari; ?> - <?php echo $warkah->nama_baris; ?> <?php echo $warkah->nama_bundel; ?></td>
+                                                        <td style="color: #000000"><?php echo $warkah->nama_lemari; ?> / <?php echo $warkah->nama_baris; ?> / <?php echo $warkah->nama_bundel; ?></td>
                                                         <td>
                                                           <?php
                                                           if($warkah->status==0){
-                                                              echo '<span class="label label-success">Belum Di Tentukan</span>';
+                                                              echo '<span class="label label-danger">Belum Di Tentukan</span>';
                                                             }else if($warkah->status==1){
                                                               echo '<span class="label label-success">Tersedia</span>';
                                                             }else if($warkah->status==2){
                                                               echo '<span class="label label-info">Di Pinjam</span>';
-                                                              echo '<br></br>';
-                                                              echo '<a href="#" class="waves-effect waves-light btn green right  "> lihat Peminjaman</a>';
                                                             }else if($warkah->status==3){
                                                               echo '<span class="label label-warning">Belum Disusun</span>';
                                                             }else if($warkah->status==4){
                                                                 echo '<span class="label label-danger">Hilang</span>';
                                                             }
                                                           ?>
+                                                        </td>
+                                                        <td style="color: #000000">
+                                                          <?php
+                                                          if($su->valid==0){
+                                                              echo '<span class="label label-danger">Belum Valid</span>';
+                                                            }else if($su->valid==1){
+                                                              echo '<span class="label label-success">Telah Valid</span>';
+                                                            }
+                                                          ?>
+                                                        </td>
+                                                        <td style="color: #000000">
+                                                          <?php
+                                                          $qrcode="W-".$warkah->id_warkah;
+                                                          ?>
+                                                          <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
+                                                              <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px"><br>
+                                                          </a>
                                                         </td>
                                                     </tr>
                                                     <?php
@@ -306,6 +354,9 @@
                                   <div class="card">
                                       <div class="card-content">
                                           <h5 class="card-title activator">Histori Peminjaman</h5>
+                                          <label>
+                                            50 Peminjaman Terakhir
+                                          </label>
                                       </div>
                                       <div class="divider"></div>
                                       <form class="h-form">
@@ -321,6 +372,7 @@
                                                             <th>Telat</th>
                                                             <th>Pegawai</th>
                                                             <th>Status</th>
+                                                            <th width="100px">QR</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -334,24 +386,30 @@
                                                             <td style="color: #000000"><?php echo $histori->tgl_pinjam; ?></td>
                                                             <td style="color: #000000"><?php echo $histori->tgl_kembali; ?></td>
                                                             <td style="color: #000000"><?php echo $histori->tgl_dikembalikan; ?></td>
-                                                            <td style="color: #000000"><?php echo $histori->selisih; ?></td>
+                                                            <td style="color: #000000"><?php echo $histori->selisih; ?> Hari</td>
                                                             <td style="color: #000000"><?php echo $histori->nama_lengkap; ?></td>
                                                             <td>
                                                               <?php
                                                               if($histori->status==0){
                                                                   echo '<span class="label label-success">Belum Di Tentukan</span>';
                                                                 }else if($histori->status==1){
-                                                                  echo '<span class="label label-success">Tersedia</span>';
+                                                                  echo '<span class="label label-warning">Proses Peminjaman</span>';
                                                                 }else if($histori->status==2){
-                                                                  echo '<span class="label label-info">Di Pinjam</span>';
-                                                                  echo '<br></br>';
-                                                                  echo '<a href="#" class="waves-effect waves-light btn green right  "> lihat Peminjaman</a>';
+                                                                  echo '<span class="label label-warning">Di Pinjam</span>';
                                                                 }else if($histori->status==3){
                                                                   echo '<span class="label label-warning">Belum Disusun</span>';
                                                                 }else if($histori->status==4){
                                                                     echo '<span class="label label-success">Selesai</span>';
                                                                 }
                                                               ?>
+                                                            </td>
+                                                            <td style="color: #000000">
+                                                              <?php
+                                                              $qrcode="P-".$histori->invoice;
+                                                              ?>
+                                                              <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
+                                                                  <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px"><br>
+                                                              </a>
                                                             </td>
                                                         </tr>
                                                         <?php
@@ -379,9 +437,9 @@
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
-    <script src="<?php echo base_url(); ?>/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>dist/js/materialize.min.js"></script>
-    <script src="<?php echo base_url(); ?>/assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
     <!-- ============================================================== -->
     <!-- Apps -->
     <!-- ============================================================== -->
@@ -395,11 +453,11 @@
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
-    <script src="<?php echo base_url(); ?>/assets/extra-libs/prism/prism.js"></script>
+    <script src="<?php echo base_url(); ?>assets/extra-libs/prism/prism.js"></script>
     <script src="<?php echo base_url(); ?>dist/js/pages/forms/jquery.validate.min.js"></script>
-    <script src="<?php echo base_url(); ?>/assets/extra-libs/jquery-datatables-editable/jquery.dataTables.js"></script>
-    <script src="<?php echo base_url(); ?>/assets/extra-libs/tiny-editable/mindmup-editabletable.js"></script>
-    <script src="<?php echo base_url(); ?>/assets/extra-libs/tiny-editable/numeric-input-example.js"></script>
+    <script src="<?php echo base_url(); ?>assets/extra-libs/jquery-datatables-editable/jquery.dataTables.js"></script>
+    <script src="<?php echo base_url(); ?>assets/extra-libs/tiny-editable/mindmup-editabletable.js"></script>
+    <script src="<?php echo base_url(); ?>assets/extra-libs/tiny-editable/numeric-input-example.js"></script>
     <script>
     $('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
     $('#editable-datatable').editableTableWidget().numericInputExample().find('td:first').focus();

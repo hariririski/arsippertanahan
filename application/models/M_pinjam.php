@@ -6,7 +6,7 @@
         return $query->result();
       }
       function histori($id_buku_tanah){
-        $query=$this->db->query("SELECT *, datediff(pinjam.tgl_pinjam,pinjam.tgl_dikembalikan) as selisih FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip WHERE id_buku_tanah='$id_buku_tanah' order by pinjam.tgl_pinjam ASC");
+        $query=$this->db->query("SELECT *, datediff(pinjam.tgl_pinjam,pinjam.tgl_dikembalikan) as selisih FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip WHERE id_buku_tanah='$id_buku_tanah' order by pinjam.tgl_pinjam ASC limit 50");
         return $query->result();
       }
 
