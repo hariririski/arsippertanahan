@@ -167,19 +167,6 @@
         }
 
 
-        function cari_barcode(){
-          var barcode=$('#barcode').val();
-          $.ajax({
-              type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_barcode_susun')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
-              dataType : "JSON",
-                success: function(data){
-                  data_modal(data);
-              }
-          });
-          return false;
-        }
-
         function tabel(barcode){
           $.ajax({
               type : "POST",
