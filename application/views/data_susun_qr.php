@@ -155,30 +155,17 @@
 
         function data_modal(data){
           if(data!=null){
-            peringatan("masuk");
-            pecah=data.split(";",10);
-            //simpan();
-            if(pecah[8]=="BT" || pecah[8]=="SU" || pecah[8]=="W"){
-              window.location.href='<?php echo base_url(); ?>pinjam/detail_susunqr/'+pecah[4];
-            }else{
-              peringatan("Arsip Tidak Sedang Di Pinjam");
-              $('#stop').trigger('click');
-            }
-
-        }
-
-
-        function cari_barcode(){
-          var barcode=$('#barcode').val();
-          $.ajax({
-              type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_barcode_susun')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
-              dataType : "JSON",
-                success: function(data){
-                  data_modal(data);
+              pecah=data.split(";",10);
+              if(pecah[8]=="BT" || pecah[8]=="SU" || pecah[8]=="W"){
+                window.location.href='<?php echo base_url(); ?>pinjam/detail_susunqr/'+pecah[4];
+              }else{
+                peringatan("Arsip Tidak Sedang Di Pinjam");
+                $('#stop').trigger('click');
               }
-          });
-          return false;
+          }else{
+            peringatan("Arsip Tidak Sedang Di Pinjam");
+            $('#stop').trigger('click');
+          }
         }
 
         function tabel(barcode){
@@ -193,48 +180,7 @@
           return false;
         }
 
-        function simpan() {
-          $('#modal2').modal('open');
-          $('#stop').trigger('click');
-        }
 
-        function susun(){
-            $('#modal2').modal('close');
-            var kode=$('#textkode').val();
-            var kode_bundel=$('#kode_bundel').val();
-            pecah=kode.split(";",2);
-
-            $.ajax({
-            type : "POST",
-            url  : "<?php echo base_url()?>pinjam/susunkan/"+pecah[1]+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+pecah[0]+"/"+kode_bundel,
-            dataType : "JSON",
-                    data : {kode: kode},
-                    success: function(notif){
-                        $('#modal1').modal('close');
-                        if (notif==1) {
-                          berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php echo base_url()?>susun';",1500);
-                        }else if(notif==2){
-                          berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php echo base_url()?>susun';",1500);
-                        }else if(notif==3){
-                          gagal("Arsip Gagal Di Susun");
-                        }else if(notif==4){
-                          gagal("Bundel Tidak Sesuai, Arsip Gagal Di Susun");
-                        }else{
-                          //tampil_data_pinjam();
-                          gagal("Arsip Gagal Di Susun");
-                        }
-
-                    }
-                });
-                return false;
-
-        }
-        $('#btn_batal').on('click',function(){
-            $('#modal2').modal('close');
-            $('#camera').trigger('click');
-        });
     </script>
 
 
