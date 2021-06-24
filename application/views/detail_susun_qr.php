@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo $this->load->view('share/icon', '', TRUE);?>
-    <title>Data Susun</title>
-    <link href="dist/css/style.css" rel="stylesheet">
+    <title>detail Susun</title>
+    <link href="<?php echo base_url(); ?>dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
-    <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
-    <link href="dist/css/pages/data-table.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/extra-libs/prism/prism.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>dist/css/pages/data-table.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
     <style>
       .selectize-input {
@@ -56,6 +56,70 @@
             <!-- ============================================================== -->
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
+            <div class="col s12 ">
+                <div class="card">
+                    <div class="card-content">
+                      <table  class="striped">
+                        <?php
+                          $i=0;
+                          foreach($pinjam as $data){
+                          $i++;
+                        ?>
+                        <tr style="padding: 0px 0px;">
+                          <td style="padding: 0px 0px;">Desa/Jenis Hak/Nomor Hak/SU/WARKAH/</td>
+                          <td style="padding: 0px 0px;">
+                            <?php
+                              if($data->id_buku_tanah!=null){
+                                echo "BT / ".$data->nama_jenis." / ".$data->no_hak;
+                              }else if($data->id_surat_ukur!=null){
+                                echo "SU / ".$data->nomor_su." / ".$data->tahun_su;
+                              }else if($data->id_warkah!=null){
+                                echo "W / ".$data->nomor_w." / ".$data->tahun_w;
+                              }
+                            ?>
+                          </td>
+                        </tr>
+                        <tr style="padding: 0px 0px;">
+                          <td style="padding: 0px 0px;">Tanggal Pinjam</td>
+                          <td style="padding: 0px 0px;"><?php echo $data->tgl_pinjam; ?></td>
+                        </tr>
+                        <tr style="padding: 0px 0px;">
+                          <td style="padding: 0px 0px;">Tanggal Kembali</td>
+                          <td style="padding: 0px 0px;"><?php echo $data->tgl_dikembalikan; ?></P></td>
+                        </tr>
+                        <tr style="padding: 0px 0px;">
+                          <td style="padding: 0px 0px;">Tanggak Keterlambatan</td>
+                          <td style="padding: 0px 0px;"><?php echo $data->selisih; ?>Hari</td>
+                        </tr>
+                        <tr style="padding: 0px 0px;">
+                          <td style="padding: 0px 0px;">Peminjam</td>
+                          <td style="padding: 0px 0px;"><?php echo $data->nama_lengkap; ?></td>
+                        </tr>
+                        <tr style="padding: 0px 0px;">
+                          <td style="padding: 0px 0px;">Lokasi Penyimpanan</td>
+                          <td style="padding: 0px 0px;">
+                            <?php
+                              if($data->id_buku_tanah!=null){
+                                echo "Lemari : ".$data->lemari_br."/ ";
+                                echo "Baris  : ".$data->baris_bt."/ ";
+                                echo "Bundel : ".$data->nama_bundel_bt;
+                              }else if($data->id_surat_ukur!=null){
+                                echo "Lemari : ".$data->lemari_su."/ ";
+                                echo "Baris  : ".$data->baris_su."/ ";
+                                echo "Bundel : ".$data->nama_bundel_su;
+                              }else if($data->id_warkah!=null){
+                                echo "Lemari : ".$data->lemari_w."/ ";
+                                echo "Baris  : ".$data->baris_w."/ ";
+                                echo "Bundel : ".$data->nama_bundel_w;
+                              }
+                            ?>
+                          </td>
+                        </tr>
+                        <?php } ?>
+                      </table>
+                    </div>
+                </div>
+            </div>
             <div class="card info-gradient m-t-0 m-b-0">
                 <div class="card-content">
                     <div class="p-b-40 p-t-20">
@@ -76,48 +140,7 @@
 
 
     </div>
-    <div id="modal2" class="modal" data-keyboard="false" data-backdrop="static">
-        <div class="modal-content">
-            <h5 class="card-title">Penysusunan Arsip</h5>
-            <div class="row">
-              <table  class="striped">
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Desa/Jenis Hak/Nomor Hak/SU/WARKAH/</td>
-                  <td style="padding: 0px 0px;">
-                    <P id="id"></P>
-                  </td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Tanggal Pinjam</td>
-                  <td style="padding: 0px 0px;"><P id="tgl_pinjam"></P></td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Tanggal Kembali</td>
-                  <td style="padding: 0px 0px;"><P id="tgl_kembali"></P></td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Tanggak Keterlambatan</td>
-                  <td style="padding: 0px 0px;"><P id="selisih"></P></td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Peminjam</td>
-                  <td style="padding: 0px 0px;"><P id="nama_lengkap"></P></td>
-                </tr>
-              </table>
-              <form action="javascript:susun()">
-              <input type="hidden" name="id_pinjam" id="textkode" value="">
-              <input type="text" name="kode_bundel" id="kode_bundel" required autofocus="on">
-              <label for="icon_prefix">Scan Kode Pada Bundel</label>
-              <div class="alert alert-warning"><p>Apakah Anda yakin mau menyelesaikan peminjaman?</p></div>
-            </div>
-            <div class="modal-footer">
-                <button href="#!" class="waves-effect waves-green btn-flat blue white-text" type="submit" ><i class="fas fa-share"></i>Kembalikan</button>
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
 
-            </div>
-          </form>
-        </div>
-    </div>
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
@@ -131,25 +154,25 @@
       });
     </script>
     <!-- <script src="assets/libs/jquery/dist/jquery.min.js"></script> -->
-    <script src="dist/js/materialize.min.js"></script>
-    <script src="assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/materialize.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
     <!-- ============================================================== -->
     <!-- Apps -->
     <!-- ============================================================== -->
-    <script src="dist/js/app.js"></script>
-    <script src="dist/js/app.init.horizontal.js"></script>
-    <script src="dist/js/app-style-switcher.horizontal.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/app.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/app.init.horizontal.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/app-style-switcher.horizontal.js"></script>
     <!-- ============================================================== -->
     <!-- Custom js -->
     <!-- ============================================================== -->
-    <script src="dist/js/custom.min.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/custom.min.js"></script>
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
-    <script src="assets/extra-libs/prism/prism.js"></script>
-    <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
-    <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
-    <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
+    <script src="<?php echo base_url(); ?>assets/extra-libs/prism/prism.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/pages/forms/jquery.validate.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/extra-libs/Datatables/datatables.min.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/pages/datatable/datatable-basic.init.js"></script>
     <script type="text/javascript">
 
 
@@ -164,6 +187,7 @@
               $('#stop').trigger('click');
             }
         }
+      }
 
 
         function cari_barcode(){
@@ -255,7 +279,7 @@
         toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
       }
     </script>
-    <script src="dist/js/qrcode_scan.min.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/qrcode_scan.min.js"></script>
     <script>
 
         function docReady(fn) {
