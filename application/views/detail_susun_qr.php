@@ -109,12 +109,15 @@
                           if($data->id_buku_tanah!=null){
                             echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="'.$data->id_pinjam.'">';
                             echo'<input type="hidden" name="id_bundel" id="id_bundel" value="'.$data->id_bundel_bt.'">';
+                            echo'<input type="hidden" name="invoice" id="invoice" value="'.$data->invoice.'">';
                           }else if($data->id_surat_ukur!=null){
                             echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="'.$data->id_pinjam.'">';
                             echo'<input type="hidden" name="id_bundel" id="id_bundel" value="'.$data->id_bundel_su.'">';
+                            echo'<input type="hidden" name="invoice" id="invoice" value="'.$data->invoice.'">';
                           }else if($data->id_warkah!=null){
                             echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="'.$data->id_pinjam.'">';
                             echo'<input type="hidden" name="id_bundel" id="id_bundel" value="'.$data->id_bundel_w.'">';
+                            echo'<input type="hidden" name="invoice" id="invoice" value="'.$data->invoice.'">';
                           }
                         ?>
                         <?php } ?>
@@ -196,42 +199,37 @@
           $('#stop').trigger('click');
             var id_pinjam=$('#id_pinjam').val();
             var id_bundel=$('#id_bundel').val();
+            var invoice=$('#invoice').val();
             id_bundel="BNDL-"+id_bundel;
           if(bundel==id_bundel){
-            berhasil("Bundel_sesuai");
-          }else{
-            gagal("Bundel Tidak Sesuai!.");
-          }
-            // $('#modal2').modal('close');
+            //berhasil("Bundel_sesuai");
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
+            dataType : "JSON",
+                    data : {kode: kode},
+                    success: function(notif){
+                        $('#modal1').modal('close');
+                        if (notif==1) {
+                          berhasil("Peminjaman Berhasil Di Susun !.");
+                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
+                        }else if(notif==2){
+                          berhasil("Peminjaman Berhasil Di Susun !.");
+                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
+                        }else if(notif==3){
+                          gagal("Arsip Gagal Di Susun");
+                        }else if(notif==4){
+                          gagal("Bundel Tidak Sesuai, Arsip Gagal Di Susun");
+                        }else{
+                          gagal("Arsip Gagal Di Susun");
+                        }
 
-            // var kode_bundel=$('#kode_bundel').val();
-            // pecah=kode.split(";",2);
-            //
-            // $.ajax({
-            // type : "POST",
-            // url  : "<?php //echo base_url()?>pinjam/susunkan/"+pecah[1]+"/<?php //echo $this->session->userdata("nama_lengkap"); ?>/"+pecah[0]+"/"+kode_bundel,
-            // dataType : "JSON",
-            //         data : {kode: kode},
-            //         success: function(notif){
-            //             $('#modal1').modal('close');
-            //             if (notif==1) {
-            //               berhasil("Peminjaman Berhasil Di Susun !.");
-            //               setTimeout("location.href = '<?php //echo base_url()?>susun';",1500);
-            //             }else if(notif==2){
-            //               berhasil("Peminjaman Berhasil Di Susun !.");
-            //               setTimeout("location.href = '<?php //echo base_url()?>susun';",1500);
-            //             }else if(notif==3){
-            //               gagal("Arsip Gagal Di Susun");
-            //             }else if(notif==4){
-            //               gagal("Bundel Tidak Sesuai, Arsip Gagal Di Susun");
-            //             }else{
-            //               //tampil_data_pinjam();
-            //               gagal("Arsip Gagal Di Susun");
-            //             }
-            //
-            //         }
-            //     });
-            //     return false;
+                    }
+                });
+                return false;
+              }else{
+                gagal("Bundel Tidak Sesuai!.");
+              }
 
         }
 
