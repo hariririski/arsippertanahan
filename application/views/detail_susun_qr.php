@@ -197,7 +197,7 @@
           alert(bundel);
             var id_pinjam=$('#id_pinjam').val();
             var id_bundel=$('#id_bundel').val();
-            id_bundel.="BNDL-";
+            id_bundel="BNDL-"+id_bundel;
           alert(id_bundel);
           if(bundel==id_bundel){
             alert("sama");
