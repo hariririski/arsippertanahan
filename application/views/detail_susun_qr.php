@@ -100,7 +100,7 @@
                           <td style="padding: 0px 0px;">
                             <?php
                               if($data->id_buku_tanah!=null){
-                                echo "Lemari : ".$data->lemari_br."/ ";
+                                echo "Lemari : ".$data->lemari_bt."/ ";
                                 echo "Baris  : ".$data->baris_bt."/ ";
                                 echo "Bundel : ".$data->nama_bundel_bt;
                               }else if($data->id_surat_ukur!=null){
