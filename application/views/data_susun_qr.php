@@ -157,6 +157,12 @@
           if(data!=null){
             pecah=data.split(";",10);
             simpan();
+            if(pecah[8]=="BT" || pecah[8]=="SU" || pecah[8]=="W"){
+              window.location.href='<?php echo base_url(); ?>pinjam/detail_susunqr/'+pecah[4];
+            }else{
+              peringatan("Arsip Tidak Sedang Di Pinjam");
+              $('#stop').trigger('click');
+            }
             if(pecah[8]=="BT"){
               pecah[4]=pecah[4]+";"+pecah[9];
               $('[name="id_pinjam"]').val(pecah[4]);
