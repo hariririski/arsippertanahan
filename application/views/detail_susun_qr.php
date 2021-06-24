@@ -70,7 +70,7 @@
                           <td style="padding: 0px 0px;">
                             <?php
                               if($data->id_buku_tanah!=null){
-                                echo "BT / ".$data->nama_jenis." / ".$data->no_hak;
+                                echo "BT / ".$data->nama_jenis_hak." / ".$data->no_hak;
                               }else if($data->id_surat_ukur!=null){
                                 echo "SU / ".$data->nomor_su." / ".$data->tahun_su;
                               }else if($data->id_warkah!=null){
