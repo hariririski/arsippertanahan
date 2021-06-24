@@ -209,14 +209,13 @@
             type : "POST",
             url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
             dataType : "JSON",
-                    data : {kode: kode},
                     success: function(notif){
                         if (notif==1) {
                           berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
+                          //setTimeout("location.href = '<?php //echo base_url()?>susunqr';",1500);
                         }else if(notif==2){
                           berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
+                          //setTimeout("location.href = '<?php //echo base_url()?>susunqr';",1500);
                         }else if(notif==3){
                           gagal("Arsip Gagal Di Susun");
                         }else if(notif==4){
@@ -227,7 +226,7 @@
 
                     }
                 });
-                return false;
+                
               }else{
                 gagal("Bundel Tidak Sesuai!.");
               }
