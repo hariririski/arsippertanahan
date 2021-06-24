@@ -193,6 +193,7 @@
       }
 
         function susun(bundel){
+          $('#stop').trigger('click');
           alert(bundel);
             var id_pinjam=$('#id_pinjam').val();
             var id_bundel=$('#id_bundel').val();
@@ -218,7 +219,7 @@
             //               setTimeout("location.href = '<?php //echo base_url()?>susun';",1500);
             //             }else if(notif==2){
             //               berhasil("Peminjaman Berhasil Di Susun !.");
-            //               setTimeout("location.href = '<?php echo base_url()?>susun';",1500);
+            //               setTimeout("location.href = '<?php //echo base_url()?>susun';",1500);
             //             }else if(notif==3){
             //               gagal("Arsip Gagal Di Susun");
             //             }else if(notif==4){
