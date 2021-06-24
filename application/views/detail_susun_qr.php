@@ -296,7 +296,7 @@
 
       function camera(){
         $(function(){
-            $('#camera').trigger('click');
+            //$('#camera').trigger('click');
         });
       }
     </script>
