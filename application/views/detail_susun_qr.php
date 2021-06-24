@@ -196,7 +196,7 @@
           alert(bundel);
             var id_pinjam=$('#id_pinjam').val();
             var id_bundel=$('#id_bundel').val();
-          if(bundel=id_bundel){
+          if(bundel==id_bundel){
             alert("sama");
           }else{
             alert("bundel salah");
