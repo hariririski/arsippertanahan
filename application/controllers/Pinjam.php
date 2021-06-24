@@ -390,6 +390,8 @@ class Pinjam extends CI_Controller {
 							}
 						}
 		 		}
+		 }else{
+			 $data=5;
 		 }
 
 		echo json_encode($data);
