@@ -105,7 +105,18 @@
                             ?>
                           </td>
                         </tr>
-                        <input type="hidden" name="id_pinjam" id="textkode" value="<?php echo $data->id_pinjam; ?>">
+                        <?php
+                          if($data->id_buku_tanah!=null){
+                            echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="<?php echo $data->id_pinjam; ?>">';
+                            echo'<input type="hidden" name="id_pinjam" id="id_bundel" value="<?php echo $data->id_bundel_bt; ?>">';
+                          }else if($data->id_surat_ukur!=null){
+                            echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="<?php echo $data->id_pinjam; ?>">';
+                            echo'<input type="hidden" name="id_pinjam" id="id_bundel" value="<?php echo $data->id_bundel_su; ?>">';
+                          }else if($data->id_warkah!=null){
+                            echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="<?php echo $data->id_pinjam; ?>">';
+                            echo'<input type="hidden" name="id_pinjam" id="id_bundel" value="<?php echo $data->id_bundel_w; ?>">';
+                          }
+                        ?>
                         <?php } ?>
                       </table>
 
@@ -183,8 +194,13 @@
 
         function susun(bundel){
           alert(bundel);
-            var kode=$('#textkode').val();
-          alert(kode);
+            var id_pinjam=$('#id_pinjam').val();
+            var id_bundel=$('#id_bundel').val();
+          if(bundel=id_bundel){
+            alert("sama");
+          }else{
+            alert("bundel salah");
+          }
             // $('#modal2').modal('close');
 
             // var kode_bundel=$('#kode_bundel').val();
