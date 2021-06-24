@@ -155,6 +155,7 @@
 
         function data_modal(data){
           if(data!=null){
+            peringatan("masuk");
             pecah=data.split(";",10);
             //simpan();
             if(pecah[8]=="BT" || pecah[8]=="SU" || pecah[8]=="W"){
