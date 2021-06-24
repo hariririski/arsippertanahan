@@ -45,17 +45,7 @@
         <!-- Page wrapper scss in scafholding.scss -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Title and breadcrumb -->
-            <!-- ============================================================== -->
-            <div class="page-titles">
-                <div class="d-flex align-items-center">
-                    <h5 class="font-medium m-b-0">Susun Arsip</h5>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- Container fluid scss in scafholding.scss -->
-            <!-- ============================================================== -->
+          
             <div class="col s12 ">
                 <div class="card">
                     <div class="card-content">
