@@ -108,13 +108,13 @@
                         <?php
                           if($data->id_buku_tanah!=null){
                             echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="<?php echo $data->id_pinjam; ?>">';
-                            echo'<input type="hidden" name="id_pinjam" id="id_bundel" value="<?php echo $data->id_bundel_bt; ?>">';
+                            echo'<input type="hidden" name="id_bundel" id="id_bundel" value="<?php echo $data->id_bundel_bt; ?>">';
                           }else if($data->id_surat_ukur!=null){
                             echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="<?php echo $data->id_pinjam; ?>">';
-                            echo'<input type="hidden" name="id_pinjam" id="id_bundel" value="<?php echo $data->id_bundel_su; ?>">';
+                            echo'<input type="hidden" name="id_bundel" id="id_bundel" value="<?php echo $data->id_bundel_su; ?>">';
                           }else if($data->id_warkah!=null){
                             echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="<?php echo $data->id_pinjam; ?>">';
-                            echo'<input type="hidden" name="id_pinjam" id="id_bundel" value="<?php echo $data->id_bundel_w; ?>">';
+                            echo'<input type="hidden" name="id_bundel" id="id_bundel" value="<?php echo $data->id_bundel_w; ?>">';
                           }
                         ?>
                         <?php } ?>
