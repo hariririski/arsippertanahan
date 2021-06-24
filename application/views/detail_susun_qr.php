@@ -202,7 +202,6 @@
             var invoice=$('#invoice').val();
             id_bundel_baru="BNDL-"+id_bundel;
           if(bundel==id_bundel_baru){
-            berhasil("Bundel_sesuai");
             var link="<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel;
             alert(link);
             $.ajax({
@@ -212,10 +211,10 @@
                     success: function(notif){
                         if (notif==1) {
                           berhasil("Peminjaman Berhasil Di Susun !.");
-                          //setTimeout("location.href = '<?php //echo base_url()?>susunqr';",1500);
+                          setTimeout("location.href = '<?php //echo base_url()?>susunqr';",1500);
                         }else if(notif==2){
                           berhasil("Peminjaman Berhasil Di Susun !.");
-                          //setTimeout("location.href = '<?php //echo base_url()?>susunqr';",1500);
+                          setTimeout("location.href = '<?php //echo base_url()?>susunqr';",1500);
                         }else if(notif==3){
                           gagal("Arsip Gagal Di Susun");
                         }else if(notif==4){
@@ -226,7 +225,7 @@
 
                     }
                 });
-                
+
               }else{
                 gagal("Bundel Tidak Sesuai!.");
               }
@@ -246,7 +245,7 @@
     <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
     <script>
       function berhasil(notif) {
-        toastr.success(notif, '', { "progressBar": true });
+        toastr.success(notif, 'Selamat!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
       }
       function peringatan(notif) {
         toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
