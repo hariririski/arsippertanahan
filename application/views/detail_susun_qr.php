@@ -203,6 +203,8 @@
             id_bundel_baru="BNDL-"+id_bundel;
           if(bundel==id_bundel_baru){
             berhasil("Bundel_sesuai");
+            var link="<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel;
+            alert(link);
             $.ajax({
             type : "POST",
             url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
