@@ -155,6 +155,7 @@
 
         function data_modal(data){
           if(data!=null){
+            $('#stop').trigger('click');
             pecah=data.split(";",10);
             simpan();
             alert("masuk");
