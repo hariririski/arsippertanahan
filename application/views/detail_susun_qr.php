@@ -194,15 +194,13 @@
 
         function susun(bundel){
           $('#stop').trigger('click');
-          alert(bundel);
             var id_pinjam=$('#id_pinjam').val();
             var id_bundel=$('#id_bundel').val();
             id_bundel="BNDL-"+id_bundel;
-          alert(id_bundel);
           if(bundel==id_bundel){
-            alert("sama");
+            berhasil("Bundel_sesuai");
           }else{
-            alert("bundel salah");
+            gagal("Bundel Tidak Sesuai!.");
           }
             // $('#modal2').modal('close');
 
