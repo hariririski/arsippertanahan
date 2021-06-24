@@ -202,8 +202,6 @@
             var invoice=$('#invoice').val();
             id_bundel_baru="BNDL-"+id_bundel;
           if(bundel==id_bundel_baru){
-            var link="<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel;
-            alert(link);
             $.ajax({
             type : "POST",
             url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
@@ -211,10 +209,10 @@
                     success: function(notif){
                         if (notif==1) {
                           berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php //echo base_url()?>susunqr';",1500);
+                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
                         }else if(notif==2){
                           berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php //echo base_url()?>susunqr';",1500);
+                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
                         }else if(notif==3){
                           gagal("Arsip Gagal Di Susun");
                         }else if(notif==4){
