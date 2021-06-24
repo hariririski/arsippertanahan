@@ -278,7 +278,7 @@
               lastResult=1;
               susun(decodedText);
               setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
-
+              $('#stop').trigger('click');
             }
 
             var html5QrcodeScanner = new Html5QrcodeScanner(
