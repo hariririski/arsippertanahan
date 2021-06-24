@@ -45,7 +45,7 @@
         <!-- Page wrapper scss in scafholding.scss -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-          
+
             <div class="col s12 ">
                 <div class="card">
                     <div class="card-content">
@@ -105,8 +105,10 @@
                             ?>
                           </td>
                         </tr>
+                        <input type="hidden" name="id_pinjam" id="textkode" value="<?php echo $data->id_pinjam; ?>">
                         <?php } ?>
                       </table>
+
                     </div>
                 </div>
             </div>
@@ -179,74 +181,43 @@
         }
       }
 
-
-        function cari_barcode(){
-          var barcode=$('#barcode').val();
-          $.ajax({
-              type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_barcode_susun')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
-              dataType : "JSON",
-                success: function(data){
-                  data_modal(data);
-              }
-          });
-          return false;
-        }
-
-        function tabel(barcode){
-          $.ajax({
-              type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_barcode_susun')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
-              dataType : "JSON",
-                success: function(data){
-                  data_modal(data);
-              }
-          });
-          return false;
-        }
-
-        function simpan() {
-          $('#modal2').modal('open');
-          $('#stop').trigger('click');
-        }
-
-        function susun(){
-            $('#modal2').modal('close');
+        function susun(bundel){
+          alert(bundel);
             var kode=$('#textkode').val();
-            var kode_bundel=$('#kode_bundel').val();
-            pecah=kode.split(";",2);
+          alert(kode);
+            // $('#modal2').modal('close');
 
-            $.ajax({
-            type : "POST",
-            url  : "<?php echo base_url()?>pinjam/susunkan/"+pecah[1]+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+pecah[0]+"/"+kode_bundel,
-            dataType : "JSON",
-                    data : {kode: kode},
-                    success: function(notif){
-                        $('#modal1').modal('close');
-                        if (notif==1) {
-                          berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php echo base_url()?>susun';",1500);
-                        }else if(notif==2){
-                          berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php echo base_url()?>susun';",1500);
-                        }else if(notif==3){
-                          gagal("Arsip Gagal Di Susun");
-                        }else if(notif==4){
-                          gagal("Bundel Tidak Sesuai, Arsip Gagal Di Susun");
-                        }else{
-                          //tampil_data_pinjam();
-                          gagal("Arsip Gagal Di Susun");
-                        }
-
-                    }
-                });
-                return false;
+            // var kode_bundel=$('#kode_bundel').val();
+            // pecah=kode.split(";",2);
+            //
+            // $.ajax({
+            // type : "POST",
+            // url  : "<?php //echo base_url()?>pinjam/susunkan/"+pecah[1]+"/<?php //echo $this->session->userdata("nama_lengkap"); ?>/"+pecah[0]+"/"+kode_bundel,
+            // dataType : "JSON",
+            //         data : {kode: kode},
+            //         success: function(notif){
+            //             $('#modal1').modal('close');
+            //             if (notif==1) {
+            //               berhasil("Peminjaman Berhasil Di Susun !.");
+            //               setTimeout("location.href = '<?php //echo base_url()?>susun';",1500);
+            //             }else if(notif==2){
+            //               berhasil("Peminjaman Berhasil Di Susun !.");
+            //               setTimeout("location.href = '<?php echo base_url()?>susun';",1500);
+            //             }else if(notif==3){
+            //               gagal("Arsip Gagal Di Susun");
+            //             }else if(notif==4){
+            //               gagal("Bundel Tidak Sesuai, Arsip Gagal Di Susun");
+            //             }else{
+            //               //tampil_data_pinjam();
+            //               gagal("Arsip Gagal Di Susun");
+            //             }
+            //
+            //         }
+            //     });
+            //     return false;
 
         }
-        $('#btn_batal').on('click',function(){
-            $('#modal2').modal('close');
-            $('#camera').trigger('click');
-        });
+
     </script>
 
 
@@ -290,7 +261,7 @@
               var audio = new Audio('dist/qr.mp3');
               audio.play();
               lastResult=1;
-              tabel(decodedText);
+              susun(decodedText);
               setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
 
             }
