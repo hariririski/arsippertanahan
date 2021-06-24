@@ -277,7 +277,7 @@
             var resultContainer = document.getElementById('qr-reader-results');
             var lastResult, countResults = 0;
             function onScanSuccess(decodedText, decodedResult) {
-              var audio = new Audio('dist/qr.mp3');
+              var audio = new Audio('<?php echo base_url(); ?>dist/qr.mp3');
               audio.play();
               lastResult=1;
               susun(decodedText);
