@@ -156,7 +156,7 @@
         function data_modal(data){
           if(data!=null){
             pecah=data.split(";",10);
-            //simpan();
+            simpan();
             alert("masuk");
             if(pecah[8]=="BT" || pecah[8]=="SU" || pecah[8]=="W"){
                 window.location.href='<?php echo base_url();?>'+"pinjam/detail_susunqr/"+pecah[4];
