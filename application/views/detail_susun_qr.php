@@ -202,14 +202,13 @@
             var invoice=$('#invoice').val();
             id_bundel="BNDL-"+id_bundel;
           if(bundel==id_bundel){
-            //berhasil("Bundel_sesuai");
+            berhasil("Bundel_sesuai");
             $.ajax({
             type : "POST",
             url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
             dataType : "JSON",
                     data : {kode: kode},
                     success: function(notif){
-                        $('#modal1').modal('close');
                         if (notif==1) {
                           berhasil("Peminjaman Berhasil Di Susun !.");
                           setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
