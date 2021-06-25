@@ -22,7 +22,7 @@ class Warkah extends CI_Controller {
 		$data['data_provinsi'] = $this->M_provinsi->lihat();
 		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
 		$data['data_kondisi'] = $this->M_kondisi->lihat();
-		$data['desa_tabel'] = $this->M_provinsi->data_desa_warkah();
+		$data['data'] = $this->M_provinsi->data_desa_warkah();
 		$this->load->view('data_warkah',$data);
 	}
 	public function tambah()
@@ -57,8 +57,8 @@ class Warkah extends CI_Controller {
 	}
 
 	public function detail_warkah_desa(){
-		$kode_desa=$this->uri->segment('3');
-		$data['data_warkah'] = $this->M_warkah->data_warkah_desa($kode_desa);
+		$tahun=$this->uri->segment('3');
+		$data['data_warkah'] = $this->M_warkah->data_warkah_desa($tahun);
 		$this->load->view('detail_warkah_desa',$data);
 	}
 

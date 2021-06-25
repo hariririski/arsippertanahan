@@ -40,10 +40,9 @@
             <!-- ============================================================== -->
             <div class="page-titles">
                 <div class="d-flex align-items-center">
-                    <h5 class="font-medium m-b-0">Data Peminjaman Arsip</h5>
                     <div class="custom-breadcrumb ml-auto">
                         <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Data Peminjaman</a>
+                        <a href="#!" class="breadcrumb">Data Surat Ukur</a>
                     </div>
                 </div>
             </div>
@@ -55,7 +54,7 @@
                     <div class="col s12">
                         <div class="card">
                           <div class="card-content">
-                              <h5 class="card-title">Data Buku Tanah</h5>
+                              <h5 class="card-title">Data Surat Ukur</h5>
                               <div class="table-responsive">
                                   <table class="table striped m-b-20" id="editable-datatable">
                                       <thead>

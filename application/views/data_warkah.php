@@ -141,8 +141,8 @@
                                       <thead>
                                           <tr>
                                               <th>#</th>
-                                              <th>Kecamatan</th>
-                                              <th>Desa</th>
+                                              <th>Nomor</th>
+                                              <th>Tahun</th>
                                               <th>Total Warkah</th>
 
                                           </tr>
@@ -150,14 +150,14 @@
                                       <tbody>
                                         <?php
                                           $i=0;
-                                          foreach($desa_tabel as $desa){
+                                          foreach($data as $data){
                                           $i++;
                                         ?>
                                           <tr class="gradeX">
                                               <td  style="color: #000000;"><?php echo $i;?></td>
-                                              <td  style="color: #000000;"><?php echo $desa->nama_kec; ?></td>
-                                              <td  style="color: #000000;"><?php echo $desa->nama_desa; ?></td>
-                                              <td  style="color: #000000;"><a href="<?php echo base_url(); ?>warkah/detail_warkah_desa/<?php echo $desa->kode_desa; ?>"><?php echo $desa->jumlah; ?></a></td>
+                                              <td  style="color: #000000;"><?php echo $data->nomor; ?></td>
+                                              <td  style="color: #000000;"><?php echo $data->tahun; ?></td>
+                                              <td  style="color: #000000;"><a href="<?php echo base_url(); ?>warkah/detail_warkah_desa/<?php echo $data->tahun; ?>"><?php echo $data->jumlah; ?></a></td>
                                           </tr>
                                           <?php
                                           }

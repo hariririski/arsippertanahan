@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo $this->load->view('share/icon', '', TRUE);?>
-    <title>Warkah Perdesa</title>
+    <title>warkah Belum Valid</title>
     <link href="../../dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
     <link href="../../assets/extra-libs/prism/prism.css" rel="stylesheet">
@@ -40,9 +40,10 @@
             <!-- ============================================================== -->
             <div class="page-titles">
                 <div class="d-flex align-items-center">
+                    <h5 class="font-medium m-b-0">Data Warkah Belum Valid</h5>
                     <div class="custom-breadcrumb ml-auto">
                         <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Data Warkah</a>
+                        <a href="#!" class="breadcrumb">Data Warkah Belum Valid</a>
                     </div>
                 </div>
             </div>
@@ -54,28 +55,27 @@
                     <div class="col s12">
                         <div class="card">
                           <div class="card-content">
-                              <h5 class="card-title">Data Buku Tanah</h5>
+                              <h5 class="card-title">Data Warkah</h5>
                               <div class="table-responsive">
                                   <table class="table striped m-b-20" id="editable-datatable">
                                       <thead>
                                           <tr>
                                               <th>#</th>
-                                              <th>Nomor Warkah</th>
-                                              <th>Tahun</th>
-                                              <th>Detail</th>
+                                              <th>Nomor</th>
+                                              <th>tahun</th>
+
                                           </tr>
                                       </thead>
                                       <tbody>
                                         <?php
                                           $i=0;
-                                          foreach($data_warkah as $warkah){
+                                          foreach($data as $data){
                                           $i++;
                                         ?>
                                           <tr class="gradeX">
                                               <td><?php echo $i;?></td>
-                                              <td><?php echo $warkah->nomor; ?></td>
-                                              <td><?php echo $warkah->tahun; ?></td>
-                                              <td> <a href="<?php echo base_url(); ?>warkah/detail_warkah/<?php echo $warkah->id_warkah; ?>" class="waves-effect waves-light btn  orange">Detail</a></td>
+                                              <td><?php echo $data->nomor; ?></td>
+                                              <td><?php echo $data->tahun; ?></td>
                                           </tr>
                                           <?php
                                           }

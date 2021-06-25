@@ -32,8 +32,8 @@
                           <li><a href="<?php echo base_url(); ?>datawarkah"><i class="material-icons">event_note</i><span class="hide-menu">Data Warkah</span></a></li>
                           <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Kondisi Warkah</span></a></li>
                           <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Arsip Belum Link</span></a></li>
-                          <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Valid Arsip QR</span></a></li>
-                          <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Valid Arsip</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>validqr"><i class="material-icons">event_note</i><span class="hide-menu">Valid Arsip QR</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>valid"><i class="material-icons">event_note</i><span class="hide-menu">Valid Arsip</span></a></li>
                         </ul>
                     </div>
                 </li>
