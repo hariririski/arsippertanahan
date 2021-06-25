@@ -88,6 +88,7 @@ $route['susun'] = 'Pinjam/susun';
 $route['susunqr'] = 'Pinjam/susunqr';
 $route['kembaliqr'] = 'Pinjam/kembaliqr';
 $route['valid'] = 'Valid';
+$route['validqr'] = 'Valid/validqr';
 
 $route['404_override'] = 'Rusak';
 $route['translate_uri_dashes'] = FALSE;

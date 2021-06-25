@@ -45,5 +45,18 @@ class Valid extends CI_Controller {
 		$this->load->view('detail_warkah_valid',$data);
 	}
 
+	public function validqr(){
+		$this->load->view('data_susun_qr');
+	}
+
+	public function detail_validqr(){
+		$id_pinjam=$this->uri->segment('3');
+		$data['data_waktu'] = $this->M_waktu_pelayanan->lihat_aktif();
+		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
+		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
+		$data['pinjam'] = $this->M_pinjam->detail_pinjam_susun($id_pinjam);
+		$this->load->view('detail_valid_qr',$data);
+	}
+
 
 }
