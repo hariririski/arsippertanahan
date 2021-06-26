@@ -28,6 +28,20 @@
         $query=$this->db->query("SELECT * FROM `warkah`  LEFT JOIN bundel on bundel.id_bundel=warkah.id_bundel  where warkah.tahun='$tahun' and warkah.valid=0");
         return $query->result();
       }
+      function valid_bt($id,$kondisi,$admin_valid,$tgl_valid,$valid,$kode_bundel){
+        $query=$this->db->query("UPDATE `buku_tanah` SET `id_kondisi`=$kondisi,`id_bundel`='$kode_bundel',`valid`='$valid',`admin_valid`='$admin_valid',`tgl_valid`='$tgl_valid' WHERE id_buku_tanah='$id'");
+        return $query;
+      }
+
+      function valid_su($id,$kondisi,$admin_valid,$tgl_valid,$valid,$kode_bundel){
+        $query=$this->db->query("UPDATE `surat_ukur` SET `id_kondisi`=$kondisi,`id_bundel`='$kode_bundel',`valid`='$valid',`admin_valid`='$admin_valid',`tgl_valid`='$tgl_valid' WHERE id_surat_ukur='$id'");
+        return $query;
+      }
+
+      function valid_w($id,$kondisi,$admin_valid,$tgl_valid,$valid,$kode_bundel){
+        $query=$this->db->query("UPDATE `warkah` SET `id_kondisi`=$kondisi,`id_bundel`='$kode_bundel',`valid`='$valid',`admin_valid`='$admin_valid',`tgl_valid`='$tgl_valid' WHERE id_warkah='$id'");
+        return $query;
+      }
 }
 
 ?>

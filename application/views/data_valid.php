@@ -66,14 +66,14 @@
                         <div class="card-content">
                             <ul class="tabs tab-demo z-depth-1">
                                 <li class="tab"><a href="#test16" class="active">Barcode</a></li>
-                                <li class="tab"><a class="" href="#test17">Buku Tanah</a></li>
+                                <li class="tab"><a href="#test17">Buku Tanah</a></li>
                                 <li class="tab"><a href="#test18">Surat Ukur</a></li>
                                 <li class="tab"><a href="#test19">Warkah</a></li>
                             <li class="indicator" style="left: 0px; right: 538px;"></li></ul>
                             <div id="test16" class="active" style="display: block;">
                               <form class="row" action="javascript:cari_barcode()">
                                 <div class="input-field col s10">
-                                    <input name="barcode" id="barcode" required type="text">
+                                    <input name="barcode" id="barcode" required type="text" autofocus="on">
                                     <label for="icon_prefix">Barcode Buku Tanah/ Surat Ukur / Warkah</label>
                                 </div>
 
@@ -286,40 +286,39 @@
     </div>
     <div id="modal2" class="modal">
         <div class="modal-content">
-            <h5 class="card-title">Pengembalian</h5>
             <div class="row">
-              <table  class="striped">
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Desa/Jenis Hak/Nomor Hak/SU/WARKAH/</td>
-                  <td style="padding: 0px 0px;">
-                    <P id="id"></P>
-                  </td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Tanggal Pinjam</td>
-                  <td style="padding: 0px 0px;"><P id="tgl_pinjam"></P></td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Tanggal Kembali</td>
-                  <td style="padding: 0px 0px;"><P id="tgl_kembali"></P></td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Tanggak Keterlambatan</td>
-                  <td style="padding: 0px 0px;"><P id="selisih"></P></td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Peminjam</td>
-                  <td style="padding: 0px 0px;"><P id="nama_lengkap"></P></td>
-                </tr>
-              </table>
-              <input type="hidden" name="id_pinjam" id="textkode" value="">
-              <div class="alert alert-warning"><p>Apakah Anda yakin mau menyelesaikan peminjaman?</p></div>
+              <h5><a id="data"></a></h5>
+              <form action="javascript:valid()">
+                <div class="row">
+                      <div class="input-field col s12">
+                        <i class="material-icons prefix">chrome_reader_mode</i>
+                        <select required name="kondisi" id="kondisi">
+                          <option value="" disabled selected>Pilih Kondisi Arsip</option>
+                          <?php
+                            foreach($data_kondisi as $data_kondisi){
+                          ?>
+                            <option value="<?php echo $data_kondisi->id_kondisi; ?>"><?php echo $data_kondisi->id_kondisi; ?> - <?php echo $data_kondisi->nama_kondisi; ?></option>
+                          <?php } ?>
+                        </select>
+                      </div>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">chrome_reader_mode</i>
+                    <input name="kode_bundel" id="kode_bundel" required type="text">
+                    <input name="id" id="id" required type="hidden" value="">
+                    <input name="type" id="type" required type="hidden" value="">
+                    <label for="icon_prefix">Barcode Bundel</label>
+                </div>
             </div>
+            <br></br>
+            <br></br>
             <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="btn_simpan"><i class="fas fa-share"></i>Kembalikan</a>
+                <button href="#!" class="waves-effect waves-green btn-flat blue white-text" type="submit" ><i class="fas fa-share"></i>Simpan</button>
                 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
 
             </div>
+          </form>
+
         </div>
     </div>
     <!-- ============================================================== -->
@@ -358,6 +357,7 @@
     <script type="text/javascript">
         setFocus();
         const inputField = document.getElementById("barcode");
+        const bundel = document.getElementById("kode_bundel");
         function setFocus(){
           document.getElementById("barcode").focus();
         }
@@ -366,38 +366,24 @@
           if(data!=null){
             pecah=data.split(";",10);
             simpan();
-            if(pecah[8]=="BT"){
-              pecah[4]=pecah[4]+";"+pecah[9];
-              $('[name="id_pinjam"]').val(pecah[4]);
-              pecah[0]=pecah[1]+" / "+pecah[7]+" / "+pecah[0];
-              $('#id').html(pecah[0]);
-              $('#tgl_pinjam').html(pecah[2]);
-              $('#tgl_kembali').html(pecah[3]);
-              $('#nama_lengkap').html(pecah[5]);
-              $('#selisih').html(pecah[6]);
-            }else if(pecah[8]=="SU"){
-              pecah[4]=pecah[4]+";"+pecah[9];
-              $('[name="id_pinjam"]').val(pecah[4]);
-              pecah[0]=pecah[1]+" / "+pecah[0]+" / "+pecah[7];
-              $('#id').html(pecah[0]);
-              $('#desa').html(pecah[1]);
-              $('#tgl_pinjam').html(pecah[2]);
-              $('#tgl_kembali').html(pecah[3]);
-              $('#nama_lengkap').html(pecah[5]);
-              $('#selisih').html(pecah[6]);
-            }else if(pecah[8]=="W"){
-              pecah[4]=pecah[4]+";"+pecah[9];
-              $('[name="id_pinjam"]').val(pecah[4]);
-              pecah[0]=pecah[0]+" / "+pecah[7];
-              $('#id').html(pecah[0]);
-              $('#desa').html(pecah[1]);
-              $('#tgl_pinjam').html(pecah[2]);
-              $('#tgl_kembali').html(pecah[3]);
-              $('#nama_lengkap').html(pecah[5]);
-              $('#selisih').html(pecah[6]);
+            if(pecah[0]=="BT"){
+              var kirim="Buku Tanah : "+pecah[2]+" / "+pecah[3]+" / "+pecah[1];
+              $('#data').html(kirim);
+              $('[name="id"]').val(pecah[4]);
+              $('[name="type"]').val(pecah[0]);
+            }else if(pecah[0]=="SU"){
+              var kirim="Surat Ukur : "+pecah[2]+" / "+pecah[1]+" / "+pecah[3];
+              $('#data').html(kirim);
+              $('[name="id"]').val(pecah[4]);
+              $('[name="type"]').val(pecah[0]);
+            }else if(pecah[0]=="W"){
+              var kirim="Warkah : "+pecah[1]+" / "+pecah[2];
+              $('#data').html(kirim);
+              $('[name="id"]').val(pecah[3]);
+              $('[name="type"]').val(pecah[0]);
             }
           }else{
-            peringatan("Arsip Tidak Sedang Di Pinjam");
+            peringatan("Arsip Tidak Ditemukan");
           }
         }
 
@@ -406,19 +392,7 @@
           var barcode=$('#barcode').val();
           $.ajax({
               type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_barcode_pengembalian')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
-              dataType : "JSON",
-                success: function(data){
-                  data_modal(data);
-              }
-          });
-          return false;
-        }
-
-        function tabel(barcode){
-          $.ajax({
-              type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_barcode_pengembalian')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
+              url  : "<?php echo base_url('valid/cari_barcode_valid')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
               dataType : "JSON",
                 success: function(data){
                   data_modal(data);
@@ -431,39 +405,49 @@
           $('#modal2').modal('open');
         }
 
-        $('#btn_simpan').on('click',function(){
-            var kode=$('#textkode').val();
-            pecah=kode.split(";",2);
+        function valid(){
             $('#modal2').modal('close');
+            var kondisi=$('#kondisi').val();
+            var kode_bundel=$('#kode_bundel').val();
+            var id=$('#id').val();
+            var type=$('#type').val();
             setFocus();
-            inputField.value ="";
             $.ajax({
             type : "POST",
-            url  : "<?php echo base_url()?>pinjam/kembalikan/"+pecah[1]+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+pecah[0],
+            url  : "<?php echo base_url()?>valid/validkan/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+kondisi+"/"+kode_bundel+"/"+id+"/"+type,
             dataType : "JSON",
-                    data : {kode: kode},
                     success: function(notif){
                         $('#modal1').modal('close');
                         if (notif==1) {
-                          berhasil("Peminjaman Berhasil Di kembalikan!.");
-                          setTimeout("location.href = '<?php echo base_url()?>kembali';",1500);
+                          berhasil("Arsip Valid !.");
+                          setTimeout("location.href = '<?php echo base_url()?>valid';",1500);
+                          bundel.value ="";
                         }else if(notif==2){
-                          berhasil("Peminjaman Berhasil Di kembalikan!.");
-                          setTimeout("location.href = '<?php echo base_url()?>kembali';",1500);
+                          gagal("Arsip Gagal Valid");
+                          setFocus();
+                          bundel.value ="";
+                        }else if(notif==3){
+                          gagal("Bundel Tidak Sesuai, Arsip Gagal  Valid");
+                          setFocus();
+                          bundel.value ="";
                         }else{
-                          //tampil_data_pinjam();
-                          gagal("Peminjaman Gagal Di kembalikan");
+                          gagal("Arsip Gagal Valid");
+                          setFocus();
+                          bundel.value ="";
+
                         }
 
                     }
                 });
                 return false;
 
-        });
+        }
+
         $('#btn_batal').on('click',function(){
             $('#modal2').modal('close');
             setFocus();
             inputField.value ="";
+            bundel.value ="";
         });
     </script>
 
@@ -474,7 +458,7 @@
           var nomor_hak=$('#nomor_hak').val();
           $.ajax({
               type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_buku_tanah_pengembalian')?>/"+desa_buku_tanah+"/"+jenis_hak+"/"+nomor_hak,
+              url  : "<?php echo base_url('valid/cari_buku_tanah_valid')?>/"+desa_buku_tanah+"/"+jenis_hak+"/"+nomor_hak,
               dataType : "JSON",
               success: function(data){
                 data_modal(data);
@@ -489,7 +473,7 @@
           var tahun=$('#tahun_surat_ukur').val();
           $.ajax({
               type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_surat_ukur_pengembalian')?>/"+desa_surat_ukur+"/"+nomor+"/"+tahun,
+              url  : "<?php echo base_url('valid/cari_surat_ukur_valid')?>/"+desa_surat_ukur+"/"+nomor+"/"+tahun,
               dataType : "JSON",
               success: function(data){
                 data_modal(data);
@@ -503,7 +487,7 @@
           var tahun_warkah=$('#tahun_warkah').val();
           $.ajax({
               type : "POST",
-              url  : "<?php echo base_url('pinjam/cari_warkah_pengembalian')?>/"+nomor_warkah+"/"+tahun_warkah,
+              url  : "<?php echo base_url('valid/cari_warkah_valid')?>/"+nomor_warkah+"/"+tahun_warkah,
               dataType : "JSON",
               success: function(data){
                 data_modal(data);
