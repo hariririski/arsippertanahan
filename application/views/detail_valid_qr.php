@@ -156,6 +156,7 @@
 
     <script type="text/javascript">
       //valid("BNDL-Z31JgHCtK8");
+      valid("BNDL-XnxRwS4e2F");
         function data_modal(data){
           if(data!=null){
             pecah=data.split(";",10);
