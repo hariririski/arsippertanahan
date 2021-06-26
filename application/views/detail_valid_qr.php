@@ -151,8 +151,10 @@
     <script src="<?php echo base_url(); ?>dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="<?php echo base_url(); ?>dist/js/pages/datatable/datatable-basic.init.js"></script>
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/qrcode_scan.min.js"></script>
+
     <script type="text/javascript">
-        valid("W-2hg1LCKyuZl7ifFQk95w");
         function data_modal(data){
           if(data!=null){
             pecah=data.split(";",10);
@@ -167,7 +169,6 @@
       }
 
         function valid(barcode){
-          $('#stop').trigger('click');
             var id_lama=$('#id').val();
             var pecah_id=id_lama.split("-",10);
             var id=pecah_id[1];
@@ -176,25 +177,23 @@
             var bundel=pecah_barcode[1];
             var e = document.getElementById("kondisi");
             var kondisi = e.options[e.selectedIndex].value;
-          if(kondisi!="kosong" && type="BNDL"){
+          if(kondisi!="kosong" && pecah_barcode[0]=="BNDL"){
             $.ajax({
             type : "POST",
-            url  : "<?php echo base_url()?>valid/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
+          url  : "<?php echo base_url()?>valid/validkan/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+kondisi+"/"+bundel+"/"+id+"/"+type,
             dataType : "JSON",
                     success: function(notif){
-                        if (notif==1) {
-                          berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
-                        }else if(notif==2){
-                          berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
-                        }else if(notif==3){
-                          gagal("Arsip Gagal Di Susun");
-                        }else if(notif==4){
-                          gagal("Bundel Tidak Sesuai, Arsip Gagal Di Susun");
-                        }else{
-                          gagal("Arsip Gagal Di Susun");
-                        }
+                      if (notif==1) {
+                        berhasil("Arsip Valid !.");
+                        setTimeout("location.href = '<?php echo base_url()?>valid';",1500);
+                      }else if(notif==2){
+                        gagal("Arsip Gagal Valid");
+                      }else if(notif==3){
+                        gagal("Bundel Tidak Sesuai, Arsip Gagal  Valid");
+                      }else{
+                        gagal("Arsip Gagal Valid");
+
+                      }
 
                     }
                 });
@@ -205,18 +204,6 @@
 
         }
 
-    </script>
-
-
-    <!-- Latest compiled and minified CSS -->
-    <script>
-    /****************************************
-     *       Basic Table                   *
-     ****************************************/
-    $('#zero_config').DataTable();
-    </script>
-    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
-    <script>
       function berhasil(notif) {
         toastr.success(notif, 'Selamat!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
       }
@@ -227,8 +214,7 @@
         toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
       }
     </script>
-    <script src="<?php echo base_url(); ?>dist/js/qrcode_scan.min.js"></script>
-    <script>
+    <script type="text/javascript">
 
         function docReady(fn) {
             // see if DOM is already available

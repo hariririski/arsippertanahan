@@ -283,7 +283,6 @@
                                                     <tr>
                                                         <th>Nomor</th>
                                                         <th>Tahun</th>
-                                                        <th>Desa</th>
                                                         <th>Kondisi</th>
                                                         <th>Penyimpanan</th>
                                                         <th>Status</th>
@@ -300,7 +299,6 @@
                                                     <tr>
                                                         <td style="color: #000000"><?php echo $warkah->nomor; ?></td>
                                                         <td style="color: #000000"><?php echo $warkah->tahun; ?></td>
-                                                        <td style="color: #000000"><?php echo $warkah->nama_desa; ?></td>
                                                         <td style="color: #000000"><?php echo $warkah->nama_kondisi; ?></td>
                                                         <td style="color: #000000"><?php echo $warkah->nama_lemari; ?> / <?php echo $warkah->nama_baris; ?> / <?php echo $warkah->nama_bundel; ?></td>
                                                         <td>
