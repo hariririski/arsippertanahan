@@ -76,48 +76,7 @@
 
 
     </div>
-    <div id="modal2" class="modal" data-keyboard="false" data-backdrop="static">
-        <div class="modal-content">
-            <h5 class="card-title">Penysusunan Arsip</h5>
-            <div class="row">
-              <table  class="striped">
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Desa/Jenis Hak/Nomor Hak/SU/WARKAH/</td>
-                  <td style="padding: 0px 0px;">
-                    <P id="id"></P>
-                  </td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Tanggal Pinjam</td>
-                  <td style="padding: 0px 0px;"><P id="tgl_pinjam"></P></td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Tanggal Kembali</td>
-                  <td style="padding: 0px 0px;"><P id="tgl_kembali"></P></td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Tanggak Keterlambatan</td>
-                  <td style="padding: 0px 0px;"><P id="selisih"></P></td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Peminjam</td>
-                  <td style="padding: 0px 0px;"><P id="nama_lengkap"></P></td>
-                </tr>
-              </table>
-              <form action="javascript:susun()">
-              <input type="hidden" name="id_pinjam" id="textkode" value="">
-              <input type="text" name="kode_bundel" id="kode_bundel" required autofocus="on">
-              <label for="icon_prefix">Scan Kode Pada Bundel</label>
-              <div class="alert alert-warning"><p>Apakah Anda yakin mau menyelesaikan peminjaman?</p></div>
-            </div>
-            <div class="modal-footer">
-                <button href="#!" class="waves-effect waves-green btn-flat blue white-text" type="submit" ><i class="fas fa-share"></i>Kembalikan</button>
-                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
 
-            </div>
-          </form>
-        </div>
-    </div>
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
@@ -155,7 +114,7 @@
           if(data!=null){
               pecah=data.split(";",10);
               if(pecah[0]=="BT" || pecah[0]=="SU" || pecah[0]=="W"){
-                window.location.href='<?php echo base_url(); ?>valid/detail_validqr/'+pecah[4];
+                window.location.href='<?php echo base_url(); ?>valid/detail_validqr/'+pecah[0]+"/"+pecah[4];
               }else{
                 peringatan("Arsip Tidak Sedang Di temukan");
                 $('#stop').trigger('click');

@@ -24,6 +24,11 @@
         return $query;
       }
 
+      function detail_warkah($id){
+        $query=$this->db->query("SELECT * FROM `warkah` LEFT JOIN bundel on bundel.id_bundel=warkah.id_bundel left JOIN buku_tanah on buku_tanah.id_buku_tanah=warkah.id_buku_tanah left join kondisi on kondisi.id_kondisi=warkah.id_kondisi  where warkah.id_warkah='$id'");
+        return $query->result();
+      }
+
 
 
 }

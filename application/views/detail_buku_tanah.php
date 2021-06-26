@@ -143,7 +143,7 @@
                                                 <b>
                                                   <?php
                                                   if($buku_tanah->status==0){
-                                                      echo '<span class="label label-success">Belum Di Tentukan</span>';
+                                                      echo '<span class="label label-danger">Belum Di Tentukan</span>';
                                                     }else if($buku_tanah->status==1){
                                                       echo '<span class="label label-success">Tersedia</span>';
                                                     }else if($buku_tanah->status==2){

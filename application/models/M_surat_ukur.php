@@ -25,6 +25,11 @@
         return $query;
       }
 
+      function detail_surat_ukur($id){
+        $query=$this->db->query("SELECT * FROM `surat_ukur` left JOIN bundel on bundel.id_bundel=surat_ukur.id_bundel left join desa on desa.kode_desa=surat_ukur.kode_desa left JOIN kondisi on kondisi.id_kondisi=surat_ukur.id_kondisi  where surat_ukur.id_surat_ukur='$id'");
+        return $query->result();
+      }
+
 
 
 

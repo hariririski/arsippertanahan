@@ -15,6 +15,9 @@ class Valid extends CI_Controller {
 			$this->load->model('M_jenis_hak');
 			$this->load->model('M_provinsi');
 			$this->load->model('M_kondisi');
+			$this->load->model('M_buku_tanah');
+			$this->load->model('M_surat_ukur');
+			$this->load->model('M_warkah');
 
 	}
 	public function index()
@@ -52,11 +55,18 @@ class Valid extends CI_Controller {
 	}
 
 	public function detail_validqr(){
-		$id_pinjam=$this->uri->segment('3');
-		$data['data_waktu'] = $this->M_waktu_pelayanan->lihat_aktif();
-		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
-		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
-		$data['pinjam'] = $this->M_pinjam->detail_pinjam_susun($id_pinjam);
+		$data['data_kondisi'] = $this->M_kondisi->lihat();
+		$type=$this->uri->segment('3');
+		$id=$this->uri->segment('4');
+		if($type=="BT"){
+			$data['valid'] = $this->M_buku_tanah->detail_buku_tanah($id);
+		}
+		else if ($type=="SU") {
+			$data['valid'] = $this->M_surat_ukur->detail_surat_ukur($id);
+		}
+		else if ($type=="W") {
+			$data['valid'] = $this->M_warkah->detail_warkah($id);
+		}
 		$this->load->view('detail_valid_qr',$data);
 	}
 
@@ -103,7 +113,7 @@ class Valid extends CI_Controller {
 				$data=$query->result();
 				foreach ($data as $isi) {
 					if($isi->jumlah==1){
-						$data="W".";".$isi->nomor.";".$isi->tahun.";".$isi->id_warkah;
+						$data="W".";".$isi->nomor.";".$isi->tahun.";".$isi->id_warkah.";".$isi->id_warkah;
 					}else{
 						$data=null;
 					}
@@ -116,6 +126,7 @@ class Valid extends CI_Controller {
 
 	function validkan(){
 		$valid=1;
+		$status=1;
 		$admin_valid=$this->uri->segment('3');
 		$kondisi=$this->uri->segment('4');
 		$kode_bundel=$this->uri->segment('5');
@@ -131,7 +142,7 @@ class Valid extends CI_Controller {
 
 		if($jumlah==1){
 				if($type=="BT"){
-					$cek= $this->M_valid->valid_bt($id,$kondisi,$admin_valid,$tgl_valid,$valid,$kode_bundel);
+					$cek= $this->M_valid->valid_bt($id,$kondisi,$admin_valid,$tgl_valid,$valid,$kode_bundel,$status);
 					if($cek>0){
 							$data=1;
 					}else{
@@ -139,7 +150,7 @@ class Valid extends CI_Controller {
 				 	}
 				 }
 				else if ($type=="SU") {
-					$cek= $this->M_valid->valid_su($id,$kondisi,$admin_valid,$tgl_valid,$valid,$kode_bundel);
+					$cek= $this->M_valid->valid_su($id,$kondisi,$admin_valid,$tgl_valid,$valid,$kode_bundel,$status);
 					if($cek>0){
 							$data=1;
 					}else{
@@ -147,7 +158,7 @@ class Valid extends CI_Controller {
 				 	}
 				}
 				else if ($type=="W") {
-					$cek= $this->M_valid->valid_w($id,$kondisi,$admin_valid,$tgl_valid,$valid,$kode_bundel);
+					$cek= $this->M_valid->valid_w($id,$kondisi,$admin_valid,$tgl_valid,$valid,$kode_bundel,$status);
 					if($cek>0){
 							$data=1;
 					}else{
