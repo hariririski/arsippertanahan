@@ -32,7 +32,15 @@
                           <li><a href="<?php echo base_url(); ?>datawarkah"><i class="material-icons">event_note</i><span class="hide-menu">Data Warkah</span></a></li>
                           <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Kondisi Warkah</span></a></li>
                           <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Arsip Belum Link</span></a></li>
+                          <?php
+                          // (A) CHECK IF "MOBILE" EXISTS IN USER AGENT
+                            $isMob = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), "mobile"));
+                            if($isMob){
+                          ?>
                           <li><a href="<?php echo base_url(); ?>validqr"><i class="material-icons">event_note</i><span class="hide-menu">Valid Arsip QR</span></a></li>
+                          <?php
+                          }
+                          ?>
                           <li><a href="<?php echo base_url(); ?>valid"><i class="material-icons">event_note</i><span class="hide-menu">Valid Arsip</span></a></li>
                         </ul>
                     </div>
