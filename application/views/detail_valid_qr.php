@@ -72,7 +72,6 @@
                       </table>
                       <div class="row">
                             <div class="input-field col s12">
-                              <i class="material-icons prefix">chrome_reader_mode</i>
                               <select required name="kondisi" id="kondisi" <?php if($value->valid==1){echo"disabled";} ?> class="browser-default">
                                 <option value="kosong" >Pilih Kondisi Arsip</option>
                                 <?php
@@ -89,23 +88,24 @@
                     </div>
                 </div>
             </div>
-            <?php
-            if($value->valid==0){
-            ?>
+
             <div class="card info-gradient m-t-0 m-b-0">
                 <div class="card-content">
                     <div class="p-b-40 p-t-20">
+                      <?php
+                      if($value->valid==0){
+                      ?>
                       <div id="qr-reader" style="width:100%"></div>
                       <div id="qr-reader-results"></div>
-
+                      <?php
+                      }
+                      ?>
                         <p class="white-text op-7 m-b-20 Center">Manajemen Arsip Lebih Mudah, Cepat, Mudah dan Efektif</p>
 
                     </div>
                 </div>
             </div>
-            <?php
-            }
-            ?>
+
             <?php
           }
             ?>
@@ -156,7 +156,7 @@
 
     <script type="text/javascript">
       //valid("BNDL-Z31JgHCtK8");
-      valid("BNDL-XnxRwS4e2F");
+      //valid("BNDL-XnxRwS4e2F");
         function data_modal(data){
           if(data!=null){
             pecah=data.split(";",10);
@@ -181,7 +181,6 @@
             var kondisi = e.options[e.selectedIndex].value;
             kondisi=1;
           if(kondisi!="kosong" && pecah_barcode[0]=="BNDL"){
-            //alert("<?php echo base_url()?>valid/validkan/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+kondisi+"/"+bundel+"/"+id+"/"+type);
             $.ajax({
             type : "POST",
             url  : "<?php echo base_url()?>valid/validkan/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+kondisi+"/"+bundel+"/"+id+"/"+type,
