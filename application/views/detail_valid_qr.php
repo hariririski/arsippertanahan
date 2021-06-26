@@ -73,8 +73,8 @@
                       <div class="row">
                             <div class="input-field col s12">
                               <i class="material-icons prefix">chrome_reader_mode</i>
-                              <select required name="kondisi" id="kondisi" <?php if($value->valid==1){echo"disabled";} ?>>
-                                <option value="" ><?php echo $value->nama_kondisi; ?></option>
+                              <select required name="kondisi" id="kondisi" <?php if($value->valid==1){echo"disabled";} ?> class="browser-default">
+                                <option value="kosong" >Pilih Kondisi Arsip</option>
                                 <?php
                                   foreach($data_kondisi as $data_kondisi){
                                     if($data_kondisi->id_kondisi!=$value->id_kondisi){
@@ -152,7 +152,7 @@
     <script src="<?php echo base_url(); ?>assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="<?php echo base_url(); ?>dist/js/pages/datatable/datatable-basic.init.js"></script>
     <script type="text/javascript">
-
+        valid("W-2hg1LCKyuZl7ifFQk95w");
         function data_modal(data){
           if(data!=null){
             pecah=data.split(";",10);
@@ -169,20 +169,14 @@
         function valid(barcode){
           $('#stop').trigger('click');
             var id_lama=$('#id').val();
-            pecah_id=id_lama.split("-",10);
-            var id=pecah[1];
-            var type=pecah[0];
-            pecah_barcode=barcode.split("-",10);
-            var bundel=pecah[1];
-            var kondisi=$('#kondisi').val();
-            alert(id);
-            alert(bundel);
-            alert(kondisi);
+            var pecah_id=id_lama.split("-",10);
+            var id=pecah_id[1];
+            var type=pecah_id[0];
+            var pecah_barcode=barcode.split("-",10);
+            var bundel=pecah_barcode[1];
             var e = document.getElementById("kondisi");
-            var strUser = e.value;
-            alert(strUser);
-            //id_bundel_baru="BNDL-"+id_bundel;
-          if(bundel==100){
+            var kondisi = e.options[e.selectedIndex].value;
+          if(kondisi!="kosong"){
             $.ajax({
             type : "POST",
             url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
