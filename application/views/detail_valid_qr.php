@@ -169,10 +169,10 @@
         function valid(barcode){
           $('#stop').trigger('click');
             var id_lama=$('#id').val();
-            pecah_id=id_lama.split(";",10);
+            pecah_id=id_lama.split("-",10);
             var id=pecah[1];
             var type=pecah[0];
-            pecah_barcode=barcode.split(";",10);
+            pecah_barcode=barcode.split("-",10);
             var bundel=pecah[1];
             var kondisi=$('#kondisi').val();
             alert(id);
