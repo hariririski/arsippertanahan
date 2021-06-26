@@ -199,7 +199,7 @@
                 });
 
               }else{
-                gagal("Bundel Tidak Sesuai!.");
+                gagal("Kondisi Arsip Kosong atau Bundel Tidak Sesuai!.");
               }
 
         }
