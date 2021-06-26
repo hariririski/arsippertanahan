@@ -155,6 +155,7 @@
     <script src="<?php echo base_url(); ?>dist/js/qrcode_scan.min.js"></script>
 
     <script type="text/javascript">
+
         function data_modal(data){
           if(data!=null){
             pecah=data.split(";",10);
@@ -178,9 +179,10 @@
             var e = document.getElementById("kondisi");
             var kondisi = e.options[e.selectedIndex].value;
           if(kondisi!="kosong" && pecah_barcode[0]=="BNDL"){
+            alert("<?php echo base_url()?>valid/validkan/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+kondisi+"/"+bundel+"/"+id+"/"+type);
             $.ajax({
             type : "POST",
-          url  : "<?php echo base_url()?>valid/validkan/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+kondisi+"/"+bundel+"/"+id+"/"+type,
+            url  : "<?php echo base_url()?>valid/validkan/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+kondisi+"/"+bundel+"/"+id+"/"+type,
             dataType : "JSON",
                     success: function(notif){
                       if (notif==1) {

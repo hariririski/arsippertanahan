@@ -110,7 +110,7 @@
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
     <script type="text/javascript">
-      //cari_barcode("W-2hg1LCKyuZl7ifFQk95w")
+    //  cari_barcode("BT-6egzmurCf51LXjoYtIN4")
       function data_modal(data){
           if(data!=null){
               pecah=data.split(";",10);
