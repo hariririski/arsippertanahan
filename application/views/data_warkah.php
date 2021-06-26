@@ -58,19 +58,7 @@
 
                               <h5 class="card-title activator">Tambah Warkah<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                               <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>warkah/tambah" method="post" enctype="multipart/form-data">
-                                <div class="row">
-                                      <div class="input-field col s12">
-                                        <i class="material-icons prefix">chrome_reader_mode</i>
-                                        <select required id="desasu" name="kode_desa">
-                                          <option value="" disabled selected>Pilih Desa</option>
-                                          <?php
-                                            foreach($data_desa as $data_desa){
-                                          ?>
-                                            <option value="<?php echo $data_desa->kode_desa; ?>"><?php echo $data_desa->nama_kec; ?> -- <?php echo $data_desa->nama_desa; ?></option>
-                                          <?php } ?>
-                                        </select>
-                                      </div>
-                                </div>
+
                                   <div class="row">
                                       <div class="input-field col s12">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
@@ -110,7 +98,19 @@
                                   </div>
                                   <hr></hr>
                                   <h5>Link Buku Tanah (Jika ada)</h5>
-
+                                  <div class="row">
+                                        <div class="input-field col s12">
+                                          <i class="material-icons prefix">chrome_reader_mode</i>
+                                          <select id="desasu" name="kode_desa">
+                                            <option value="" disabled selected>Pilih Desa</option>
+                                            <?php
+                                              foreach($data_desa as $data_desa){
+                                            ?>
+                                              <option value="<?php echo $data_desa->kode_desa; ?>"><?php echo $data_desa->nama_kec; ?> -- <?php echo $data_desa->nama_desa; ?></option>
+                                            <?php } ?>
+                                          </select>
+                                        </div>
+                                  </div>
                                   <div class="row">
                                       <div class="input-field col s12">
                                         <select class="browser-default"  id="buku_tanah" name="id_buku_tanah" >

@@ -202,6 +202,13 @@ class Pinjam extends CI_Controller {
 		$admin_susun=$this->uri->segment('4');
 		$id_pinjam=$this->uri->segment('5');
 		$kode_bundel=$this->uri->segment('6');
+		$pecah_bundel=explode("-",$kode_bundel);
+		if(isset($pecah_bundel[1])){
+			$kode_bundel=$pecah_bundel[1];
+		}else{
+			$kode_bundel=null;
+		}
+
 		$tgl_susun=date('Y-m-d');
 		$status=3;
 		$data;
@@ -1043,7 +1050,7 @@ class Pinjam extends CI_Controller {
 		$id=$pecah_barcode[1];
 		}
 			if($type=="BT"){
-				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join buku_tanah on buku_tanah.id_buku_tanah=pinjam.id_buku_tanah left join desa on desa.kode_desa=buku_tanah.kode_desa left join pegawai on pinjam.nip=pegawai.nip left join jenis_hak on buku_tanah.id_jenis_hak=jenis_hak.id_jenis_hak where pinjam.id_buku_tanah='$id' and pinjam.status=3 and buku_tanah.status=3";
+				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join buku_tanah on buku_tanah.id_buku_tanah=pinjam.id_buku_tanah left join desa on desa.kode_desa=buku_tanah.kode_desa left join pegawai on pinjam.nip=pegawai.nip left join jenis_hak on buku_tanah.id_jenis_hak=jenis_hak.id_jenis_hak left join bundel on bundel.id_bundel=buku_tanah.id_bundel left join baris on baris.id_baris=bundel.id_baris left join lemari on lemari.id_lemari=baris.id_lemari where pinjam.id_buku_tanah='$id' and pinjam.status=3 and buku_tanah.status=3";
 				$query = $this->db->query($sql);
 				$data=$query->result();
 				$jumlah=0;
@@ -1056,6 +1063,7 @@ class Pinjam extends CI_Controller {
 				$selisih;
 				$nama_jenis_hak;
 				$invoice;
+				$penyimpanan;
 				foreach ($data as $isi) {
 						$jumlah=$isi->jumlah;
 						$no_hak=$isi->no_hak;
@@ -1068,9 +1076,10 @@ class Pinjam extends CI_Controller {
 						$selisih=$isi->selisih;
 						$nama_jenis_hak=$isi->nama_jenis_hak;
 						$invoice=$isi->invoice;
+						$penyimpanan=$isi->nama_lemari."/".$isi->nama_baris."/".$isi->nama_bundel;
 				 }
 				 	if($jumlah==1){
-						$data=$no_hak.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$nama_jenis_hak.";"."BT".";".$invoice;
+						$data=$no_hak.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$nama_jenis_hak.";"."BT".";".$invoice.";".$penyimpanan;
 					}else if($jumlah==0){
 						$data=null;
 					}else{
@@ -1078,7 +1087,7 @@ class Pinjam extends CI_Controller {
 					}
 		}
 			elseif ($type=="SU") {
-				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join surat_ukur on surat_ukur.id_surat_ukur=pinjam.id_surat_ukur left join desa on desa.kode_desa=surat_ukur.kode_desa left join pegawai on pinjam.nip=pegawai.nip  where pinjam.id_surat_ukur='$id' and pinjam.status=3 and surat_ukur.status=3";
+				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join surat_ukur on surat_ukur.id_surat_ukur=pinjam.id_surat_ukur left join desa on desa.kode_desa=surat_ukur.kode_desa left join pegawai on pinjam.nip=pegawai.nip left join bundel on bundel.id_bundel=surat_ukur.id_bundel left join baris on baris.id_baris=bundel.id_baris left join lemari on lemari.id_lemari=baris.id_lemari  where pinjam.id_surat_ukur='$id' and pinjam.status=3 and surat_ukur.status=3";
 				$query = $this->db->query($sql);
 				$data=$query->result();
 				$jumlah=0;
@@ -1092,6 +1101,7 @@ class Pinjam extends CI_Controller {
 				$selisih;
 				$nama_jenis_hak;
 				$invoice;
+				$penyimpanan;
 				foreach ($data as $isi) {
 						$jumlah=$isi->jumlah;
 						$nomor=$isi->nomor;
@@ -1104,9 +1114,10 @@ class Pinjam extends CI_Controller {
 						$nama_lengkap=$isi->nama_lengkap;
 						$selisih=$isi->selisih;
 						$invoice=$isi->invoice;
+						$penyimpanan=$isi->nama_lemari."/".$isi->nama_baris."/".$isi->nama_bundel;
 				 }
 				 	if($jumlah==1){
-						$data=$nomor.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$tahun.";"."SU".";".$invoice;
+						$data=$nomor.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$tahun.";"."SU".";".$invoice.";".$penyimpanan;
 					}else if($jumlah==0){
 						$data=null;
 					}else{
@@ -1114,7 +1125,7 @@ class Pinjam extends CI_Controller {
 					}
 			}
 			elseif ($type=="W") {
-				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah  left join pegawai on pinjam.nip=pegawai.nip  where pinjam.id_warkah='$id' and pinjam.status=3 and warkah.status=3";
+				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah  left join pegawai on pinjam.nip=pegawai.nip left join bundel on bundel.id_bundel=warkah.id_bundel left join baris on baris.id_baris=bundel.id_baris left join lemari on lemari.id_lemari=baris.id_lemari  where pinjam.id_warkah='$id' and pinjam.status=3 and warkah.status=3";
 				$query = $this->db->query($sql);
 				$data=$query->result();
 				$jumlah=0;
@@ -1128,6 +1139,7 @@ class Pinjam extends CI_Controller {
 				$selisih;
 				$nama_jenis_hak;
 				$invoice;
+				$penyimpanan;
 				foreach ($data as $isi) {
 						$jumlah=$isi->jumlah;
 						$nomor=$isi->nomor;
@@ -1140,9 +1152,10 @@ class Pinjam extends CI_Controller {
 						$nama_lengkap=$isi->nama_lengkap;
 						$selisih=$isi->selisih;
 						$invoice=$isi->invoice;
+						$penyimpanan=$isi->nama_lemari."/".$isi->nama_baris."/".$isi->nama_bundel;
 				 }
 				 	if($jumlah==1){
-						$data=$nomor.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$tahun.";"."W".";".$invoice;
+						$data=$nomor.";".$nama_desa.";".$tgl_pinjam.";".$tgl_kembali.";".$id_pinjam.";".$nama_lengkap.";".$selisih.";".$tahun.";"."W".";".$invoice.";".$penyimpanan;
 					}else if($jumlah==0){
 						$data=null;
 					}else{

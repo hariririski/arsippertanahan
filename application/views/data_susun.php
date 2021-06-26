@@ -291,6 +291,10 @@
                   <td style="padding: 0px 0px;">Peminjam</td>
                   <td style="padding: 0px 0px;"><P id="nama_lengkap"></P></td>
                 </tr>
+                <tr style="padding: 0px 0px;">
+                  <td style="padding: 0px 0px;">Penyimpanan</td>
+                  <td style="padding: 0px 0px;"><P id="penyimpanan"></P></td>
+                </tr>
               </table>
               <form action="javascript:susun()">
               <input type="hidden" name="id_pinjam" id="textkode" value="">
@@ -347,7 +351,7 @@
 
         function data_modal(data){
           if(data!=null){
-            pecah=data.split(";",10);
+            pecah=data.split(";",12);
             simpan();
             if(pecah[8]=="BT"){
               pecah[4]=pecah[4]+";"+pecah[9];
@@ -358,6 +362,7 @@
               $('#tgl_kembali').html(pecah[3]);
               $('#nama_lengkap').html(pecah[5]);
               $('#selisih').html(pecah[6]);
+              $('#penyimpanan').html(pecah[10]);
             }else if(pecah[8]=="SU"){
               pecah[4]=pecah[4]+";"+pecah[9];
               $('[name="id_pinjam"]').val(pecah[4]);
@@ -368,6 +373,7 @@
               $('#tgl_kembali').html(pecah[3]);
               $('#nama_lengkap').html(pecah[5]);
               $('#selisih').html(pecah[6]);
+              $('#penyimpanan').html(pecah[10]);
             }else if(pecah[8]=="W"){
               pecah[4]=pecah[4]+";"+pecah[9];
               $('[name="id_pinjam"]').val(pecah[4]);
@@ -378,9 +384,12 @@
               $('#tgl_kembali').html(pecah[3]);
               $('#nama_lengkap').html(pecah[5]);
               $('#selisih').html(pecah[6]);
+              $('#penyimpanan').html(pecah[10]);
             }
           }else{
             peringatan("Arsip Tidak Sedang Di Pinjam");
+            setFocus();
+            inputField.value ="";
           }
         }
 
@@ -411,7 +420,7 @@
         }
 
         function simpan() {
-          $('#modal2').modal('open'); 
+          $('#modal2').modal('open');
           document.getElementById("kode_bundel").focus();
         }
 
@@ -439,11 +448,17 @@
                           setTimeout("location.href = '<?php echo base_url()?>susun';",1500);
                         }else if(notif==3){
                           gagal("Arsip Gagal Di Susun");
+                          setFocus();
+                          inputField.value ="";
                         }else if(notif==4){
                           gagal("Bundel Tidak Sesuai, Arsip Gagal Di Susun");
+                          setFocus();
+                          inputField.value ="";
                         }else{
                           //tampil_data_pinjam();
                           gagal("Arsip Gagal Di Susun");
+                          setFocus();
+                          inputField.value ="";
                         }
 
                     }

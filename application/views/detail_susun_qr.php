@@ -200,7 +200,6 @@
             var id_pinjam=$('#id_pinjam').val();
             var id_bundel=$('#id_bundel').val();
             var invoice=$('#invoice').val();
-            id_bundel_baru="BNDL-"+id_bundel;
           if(bundel==id_bundel_baru){
             $.ajax({
             type : "POST",

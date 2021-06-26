@@ -130,6 +130,12 @@ class Valid extends CI_Controller {
 		$admin_valid=$this->uri->segment('3');
 		$kondisi=$this->uri->segment('4');
 		$kode_bundel=$this->uri->segment('5');
+		$pecah_bundel=explode("-",$kode_bundel);
+		if(isset($pecah_bundel[1])){
+			$kode_bundel=$pecah_bundel[1];
+		}else{
+			$kode_bundel=null;
+		}
 		$id=$this->uri->segment('6');
 		$type=$this->uri->segment('7');
 		$tgl_valid=date('Y-m-d');

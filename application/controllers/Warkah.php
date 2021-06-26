@@ -28,6 +28,12 @@ class Warkah extends CI_Controller {
 	public function tambah()
 	{
 		$id_bundel = $this->input->post('id_bundel');
+		$pecah_bundel=explode("-",$id_bundel);
+		if(isset($pecah_bundel[1])){
+			$id_bundel=$pecah_bundel[1];
+		}else{
+			$id_bundel=null;
+		}
 		$id_buku_tanah = $this->input->post('id_buku_tanah');
 		$sql="SELECT COUNT(id_bundel) as jumlah FROM `bundel` WHERE id_bundel='$id_bundel'";
 		$query = $this->db->query($sql);

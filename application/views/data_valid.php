@@ -291,8 +291,7 @@
               <form action="javascript:valid()">
                 <div class="row">
                       <div class="input-field col s12">
-                        <i class="material-icons prefix">chrome_reader_mode</i>
-                        <select required name="kondisi" id="kondisi">
+                        <select required name="kondisi" id="kondisi" class="browser-default" >
                           <option value="" disabled selected>Pilih Kondisi Arsip</option>
                           <?php
                             foreach($data_kondisi as $data_kondisi){
