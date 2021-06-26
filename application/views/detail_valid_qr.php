@@ -83,7 +83,7 @@
                       </div>
                       <div class="input-field col s12">
                           <input name="id" id="id" type="hidden" value="">
-                          <label for="icon_prefix">Barcode Bundel</label>
+                          
                       </div>
                     </div>
                 </div>
