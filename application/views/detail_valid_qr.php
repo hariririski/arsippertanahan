@@ -73,6 +73,7 @@
                       <div class="row">
                             <div class="input-field col s12">
                               <select required name="kondisi" id="kondisi" <?php if($value->valid==1){echo"disabled";} ?> class="browser-default">
+                                <?php if($value->valid==1){echo'<option value="" >'.$value->nama_kondisi.'</option>';} ?>
                                 <option value="kosong" >Pilih Kondisi Arsip</option>
                                 <?php
                                   foreach($data_kondisi as $data_kondisi){
