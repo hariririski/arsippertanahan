@@ -225,7 +225,7 @@
               audio.play();
               lastResult=1;
               cari_barcode(decodedText);
-              alert(decodedText);
+              //alert(decodedText);
               setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
 
             }
