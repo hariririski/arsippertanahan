@@ -84,8 +84,9 @@
                                             Total
                                             <span class="right">
                                               <?php
+                                                $jumlah_buku_tanah;
                                                 foreach($jumlah_buku_tanah as $data){
-                                                  echo $data->jumlah_buku_tanah;
+                                                  echo   $jumlah_buku_tanah=$data->jumlah_buku_tanah;
                                                 }
                                               ?>
                                             </span>
@@ -96,7 +97,7 @@
                                               <span class="right">
                                                 <?php
                                                 foreach($jumlah_buku_tanah_valid as $data){
-                                                  echo $data->jumlah_buku_tanah;
+                                                  echo round($data->jumlah_buku_tanah/$jumlah_buku_tanah*100,2)."%";
                                                 }
                                                 ?>
                                               </span>
@@ -116,8 +117,9 @@
                                             Total
                                             <span class="right">
                                               <?php
+                                                $jumlah_surat_ukur;
                                                 foreach($jumlah_surat_ukur as $data){
-                                                  echo $data->jumlah_surat_ukur;
+                                                  echo $jumlah_surat_ukur=$data->jumlah_surat_ukur;
                                                 }
                                               ?>
                                             </span>
@@ -128,7 +130,7 @@
                                             <span class="right">
                                               <?php
                                                 foreach($jumlah_surat_ukur_valid as $data){
-                                                  echo $data->jumlah_surat_ukur;
+                                                  echo round($data->jumlah_surat_ukur/$jumlah_surat_ukur*100,2)."%";
                                                 }
                                               ?>
                                             </span>
@@ -202,8 +204,9 @@
                                             Total
                                             <span class="right">
                                               <?php
+                                                $jumlah_warkah;
                                                 foreach($jumlah_warkah as $data){
-                                                  echo $data->jumlah_warkah;
+                                                  echo $jumlah_warkah=$data->jumlah_warkah;
                                                 }
                                               ?>
                                             </span>
@@ -214,7 +217,7 @@
                                           <span class="right">
                                             <?php
                                               foreach($jumlah_warkah_valid as $data){
-                                                echo $data->jumlah_warkah;
+                                                  echo round($data->jumlah_warkah/$jumlah_warkah*100,2)."%";
                                               }
                                             ?>
                                           </span>

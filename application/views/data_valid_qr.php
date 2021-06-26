@@ -159,11 +159,11 @@
               if(pecah[8]=="BT" || pecah[8]=="SU" || pecah[8]=="W"){
                 window.location.href='<?php echo base_url(); ?>valid/detail_validqr/'+pecah[4];
               }else{
-                peringatan("Arsip Tidak Sedang Di Pinjam");
+                peringatan("Arsip Tidak Sedang Di temukan");
                 $('#stop').trigger('click');
               }
           }else{
-            peringatan("Arsip Tidak Sedang Di Pinjam");
+            peringatan("Arsip Tidak Sedang Di temukan");
             $('#stop').trigger('click');
           }
         }
@@ -171,7 +171,7 @@
         function tabel(barcode){
           $.ajax({
               type : "POST",
-              url  : "<?php echo base_url('valid/cari_barcode')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
+              url  : "<?php echo base_url('valid/cari_barcode_valid')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
               dataType : "JSON",
                 success: function(data){
                   data_modal(data);
