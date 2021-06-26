@@ -25,12 +25,10 @@
                     <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">collections_bookmark</i><span class="hide-menu">Arsip</span></a>
                     <div class="collapsible-body">
                         <ul>
+                          <li><a href="<?php echo base_url(); ?>cariarsip"><i class="material-icons">event_note</i><span class="hide-menu">Cari Arsip (Belum)</span></a></li>
                           <li><a href="<?php echo base_url(); ?>databukutanah"><i class="material-icons">event_note</i><span class="hide-menu">Data Buku Tanah</span></a></li>
-                          <li><a href="<?php echo base_url(); ?>kondisibukutanah"><i class="material-icons">event_note</i><span class="hide-menu">Kondisi Buku Tanah</span></a></li>
                           <li><a href="<?php echo base_url(); ?>datasuratukur"><i class="material-icons">event_note</i><span class="hide-menu">Data Surat Ukur</span></a></li>
-                          <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Kondisi Surat Ukur</span></a></li>
                           <li><a href="<?php echo base_url(); ?>datawarkah"><i class="material-icons">event_note</i><span class="hide-menu">Data Warkah</span></a></li>
-                          <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Kondisi Warkah</span></a></li>
                           <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Arsip Belum Link</span></a></li>
                           <?php
                           // (A) CHECK IF "MOBILE" EXISTS IN USER AGENT
@@ -79,8 +77,7 @@
                         <ul>
                             <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Laporan Peminjaman</span></a></li>
                             <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Laporan Keterlambatan</span></a></li>
-                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Cetak QR Per Desa</span></a></li>
-                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Cetak QR Satuan</span></a></li>
+                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Cetak QR Arisp Perdesa</span></a></li>
                         </ul>
                     </div>
                 </li>
