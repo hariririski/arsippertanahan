@@ -155,8 +155,7 @@
     <script src="<?php echo base_url(); ?>dist/js/qrcode_scan.min.js"></script>
 
     <script type="text/javascript">
-      //valid("BNDL-Z31JgHCtK8");
-      //valid("BNDL-XnxRwS4e2F");
+
         function data_modal(data){
           if(data!=null){
             pecah=data.split(";",10);
@@ -179,7 +178,6 @@
             var bundel=pecah_barcode[1];
             var e = document.getElementById("kondisi");
             var kondisi = e.options[e.selectedIndex].value;
-            kondisi=1;
           if(kondisi!="kosong" && pecah_barcode[0]=="BNDL"){
             $.ajax({
             type : "POST",
