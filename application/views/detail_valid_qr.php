@@ -185,7 +185,7 @@
                     success: function(notif){
                       if (notif==1) {
                         berhasil("Arsip Valid !.");
-                        setTimeout("location.href = '<?php echo base_url()?>valid';",1500);
+                        setTimeout("location.href = '<?php echo base_url()?>validqr';",1500);
                       }else if(notif==2){
                         gagal("Arsip Gagal Valid");
                       }else if(notif==3){
