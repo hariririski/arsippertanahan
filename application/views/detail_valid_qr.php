@@ -81,10 +81,10 @@
                               </select>
                             </div>
                       </div>
-                      <div class="input-field col s12">
+
                           <input name="id" id="id" type="hidden" value="">
-                          
-                      </div>
+
+                      
                     </div>
                 </div>
             </div>
