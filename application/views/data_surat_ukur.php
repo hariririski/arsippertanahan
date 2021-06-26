@@ -143,7 +143,7 @@
                     <div class="col s12">
                         <div class="card">
                           <div class="card-content">
-                              <h5 class="card-title">Data Buku Tanah</h5>
+                              <h5 class="card-title">Data Surat Ukur</h5>
                               <div class="table-responsive">
                                   <table class="table striped m-b-20" id="editable-datatable">
                                       <thead>

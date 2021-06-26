@@ -135,13 +135,12 @@
                     <div class="col s12">
                         <div class="card">
                           <div class="card-content">
-                              <h5 class="card-title">Data Buku Tanah</h5>
+                              <h5 class="card-title">Data Warkah</h5>
                               <div class="table-responsive">
                                   <table class="table striped m-b-20" id="editable-datatable">
                                       <thead>
                                           <tr>
                                               <th>#</th>
-                                              <th>Nomor</th>
                                               <th>Tahun</th>
                                               <th>Total Warkah</th>
 
@@ -155,7 +154,6 @@
                                         ?>
                                           <tr class="gradeX">
                                               <td  style="color: #000000;"><?php echo $i;?></td>
-                                              <td  style="color: #000000;"><?php echo $data->nomor; ?></td>
                                               <td  style="color: #000000;"><?php echo $data->tahun; ?></td>
                                               <td  style="color: #000000;"><a href="<?php echo base_url(); ?>warkah/detail_warkah_desa/<?php echo $data->tahun; ?>"><?php echo $data->jumlah; ?></a></td>
                                           </tr>
