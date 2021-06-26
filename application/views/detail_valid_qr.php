@@ -84,7 +84,7 @@
                               </select>
                             </div>
                       </div>
-                      <?php if($value->valid==1){echo'<img src="'.base_url().'assets/images/valid.png">';} ?>
+                      <?php if($value->valid==1){echo'<img src="'.base_url().'assets/images/valid.png" width="40%">';} ?>
                           <input name="id" id="id" type="hidden" value="<?php echo $type."-".$id; ?>">
 
                     </div>
