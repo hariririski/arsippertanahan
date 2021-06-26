@@ -82,8 +82,6 @@
                             </div>
                       </div>
                       <div class="input-field col s12">
-                          <i class="material-icons prefix">chrome_reader_mode</i>
-                          <input name="kode_bundel" id="bundel" required type="text" <?php if($value->valid==1){echo"disabled";} ?>>
                           <input name="id" id="id" type="hidden" value="">
                           <label for="icon_prefix">Barcode Bundel</label>
                       </div>
