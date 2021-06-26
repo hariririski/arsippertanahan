@@ -859,7 +859,7 @@ class Pinjam extends CI_Controller {
 					}
 			}
 			elseif ($type=="W") {
-				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah left join desa on desa.kode_desa=warkah.kode_desa left join pegawai on pinjam.nip=pegawai.nip  where pinjam.id_warkah='$id' and pinjam.status=2 and warkah.status=2";
+				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah left join pegawai on pinjam.nip=pegawai.nip  where pinjam.id_warkah='$id' and pinjam.status=2 and warkah.status=2";
 				$query = $this->db->query($sql);
 				$data=$query->result();
 				$jumlah=0;
@@ -992,7 +992,7 @@ class Pinjam extends CI_Controller {
 		$tgl_pinjam=('Y-m-d');
 		$id_surat_ukur;
 		$status;
-		$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah left join desa on desa.kode_desa=warkah.kode_desa left join pegawai on pinjam.nip=pegawai.nip  where warkah.nomor='$nomor' and pinjam.status=2 and warkah.status=2 and warkah.tahun='$tahun'";
+		$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah  left join pegawai on pinjam.nip=pegawai.nip  where warkah.nomor='$nomor' and pinjam.status=2 and warkah.status=2 and warkah.tahun='$tahun'";
 		$query = $this->db->query($sql);
 		$data=$query->result();
 		$jumlah=0;
@@ -1114,7 +1114,7 @@ class Pinjam extends CI_Controller {
 					}
 			}
 			elseif ($type=="W") {
-				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah left join desa on desa.kode_desa=warkah.kode_desa left join pegawai on pinjam.nip=pegawai.nip  where pinjam.id_warkah='$id' and pinjam.status=3 and warkah.status=3";
+				$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah  left join pegawai on pinjam.nip=pegawai.nip  where pinjam.id_warkah='$id' and pinjam.status=3 and warkah.status=3";
 				$query = $this->db->query($sql);
 				$data=$query->result();
 				$jumlah=0;
@@ -1247,7 +1247,7 @@ class Pinjam extends CI_Controller {
 		$tgl_pinjam=('Y-m-d');
 		$id_surat_ukur;
 		$status;
-		$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah left join desa on desa.kode_desa=warkah.kode_desa left join pegawai on pinjam.nip=pegawai.nip  where warkah.nomor='$nomor' and pinjam.status=3 and warkah.status=3 and warkah.tahun='$tahun'";
+		$sql="SELECT *,count(id_pinjam) as jumlah, datediff(current_date(),pinjam.tgl_kembali) as selisih  from pinjam INNER join warkah on warkah.id_warkah=pinjam.id_warkah  left join pegawai on pinjam.nip=pegawai.nip  where warkah.nomor='$nomor' and pinjam.status=3 and warkah.status=3 and warkah.tahun='$tahun'";
 		$query = $this->db->query($sql);
 		$data=$query->result();
 		$jumlah=0;

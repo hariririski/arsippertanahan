@@ -91,7 +91,7 @@
       }
 
       function detail_warkah_bt($id_buku_tanah){
-        $query=$this->db->query("SELECT desa.nama_desa, lemari.nama_lemari, baris.nama_baris, bundel.nama_bundel, warkah.nomor, kondisi.nama_kondisi, warkah.tahun, warkah.status, warkah.nomor, warkah.id_warkah, warkah.valid from warkah LEFT JOIN desa on desa.kode_desa=warkah.kode_desa LEFT JOIN kec on kec.kode_kec=desa.kode_kec left join kota on kota.kode_kota=kec.kode_kota left JOIN prov on prov.kode_prov=kota.kode_prov LEFT JOIN bundel on bundel.id_bundel=warkah.id_bundel LEFT JOIN baris on baris.id_baris=bundel.id_baris LEFT JOIN lemari on lemari.id_lemari=baris.id_lemari left join kondisi on warkah.id_kondisi=kondisi.id_kondisi WHERE warkah.id_buku_tanah='$id_buku_tanah'");
+        $query=$this->db->query("SELECT lemari.nama_lemari, baris.nama_baris, bundel.nama_bundel, warkah.nomor, kondisi.nama_kondisi, warkah.tahun, warkah.status, warkah.nomor, warkah.id_warkah, warkah.valid from warkah  LEFT JOIN bundel on bundel.id_bundel=warkah.id_bundel LEFT JOIN baris on baris.id_baris=bundel.id_baris LEFT JOIN lemari on lemari.id_lemari=baris.id_lemari left join kondisi on warkah.id_kondisi=kondisi.id_kondisi WHERE warkah.id_buku_tanah='$id_buku_tanah'");
         return $query->result();
       }
 
