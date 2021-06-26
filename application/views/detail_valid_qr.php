@@ -179,7 +179,7 @@
           if(kondisi!="kosong"){
             $.ajax({
             type : "POST",
-            url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
+            url  : "<?php echo base_url()?>valid/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
             dataType : "JSON",
                     success: function(notif){
                         if (notif==1) {
@@ -249,8 +249,9 @@
               audio.play();
               lastResult=1;
               valid(decodedText);
-              setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
               $('#stop').trigger('click');
+              setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
+
             }
 
             var html5QrcodeScanner = new Html5QrcodeScanner(
