@@ -168,7 +168,8 @@
           }
         }
 
-        function tabel(barcode){
+        function cari_barcode(){
+          var barcode=$('#barcode').val();
           $.ajax({
               type : "POST",
               url  : "<?php echo base_url('valid/cari_barcode_valid')?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
@@ -224,7 +225,7 @@
               var audio = new Audio('dist/qr.mp3');
               audio.play();
               lastResult=1;
-              tabel(decodedText);
+              cari_barcode(decodedText);
               setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
 
             }
