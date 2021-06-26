@@ -84,7 +84,7 @@
                               </select>
                             </div>
                       </div>
-                          <input name="id" id="id" type="hidden" value="<?php echo $type.$id; ?>">
+                          <input name="id" id="id" type="hidden" value="<?php echo $type."-".$id; ?>">
 
                     </div>
                 </div>
@@ -168,12 +168,19 @@
 
         function valid(barcode){
           $('#stop').trigger('click');
-            var id=$('#id').val();
-            var bundel=$('#bundel').val();
+            var id_lama=$('#id').val();
+            pecah_id=(id_lama.split(";",10);
+            var id=pecah[1];
+            var type=pecah[0];
+            pecah_barcode=(barcode.split(";",10);
+            var bundel=pecah[1];
             var kondisi=$('#kondisi').val();
             alert(id);
             alert(bundel);
             alert(kondisi);
+            var e = document.getElementById("kondisi");
+            var strUser = e.value;
+            alert(strUser);
             //id_bundel_baru="BNDL-"+id_bundel;
           if(bundel==100){
             $.ajax({
