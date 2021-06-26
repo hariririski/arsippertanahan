@@ -56,12 +56,15 @@
                           $type=$this->uri->segment('3');
                           if($type=="BT"){
                       			$data="Buku Tanah : ".$value->nama_desa."/".$value->nama_jenis_hak."/".$value->no_hak;
+                            $id=$value->id_buku_tanah;
                       		 }
                       		else if ($type=="SU") {
                             $data="Surat Ukur : ".$value->nama_desa."/".$value->nomor."/".$value->tahun;
+                            $id=$value->id_surat_ukur;
                       		}
                       		else if ($type=="W") {
                             $data="Warkah : ".$value->nomor."/".$value->tahun;
+                            $id=$value->id_warkah;
                       		}
                         ?>
                         <h5><a><center><?php echo $data; ?></center></a></h5>
@@ -81,10 +84,8 @@
                               </select>
                             </div>
                       </div>
+                          <input name="id" id="id" type="hidden" value="<?php echo $type.$id; ?>">
 
-                          <input name="id" id="id" type="hidden" value="">
-
-                      
                     </div>
                 </div>
             </div>
