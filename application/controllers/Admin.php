@@ -12,6 +12,7 @@ class Admin extends CI_Controller {
 			$this->load->library('session');
 			$this->load->database();
 			$this->load->model('M_admin');
+			$this->load->model('M_home');
 	}
 
 	public function index(){
@@ -20,8 +21,13 @@ class Admin extends CI_Controller {
 	}
 
 	public function profil(){
-
-			$this->load->view('profil');
+			$data['jumlah_buku_tanah'] = $this->M_home->jumlah_buku_tanah();
+			$data['jumlah_buku_tanah_valid'] = $this->M_home->jumlah_buku_tanah_valid();
+			$data['jumlah_warkah'] = $this->M_home->jumlah_warkah();
+			$data['jumlah_warkah_valid'] = $this->M_home->jumlah_warkah_valid();
+			$data['jumlah_surat_ukur'] = $this->M_home->jumlah_surat_ukur();
+			$data['jumlah_surat_ukur_valid'] = $this->M_home->jumlah_surat_ukur_valid();
+			$this->load->view('profil',$data);
 	}
 
 	public function tambah(){
