@@ -151,12 +151,10 @@
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
     <script type="text/javascript">
-
-
-        function data_modal(data){
+      function data_modal(data){
           if(data!=null){
               pecah=data.split(";",10);
-              if(pecah[8]=="BT" || pecah[8]=="SU" || pecah[8]=="W"){
+              if(pecah[0]=="BT" || pecah[0]=="SU" || pecah[0]=="W"){
                 window.location.href='<?php echo base_url(); ?>valid/detail_validqr/'+pecah[4];
               }else{
                 peringatan("Arsip Tidak Sedang Di temukan");
@@ -225,7 +223,6 @@
               audio.play();
               lastResult=1;
               cari_barcode(decodedText);
-              alert(decodedText);
               setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
 
             }
