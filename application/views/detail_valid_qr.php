@@ -176,7 +176,7 @@
             var bundel=pecah_barcode[1];
             var e = document.getElementById("kondisi");
             var kondisi = e.options[e.selectedIndex].value;
-          if(kondisi!="kosong"){
+          if(kondisi!="kosong" && type="BNDL"){
             $.ajax({
             type : "POST",
             url  : "<?php echo base_url()?>valid/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
