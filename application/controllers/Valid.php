@@ -48,7 +48,7 @@ class Valid extends CI_Controller {
 	}
 
 	public function validqr(){
-		$this->load->view('data_susun_qr');
+		$this->load->view('data_valid_qr');
 	}
 
 	public function detail_validqr(){
