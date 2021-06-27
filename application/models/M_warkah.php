@@ -14,7 +14,7 @@
       }
 
       function data_warkah_desa($tahun){
-        $query=$this->db->query("SELECT * FROM `warkah` LEFT JOIN bundel on bundel.id_bundel=warkah.id_bundel left JOIN buku_tanah on buku_tanah.id_buku_tanah=warkah.id_buku_tanah  where warkah.tahun=$tahun");
+        $query=$this->db->query("SELECT *, warkah.id_buku_tanah as buku_tanah  FROM `warkah` LEFT JOIN bundel on bundel.id_bundel=warkah.id_bundel left JOIN buku_tanah on buku_tanah.id_buku_tanah=warkah.id_buku_tanah left join jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak left join desa on desa.kode_desa=buku_tanah.kode_desa  where warkah.tahun=$tahun");
         return $query->result();
       }
 
@@ -24,7 +24,7 @@
       }
 
       function detail_warkah($id){
-        $query=$this->db->query("SELECT * FROM `warkah` LEFT JOIN bundel on bundel.id_bundel=warkah.id_bundel left JOIN buku_tanah on buku_tanah.id_buku_tanah=warkah.id_buku_tanah left join kondisi on kondisi.id_kondisi=warkah.id_kondisi  where warkah.id_warkah='$id'");
+        $query=$this->db->query("SELECT * FROM `warkah` LEFT JOIN bundel on bundel.id_bundel=warkah.id_bundel left JOIN buku_tanah on buku_tanah.id_buku_tanah=warkah.id_buku_tanah left join kondisi on kondisi.id_kondisi=warkah.id_kondisi LEFT join baris on baris.id_baris=bundel.id_baris left join lemari on lemari.id_lemari=baris.id_baris  where warkah.id_warkah='$id'");
         return $query->result();
       }
 

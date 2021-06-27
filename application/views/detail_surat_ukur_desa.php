@@ -83,7 +83,13 @@
                                               <td><?php echo $surat_ukur->tahun; ?></td>
                                               <td><?php echo $surat_ukur->nama_jenis_hak; ?></td>
                                               <td><?php echo $surat_ukur->no_hak; ?></td>
-                                              <td> <a href="<?php echo base_url(); ?>surat_ukur/detail_surat_ukur/<?php echo $surat_ukur->id_surat_ukur; ?>" class="waves-effect waves-light btn  orange">Detail</a></td>
+                                              <td>
+                                                <?php if($surat_ukur->no_hak!=null){  ?>
+                                                  <a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah/<?php echo $surat_ukur->id_buku_tanah; ?>" class="waves-effect waves-light btn  green">Detail</a>
+                                                <?php }else{  ?>
+                                                    <a href="<?php echo base_url(); ?>surat_ukur/detail_surat_ukur/<?php echo $surat_ukur->id_surat_ukur; ?>" class="waves-effect waves-light btn orange">Detail</a>
+                                                <?php } ?>
+                                              </td>
                                           </tr>
                                           <?php
                                           }

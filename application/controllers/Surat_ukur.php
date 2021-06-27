@@ -16,6 +16,7 @@ class Surat_ukur extends CI_Controller {
 			$this->load->model('M_kondisi');
 			$this->load->model('M_surat_ukur');
 			$this->load->model('M_buku_tanah');
+			$this->load->model('M_pinjam');
 	}
 
 	public function index(){
@@ -66,6 +67,14 @@ class Surat_ukur extends CI_Controller {
 		$kode_desa=$this->uri->segment('3');
 		$data['data_surat_ukur'] = $this->M_surat_ukur->data_surat_ukur_desa($kode_desa);
 		$this->load->view('detail_surat_ukur_desa',$data);
+	}
+
+	public function detail_surat_ukur()
+	{
+		$id_surat_ukur=$this->uri->segment('3');
+		$data['data_surat_ukur'] = $this->M_surat_ukur->data_surat_ukur($id_surat_ukur);
+		$data['histori'] = $this->M_pinjam->pinjam_surat_ukur($id_surat_ukur);
+		$this->load->view('detail_surat_ukur',$data);
 	}
 
 

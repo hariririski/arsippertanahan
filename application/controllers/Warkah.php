@@ -17,6 +17,7 @@ class Warkah extends CI_Controller {
 			$this->load->model('M_surat_ukur');
 			$this->load->model('M_buku_tanah');
 			$this->load->model('M_warkah');
+			$this->load->model('M_pinjam');
 	}
 	public function index(){
 		$data['data_provinsi'] = $this->M_provinsi->lihat();
@@ -35,6 +36,11 @@ class Warkah extends CI_Controller {
 			$id_bundel=null;
 		}
 		$id_buku_tanah = $this->input->post('id_buku_tanah');
+		if(isset($id_buku_tanah)){
+
+		}else{
+				$id_buku_tanah=null;
+		}
 		$sql="SELECT COUNT(id_bundel) as jumlah FROM `bundel` WHERE id_bundel='$id_bundel'";
 		$query = $this->db->query($sql);
 		$data=$query->result();
@@ -66,6 +72,14 @@ class Warkah extends CI_Controller {
 		$tahun=$this->uri->segment('3');
 		$data['data_warkah'] = $this->M_warkah->data_warkah_desa($tahun);
 		$this->load->view('detail_warkah_desa',$data);
+	}
+
+	public function detail_warkah()
+	{
+		$id_warkah=$this->uri->segment('3');
+		$data['data_warkah'] = $this->M_warkah->detail_warkah($id_warkah);
+		$data['histori'] = $this->M_pinjam->pinjam_warkah($id_warkah);
+		$this->load->view('detail_warkah',$data);
 	}
 
 

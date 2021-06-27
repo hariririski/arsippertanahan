@@ -62,6 +62,7 @@
                                               <th>#</th>
                                               <th>Nomor Warkah</th>
                                               <th>Tahun</th>
+                                              <th>Hak</th>
                                               <th>Detail</th>
                                           </tr>
                                       </thead>
@@ -75,7 +76,26 @@
                                               <td><?php echo $i;?></td>
                                               <td><?php echo $warkah->nomor; ?></td>
                                               <td><?php echo $warkah->tahun; ?></td>
-                                              <td> <a href="<?php echo base_url(); ?>warkah/detail_warkah/<?php echo $warkah->id_warkah; ?>" class="waves-effect waves-light btn  orange">Detail</a></td>
+                                              <td>
+                                                <?php
+                                                if($warkah->buku_tanah!=null){
+                                                  echo $warkah->nama_jenis_hak."/".$warkah->nama_desa."/".$warkah->no_hak;
+                                                }
+                                                ?>
+                                              </td>
+                                              <td>
+                                                <?php
+                                                if($warkah->buku_tanah!=null){
+                                                ?>
+                                                <a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah/<?php echo $warkah->id_buku_tanah; ?>" class="waves-effect waves-light btn  green">Detail</a>
+                                                <?php
+                                                }else{
+                                                ?>
+                                                <a href="<?php echo base_url(); ?>warkah/detail_warkah/<?php echo $warkah->id_warkah; ?>" class="waves-effect waves-light btn  orange">Detail</a>
+                                                <?php
+                                                }
+                                                ?>
+                                              </td>
                                           </tr>
                                           <?php
                                           }

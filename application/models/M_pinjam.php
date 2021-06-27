@@ -5,8 +5,18 @@
         $query=$this->db->query("SELECT * FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip WHERE pinjam.induk=1 order by pinjam.status ASC");
         return $query->result();
       }
-      function histori($id_buku_tanah){
-        $query=$this->db->query("SELECT *, datediff(pinjam.tgl_pinjam,pinjam.tgl_dikembalikan) as selisih FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip WHERE id_buku_tanah='$id_buku_tanah' order by pinjam.tgl_pinjam ASC limit 50");
+      function histori($id_buku_tanah,$id_surat_ukur,$id_warkah){
+        $query=$this->db->query("SELECT *, pinjam.status as status_pinjam , datediff(pinjam.tgl_pinjam,pinjam.tgl_dikembalikan) as selisih, pinjam.id_buku_tanah as buku_tanah, pinjam.id_surat_ukur as surat_ukur, pinjam.id_warkah as warkah, surat_ukur.nomor as nomor_su, surat_ukur.tahun as tahun_su , warkah.nomor as nomor_w, warkah.tahun as tahun_w FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip left join buku_tanah on buku_tanah.id_buku_tanah=pinjam.id_buku_tanah left join surat_ukur on surat_ukur.id_surat_ukur=pinjam.id_surat_ukur left join warkah on warkah.id_warkah=pinjam.id_warkah WHERE pinjam.id_buku_tanah='$id_buku_tanah' or pinjam.id_surat_ukur='$id_surat_ukur' or pinjam.id_warkah='$id_warkah' order by pinjam.tgl_pinjam desc limit 50");
+        return $query->result();
+      }
+
+      function pinjam_surat_ukur($id_surat_ukur){
+        $query=$this->db->query("SELECT *, datediff(pinjam.tgl_pinjam,pinjam.tgl_dikembalikan) as selisih FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip WHERE id_surat_ukur='$id_surat_ukur' order by pinjam.tgl_pinjam ASC limit 50");
+        return $query->result();
+      }
+
+      function pinjam_warkah($id_warkah){
+        $query=$this->db->query("SELECT *, datediff(pinjam.tgl_pinjam,pinjam.tgl_dikembalikan) as selisih FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip WHERE id_warkah='$id_warkah' order by pinjam.tgl_pinjam ASC limit 50");
         return $query->result();
       }
 
