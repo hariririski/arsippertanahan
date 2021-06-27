@@ -16,7 +16,6 @@ class Cetak extends CI_Controller {
 	}
 
 	public function index(){
-			$data['data_provinsi'] = $this->M_provinsi->lihat();
 			$this->load->view('cetak_data_qr',$data);
 	}
 
