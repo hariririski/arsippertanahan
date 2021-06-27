@@ -89,7 +89,7 @@ $route['susunqr'] = 'Pinjam/susunqr';
 $route['kembaliqr'] = 'Pinjam/kembaliqr';
 $route['valid'] = 'Valid';
 $route['validqr'] = 'Valid/validqr';
-$route['cetakqr'] = 'cetak';
+$route['cetakqr'] = 'Cetak';
 
 
 $route['404_override'] = 'Rusak';
