@@ -79,6 +79,30 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	function ganti_password(){
+		$id=$this->uri->segment('3');
+		$password_lama=$this->uri->segment('4');
+		$password_lama=md5($password_lama);
+		$sql1="SELECT COUNT(admin.id_admin) as jumlah from admin where admin.id_admin=$id and password='$password_lama' ";
+		$query1 = $this->db->query($sql1);
+		$pinjam=$query1->result();
+		foreach ($pinjam as $isi) {
+				$jumlah=$isi->jumlah;
+		 }
+		 if($jumlah==1){
+			$password_baru=$this->uri->segment('5');
+	 		$password_baru=md5($password_baru);
+	 		$cek=$this->M_admin->ganti_password($id,$password_baru);
+			if($cek>0){
+				$data=2;
+			}else{
+				$data=3;
+			}
+		}else{
+			$data=1;
+		}
+		echo json_encode($data);
+	}
 
 
 }

@@ -41,6 +41,7 @@ class Login extends CI_Controller {
                  'username' => $isi->username,
                  'image' => $isi->image,
                  'token' => $token,
+                 'id' => $isi->id_admin,
          );
 				 //print_r($arraydata);
          $this->session->set_userdata($arraydata);

@@ -44,6 +44,12 @@
         return $query;
       }
 
+      function ganti_password($id,$password_baru){
+        $perintah="UPDATE `admin` SET `password`='$password_baru' WHERE admin.id_admin=$id";
+        $query=$this->db->query($perintah);
+        return $query;
+      }
+
 
 
       function jumlah_buku_tanah($nama_lengkap){

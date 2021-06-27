@@ -8,7 +8,7 @@
     <?php echo $this->load->view('share/icon', '', TRUE);?>
     <title>Profil</title>
     <link href="dist/css/style.css" rel="stylesheet">
-
+    <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -372,22 +372,22 @@
                                 </div>
                                 <div id="settings" class="col s12">
                                     <div class="card-content">
-                                        <form>
+                                        <form action="javascript:ganti_password()">
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input id="name" type="text" >
+                                                    <input id="password_lama" type="text" required>
                                                     <label for="name">Password Lama</label>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="input-field col s12">
-                                                    <input id="email" type="text" >
+                                                <div class="input-field col s12" required>
+                                                    <input id="password_baru" type="text" >
                                                     <label for="email">Password Baru</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input id="password" type="text" >
+                                                    <input id="ulangi_password_baru" type="text" required>
                                                     <label for="password">Ulangi Password Baru</label>
                                                 </div>
                                             </div>
@@ -432,6 +432,63 @@
     <!-- ============================================================== -->
     <!-- This page plugin js -->
     <!-- ============================================================== -->
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script>
+      function berhasil(notif) {
+        toastr.success(notif, '', { "progressBar": true });
+      }
+      function peringatan(notif) {
+        toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+      function gagal(notif) {
+        toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+    </script>
+
+    <script type="text/javascript">
+    const cpassword_lama= document.getElementById("password_lama");
+    const cpassword_baru= document.getElementById("password_baru");
+    const culangi_password_baru= document.getElementById("ulangi_password_baru");
+
+    function ganti_password(){
+        var password_lama=$('#password_lama').val();
+        var password_baru=$('#password_baru').val();
+        var ulangi_password_baru=$('#ulangi_password_baru').val();
+        if(ulangi_password_baru==password_baru){
+            $.ajax({
+            type : "POST",
+            url  : "<?php echo base_url()?>admin/ganti_password/<?php echo $this->session->userdata("id"); ?>/"+password_lama+"/"+password_baru,
+            dataType : "JSON",
+                    success: function(notif){
+                        if (notif==1) {
+                          gagal("Password Lama Tidak Sesuai");
+                          cpassword_lama.value ="";
+                          cpassword_baru.value ="";
+                          culangi_password_baru.value ="";
+                        }else if(notif==2){
+                          berhasil("Pasword Berhasil Diganti");
+                          cpassword_lama.value ="";
+                          cpassword_baru.value ="";
+                          culangi_password_baru.value ="";
+                        }else if(notif==3){
+                          gagal("Password Gagal Di Ganti");
+                          cpassword_lama.value ="";
+                          cpassword_baru.value ="";
+                          culangi_password_baru.value ="";
+                        }
+
+                    }
+                });
+                return false;
+                cpassword_lama.value ="";
+                cpassword_baru.value ="";
+                culangi_password_baru.value ="";
+        }else{
+          gagal("Password Baru Tidak sama Dengan Ulangi Password Baru");
+        }
+
+    }
+    </script>
 </body>
 
 </html>
