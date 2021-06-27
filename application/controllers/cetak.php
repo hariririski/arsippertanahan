@@ -12,13 +12,14 @@ class cetak extends CI_Controller {
 			$this->load->library('session');
 			$this->load->database();
 			//$this->load->model('M_cetak');
-			$this->load->model('M_lemari');
+			$this->load->model('M_provinsi');
 	}
 
-	public function qrcode_semua_lemari(){
-			$data['data_lemari'] = $this->M_lemari->lihat2();
-			$this->load->view('cetak_qrcode_semua_lemari',$data);
+	public function index(){
+			$data['data_provinsi'] = $this->M_provinsi->lihat();
+			$this->load->view('cetak_data_qr',$data);
 	}
+
 
 
 

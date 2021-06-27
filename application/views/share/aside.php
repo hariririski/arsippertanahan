@@ -77,7 +77,7 @@
                         <ul>
                             <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Laporan Peminjaman</span></a></li>
                             <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Laporan Keterlambatan</span></a></li>
-                            <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Cetak QR Arisp Perdesa</span></a></li>
+                            <li><a href="<?php echo base_url(); ?>cetakqr"><i class="material-icons">email</i><span class="hide-menu">Cetak QR</span></a></li>
                         </ul>
                     </div>
                 </li>
