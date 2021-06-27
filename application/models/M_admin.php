@@ -43,6 +43,50 @@
         $query=$this->db->query("DELETE FROM `admin` WHERE id_admin='$kode'");
         return $query;
       }
+
+
+
+      function jumlah_buku_tanah($nama_lengkap){
+        $query=$this->db->query("SELECT COUNT(id_buku_tanah)as jumlah_buku_tanah FROM `buku_tanah` where buku_tanah.admin_tambah='$nama_lengkap'");
+        return $query->result();
+      }
+      function jumlah_buku_tanah_valid($nama_lengkap){
+        $query=$this->db->query("SELECT COUNT(id_buku_tanah)as jumlah_buku_tanah FROM `buku_tanah` where buku_tanah.valid=1 and buku_tanah.admin_valid='$nama_lengkap'");
+        return $query->result();
+      }
+
+      function jumlah_surat_ukur($nama_lengkap){
+        $query=$this->db->query("SELECT COUNT(id_surat_ukur)as jumlah_surat_ukur FROM `surat_ukur` where surat_ukur.admin_tambah='$nama_lengkap'");
+        return $query->result();
+      }
+      function jumlah_surat_ukur_valid($nama_lengkap){
+        $query=$this->db->query("SELECT COUNT(id_surat_ukur)as jumlah_surat_ukur FROM `surat_ukur` where surat_ukur.valid=1 and surat_ukur.admin_valid='$nama_lengkap' ");
+        return $query->result();
+      }
+      function jumlah_warkah($nama_lengkap){
+        $query=$this->db->query("SELECT COUNT(id_warkah)as jumlah_warkah FROM `warkah` where warkah.admin_tambah='$nama_lengkap'");
+        return $query->result();
+      }
+      function jumlah_warkah_valid($nama_lengkap){
+        $query=$this->db->query("SELECT COUNT(id_warkah)as jumlah_warkah FROM `warkah` where warkah.valid=1 and warkah.admin_valid='$nama_lengkap'");
+        return $query->result();
+      }
+
+      function pinjam_buku_tanah($nama_lengkap){
+        $query=$this->db->query("SELECT COUNT(id_pinjam)as jumlah From pinjam WHERE pinjam.id_buku_tanah is NOT null and pinjam.admin_tambah='$nama_lengkap'");
+        return $query->result();
+      }
+      function pinjam_surat_ukur($nama_lengkap){
+        $query=$this->db->query("SELECT COUNT(id_pinjam)as jumlah From pinjam WHERE pinjam.id_surat_ukur is NOT null and pinjam.admin_tambah='$nama_lengkap'");
+        return $query->result();
+      }
+      function pinjam_warkah($nama_lengkap){
+        $query=$this->db->query("SELECT pinjam.tgl_pinjam, COUNT(id_pinjam)as jumlah From pinjam WHERE pinjam.id_warkah is NOT null and pinjam.admin_tambah='$nama_lengkap'");
+        return $query->result();
+      }
+
+
+
 }
 
 ?>

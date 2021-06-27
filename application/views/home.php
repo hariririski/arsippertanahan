@@ -97,7 +97,11 @@
                                               <span class="right">
                                                 <?php
                                                 foreach($jumlah_buku_tanah_valid as $data){
-                                                  echo round($data->jumlah_buku_tanah/$jumlah_buku_tanah*100,2)."%";
+                                                  if($jumlah_buku_tanah>0){
+                                                    echo round($data->jumlah_buku_tanah/$jumlah_buku_tanah*100,2);
+                                                  }else{
+                                                    echo "0.00 %";
+                                                  }
                                                 }
                                                 ?>
                                               </span>
@@ -130,7 +134,11 @@
                                             <span class="right">
                                               <?php
                                                 foreach($jumlah_surat_ukur_valid as $data){
+                                                  if($jumlah_surat_ukur>0){
                                                   echo round($data->jumlah_surat_ukur/$jumlah_surat_ukur*100,2)."%";
+                                                  }else{
+                                                    echo "0.00 %";
+                                                  }
                                                 }
                                               ?>
                                             </span>
@@ -217,7 +225,11 @@
                                           <span class="right">
                                             <?php
                                               foreach($jumlah_warkah_valid as $data){
+                                                if($jumlah_warkah>0){
                                                   echo round($data->jumlah_warkah/$jumlah_warkah*100,2)."%";
+                                                }else{
+                                                  echo "0.00 %";
+                                                }
                                               }
                                             ?>
                                           </span>

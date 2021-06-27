@@ -104,7 +104,8 @@ class Uploadcsv extends CI_Controller {
 
 						$id_buku_tanah=random_string('alnum',20);
 						$id_surat_ukur=random_string('alnum',20);
-						$cekbukutanah= $this->M_uploadcsv->bukutanah($id_buku_tanah,$no_hak,$jenis_hak,$desa,$nib,$id_surat_ukur);
+						$admin= $this->session->userdata("nama_lengkap");
+						$cekbukutanah= $this->M_uploadcsv->bukutanah($id_buku_tanah,$no_hak,$jenis_hak,$desa,$nib,$id_surat_ukur,$admin);
 						if($cekbukutanah>0){
 								echo ($i."Berhasil Menambahkan BT".$no_hak);
 								echo "<br>";
@@ -112,8 +113,8 @@ class Uploadcsv extends CI_Controller {
 								echo ($i."gagal Menambahkan BT ".$no_hak);
 								echo "<br>";
 					 	}
-
-						$ceksuratukur=$this->M_uploadcsv->suratukur($id_surat_ukur,$no_su,$tahun_su,$desa,$nib);
+						$admin= $this->session->userdata("nama_lengkap");
+						$ceksuratukur=$this->M_uploadcsv->suratukur($id_surat_ukur,$no_su,$tahun_su,$desa,$nib,$admin);
 						if($ceksuratukur>0){
 								echo ($i."Berhasil Menambahkan SU ".$no_su);
 								echo "<br>";

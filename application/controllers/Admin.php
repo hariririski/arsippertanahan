@@ -21,12 +21,18 @@ class Admin extends CI_Controller {
 	}
 
 	public function profil(){
-			$data['jumlah_buku_tanah'] = $this->M_home->jumlah_buku_tanah();
-			$data['jumlah_buku_tanah_valid'] = $this->M_home->jumlah_buku_tanah_valid();
-			$data['jumlah_warkah'] = $this->M_home->jumlah_warkah();
-			$data['jumlah_warkah_valid'] = $this->M_home->jumlah_warkah_valid();
-			$data['jumlah_surat_ukur'] = $this->M_home->jumlah_surat_ukur();
-			$data['jumlah_surat_ukur_valid'] = $this->M_home->jumlah_surat_ukur_valid();
+			$nama_lengkap=$this->session->userdata("nama_lengkap");
+			$data['jumlah_buku_tanah'] = $this->M_admin->jumlah_buku_tanah($nama_lengkap);
+			$data['jumlah_buku_tanah_valid'] = $this->M_admin->jumlah_buku_tanah_valid($nama_lengkap);
+			$data['jumlah_warkah'] = $this->M_admin->jumlah_warkah($nama_lengkap);
+			$data['jumlah_warkah_valid'] = $this->M_admin->jumlah_warkah_valid($nama_lengkap);
+			$data['jumlah_surat_ukur'] = $this->M_admin->jumlah_surat_ukur($nama_lengkap);
+			$data['jumlah_surat_ukur_valid'] = $this->M_admin->jumlah_surat_ukur_valid($nama_lengkap);
+			$data['jumlah_buku_tanah_pinjam'] = $this->M_admin->jumlah_surat_ukur_valid($nama_lengkap);
+			$data['jumlah_surat_ukur_pinjam'] = $this->M_admin->jumlah_surat_ukur_valid($nama_lengkap);
+			$data['jumlah_warkah_pinjam'] = $this->M_admin->jumlah_surat_ukur_valid($nama_lengkap);
+
+
 			$this->load->view('profil',$data);
 	}
 

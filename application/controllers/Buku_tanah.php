@@ -54,6 +54,12 @@ class Buku_tanah extends CI_Controller {
 
 	public function tambah(){
 		$id_bundel = $this->input->post('id_bundel');
+		$pecah_bundel=explode("-",$id_bundel);
+		if(isset($pecah_bundel[1])){
+			$id_bundel=$pecah_bundel[1];
+		}else{
+			$id_bundel=null;
+		}
 		$sql="SELECT COUNT(id_bundel) as jumlah FROM `bundel` WHERE id_bundel='$id_bundel'";
 		$query = $this->db->query($sql);
 		$data=$query->result();
@@ -65,7 +71,8 @@ class Buku_tanah extends CI_Controller {
 		if($data['jumlah']!=0){
 			$id=random_string('alnum',20);
 			$id_buku_tanah=$id;
-			$cek= $this->M_buku_tanah->add($id_buku_tanah);
+			$admin= $this->session->userdata("nama_lengkap");
+			$cek= $this->M_buku_tanah->add($id_buku_tanah,$admin,$id_bundel);
 			if($cek>0){
 					echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."buku_tanah/detail_buku_tanah/".$id_buku_tanah."';</script>");
 			}else{

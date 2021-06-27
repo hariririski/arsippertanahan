@@ -93,9 +93,25 @@
                                                       <div class="card-content">
                                                           <h5 class="card-title  white-text">Buku Tanah</h5>
                                                           <p class="m-b-5">
+                                                            <span class="white-text op-6">Menmbahkan
+                                                              <span class="right">
+                                                                <?php
+                                                                  $jumlah_buku_tanah;
+                                                                  foreach($jumlah_buku_tanah as $data){
+                                                                    echo   $jumlah_buku_tanah=$data->jumlah_buku_tanah;
+                                                                  }
+                                                                ?>
+                                                              </span>
+                                                            </span>
+                                                          </p>
+                                                          <p class="m-b-5">
                                                             <span class="white-text op-6">Validasi
                                                               <span class="right">
-                                                                xxxx
+                                                                <?php
+                                                                foreach($jumlah_buku_tanah_valid as $data){
+                                                                  echo $data->jumlah_buku_tanah;
+                                                                }
+                                                                ?>
                                                               </span>
                                                             </span>
                                                           </p>
@@ -133,9 +149,25 @@
                                                       <div class="card-content">
                                                           <h5 class="card-title white-text">Surat Ukur</h5>
                                                           <p class="m-b-5">
+                                                            <span class="white-text op-6">Penambahan
+                                                              <span class="right">
+                                                                <?php
+                                                                  $jumlah_surat_ukur;
+                                                                  foreach($jumlah_surat_ukur as $data){
+                                                                    echo $jumlah_surat_ukur=$data->jumlah_surat_ukur;
+                                                                  }
+                                                                ?>
+                                                              </span>
+                                                            </span>
+                                                          </p>
+                                                          <p class="m-b-5">
                                                             <span class="white-text op-6">Validasi
                                                               <span class="right">
-                                                                xxxx
+                                                                <?php
+                                                                  foreach($jumlah_surat_ukur_valid as $data){
+                                                                    echo $data->jumlah_surat_ukur;
+                                                                  }
+                                                                ?>
                                                               </span>
                                                             </span>
                                                           </p>
@@ -174,9 +206,25 @@
                                                       <div class="card-content">
                                                           <h5 class="card-title white-text">Warkah</h5>
                                                           <p class="m-b-5">
+                                                            <span class="white-text op-6">Penambahan
+                                                              <span class="right">
+                                                                <?php
+                                                                  $jumlah_warkah;
+                                                                  foreach($jumlah_warkah as $data){
+                                                                    echo $jumlah_warkah=$data->jumlah_warkah;
+                                                                  }
+                                                                ?>
+                                                              </span>
+                                                            </span>
+                                                          </p>
+                                                          <p class="m-b-5">
                                                             <span class="white-text op-6">Validasi
                                                               <span class="right">
-                                                                xxxx
+                                                                <?php
+                                                                  foreach($jumlah_warkah_valid as $data){
+                                                                      echo $data->jumlah_warkah;
+                                                                  }
+                                                                ?>
                                                               </span>
                                                             </span>
                                                           </p>

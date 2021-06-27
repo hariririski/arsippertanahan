@@ -52,7 +52,8 @@ class Warkah extends CI_Controller {
 		if($data['jumlah']!=0){
 			$id=random_string('alnum',20);
 			$id_warkah=$id;
-			$cek= $this->M_warkah->add($id_warkah,$id_buku_tanah);
+			$admin= $this->session->userdata("nama_lengkap");
+			$cek= $this->M_warkah->add($id_warkah,$id_buku_tanah,$admin);
 
 		if($cek>0){
 					if(!empty($id_buku_tanah)){

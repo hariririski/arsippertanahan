@@ -29,6 +29,12 @@ class Surat_ukur extends CI_Controller {
 	public function tambah()
 	{
 		$id_bundel = $this->input->post('id_bundel');
+		$pecah_bundel=explode("-",$id_bundel);
+		if(isset($pecah_bundel[1])){
+			$id_bundel=$pecah_bundel[1];
+		}else{
+			$id_bundel=null;
+		}
 		$id_buku_tanah = $this->input->post('id_buku_tanah');
 		$sql="SELECT COUNT(id_bundel) as jumlah FROM `bundel` WHERE id_bundel='$id_bundel'";
 		$query = $this->db->query($sql);
@@ -41,13 +47,14 @@ class Surat_ukur extends CI_Controller {
 		if($data['jumlah']!=0){
 			$id=random_string('alnum',20);
 			$id_surat_ukur=$id;
-			$cek= $this->M_surat_ukur->add($id_surat_ukur);
+			$admin= $this->session->userdata("nama_lengkap");
+			$cek= $this->M_surat_ukur->add($id_surat_ukur,$admin,$id_bundel);
 
 		if($cek>0){
 					if(isset($id_buku_tanah)){
 						$cek2= $this->M_buku_tanah->link_su_bt($id_surat_ukur,$id_buku_tanah);
 						if($cek2>0){
-						echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."buku_tanah/detail_buku_tanah/".$id_buku_tanah."';</script>");
+						echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."datasuratukur';</script>");
 						}else{
 							echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Di Simpan, Tetapi Gagal Link Buku Tanah');window.location.href='".base_url()."datasuratukur';</script>");
 						}
