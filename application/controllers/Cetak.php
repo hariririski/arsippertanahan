@@ -16,7 +16,7 @@ class Cetak extends CI_Controller {
 	}
 
 	public function index(){
-			$this->load->view('cetak_data_qr',$data);
+			$this->load->view('cetak_data_qr');
 	}
 
 
