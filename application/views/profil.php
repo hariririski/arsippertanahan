@@ -375,20 +375,20 @@
                                         <form>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input id="name" type="text" value="Jon Doe">
+                                                    <input id="name" type="text" >
                                                     <label for="name">Password Lama</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input id="email" type="email" value="jon@doe.com">
+                                                    <input id="email" type="text" >
                                                     <label for="email">Password Baru</label>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <input id="password" type="password" value="123456">
-                                                    <label for="password">ulangi Password Baru</label>
+                                                    <input id="password" type="text" >
+                                                    <label for="password">Ulangi Password Baru</label>
                                                 </div>
                                             </div>
 
