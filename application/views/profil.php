@@ -89,16 +89,34 @@
                                       <div class="col s12 ">
                                           <div class="row">
                                               <div class="col s12 m6 l6">
-                                                  <div class="card warning-gradient card-hover" style="height:433px;">
+                                                  <div class="card warning-gradient card-hover" style="height:488px;">
                                                       <div class="card-content">
                                                           <h5 class="card-title  white-text">Buku Tanah</h5>
                                                           <p class="m-b-5">
                                                             <span class="white-text op-6">Menmbahkan
                                                               <span class="right">
                                                                 <?php
-                                                                  $jumlah_buku_tanah;
+
+                                                                  $surat_ukur_tambah;
+                                                                  $surat_ukur_valid;
+                                                                  $surat_ukur_pinjam;
+                                                                  $surat_ukur_kembali;
+                                                                  $surat_ukur_susun;
+
+                                                                  $warkah_tambah;
+                                                                  $warkah_valid;
+                                                                  $warkah_pinjam;
+                                                                  $warkah_kembali;
+                                                                  $warkah_susun;
+
+                                                                  $buku_tanah_tambah;
+                                                                  $buku_tanah_valid;
+                                                                  $buku_tanah_pinjam;
+                                                                  $buku_tanah_kembali;
+                                                                  $buku_tanah_susun;
+
                                                                   foreach($jumlah_buku_tanah as $data){
-                                                                    echo   $jumlah_buku_tanah=$data->jumlah_buku_tanah;
+                                                                    echo   $buku_tanah_tambah=$data->jumlah_buku_tanah;
                                                                   }
                                                                 ?>
                                                               </span>
@@ -109,7 +127,7 @@
                                                               <span class="right">
                                                                 <?php
                                                                 foreach($jumlah_buku_tanah_valid as $data){
-                                                                  echo $data->jumlah_buku_tanah;
+                                                                  echo $buku_tanah_valid=$data->jumlah_buku_tanah;
                                                                 }
                                                                 ?>
                                                               </span>
@@ -119,7 +137,11 @@
                                                           <p>
                                                             <span class="white-text op-6">Peminjam
                                                                 <span class="right">
-                                                                xxxx
+                                                                  <?php
+                                                                  foreach($jumlah_buku_tanah_pinjam as $data){
+                                                                    echo $buku_tanah_pinjam=$data->jumlah;
+                                                                  }
+                                                                  ?>
                                                                 </span>
                                                               </span>
                                                           </p>
@@ -127,7 +149,11 @@
                                                           <p>
                                                             <span class="white-text op-6">Pengembalian
                                                                 <span class="right">
-                                                                xxxx
+                                                                  <?php
+                                                                  foreach($jumlah_buku_tanah_kembali as $data){
+                                                                    echo $buku_tanah_kembali=$data->jumlah;
+                                                                  }
+                                                                  ?>
                                                                 </span>
                                                               </span>
                                                           </p>
@@ -135,7 +161,11 @@
                                                           <p>
                                                             <span class="white-text op-6">Susun
                                                                 <span class="right">
-                                                                xxxx
+                                                                  <?php
+                                                                  foreach($jumlah_buku_tanah_susun as $data){
+                                                                    echo $buku_tanah_susun=$data->jumlah;
+                                                                  }
+                                                                  ?>
                                                                 </span>
                                                               </span>
                                                           </p>
@@ -154,7 +184,7 @@
                                                                 <?php
                                                                   $jumlah_surat_ukur;
                                                                   foreach($jumlah_surat_ukur as $data){
-                                                                    echo $jumlah_surat_ukur=$data->jumlah_surat_ukur;
+                                                                    echo $surat_ukur_tambah=$data->jumlah_surat_ukur;
                                                                   }
                                                                 ?>
                                                               </span>
@@ -165,7 +195,7 @@
                                                               <span class="right">
                                                                 <?php
                                                                   foreach($jumlah_surat_ukur_valid as $data){
-                                                                    echo $data->jumlah_surat_ukur;
+                                                                    echo $surat_ukur_valid=$data->jumlah_surat_ukur;
                                                                   }
                                                                 ?>
                                                               </span>
@@ -175,7 +205,11 @@
                                                           <p>
                                                             <span class="white-text op-6">Peminjam
                                                                 <span class="right">
-                                                                xxxx
+                                                                  <?php
+                                                                  foreach($jumlah_surat_ukur_pinjam as $data){
+                                                                    echo $surat_ukur_pinjam=$data->jumlah;
+                                                                  }
+                                                                  ?>
                                                                 </span>
                                                               </span>
                                                           </p>
@@ -183,7 +217,11 @@
                                                           <p>
                                                             <span class="white-text op-6">Pengembalian
                                                                 <span class="right">
-                                                                xxxx
+                                                                  <?php
+                                                                  foreach($jumlah_surat_ukur_kembali as $data){
+                                                                    echo $surat_ukur_kembali=$data->jumlah;
+                                                                  }
+                                                                  ?>
                                                                 </span>
                                                               </span>
                                                           </p>
@@ -191,7 +229,11 @@
                                                           <p>
                                                             <span class="white-text op-6">Susun
                                                                 <span class="right">
-                                                                xxxx
+                                                                  <?php
+                                                                  foreach($jumlah_surat_ukur_susun as $data){
+                                                                    echo $surat_ukur_susun=$data->jumlah;
+                                                                  }
+                                                                  ?>
                                                                 </span>
                                                               </span>
                                                           </p>
@@ -211,7 +253,7 @@
                                                                 <?php
                                                                   $jumlah_warkah;
                                                                   foreach($jumlah_warkah as $data){
-                                                                    echo $jumlah_warkah=$data->jumlah_warkah;
+                                                                    echo $warkah_tambah=$data->jumlah_warkah;
                                                                   }
                                                                 ?>
                                                               </span>
@@ -222,7 +264,7 @@
                                                               <span class="right">
                                                                 <?php
                                                                   foreach($jumlah_warkah_valid as $data){
-                                                                      echo $data->jumlah_warkah;
+                                                                      echo $warkah_valid=$data->jumlah_warkah;
                                                                   }
                                                                 ?>
                                                               </span>
@@ -232,7 +274,11 @@
                                                           <p>
                                                             <span class="white-text op-6">Peminjam
                                                                 <span class="right">
-                                                                xxxx
+                                                                <?php
+                                                                foreach($jumlah_warkah_pinjam as $data){
+                                                                  echo $warkah_pinjam=$data->jumlah;
+                                                                }
+                                                                  ?>
                                                                 </span>
                                                               </span>
                                                           </p>
@@ -240,7 +286,11 @@
                                                           <p>
                                                             <span class="white-text op-6">Pengembalian
                                                                 <span class="right">
-                                                                  xxxx
+                                                                  <?php
+                                                                  foreach($jumlah_warkah_kembali as $data){
+                                                                    echo $warkah_kembali=$data->jumlah;
+                                                                  }
+                                                                    ?>
                                                                 </span>
                                                               </span>
                                                           </p>
@@ -248,7 +298,11 @@
                                                           <p>
                                                             <span class="white-text op-6">Susun
                                                                 <span class="right">
-                                                                xxxx
+                                                                  <?php
+                                                                  foreach($jumlah_surat_ukur_susun as $data){
+                                                                    echo $warkah_susun=$data->jumlah;
+                                                                  }
+                                                                  ?>
                                                                 </span>
                                                               </span>
                                                           </p>
@@ -261,16 +315,29 @@
                                                       <div class="card-content">
                                                           <h5 class="card-title white-text">Keseluruhan</h5>
                                                           <p class="m-b-5">
+                                                            <span class="white-text op-6">Total Penambahan
+                                                              <span class="right">
+                                                                  <?php
+                                                                  echo $buku_tanah_tambah+$surat_ukur_tambah+$warkah_tambah;
+                                                                  ?>
+                                                              </span>
+                                                            </span>
+                                                          </p>
+                                                          <p class="m-b-5">
                                                             <span class="white-text op-6">Total Validasi
                                                               <span class="right">
-                                                                  xxxx
+                                                                  <?php
+                                                                  echo $buku_tanah_valid+$surat_ukur_valid+$warkah_valid;
+                                                                  ?>
                                                               </span>
                                                             </span>
                                                           </p>
                                                           <p class="m-b-5">
                                                             <span class="white-text op-6">Total Peminjaman
                                                               <span class="right">
-                                                                  xxxx
+                                                                <?php
+                                                                echo $buku_tanah_pinjam+$surat_ukur_pinjam+$warkah_pinjam;
+                                                                ?>
                                                               </span>
                                                             </span>
                                                           </p>
@@ -278,7 +345,9 @@
                                                           <p>
                                                             <span class="white-text op-6">Total Pengembalian
                                                             <span class="right">
-                                                                  xxxx
+                                                              <?php
+                                                              echo $buku_tanah_kembali+$surat_ukur_kembali+$warkah_kembali;
+                                                              ?>
                                                             </span>
                                                             </span>
                                                           </p>
@@ -286,19 +355,13 @@
                                                           <p>
                                                             <span class="white-text op-6">Total Susun
                                                             <span class="right">
-                                                                  xxxx
+                                                              <?php
+                                                              echo $buku_tanah_susun+$surat_ukur_susun+  $warkah_susun;
+                                                              ?>
                                                             </span>
                                                             </span>
                                                           </p>
 
-
-                                                          <p>
-                                                            <span class="white-text op-6">Peminjaman Terlambat
-                                                            <span class="right">
-                                                                  xxxx
-                                                            </span>
-                                                            </span>
-                                                          </p>
 
                                                       </div>
                                                   </div>

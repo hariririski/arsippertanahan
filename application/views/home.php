@@ -98,7 +98,7 @@
                                                 <?php
                                                 foreach($jumlah_buku_tanah_valid as $data){
                                                   if($jumlah_buku_tanah>0){
-                                                    echo round($data->jumlah_buku_tanah/$jumlah_buku_tanah*100,2);
+                                                    echo round($data->jumlah_buku_tanah/$jumlah_buku_tanah*100,2)."%";
                                                   }else{
                                                     echo "0.00 %";
                                                   }
