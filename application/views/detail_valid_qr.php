@@ -84,7 +84,10 @@
                               </select>
                             </div>
                       </div>
-                      <?php if($value->valid==1){echo'<center><img src="'.base_url().'assets/images/valid.png" width="50%"></center>';} ?>
+                      <?php if($value->valid==1){
+                        echo'<center><img src="'.base_url().'assets/images/valid.png" width="50%"></center>';
+                        echo'<a href="'.base_url().'validqr"><button class="waves-effect waves-light btn-large" submit=""><i class="material-icons left"></i>Kembali</button>';
+                      } ?>
                           <input name="id" id="id" type="hidden" value="<?php echo $type."-".$id; ?>">
 
                     </div>
