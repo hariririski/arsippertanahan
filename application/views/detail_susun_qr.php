@@ -200,11 +200,11 @@
           $('#stop').trigger('click');
             var id_pinjam=$('#id_pinjam').val();
             var id_bundel=$('#id_bundel').val();
-            alert(id_bundel);
+            //alert(id_bundel);
             var invoice=$('#invoice').val();
             var pecah_barcode=barcode.split("-",10);
             var bundel_baru=pecah_barcode[1];
-            alert(bundel);
+            //alert(bundel);
           if(bundel_baru==id_bundel){
             $.ajax({
             type : "POST",
