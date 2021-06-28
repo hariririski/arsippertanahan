@@ -86,7 +86,7 @@
                       </div>
                       <?php if($value->valid==1){
                         echo'<center><img src="'.base_url().'assets/images/valid.png" width="50%"></center>';
-                        echo'<a href="'.base_url().'validqr"><button class="waves-effect waves-light btn-large" submit=""><i class="material-icons left"></i>Kembali</button>';
+                        echo'<p align="center"><a href="'.base_url().'validqr"><button class="waves-effect waves-light btn-large" submit=""><i class="material-icons left"></i>Kembali</button></a></p>';
                       } ?>
                           <input name="id" id="id" type="hidden" value="<?php echo $type."-".$id; ?>">
 
