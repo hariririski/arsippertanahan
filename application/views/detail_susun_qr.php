@@ -271,10 +271,9 @@
             function onScanSuccess(decodedText, decodedResult) {
               var audio = new Audio('<?php echo base_url(); ?>dist/qr.mp3');
               audio.play();
-              lastResult=1;
               susun(decodedText);
               setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
-              $('#stop').trigger('click');
+              // $('#stop').trigger('click');
             }
 
             var html5QrcodeScanner = new Html5QrcodeScanner(
