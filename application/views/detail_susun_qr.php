@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo $this->load->view('share/icon', '', TRUE);?>
-    <title>detail Susun</title>
+    <title>Detail Arsip QR</title>
     <link href="<?php echo base_url(); ?>dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
     <link href="<?php echo base_url(); ?>assets/extra-libs/prism/prism.css" rel="stylesheet">
@@ -49,94 +49,71 @@
             <div class="col s12 ">
                 <div class="card">
                     <div class="card-content">
-                      <table  class="striped">
                         <?php
                           $i=0;
-                          foreach($pinjam as $data){
+                          foreach($valid as $value){
                           $i++;
+                          $type=$this->uri->segment('3');
+                          if($type=="BT"){
+                      			$data="Buku Tanah : ".$value->nama_desa."/".$value->nama_jenis_hak."/".$value->no_hak;
+                            $id=$value->id_buku_tanah;
+                      		 }
+                      		else if ($type=="SU") {
+                            $data="Surat Ukur : ".$value->nama_desa."/".$value->nomor."/".$value->tahun;
+                            $id=$value->id_surat_ukur;
+                      		}
+                      		else if ($type=="W") {
+                            $data="Warkah : ".$value->nomor."/".$value->tahun;
+                            $id=$value->id_warkah;
+                      		}
                         ?>
-                        <tr style="padding: 0px 0px;">
-                          <td style="padding: 0px 0px;">Desa/Jenis Hak/Nomor Hak/SU/WARKAH/</td>
-                          <td style="padding: 0px 0px;">
-                            <?php
-                              if($data->id_buku_tanah!=null){
-                                echo "BT / ".$data->nama_jenis_hak." / ".$data->no_hak;
-                              }else if($data->id_surat_ukur!=null){
-                                echo "SU / ".$data->nomor_su." / ".$data->tahun_su;
-                              }else if($data->id_warkah!=null){
-                                echo "W / ".$data->nomor_w." / ".$data->tahun_w;
-                              }
-                            ?>
-                          </td>
-                        </tr>
-                        <tr style="padding: 0px 0px;">
-                          <td style="padding: 0px 0px;">Tanggal Pinjam</td>
-                          <td style="padding: 0px 0px;"><?php echo $data->tgl_pinjam; ?></td>
-                        </tr>
-                        <tr style="padding: 0px 0px;">
-                          <td style="padding: 0px 0px;">Tanggal Kembali</td>
-                          <td style="padding: 0px 0px;"><?php echo $data->tgl_dikembalikan; ?></P></td>
-                        </tr>
-                        <tr style="padding: 0px 0px;">
-                          <td style="padding: 0px 0px;">Tanggak Keterlambatan</td>
-                          <td style="padding: 0px 0px;"><?php echo $data->selisih; ?>Hari</td>
-                        </tr>
-                        <tr style="padding: 0px 0px;">
-                          <td style="padding: 0px 0px;">Peminjam</td>
-                          <td style="padding: 0px 0px;"><?php echo $data->nama_lengkap; ?></td>
-                        </tr>
-                        <tr style="padding: 0px 0px;">
-                          <td style="padding: 0px 0px;">Lokasi Penyimpanan</td>
-                          <td style="padding: 0px 0px;">
-                            <?php
-                              if($data->id_buku_tanah!=null){
-                                echo "Lemari : ".$data->lemari_bt."/ ";
-                                echo "Baris  : ".$data->baris_bt."/ ";
-                                echo "Bundel : ".$data->nama_bundel_bt;
-                              }else if($data->id_surat_ukur!=null){
-                                echo "Lemari : ".$data->lemari_su."/ ";
-                                echo "Baris  : ".$data->baris_su."/ ";
-                                echo "Bundel : ".$data->nama_bundel_su;
-                              }else if($data->id_warkah!=null){
-                                echo "Lemari : ".$data->lemari_w."/ ";
-                                echo "Baris  : ".$data->baris_w."/ ";
-                                echo "Bundel : ".$data->nama_bundel_w;
-                              }
-                            ?>
-                          </td>
-                        </tr>
-                        <?php
-                          if($data->id_buku_tanah!=null){
-                            echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="'.$data->id_pinjam.'">';
-                            echo'<input type="hidden" name="id_bundel" id="id_bundel" value="'.$data->id_bundel_bt.'">';
-                            echo'<input type="hidden" name="invoice" id="invoice" value="'.$data->invoice.'">';
-                          }else if($data->id_surat_ukur!=null){
-                            echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="'.$data->id_pinjam.'">';
-                            echo'<input type="hidden" name="id_bundel" id="id_bundel" value="'.$data->id_bundel_su.'">';
-                            echo'<input type="hidden" name="invoice" id="invoice" value="'.$data->invoice.'">';
-                          }else if($data->id_warkah!=null){
-                            echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="'.$data->id_pinjam.'">';
-                            echo'<input type="hidden" name="id_bundel" id="id_bundel" value="'.$data->id_bundel_w.'">';
-                            echo'<input type="hidden" name="invoice" id="invoice" value="'.$data->invoice.'">';
-                          }
-                        ?>
-                        <?php } ?>
+                        <h5><a><center><?php echo $data; ?></center></a></h5>
+
                       </table>
+                      <div class="row">
+                            <div class="input-field col s12">
+                              <select required name="kondisi" id="kondisi" <?php if($value->valid==1){echo"disabled";} ?> class="browser-default">
+                                <?php if($value->valid==1){echo'<option value="" >'.$value->nama_kondisi.'</option>';} ?>
+                                <option value="kosong" >Pilih Kondisi Arsip</option>
+                                <?php
+                                  foreach($data_kondisi as $data_kondisi){
+                                    if($data_kondisi->id_kondisi!=$value->id_kondisi){
+                                ?>
+                                  <option value="<?php echo $data_kondisi->id_kondisi; ?>"><?php echo $data_kondisi->id_kondisi; ?> - <?php echo $data_kondisi->nama_kondisi; ?></option>
+                                <?php }} ?>
+                              </select>
+                            </div>
+                      </div>
+                      <?php if($value->valid==1){
+                        echo'<center><img src="'.base_url().'assets/images/valid.png" width="50%"></center>';
+                        echo'<p align="center"><a href="'.base_url().'validqr"><button class="waves-effect waves-light btn-large" submit=""><i class="material-icons left"></i>Kembali</button></a></p>';
+                      } ?>
+                          <input name="id" id="id" type="hidden" value="<?php echo $type."-".$id; ?>">
 
                     </div>
                 </div>
             </div>
+
             <div class="card info-gradient m-t-0 m-b-0">
                 <div class="card-content">
                     <div class="p-b-40 p-t-20">
+                      <?php
+                      if($value->valid==0){
+                      ?>
                       <div id="qr-reader" style="width:100%"></div>
                       <div id="qr-reader-results"></div>
-
+                      <?php
+                      }
+                      ?>
                         <p class="white-text op-7 m-b-20 Center">Manajemen Arsip Lebih Mudah, Cepat, Mudah dan Efektif</p>
 
                     </div>
                 </div>
             </div>
+
+            <?php
+          }
+            ?>
             <!-- ============================================================== -->
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
@@ -147,7 +124,9 @@
 
     </div>
 
-    <script src="<?php echo base_url(); ?>dist/js/qrcode_scan.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- All Required js -->
+    <!-- ============================================================== -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
     <script>
@@ -177,8 +156,10 @@
     <script src="<?php echo base_url(); ?>dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="<?php echo base_url(); ?>dist/js/pages/datatable/datatable-basic.init.js"></script>
-    <script type="text/javascript">
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script src="<?php echo base_url(); ?>dist/js/qrcode_scan.min.js"></script>
 
+    <script type="text/javascript">
 
         function data_modal(data){
           if(data!=null){
@@ -193,47 +174,42 @@
         }
       }
 
-        function susun(bundel){
-          $('#stop').trigger('click');
-            var id_pinjam=$('#id_pinjam').val();
-            var id_bundel=$('#id_bundel').val();
-            var invoice=$('#invoice').val();
-          if(bundel==id_bundel_baru){
+        function valid(barcode){
+            var id_lama=$('#id').val();
+            var pecah_id=id_lama.split("-",10);
+            var id=pecah_id[1];
+            var type=pecah_id[0];
+            var pecah_barcode=barcode.split("-",10);
+            var bundel=pecah_barcode[1];
+            var e = document.getElementById("kondisi");
+            var kondisi = e.options[e.selectedIndex].value;
+          if(kondisi!="kosong" && pecah_barcode[0]=="BNDL"){
             $.ajax({
             type : "POST",
-            url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
+            url  : "<?php echo base_url()?>valid/validkan/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+kondisi+"/"+bundel+"/"+id+"/"+type,
             dataType : "JSON",
                     success: function(notif){
-                        if (notif==1) {
-                          berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
-                        }else if(notif==2){
-                          berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
-                        }else if(notif==3){
-                          gagal("Arsip Gagal Di Susun");
-                        }else if(notif==4){
-                          gagal("Bundel Tidak Sesuai, Arsip Gagal Di Susun");
-                        }else{
-                          gagal("Arsip Gagal Di Susun");
-                        }
+                      if (notif==1) {
+                        berhasil("Arsip Valid !.");
+                        setTimeout("location.href = '<?php echo base_url()?>validqr';",1500);
+                      }else if(notif==2){
+                        gagal("Arsip Gagal Valid");
+                      }else if(notif==3){
+                        gagal("Bundel Tidak Sesuai, Arsip Gagal  Valid");
+                      }else{
+                        gagal("Arsip Gagal Valid");
+
+                      }
 
                     }
                 });
 
               }else{
-                gagal("Bundel Tidak Sesuai!.");
+                gagal("Kondisi Arsip Kosong atau Bundel Tidak Sesuai!.");
               }
 
         }
 
-    </script>
-
-
-    <!-- Latest compiled and minified CSS -->
-
-    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
-    <script>
       function berhasil(notif) {
         toastr.success(notif, 'Selamat!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
       }
@@ -244,7 +220,6 @@
         toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
       }
     </script>
-
     <script type="text/javascript">
 
         function docReady(fn) {
@@ -265,7 +240,7 @@
               var audio = new Audio('<?php echo base_url(); ?>dist/qr.mp3');
               audio.play();
               lastResult=1;
-              susun(decodedText);
+              valid(decodedText);
               $('#stop').trigger('click');
               setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
 
