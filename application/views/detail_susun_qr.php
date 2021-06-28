@@ -147,6 +147,36 @@
 
     </div>
 
+    <script src="<?php echo base_url(); ?>dist/js/qrcode_scan.min.js"></script>
+    <script type="text/javascript">
+
+        function docReady(fn) {
+            // see if DOM is already available
+            if (document.readyState === "complete"
+                || document.readyState === "interactive") {
+                // call on next available tick
+                setTimeout(fn, 1);
+            } else {
+                document.addEventListener("DOMContentLoaded", fn);
+            }
+        }
+
+        docReady(function () {
+            var resultContainer = document.getElementById('qr-reader-results');
+            var lastResult, countResults = 0;
+            function onScanSuccess(decodedText, decodedResult) {
+              var audio = new Audio('<?php echo base_url(); ?>dist/qr.mp3');
+              audio.play();
+              susun(decodedText);
+              setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
+              // $('#stop').trigger('click');
+            }
+
+            var html5QrcodeScanner = new Html5QrcodeScanner(
+                "qr-reader", { fps: 2, qrbox: 250 });
+            html5QrcodeScanner.render(onScanSuccess);
+        });
+    </script>
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
@@ -251,36 +281,7 @@
         toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
       }
     </script>
-    <script src="<?php echo base_url(); ?>dist/js/qrcode_scan.min.js"></script>
-    <script type="text/javascript">
 
-        function docReady(fn) {
-            // see if DOM is already available
-            if (document.readyState === "complete"
-                || document.readyState === "interactive") {
-                // call on next available tick
-                setTimeout(fn, 1);
-            } else {
-                document.addEventListener("DOMContentLoaded", fn);
-            }
-        }
-
-        docReady(function () {
-            var resultContainer = document.getElementById('qr-reader-results');
-            var lastResult, countResults = 0;
-            function onScanSuccess(decodedText, decodedResult) {
-              var audio = new Audio('<?php echo base_url(); ?>dist/qr.mp3');
-              audio.play();
-              susun(decodedText);
-              setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
-              // $('#stop').trigger('click');
-            }
-
-            var html5QrcodeScanner = new Html5QrcodeScanner(
-                "qr-reader", { fps: 2, qrbox: 250 });
-            html5QrcodeScanner.render(onScanSuccess);
-        });
-    </script>
     <script type="text/javascript">
     permisi();
       function permisi(){
