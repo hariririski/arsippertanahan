@@ -206,7 +206,7 @@ class Pinjam extends CI_Controller {
 		if(isset($pecah_bundel[1])){
 			$kode_bundel=$pecah_bundel[1];
 		}else{
-			
+
 		}
 
 		$tgl_susun=date('Y-m-d');
@@ -1069,7 +1069,7 @@ class Pinjam extends CI_Controller {
 						$no_hak=$isi->no_hak;
 						$nama_desa=$isi->nama_desa;
 						$tgl_pinjam=$isi->tgl_pinjam;
-						$tgl_kembali=$isi->tgl_kembali;
+						$tgl_kembali=$isi->tgl_dikembalikan;
 						$nama_lengkap=$isi->nama_lengkap;
 						$id_pinjam=$isi->id_pinjam;
 						$nama_lengkap=$isi->nama_lengkap;
@@ -1108,7 +1108,7 @@ class Pinjam extends CI_Controller {
 						$tahun=$isi->tahun;
 						$nama_desa=$isi->nama_desa;
 						$tgl_pinjam=$isi->tgl_pinjam;
-						$tgl_kembali=$isi->tgl_kembali;
+						$tgl_kembali=$isi->tgl_dikembalikan;
 						$nama_lengkap=$isi->nama_lengkap;
 						$id_pinjam=$isi->id_pinjam;
 						$nama_lengkap=$isi->nama_lengkap;
@@ -1146,7 +1146,7 @@ class Pinjam extends CI_Controller {
 						$tahun=$isi->tahun;
 						$nama_desa=$isi->nama_desa;
 						$tgl_pinjam=$isi->tgl_pinjam;
-						$tgl_kembali=$isi->tgl_kembali;
+						$tgl_kembali=$isi->tgl_dikembalikan;
 						$nama_lengkap=$isi->nama_lengkap;
 						$id_pinjam=$isi->id_pinjam;
 						$nama_lengkap=$isi->nama_lengkap;

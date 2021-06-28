@@ -280,12 +280,8 @@
                   <td style="padding: 0px 0px;"><P id="tgl_pinjam"></P></td>
                 </tr>
                 <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Tanggal Kembali</td>
+                  <td style="padding: 0px 0px;">Tanggal Dikembalikan</td>
                   <td style="padding: 0px 0px;"><P id="tgl_kembali"></P></td>
-                </tr>
-                <tr style="padding: 0px 0px;">
-                  <td style="padding: 0px 0px;">Tanggak Keterlambatan</td>
-                  <td style="padding: 0px 0px;"><P id="selisih"></P></td>
                 </tr>
                 <tr style="padding: 0px 0px;">
                   <td style="padding: 0px 0px;">Peminjam</td>
@@ -303,7 +299,7 @@
               <div class="alert alert-warning"><p>Apakah Anda yakin mau menyelesaikan peminjaman?</p></div>
             </div>
             <div class="modal-footer">
-                <button href="#!" class="waves-effect waves-green btn-flat blue white-text" type="submit" ><i class="fas fa-share"></i>Kembalikan</button>
+                <button href="#!" class="waves-effect waves-green btn-flat blue white-text" type="submit" ><i class="fas fa-share"></i>Susun Kembali</button>
                 <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
 
             </div>
