@@ -259,7 +259,7 @@
               var audio = new Audio('<?php echo base_url(); ?>dist/qr.mp3');
               audio.play();
               lastResult=1;
-              valid(decodedText);
+              susun(decodedText);
               $('#stop').trigger('click');
               setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
 
