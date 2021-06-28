@@ -206,7 +206,7 @@ class Pinjam extends CI_Controller {
 		if(isset($pecah_bundel[1])){
 			$kode_bundel=$pecah_bundel[1];
 		}else{
-			$kode_bundel=null;
+			
 		}
 
 		$tgl_susun=date('Y-m-d');
