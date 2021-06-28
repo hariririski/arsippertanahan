@@ -47,51 +47,84 @@
         <div class="page-wrapper">
 
             <div class="col s12 ">
-                <div class="card">
-                    <div class="card-content">
-                        <?php
-                          $i=0;
-                          foreach($valid as $value){
-                          $i++;
-                          $type=$this->uri->segment('3');
-                          if($type=="BT"){
-                      			$data="Buku Tanah : ".$value->nama_desa."/".$value->nama_jenis_hak."/".$value->no_hak;
-                            $id=$value->id_buku_tanah;
-                      		 }
-                      		else if ($type=="SU") {
-                            $data="Surat Ukur : ".$value->nama_desa."/".$value->nomor."/".$value->tahun;
-                            $id=$value->id_surat_ukur;
-                      		}
-                      		else if ($type=="W") {
-                            $data="Warkah : ".$value->nomor."/".$value->tahun;
-                            $id=$value->id_warkah;
-                      		}
-                        ?>
-                        <h5><a><center><?php echo $data; ?></center></a></h5>
+              <div class="card">
+                  <div class="card-content">
+                    <table  class="striped">
+                      <?php
+                        $i=0;
+                        foreach($pinjam as $data){
+                        $i++;
+                      ?>
+                      <tr style="padding: 0px 0px;">
+                        <td style="padding: 0px 0px;">Desa/Jenis Hak/Nomor Hak/SU/WARKAH/</td>
+                        <td style="padding: 0px 0px;">
+                          <?php
+                            if($data->id_buku_tanah!=null){
+                              echo "BT / ".$data->nama_jenis_hak." / ".$data->no_hak;
+                            }else if($data->id_surat_ukur!=null){
+                              echo "SU / ".$data->nomor_su." / ".$data->tahun_su;
+                            }else if($data->id_warkah!=null){
+                              echo "W / ".$data->nomor_w." / ".$data->tahun_w;
+                            }
+                          ?>
+                        </td>
+                      </tr>
+                      <tr style="padding: 0px 0px;">
+                        <td style="padding: 0px 0px;">Tanggal Pinjam</td>
+                        <td style="padding: 0px 0px;"><?php echo $data->tgl_pinjam; ?></td>
+                      </tr>
+                      <tr style="padding: 0px 0px;">
+                        <td style="padding: 0px 0px;">Tanggal Kembali</td>
+                        <td style="padding: 0px 0px;"><?php echo $data->tgl_dikembalikan; ?></P></td>
+                      </tr>
+                      <tr style="padding: 0px 0px;">
+                        <td style="padding: 0px 0px;">Tanggak Keterlambatan</td>
+                        <td style="padding: 0px 0px;"><?php echo $data->selisih; ?>Hari</td>
+                      </tr>
+                      <tr style="padding: 0px 0px;">
+                        <td style="padding: 0px 0px;">Peminjam</td>
+                        <td style="padding: 0px 0px;"><?php echo $data->nama_lengkap; ?></td>
+                      </tr>
+                      <tr style="padding: 0px 0px;">
+                        <td style="padding: 0px 0px;">Lokasi Penyimpanan</td>
+                        <td style="padding: 0px 0px;">
+                          <?php
+                            if($data->id_buku_tanah!=null){
+                              echo "Lemari : ".$data->lemari_bt."/ ";
+                              echo "Baris  : ".$data->baris_bt."/ ";
+                              echo "Bundel : ".$data->nama_bundel_bt;
+                            }else if($data->id_surat_ukur!=null){
+                              echo "Lemari : ".$data->lemari_su."/ ";
+                              echo "Baris  : ".$data->baris_su."/ ";
+                              echo "Bundel : ".$data->nama_bundel_su;
+                            }else if($data->id_warkah!=null){
+                              echo "Lemari : ".$data->lemari_w."/ ";
+                              echo "Baris  : ".$data->baris_w."/ ";
+                              echo "Bundel : ".$data->nama_bundel_w;
+                            }
+                          ?>
+                        </td>
+                      </tr>
+                      <?php
+                        if($data->id_buku_tanah!=null){
+                          echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="'.$data->id_pinjam.'">';
+                          echo'<input type="hidden" name="id_bundel" id="id_bundel" value="'.$data->id_bundel_bt.'">';
+                          echo'<input type="hidden" name="invoice" id="invoice" value="'.$data->invoice.'">';
+                        }else if($data->id_surat_ukur!=null){
+                          echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="'.$data->id_pinjam.'">';
+                          echo'<input type="hidden" name="id_bundel" id="id_bundel" value="'.$data->id_bundel_su.'">';
+                          echo'<input type="hidden" name="invoice" id="invoice" value="'.$data->invoice.'">';
+                        }else if($data->id_warkah!=null){
+                          echo'<input type="hidden" name="id_pinjam" id="id_pinjam" value="'.$data->id_pinjam.'">';
+                          echo'<input type="hidden" name="id_bundel" id="id_bundel" value="'.$data->id_bundel_w.'">';
+                          echo'<input type="hidden" name="invoice" id="invoice" value="'.$data->invoice.'">';
+                        }
+                      ?>
+                      <?php } ?>
+                    </table>
 
-                      </table>
-                      <div class="row">
-                            <div class="input-field col s12">
-                              <select required name="kondisi" id="kondisi" <?php if($value->valid==1){echo"disabled";} ?> class="browser-default">
-                                <?php if($value->valid==1){echo'<option value="" >'.$value->nama_kondisi.'</option>';} ?>
-                                <option value="kosong" >Pilih Kondisi Arsip</option>
-                                <?php
-                                  foreach($data_kondisi as $data_kondisi){
-                                    if($data_kondisi->id_kondisi!=$value->id_kondisi){
-                                ?>
-                                  <option value="<?php echo $data_kondisi->id_kondisi; ?>"><?php echo $data_kondisi->id_kondisi; ?> - <?php echo $data_kondisi->nama_kondisi; ?></option>
-                                <?php }} ?>
-                              </select>
-                            </div>
-                      </div>
-                      <?php if($value->valid==1){
-                        echo'<center><img src="'.base_url().'assets/images/valid.png" width="50%"></center>';
-                        echo'<p align="center"><a href="'.base_url().'validqr"><button class="waves-effect waves-light btn-large" submit=""><i class="material-icons left"></i>Kembali</button></a></p>';
-                      } ?>
-                          <input name="id" id="id" type="hidden" value="<?php echo $type."-".$id; ?>">
-
-                    </div>
-                </div>
+                  </div>
+              </div>
             </div>
 
             <div class="card info-gradient m-t-0 m-b-0">
