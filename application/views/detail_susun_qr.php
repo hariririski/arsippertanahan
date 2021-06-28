@@ -183,7 +183,6 @@
     <script src="<?php echo base_url(); ?>dist/js/qrcode_scan.min.js"></script>
 
     <script type="text/javascript">
-
         function data_modal(data){
           if(data!=null){
             pecah=data.split(";",10);
@@ -197,42 +196,39 @@
         }
       }
 
-        function valid(barcode){
-            var id_lama=$('#id').val();
-            var pecah_id=id_lama.split("-",10);
-            var id=pecah_id[1];
-            var type=pecah_id[0];
-            var pecah_barcode=barcode.split("-",10);
-            var bundel=pecah_barcode[1];
-            var e = document.getElementById("kondisi");
-            var kondisi = e.options[e.selectedIndex].value;
-          if(kondisi!="kosong" && pecah_barcode[0]=="BNDL"){
+        function susun(bundel){
+          $('#stop').trigger('click');
+            var id_pinjam=$('#id_pinjam').val();
+            var id_bundel=$('#id_bundel').val();
+            var invoice=$('#invoice').val();
+          if(bundel==id_bundel_baru){
             $.ajax({
             type : "POST",
-            url  : "<?php echo base_url()?>valid/validkan/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+kondisi+"/"+bundel+"/"+id+"/"+type,
+            url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
             dataType : "JSON",
                     success: function(notif){
-                      if (notif==1) {
-                        berhasil("Arsip Valid !.");
-                        setTimeout("location.href = '<?php echo base_url()?>validqr';",1500);
-                      }else if(notif==2){
-                        gagal("Arsip Gagal Valid");
-                      }else if(notif==3){
-                        gagal("Bundel Tidak Sesuai, Arsip Gagal  Valid");
-                      }else{
-                        gagal("Arsip Gagal Valid");
-
-                      }
+                        if (notif==1) {
+                          berhasil("Peminjaman Berhasil Di Susun !.");
+                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
+                        }else if(notif==2){
+                          berhasil("Peminjaman Berhasil Di Susun !.");
+                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
+                        }else if(notif==3){
+                          gagal("Arsip Gagal Di Susun");
+                        }else if(notif==4){
+                          gagal("Bundel Tidak Sesuai, Arsip Gagal Di Susun");
+                        }else{
+                          gagal("Arsip Gagal Di Susun");
+                        }
 
                     }
                 });
 
               }else{
-                gagal("Kondisi Arsip Kosong atau Bundel Tidak Sesuai!.");
+                gagal("Bundel Tidak Sesuai!.");
               }
 
         }
-
       function berhasil(notif) {
         toastr.success(notif, 'Selamat!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
       }
