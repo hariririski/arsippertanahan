@@ -203,9 +203,9 @@
             alert(id_bundel);
             var invoice=$('#invoice').val();
             var pecah_barcode=barcode.split("-",10);
-            var bundel=pecah_barcode[1];
+            var bundel_baru=pecah_barcode[1];
             alert(bundel);
-          if(bundel==id_bundel){
+          if(bundel_baru==id_bundel){
             $.ajax({
             type : "POST",
             url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
