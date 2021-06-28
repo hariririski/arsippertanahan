@@ -78,10 +78,6 @@
                         <td style="padding: 0px 0px;"><?php echo $data->tgl_dikembalikan; ?></P></td>
                       </tr>
                       <tr style="padding: 0px 0px;">
-                        <td style="padding: 0px 0px;">Tanggak Keterlambatan</td>
-                        <td style="padding: 0px 0px;"><?php echo $data->selisih; ?>Hari</td>
-                      </tr>
-                      <tr style="padding: 0px 0px;">
                         <td style="padding: 0px 0px;">Peminjam</td>
                         <td style="padding: 0px 0px;"><?php echo $data->nama_lengkap; ?></td>
                       </tr>
