@@ -167,8 +167,8 @@
             function onScanSuccess(decodedText, decodedResult) {
               var audio = new Audio('<?php echo base_url(); ?>dist/qr.mp3');
               audio.play();
-              susun(decodedText);
-              setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
+              //susun(decodedText);
+              //setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
               // $('#stop').trigger('click');
             }
 
@@ -210,65 +210,59 @@
     <script src="<?php echo base_url(); ?>assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="<?php echo base_url(); ?>dist/js/pages/datatable/datatable-basic.init.js"></script>
     <script type="text/javascript">
-
-
-        function data_modal(data){
-          if(data!=null){
-            pecah=data.split(";",10);
-            //simpan();
-            if(pecah[8]=="BT" || pecah[8]=="SU" || pecah[8]=="W"){
-                window.location.href='<?php echo base_url();?>'+"pinjam/detail_susunqr/"+pecah[4];
-            }else{
-              peringatan("Arsip Tidak Sedang Di Pinjam");
-              $('#stop').trigger('click');
-            }
-        }
-      }
-
-        function susun(bundel){
-          $('#stop').trigger('click');
-            var id_pinjam=$('#id_pinjam').val();
-            var id_bundel=$('#id_bundel').val();
-            var invoice=$('#invoice').val();
-          if(bundel==id_bundel_baru){
-            $.ajax({
-            type : "POST",
-            url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
-            dataType : "JSON",
-                    success: function(notif){
-                        if (notif==1) {
-                          berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
-                        }else if(notif==2){
-                          berhasil("Peminjaman Berhasil Di Susun !.");
-                          setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
-                        }else if(notif==3){
-                          gagal("Arsip Gagal Di Susun");
-                        }else if(notif==4){
-                          gagal("Bundel Tidak Sesuai, Arsip Gagal Di Susun");
-                        }else{
-                          gagal("Arsip Gagal Di Susun");
-                        }
-
-                    }
-                });
-
-              }else{
-                gagal("Bundel Tidak Sesuai!.");
-              }
-
-        }
+      //
+      //
+      //   function data_modal(data){
+      //     if(data!=null){
+      //       pecah=data.split(";",10);
+      //       //simpan();
+      //       if(pecah[8]=="BT" || pecah[8]=="SU" || pecah[8]=="W"){
+      //           window.location.href='<?php echo base_url();?>'+"pinjam/detail_susunqr/"+pecah[4];
+      //       }else{
+      //         peringatan("Arsip Tidak Sedang Di Pinjam");
+      //         $('#stop').trigger('click');
+      //       }
+      //   }
+      // }
+      //
+      //   function susun(bundel){
+      //     $('#stop').trigger('click');
+      //       var id_pinjam=$('#id_pinjam').val();
+      //       var id_bundel=$('#id_bundel').val();
+      //       var invoice=$('#invoice').val();
+      //     if(bundel==id_bundel_baru){
+      //       $.ajax({
+      //       type : "POST",
+      //       url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
+      //       dataType : "JSON",
+      //               success: function(notif){
+      //                   if (notif==1) {
+      //                     berhasil("Peminjaman Berhasil Di Susun !.");
+      //                     setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
+      //                   }else if(notif==2){
+      //                     berhasil("Peminjaman Berhasil Di Susun !.");
+      //                     setTimeout("location.href = '<?php echo base_url()?>susunqr';",1500);
+      //                   }else if(notif==3){
+      //                     gagal("Arsip Gagal Di Susun");
+      //                   }else if(notif==4){
+      //                     gagal("Bundel Tidak Sesuai, Arsip Gagal Di Susun");
+      //                   }else{
+      //                     gagal("Arsip Gagal Di Susun");
+      //                   }
+      //
+      //               }
+      //           });
+      //
+      //         }else{
+      //           gagal("Bundel Tidak Sesuai!.");
+      //         }
+      //
+      //   }
 
     </script>
 
 
     <!-- Latest compiled and minified CSS -->
-    <script>
-    /****************************************
-     *       Basic Table                   *
-     ****************************************/
-    $('#zero_config').DataTable();
-    </script>
     <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
     <script>
       function berhasil(notif) {
@@ -283,18 +277,18 @@
     </script>
 
     <script type="text/javascript">
-    permisi();
-      function permisi(){
-          $(function(){
-              $('.permisi').trigger('click');
-          });
-        }
-
-      function camera(){
-        $(function(){
-            //$('#camera').trigger('click');
-        });
-      }
+    // permisi();
+    //   function permisi(){
+    //       $(function(){
+    //           $('.permisi').trigger('click');
+    //       });
+    //     }
+    //
+    //   function camera(){
+    //     $(function(){
+    //         //$('#camera').trigger('click');
+    //     });
+    //   }
     </script>
 
 
