@@ -252,7 +252,7 @@
       }
     </script>
     <script src="<?php echo base_url(); ?>dist/js/qrcode_scan.min.js"></script>
-    <script>
+    <script type="text/javascript">
 
         function docReady(fn) {
             // see if DOM is already available
