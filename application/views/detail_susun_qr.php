@@ -196,12 +196,14 @@
         }
       }
 
-        function susun(bundel){
+        function susun(barcode){
           $('#stop').trigger('click');
             var id_pinjam=$('#id_pinjam').val();
             var id_bundel=$('#id_bundel').val();
             var invoice=$('#invoice').val();
-          if(bundel==id_bundel_baru){
+            var pecah_barcode=barcode.split("-",10);
+            var bundel=pecah_barcode[1];
+          if(bundel==id_bundel){
             $.ajax({
             type : "POST",
             url  : "<?php echo base_url()?>pinjam/susunkan/"+invoice+"/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+id_pinjam+"/"+id_bundel,
@@ -259,7 +261,7 @@
               var audio = new Audio('<?php echo base_url(); ?>dist/qr.mp3');
               audio.play();
               lastResult=1;
-              alert(decodedText);
+              susun(decodedText);
               $('#stop').trigger('click');
               setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
 
