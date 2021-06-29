@@ -148,7 +148,7 @@
                                               <th>Kecamatan</th>
                                               <th>Desa</th>
                                               <th>Total Hak</th>
-                                              <th>Cetak QR Code</th>
+                                              <th>Cetak QR Code </th>
 
                                           </tr>
                                       </thead>
