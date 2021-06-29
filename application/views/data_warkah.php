@@ -143,6 +143,7 @@
                                               <th>#</th>
                                               <th>Tahun</th>
                                               <th>Total Warkah</th>
+                                              <th>Cetak QR Code</th>
 
                                           </tr>
                                       </thead>
@@ -156,6 +157,9 @@
                                               <td  style="color: #000000;"><?php echo $i;?></td>
                                               <td  style="color: #000000;"><?php echo $data->tahun; ?></td>
                                               <td  style="color: #000000;"><a href="<?php echo base_url(); ?>warkah/detail_warkah_desa/<?php echo $data->tahun; ?>"><?php echo $data->jumlah; ?></a></td>
+                                              <td  style="color: #000000;">
+                                                <a href="<?php echo base_url(); ?>cetak/cetak_warkah_tahun/<?php echo $data->tahun; ?>/<?php echo $data->jumlah; ?>" target="_blank"class="waves-effect waves-light btn  green">Cetak</a>
+                                              </td>
                                           </tr>
                                           <?php
                                           }

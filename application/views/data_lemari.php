@@ -99,6 +99,7 @@
                                             <th>QR Code</th>
                                             <th>Keterangan</th>
                                             <th width="30%">Aksi</th>
+                                            <th>Cetak QR Code Baris / Bundel</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -124,10 +125,19 @@
                                               <a class="waves-effect waves-light btn  orange">Edit</a>
                                               <a href="<?php echo base_url(); ?>lemari/hapus_lemari/<?php echo $data_lemari->id_lemari; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Ingin Menghapus Lemari <?php echo $data_lemari->nama_lemari; ?>?')"/>Hapus </a>
                                             </td>
+                                            <td  style="color: #000000;">
+                                              <a href="<?php echo base_url(); ?>cetak/cetak_bt_desa//" target="_blank"class="waves-effect waves-light btn  green">Cetak QR Code</a>
+                                            </td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <a href="<?php echo base_url(); ?>cetak/cetak_lemari" target="_blank"class="waves-effect waves-light btn  green">Cetak QR Code Lemari</a>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
