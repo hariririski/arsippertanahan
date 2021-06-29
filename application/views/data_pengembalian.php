@@ -377,6 +377,8 @@
             }
           }else{
             peringatan("Arsip Tidak Sedang Di Pinjam");
+            inputField.value ="";
+            setFocus();
           }
         }
 
@@ -432,6 +434,8 @@
                         }else{
                           //tampil_data_pinjam();
                           gagal("Peminjaman Gagal Di kembalikan");
+                          inputField.value ="";
+                          setFocus();
                         }
 
                     }

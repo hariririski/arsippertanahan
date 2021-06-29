@@ -148,6 +148,7 @@
                                               <th>Kecamatan</th>
                                               <th>Desa</th>
                                               <th>Total Hak</th>
+                                              <th>Cetak QR Code</th>
 
                                           </tr>
                                       </thead>
@@ -162,7 +163,9 @@
                                               <td  style="color: #000000;"><?php echo $desa->nama_kec; ?></td>
                                               <td  style="color: #000000;"><?php echo $desa->nama_desa; ?></td>
                                               <td  style="color: #000000;"><a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah_desa/<?php echo $desa->kode_desa; ?>"><?php echo $desa->jumlah_hak; ?></a></td>
-
+                                              <td  style="color: #000000;">
+                                                <a href="<?php echo base_url(); ?>cetak/cetak_bt_desa/<?php echo $desa->kode_desa; ?>" target="_blank" class="waves-effect waves-light btn  green">Cetak</a>
+                                              </td>
                                           </tr>
                                           <?php
                                           }
