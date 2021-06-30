@@ -81,6 +81,47 @@ class Pinjam extends CI_Controller {
 		$data=$this->M_pinjam->detail_pinjam($invoice);
 		echo json_encode($data);
 	}
+
+	function kembalikan(){
+		$invoice=$this->uri->segment('3');
+		$admin_kembali=$this->uri->segment('4');
+		$id_pinjam=$this->uri->segment('5');
+		$tgl_dikembalikan=date('Y-m-d');
+		$status=2;
+		$data;
+		$jumlah_tgl_dikembalikan;
+		// 1 dipinjam, 2 dikembalikan, 3 dkembalikan dan disusun di tempatnya
+		$sql1="SELECT count(id_pinjam) as jumlah from pinjam where invoice='$invoice' and tgl_dikembalikan is null";
+		$query1 = $this->db->query($sql1);
+		$pinjam=$query1->result();
+		foreach ($pinjam as $data) {
+				$jumlah_tgl_dikembalikan=$data->jumlah;
+		 }
+		 if($jumlah_tgl_dikembalikan>2){
+			 	$data=$this->M_pinjam->kembalikan($id_pinjam,$status,$tgl_dikembalikan,$admin_kembali);
+		 }else if($jumlah_tgl_dikembalikan==2){
+			 $id_pinjam;
+			 $status=2;
+			 $tgl_dikembalikan=date('Y-m-d');
+			 $admin_kembali=$this->uri->segment('4');
+				$sql1="SELECT id_pinjam from pinjam where invoice='$invoice' and tgl_dikembalikan is null";
+		 		$query1 = $this->db->query($sql1);
+				$pinjam=$query1->result();
+		 		foreach ($pinjam as $data) {
+		 				$id_pinjam=$data->id_pinjam;
+						$cek=$this->M_pinjam->kembalikan($id_pinjam,$status,$tgl_dikembalikan,$admin_kembali);
+						if($cek>0){
+	 	 					$data=2;
+		 	 			}else{
+		 	 				$data=3;
+		 	 		 	}
+		 		 }
+
+
+		 }
+		echo json_encode($data);
+	}
+
 	function hapus_list_pinjam(){
 		$id_pinjam=$this->uri->segment('3');
 		//cari data buku tanah, SU, Warkah

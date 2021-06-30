@@ -10,15 +10,15 @@
         return $query->result();
       }
       function pinjam_buku_tanah(){
-        $query=$this->db->query("SELECT pinjam.tgl_pinjam, COUNT(id_pinjam)as jumlah From pinjam WHERE pinjam.id_buku_tanah is NOT null and pinjam.status=1 GROUP BY tgl_pinjam limit 30");
+        $query=$this->db->query("SELECT pinjam.tgl_pinjam, COUNT(id_pinjam)as jumlah From pinjam WHERE pinjam.id_buku_tanah is NOT null and pinjam.status>=1 GROUP BY tgl_pinjam limit 30");
         return $query->result();
       }
       function pinjam_surat_ukur(){
-        $query=$this->db->query("SELECT pinjam.tgl_pinjam, COUNT(id_pinjam)as jumlah From pinjam WHERE pinjam.id_surat_ukur is NOT null and pinjam.status=1 GROUP BY tgl_pinjam limit 30");
+        $query=$this->db->query("SELECT pinjam.tgl_pinjam, COUNT(id_pinjam)as jumlah From pinjam WHERE pinjam.id_surat_ukur is NOT null and pinjam.status>=1 GROUP BY tgl_pinjam limit 30");
         return $query->result();
       }
       function pinjam_warkah(){
-        $query=$this->db->query("SELECT pinjam.tgl_pinjam, COUNT(id_pinjam)as jumlah From pinjam WHERE pinjam.id_warkah is NOT null and pinjam.status=1 GROUP BY tgl_pinjam limit 30");
+        $query=$this->db->query("SELECT pinjam.tgl_pinjam, COUNT(id_pinjam)as jumlah From pinjam WHERE pinjam.id_warkah is NOT null and pinjam.status>=1 GROUP BY tgl_pinjam limit 30");
         return $query->result();
       }
       function tgl_pinjam(){

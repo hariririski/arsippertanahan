@@ -175,10 +175,10 @@
                                             <li class="m-t-25">
                                                 <div class="d-flex no-block align-items-center">
                                                     <div>
-                                                        <span class="m-b-0 white-text op-6">Menuju Keterlambatan</span>
+                                                        <span class="m-b-0 white-text op-6">Menuju Terlambat</span>
                                                     </div>
                                                     <div class="ml-auto">
-                                                        <span class="m-b-0 white-text"><?php echo $persen_menuju?></span>
+                                                        <span class="m-b-0 white-text"><?php echo $persen_menuju?>%</span>
                                                     </div>
                                                 </div>
                                                 <div class="progress m-t-10" style="background-color: rgba(0,0,0,.1);">

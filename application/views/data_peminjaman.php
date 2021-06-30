@@ -96,9 +96,9 @@
                                             <th>#</th>
                                             <th>Invoice</th>
                                             <th>Tanggal Pinjam</th>
-                                            <th>Tanggal Kembali</th>
                                             <th>Operator</th>
                                             <th>Pegawai</th>
+                                            <th>Status</th>
                                             <th >Aksi</th>
                                         </tr>
                                     </thead>
@@ -112,20 +112,30 @@
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $data->invoice; ?></td>
                                             <td><?php echo $data->tgl_pinjam; ?></td>
-                                            <td><?php echo $data->tgl_kembali; ?></td>
                                             <td><?php echo $data->admin_tambah; ?></td>
                                             <td><?php echo $data->nama_lengkap; ?></td>
+                                            <td>
+                                              <?php if($data->tgl_dikembalikan!=null){
+                                                        echo"Selesai";}
+                                                    else{
+                                                        echo"Belum Dikembalikan";
+                                                      } ?>
+                                            </td>
                                             <td>
                                               <?php
                                               if($data->status==0){
                                               ?>
-                                              <a class="waves-effect waves-light btn  orange" href="<?php echo base_url(); ?>pinjam/peminjaman/<?php echo $data->invoice; ?>">Lanjutkan</a></td>
+                                              <a class="waves-effect waves-light btn  red" href="<?php echo base_url(); ?>pinjam/peminjaman/<?php echo $data->invoice; ?>">Lanjutkan</a></td>
                                               <?php
-                                              }elseif ($data->status==1){
+                                            }elseif ($data->status==1){
                                               ?>
-                                              <a class="waves-effect waves-light btn  green" href="<?php echo base_url(); ?>pinjam/detail_peminjaman/<?php echo $data->invoice; ?>">Detail</a></td>
+                                              <a class="waves-effect waves-light btn  orange" href="<?php echo base_url(); ?>pinjam/detail_peminjaman/<?php echo $data->invoice; ?>">Kembalikan</a></td>
                                               <?php
-                                              }
+                                            }elseif ($data->status==2) {
+                                              ?>
+                                              <a class="waves-effect waves-light btn  green" href="<?php echo base_url(); ?>pinjam/detail_peminjaman/<?php echo $data->invoice; ?>">detail</a></td>
+                                              <?php
+                                            }
                                               ?>
                                         </tr>
                                         <?php } ?>

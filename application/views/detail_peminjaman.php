@@ -61,8 +61,8 @@
                                                 <th>NO</th>
                                                 <th>Hak/SU/warkah</th>
                                                 <th>Keterlambatan</th>
-                                                <th>Tanggal Dikembalikan</th>
-                                                <th>Action</th>
+                                                <th>Dikembalikan</th>
+                                                <th>#</th>
                                             </tr>
                                         </thead>
                                         <tbody id="show_data">
@@ -124,37 +124,10 @@
                     <h5 class="card-title">Konfirmasi</h5>
                     <div class="row">
                       <input type="hidden" name="kode" id="textkode" value="">
-                      <div class="alert alert-warning"><p>Apakah Anda yakin mau memhapus barang ini?</p></div>
+                      <div class="alert alert-warning"><p>Apakah Anda yakin mau mengembalikan barang ini?</p></div>
                     </div>
                     <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="btn_hapus"><i class="fas fa-share"></i> Hapus</a>
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text">Cancel</a>
-
-                    </div>
-                </div>
-            </div>
-            <div id="modal2" class="modal">
-                <div class="modal-content">
-                    <h5 class="card-title">Konfirmasi</h5>
-                    <div class="row">
-                      <div class="alert alert-warning"><p>Apakah Anda yakin mau menyelesaikan peminjaman?</p></div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="btn_simpan"><i class="fas fa-share"></i>Lanjutkan </a>
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text">Cancel</a>
-
-                    </div>
-                </div>
-            </div>
-
-            <div id="modal3" class="modal">
-                <div class="modal-content">
-                    <h5 class="card-title">Konfirmasi</h5>
-                    <div class="row">
-                      <div class="alert alert-warning"><p>Apakah Anda yakin mau Membatalkan peminjaman?</p></div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="btn_batal"><i class="fas fa-share"></i>Lanjutkan</a>
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="btn_hapus"><i class="fas fa-share"></i> Kembalikan</a>
                         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text">Cancel</a>
 
                     </div>
@@ -224,13 +197,26 @@
     		                html += '<tr>'+
       		                  		'<td>'+nomor+'</td>'+
       		                  		'<td>'+barang+'<br>'+data[i].pelayanan+" "+data[i].durasi+'(Hari)<br>'+
-      		                  		      data[i].tgl_pinjam+' s/d '+data[i].tgl_kembali+'</td>'+
-      		                  		'<td>'+data[i].selisih+' Hari</td>'+
-      		                  		'<td>'+data[i].tgl_dikembalikan+'</td>'+
-    		                        '<td style="text-align:left;">'+
-                                        '<a  class="btn btn-danger btn-xs item_hapus" data="'+data[i].id_pinjam+'">Kembalikan</a>'+
-                                    '</td>'+
-    		                        '</tr>';
+      		                  		      data[i].tgl_pinjam+' s/d '+data[i].tgl_kembali+'</td>';
+                        if(data[i].tgl_dikembalikan!=null){
+                          var miliday = 24 * 60 * 60 * 1000;
+                          var tglPertama = Date.parse(data[i].tgl_pinjam);
+                          var tglKedua = Date.parse(data[i].tgl_dikembalikan);
+                          var selisih = (tglKedua - tglPertama) / miliday;
+                          html +='<td>'+selisih+' Hari</td>'+
+        		                  		'<td>'+data[i].tgl_dikembalikan+'</td>';
+                        }else{
+      		              html +='<td>'+data[i].selisih+' Hari</td>'+
+      		                  		'<td>'+data[i].tgl_dikembalikan+'</td>';
+                        }
+                        if(data[i].tgl_dikembalikan!=null){
+                          html +='<td>Dipinjamkan oleh '+data[i].admin_tambah+' dan<br>'+'diterima pengembalian oleh '+data[i].admin_kembali+'</td>';
+                        }else{
+      		                html +='<td style="text-align:left;">'+
+                                          '<a  class="btn btn-danger btn-xs item_hapus" data="'+data[i].id_pinjam+'">Kembalikan</a>'+
+                                      '</td>'+
+      		                        '</tr>';
+                        }
                         nomor++;
     		            }
     		            $('#show_data').html(html);
@@ -256,28 +242,25 @@
                 var kode=$('#textkode').val();
                 $.ajax({
                 type : "POST",
-                url  : "<?php echo base_url()?>pinjam/hapus_list_pinjam/"+kode,
+                url  : "<?php echo base_url()?>pinjam/kembalikan/<?php echo $this->uri->segment('3');?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+kode,
                 dataType : "JSON",
                         data : {kode: kode},
-                        success: function(data){
+                        success: function(notif){
                             $('#modal1').modal('close');
-                            tampil_data_pinjam();
+                            if (notif==1) {
+                              tampil_data_pinjam();
+                            }else if(notif==2){
+                              window.location.href="<?php echo base_url()?>datapinjam";
+                            }else{
+                              alert("Peminjaman Gagal Di Hapus");
+                            }
+
                         }
                     });
                     return false;
                 });
 
-                changeAction = function(select){
-                   var id=document.getElementById("layanan").action = select.value;
-                   $.ajax({
-                     url : "<?php echo base_url();?>pinjam/update_layanan_pinjam/"+id,
-                     method : "POST",
-                     data : {id: id},
-                     async : true,
-                     dataType : 'json',
-                   });
-                   tampil_data_pinjam();
-                }
+
 
 
 
