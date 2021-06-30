@@ -147,6 +147,8 @@
                                         <?php
                                           $menuju=0;
                                           $telat=0;
+                                          $persen_menuju=0;
+                                          $persen_telat=0;
                                           foreach($pinjam_telat as $pinjam){
                                             if($pinjam->selisih >-2 && $pinjam->selisih <1 ){
                                               $menuju++;
@@ -155,8 +157,10 @@
                                             }
                                           }
                                           $total=$menuju+$telat;
-                                          $persen_menuju=round(($menuju/$total)*100);
-                                          $persen_telat=round(($telat/$total)*100);
+                                          if($total>0){
+                                            $persen_menuju=round(($menuju/$total)*100);
+                                            $persen_telat=round(($telat/$total)*100);
+                                          }
                                         ?>
                                         <ul class="m-t-15">
                                             <li>
