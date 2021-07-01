@@ -39,9 +39,10 @@
             <div class="card info-gradient m-t-0 m-b-0">
                 <div class="card-content">
                     <div class="p-b-40 p-t-20">
+                        <video id="preview" style="width:100%; height:50%;"></video>
                         <h3 class="white-text">Scann QR Code</h3>
                         <p class="white-text op-7 m-b-20">Manajemen Arsip Lebih Mudah, Cepat, Mudah dan Efektif</p>
-                        <video id="preview" style="width:100%; height:50%;"></video>
+
                     </div>
                 </div>
             </div>
