@@ -57,7 +57,7 @@
     <script src="dist/js/jquery.min.js"></script>
     <script src="dist/js/instascan.min.js"></script>
     <script type="text/javascript">
-      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview'), scanPeriod: 5, mirror: true });
       scanner.addListener('scan', function (content) {
     	alert(content);
       });
