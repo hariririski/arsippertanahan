@@ -7,8 +7,8 @@
       }
 
       function tambah($invoice,$tgl_pinjam,$nip,$admin){
-        $perintah1="INSERT INTO `pinjam`(`invoice`,`tgl_pinjam`,`admin_tambah`,`nip`,`induk`)
-                        VALUES ('$invoice','$tgl_pinjam','$admin','$nip',1)";
+        $perintah1="INSERT INTO `pinjam`(`invoice`,`tgl_pinjam`,`admin_tambah`,`nip`,`induk`,`status`)
+                        VALUES ('$invoice','$tgl_pinjam','$admin','$nip',1,1)";
                         //1 berarti induk tidak memuat data peminjaman
         $query=$this->db->query($perintah1);
         return $query;
@@ -60,6 +60,13 @@
 
       function kembalikan($id_pinjam,$status,$tgl_dikembalikan,$admin_kembali){
     		$perintah=("UPDATE `pinjam` SET `status`=$status, `tgl_dikembalikan`='$tgl_dikembalikan', `admin_kembali`='$admin_kembali' WHERE `id_pinjam`='$id_pinjam'");
+        $hasil=$this->db->query($perintah);
+        return $hasil;
+    	}
+
+      function ubah_status_induk($invoice,$status){
+        //3 sudah di pinjam, blm disusun, 4 selesai
+    		$perintah=("UPDATE `pinjam` SET `status`=$status where invoice='$invoice' and induk=1");
         $hasil=$this->db->query($perintah);
         return $hasil;
     	}

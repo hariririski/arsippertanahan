@@ -400,7 +400,7 @@
                     }else if (data==4) {
                       alert("Arsip Proses Peminjaman Atau Telah Di Pinjam");
                     }else if (data==5) {
-                      alert("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kebali Sebelum dilakukan Proses Peminjaman");
+                      alert("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kembali Sebelum dilakukan Proses Peminjaman");
                     }else if(data==6)
                       alert("Arsip Hilang");
                     else{
@@ -427,26 +427,51 @@
                   success: function(data){
                     if(data==null){
                       //kosong
-                    }else if (data==0) {
-                      alert("Format Barcode Tidak Sesuai");
                     }else if (data==1) {
-                      alert("Data Tidak Ditemukan");
-                    }else if (data==2) {
-                      alert("Arsip Belum Lengkap");
-                    }else if (data==3) {
-                      alert("Arsip Telah Di Input");
-                    }else if (data==4) {
-                      alert("Arsip Proses Peminjaman Atau Telah Di Pinjam");
-                    }else if (data==5) {
-                      alert("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kebali Sebelum dilakukan Proses Peminjaman");
-                    }else if(data==6)
-                      alert("Arsip Hilang");
-                    else{
                       tampil_data_pinjam();
+                    }else if (data==2) {
+                      alert('Buku Tanah Belum Valid');
+                    }else if (data==3){
+                      alert('Buku Tanah Sedang / Proses Peminjaman ');
+                    }else if (data==4) {
+                      alert('Buku Tanah Lebih Dari 1, Mohon Menguhungi admin');
+                    }else if(data==5){
+                      alert('Buku Tanah Tidak Ditemukan');
                     }
-                    const inputField = document.getElementById("barcode");
+                    const inputField = document.getElementById("nomor_hak");
                     inputField.value ="";
-                    document.getElementById("barcode").focus();
+                }
+
+            });
+            return false;
+          }
+
+          function cari_surat_ukur(){
+            var desa_buku_tanah=$('#desa_surat_ukur').val();
+            var jenis_hak=$('#nomor_surat_ukur').val();
+            var nomor_hak=$('#tahun_surat_ukur').val();
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo base_url('pinjam/cari_surat_ukur')?>/<?php echo $this->uri->segment('3');?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+desa_surat_ukur+"/"+nomor_surat_ukur+"/"+tahun_surat_ukur,
+                dataType : "JSON",
+                  success: function(data){
+                    if(data==null){
+                      //kosong
+                    }else if (data==1) {
+                      tampil_data_pinjam();
+                    }else if (data==2) {
+                      alert('Surat Ukur Belum Valid');
+                    }else if (data==3){
+                      alert('Surat Ukur Sedang / Proses Peminjaman ');
+                    }else if (data==4) {
+                      alert('Surat Ukur Lebih Dari 1, Mohon Menguhungi admin');
+                    }else if(data==5){
+                      alert('Surat Ukur Tidak Ditemukan');
+                    }
+                    const momor = document.getElementById("nomor_surat_ukur");
+                    nomor.value ="";
+                    const tahun = document.getElementById("tahun_surat_ukur");
+                    tahun.value ="";
                 }
 
             });

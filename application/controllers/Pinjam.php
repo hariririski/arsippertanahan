@@ -21,15 +21,13 @@ class Pinjam extends CI_Controller {
 			$this->load->model('M_warkah');
 	}
 
-	public function data_peminjaman()
-	{
+	public function data_peminjaman(){
 		$data['data'] = $this->M_pinjam->data();
 		$data['pegawai'] = $this->M_pegawai->lihat_aktif();
 		$this->load->view('data_peminjaman',$data);
 	}
 
-	public function peminjaman()
-	{
+	public function peminjaman(){
 		$invoice=$this->uri->segment('3');
 		$pecah_invoice=explode("-",$invoice);
 		$nip=$pecah_invoice[1];
@@ -40,8 +38,7 @@ class Pinjam extends CI_Controller {
 		$this->load->view('peminjaman',$data);
 	}
 
-	public function detail_peminjaman()
-	{
+	public function detail_peminjaman(){
 		$invoice=$this->uri->segment('3');
 		$pecah_invoice=explode("-",$invoice);
 		$nip=$pecah_invoice[1];
@@ -52,8 +49,7 @@ class Pinjam extends CI_Controller {
 		$this->load->view('detail_peminjaman',$data);
 	}
 
-	public function tambah()
-	{
+	public function tambah(){
 			$tahun=date("Y");
 			$bulan=date("m");
 			$tanggal=date("d");
@@ -62,7 +58,7 @@ class Pinjam extends CI_Controller {
 			$acak=rand(1,100);
 			$invoice=$tanggal.$bulan.$tahun."-".$nip."-".$acak;
 			$tgl_pinjam=$tahun."-".$bulan."-".$tanggal;
-			$cek= $this->M_pinjam->tambah($invoice,$tgl_pinjam,$nip,$admin);
+			$cek= $this->M_pinjam->tambah($invoice,$tgl_pinjam,$nip,$admin,1);
 			if($cek>0){
 					echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."pinjam/peminjaman/".$invoice."';</script>");
 			}else{
@@ -98,7 +94,7 @@ class Pinjam extends CI_Controller {
 				$jumlah_tgl_dikembalikan=$data->jumlah;
 		 }
 		 if($jumlah_tgl_dikembalikan>2){
-			 $status=2;
+			 $status=3;
 			 $tgl_dikembalikan=date('Y-m-d');
 			 $admin_kembali=$this->uri->segment('4');
 				$sql1="SELECT id_pinjam, id_buku_tanah, id_surat_ukur, id_warkah from pinjam where id_pinjam='$id_pinjam' and tgl_dikembalikan is null";
@@ -112,13 +108,13 @@ class Pinjam extends CI_Controller {
 						$cek=$this->M_pinjam->kembalikan($id_pinjam,$status,$tgl_dikembalikan,$admin_kembali);
 						if($cek>0){
 							if($id_buku_tanah!=null){
-								$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+								$this->M_buku_tanah->ubah_status($id_buku_tanah,3);
 								$data=1;
 							}elseif ($id_surat_ukur!=null) {
-								$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+								$this->M_surat_ukur->ubah_status($id_surat_ukur,3);
 								$data=1;
 							}elseif ($id_warkah!=null) {
-								$this->M_warkah->ubah_status($id_warkah,1);
+								$this->M_warkah->ubah_status($id_warkah,3);
 								$data=1;
 							}
 		 	 			}else{
@@ -127,7 +123,7 @@ class Pinjam extends CI_Controller {
 					}
 		 }else if($jumlah_tgl_dikembalikan==2){
 			 $id_pinjam;
-			 $status=2;
+			 $status=3;
 			 $tgl_dikembalikan=date('Y-m-d');
 			 $admin_kembali=$this->uri->segment('4');
 				$sql1="SELECT id_pinjam, id_buku_tanah, id_surat_ukur, id_warkah from pinjam where invoice='$invoice' and tgl_dikembalikan is null";
@@ -139,13 +135,15 @@ class Pinjam extends CI_Controller {
 						$id_surat_ukur=$data->id_surat_ukur;
 						$id_warkah=$data->id_warkah;
 						$cek=$this->M_pinjam->kembalikan($id_pinjam,$status,$tgl_dikembalikan,$admin_kembali);
+						$this->M_pinjam->ubah_status_induk($invoice,3);
 						if($cek>0){
 							if($id_buku_tanah!=null){
-								$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+								// 3 sudah dikembalikan namunm belum di susun
+								$this->M_buku_tanah->ubah_status($id_buku_tanah,3);
 							}elseif ($id_surat_ukur!=null) {
-								$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+								$this->M_surat_ukur->ubah_status($id_surat_ukur,3);
 							}elseif ($id_warkah!=null) {
-								$this->M_warkah->ubah_status($id_warkah,1);
+								$this->M_warkah->ubah_status($id_warkah,3);
 							}
 	 	 					$data=2;
 		 	 			}else{
@@ -204,11 +202,75 @@ class Pinjam extends CI_Controller {
 	}
 
 	function cari_buku_tanah(){
-		echo $invoice=$this->uri->segment('3');
-		echo $admin_tambah=$this->uri->segment('4');
-		echo $id_buku_tanah=$this->uri->segment('5');
-		echo $id_jeni_hak=$this->uri->segment('6');
-		echo $no_hak=$this->uri->segment('7');
+		$invoice=$this->uri->segment('3');
+		$pecah_invoice=explode("-",$invoice);
+		$nip=$pecah_invoice[1];
+		$admin_tambah=$this->uri->segment('4');
+		$kode_desa=$this->uri->segment('5');
+		$id_jeni_hak=$this->uri->segment('6');
+		$no_hak=$this->uri->segment('7');
+		$tgl_pinjam=('Y-m-d');
+		$id_buku_tanah;
+		$status;
+		$sql="SELECT count(id_buku_tanah)as jumlah, id_buku_tanah,status from buku_tanah where no_hak='$no_hak' and id_jenis_hak=$id_jeni_hak and kode_desa='$kode_desa' ";
+		$query = $this->db->query($sql);
+		$buku_tanah=$query->result();
+		$jumlah_buku_tanah;
+		foreach ($buku_tanah as $isi) {
+				$jumlah_buku_tanah=$isi->jumlah;
+				$id_buku_tanah=$isi->id_buku_tanah;
+				$status=$isi->status;
+		 }
+		 if($jumlah_buku_tanah==1 && $status==1){
+			 $this->M_pinjam->tambah_bt($invoice,$tgl_pinjam,$nip,$admin_tambah,$id_buku_tanah);
+			 $this->M_buku_tanah->ubah_status($id_buku_tanah,2);
+			 $data=1;
+		 }else if($jumlah_buku_tanah==1 && $status==0){
+			 $data=2;
+		 }elseif ($jumlah_buku_tanah==1 && $status==2) {
+		 	 $data=3;
+		 }else if($jumlah_buku_tanah>1){
+			 $data=4;
+		 }else{
+			 $data=5;
+		 }
+		 echo json_encode($data);
+	}
+
+	function cari_surat_ukur(){
+		$invoice=$this->uri->segment('3');
+		$pecah_invoice=explode("-",$invoice);
+		$nip=$pecah_invoice[1];
+		$admin_tambah=$this->uri->segment('4');
+		$kode_desa=$this->uri->segment('5');
+		$nomor_surat_ukur=$this->uri->segment('6');
+		$tahun_surat_ukur=$this->uri->segment('7');
+		$tgl_pinjam=('Y-m-d');
+		$id_surat_ukur;
+		$status;
+		$sql="SELECT count(id_surat_ukur)as jumlah, id_surat_ukur,status from buku_tanah where nomor='$nomor_surat_ukur' and tahun=$tahun_surat_ukur and kode_desa='$kode_desa' ";
+		$query = $this->db->query($sql);
+		$buku_tanah=$query->result();
+		$jumlah_surat_ukur;
+		foreach ($surat_ukur as $isi) {
+				echo $jumlah_surat_ukur=$isi->jumlah;
+				$id_surat_ukur=$isi->id_surat;
+				$status=$isi->status;
+		 }
+		 if($jumlah_surat_ukur==1 && $status==1){
+			 //$this->M_pinjam->tambah_bt($invoice,$tgl_pinjam,$nip,$admin_tambah,$id_surat_ukur);
+			 //$this->M_surat_ukur->ubah_status($id_surat_ukur,2);
+			 $data=1;
+		 }else if($jumlah_surat_ukur==1 && $status==0){
+			 $data=2;
+		 }elseif ($jumlah_surat_ukur==1 && $status==2) {
+		 	 $data=3;
+		 }else if($jumlah_surat_ukur>1){
+			 $data=4;
+		 }else{
+			 $data=5;
+		 }
+		 echo json_encode($data);
 	}
 
 	function cari_barcode(){
@@ -266,6 +328,7 @@ class Pinjam extends CI_Controller {
 							 $this->M_pinjam->tambah_bt($invoice,$tgl_pinjam,$nip,$admin,$id);
 
 							 //mengubah status bukutanah
+							 //2 sedang dipinjam
 							 $this->M_buku_tanah->ubah_status($id,2);
 
 						 }else{
@@ -333,6 +396,7 @@ class Pinjam extends CI_Controller {
 							 $this->M_pinjam->tambah_su($invoice,$tgl_pinjam,$nip,$admin,$id);
 
 							 //mengubah status bukutanah
+							 //2 sedang di pinjam
 							 $this->M_surat_ukur->ubah_status($id,2);
 
 						 }else{
@@ -399,6 +463,7 @@ class Pinjam extends CI_Controller {
 							 $this->M_pinjam->tambah_warkah($invoice,$tgl_pinjam,$nip,$admin,$id);
 
 							 //mengubah status bukutanah
+							 //1 tersedia 2 sedang dipinjam, 3 dikembalikan belum di susun
 							 $this->M_warkah->ubah_status($id,2);
 
 						 }else{
@@ -448,7 +513,8 @@ class Pinjam extends CI_Controller {
 					$jumlah=$data->jumlah;
 			 }
 			 if($jumlah>1){
-				 $cek=$this->M_pinjam->simpan_pinjam($invoice,1);
+				 //2 sedang peminjaman
+				 $cek=$this->M_pinjam->simpan_pinjam($invoice,2);
 				 if($cek>0){
 		 				$data=3;
 			 		}else{
