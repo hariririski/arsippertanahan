@@ -11,7 +11,7 @@
     <link href="dist/css/pages/dashboard3.css" rel="stylesheet">
     <style>
       #preview{
-         width:500px;
+         width:100%;
          height: 500px;
          margin:0px auto;
       }
