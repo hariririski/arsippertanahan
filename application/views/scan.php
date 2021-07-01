@@ -60,7 +60,7 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <!-- col -->
-                    <div class="col s12 l7">
+                    <div class="col s12 ">
                         <div class="card card-hover">
                             <div class="card-content">
                               <h4 class="card-title">Peminjaman</h4>
