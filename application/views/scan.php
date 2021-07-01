@@ -105,6 +105,7 @@
                     lastResult = decodedText;
                     // Handle on success condition with the decoded message.
                     alert(`Scan result ${decodedText}`, decodedResult);
+                    location.reload();
                 }
             }
 
