@@ -12,7 +12,6 @@
     <style>
       #preview{
          width:100%;
-        
          margin:0px auto;
       }
     </style>
@@ -46,8 +45,8 @@
                 <div class="card-content">
                     <div class="p-b-40 p-t-20">
                         <video id="preview"></video>
-                        <h3 class="white-text">Scann QR Code</h3>
-                        <p class="white-text op-7 m-b-20">Manajemen Arsip Lebih Mudah, Cepat, Mudah dan Efektif</p>
+                        <h3 class="white-text center">Scann QR Code</h3>
+                        <p class="white-text op-7 m-b-20 Center">Manajemen Arsip Lebih Mudah, Cepat, Mudah dan Efektif</p>
 
                     </div>
                 </div>
