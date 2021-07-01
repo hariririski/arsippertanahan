@@ -7,15 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo $this->load->view('share/icon', '', TRUE);?>
     <title>Scan Qr Code</title>
-    <!-- This page CSS -->
-    <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-    <link href="assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
-    <link href="assets/extra-libs/c3/c3.min.css" rel="stylesheet">
-    <link href="assets/extra-libs/css-chart/css-chart.css" rel="stylesheet">
-    <link href="dist/css/style.css" rel="stylesheet">
+    <link href="dist/css/style2.css" rel="stylesheet">
     <link href="dist/css/pages/dashboard3.css" rel="stylesheet">
-    <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
-    <link href="dist/css/pages/data-table.css" rel="stylesheet">
 
 </head>
 
