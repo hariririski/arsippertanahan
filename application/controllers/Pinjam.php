@@ -202,6 +202,15 @@ class Pinjam extends CI_Controller {
 		 $data=$this->M_pinjam->update_waktu_list_pinjam($id_pinjam,$id_waktu,$tgl_kembali);
 		echo json_encode($data);
 	}
+
+	function cari_buku_tanah(){
+		echo $invoice=$this->uri->segment('3');
+		echo $admin_tambah=$this->uri->segment('4');
+		echo $id_buku_tanah=$this->uri->segment('5');
+		echo $id_jeni_hak=$this->uri->segment('6');
+		echo $no_hak=$this->uri->segment('7');
+	}
+
 	function cari_barcode(){
 		// ini_set('display_errors','off');
 		$type="BUKAN";

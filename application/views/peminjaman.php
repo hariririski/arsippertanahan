@@ -76,83 +76,85 @@
                                 </div>
                                 <div id="test17" class="" style="display: none;">
                                     <div class="row">
-                                      <div class="input-field col s4">
-                                        <i class="material-icons prefix">chrome_reader_mode</i>
-                                        <select required name="kode_desa">
-                                          <option value="" disabled selected>Pilih Desa</option>
-                                          <?php
-                                          foreach($data_desa as $desa_bt){
-                                            ?>
-                                            <option value="<?php echo $desa_bt->kode_desa; ?>"><?php echo $desa_bt->nama_kec; ?> -- <?php echo $desa_bt->nama_desa; ?></option>
-                                          <?php } ?>
-                                        </select>
-                                      </div>
+                                      <form class="row" action="javascript:cari_buku_tanah()">
+                                        <div class="input-field col s4">
+                                          <select id="desa_buku_tanah" required name="kode_desa" class="browser-default">
+                                            <option value="" disabled selected>Pilih Desa</option>
+                                            <?php
+                                            foreach($data_desa as $desa_bt){
+                                              ?>
+                                              <option value="<?php echo $desa_bt->kode_desa; ?>"><?php echo $desa_bt->nama_kec; ?> -- <?php echo $desa_bt->nama_desa; ?></option>
+                                            <?php } ?>
+                                          </select>
+                                        </div>
+                                        <div class="input-field col s3">
+                                          <select class="browser-default" required id="jenis_hak">
+                                            <option class="browser-default" value="" disabled selected>Pilih Jenis Hak</option>
+                                            <?php
+                                            foreach($data_jenis_hak as $data_jenis_hak){
+                                              ?>
+                                              <option value="<?php echo $data_jenis_hak->id_jenis_hak; ?>"><?php echo $data_jenis_hak->id_jenis_hak; ?> - <?php echo $data_jenis_hak->nama_jenis_hak; ?></option>
+                                            <?php } ?>
+                                          </select>
+                                        </div>
 
-                                      <div class="input-field col s3">
-                                        <i class="material-icons prefix">chrome_reader_mode</i>
-                                        <select required name="id_jenis_hak">
-                                          <option value="" disabled selected>Pilih Jenis Hak</option>
-                                          <?php
-                                          foreach($data_jenis_hak as $data_jenis_hak){
-                                            ?>
-                                            <option value="<?php echo $data_jenis_hak->id_jenis_hak; ?>"><?php echo $data_jenis_hak->id_jenis_hak; ?> - <?php echo $data_jenis_hak->nama_jenis_hak; ?></option>
-                                          <?php } ?>
-                                        </select>
-                                      </div>
-
-                                      <div class="input-field col s3">
-                                        <i class="material-icons prefix">chrome_reader_mode</i>
-                                        <input  type="text" >
-                                        <label for="icon_prefix">Nomor Hak</label>
-                                      </div>
-                                      <div class="input-field col s2">
-                                          <button  class="waves-effect waves-light btn-large" type="submit" name="action"><i class="material-icons left">search</i>Cari</button>
-                                      </div>
+                                        <div class="input-field col s3">
+                                          <i class="material-icons prefix">chrome_reader_mode</i>
+                                          <input  type="number" id="nomor_hak" required >
+                                          <label for="icon_prefix">Nomor Hak</label>
+                                        </div>
+                                        <div class="input-field col s2">
+                                            <button  class="waves-effect waves-light btn-large" type="submit" name="action"><i class="material-icons left">search</i>Cari</button>
+                                        </div>
+                                      </form>
                                     </div>
                                 </div>
                                 <div id="test18" style="display: none;">
                                     <div class="row">
+                                      <form class="row" action="javascript:cari_surat_ukur()">
+                                        <div class="input-field col s4">
+                                          <select required id="desa_surat_ukur" class="browser-default">
+                                            <option value="" disabled selected>Pilih Desa</option>
+                                            <?php
+                                            foreach($data_desa as $desa_su){
+                                              ?>
+                                              <option value="<?php echo $desa_su->kode_desa; ?>"><?php echo $desa_su->nama_kec; ?> -- <?php echo $desa_su->nama_desa; ?></option>
+                                            <?php } ?>
+                                          </select>
+                                        </div>
+                                        <div class="input-field col s3">
+                                          <i class="material-icons prefix">chrome_reader_mode</i>
+                                          <input  type="text" required id="nomor_surat_ukur">
+                                          <label for="icon_prefix">Nomor SU</label>
+                                        </div>
+                                        <div class="input-field col s3">
+                                          <i class="material-icons prefix">chrome_reader_mode</i>
+                                          <input  type="number" required id="tahun_surat_ukur" >
+                                          <label for="icon_prefix">Tahun</label>
+                                        </div>
+                                        <div class="input-field col s2">
+                                            <button  class="waves-effect waves-light btn-large" type="submit" name="action"><i class="material-icons left">search</i>Cari</button>
+                                        </div>
+                                      </form>
+                                    </div>
+                                </div>
+                                <div id="test19" style="display: none;">
+                                  <div class="row">
+                                    <form class="row" action="javascript:cari_warkah()">
+                                      <div class="input-field col s6">
+                                        <i class="material-icons prefix">chrome_reader_mode</i>
+                                        <input  type="number" required id="nomor_warkah">
+                                        <label for="icon_prefix">Nomor warkah</label>
+                                      </div>
                                       <div class="input-field col s4">
                                         <i class="material-icons prefix">chrome_reader_mode</i>
-                                        <select required name="kode_desa">
-                                          <option value="" disabled selected>Pilih Desa</option>
-                                          <?php
-                                          foreach($data_desa as $desa_su){
-                                            ?>
-                                            <option value="<?php echo $desa_su->kode_desa; ?>"><?php echo $desa_su->nama_kec; ?> -- <?php echo $desa_su->nama_desa; ?></option>
-                                          <?php } ?>
-                                        </select>
-                                      </div>
-                                      <div class="input-field col s3">
-                                        <i class="material-icons prefix">chrome_reader_mode</i>
-                                        <input  type="text" >
-                                        <label for="icon_prefix">Nomor SU</label>
-                                      </div>
-                                      <div class="input-field col s3">
-                                        <i class="material-icons prefix">chrome_reader_mode</i>
-                                        <input  type="text" >
+                                        <input  type="number"required id="tahun_warkah">
                                         <label for="icon_prefix">Tahun</label>
                                       </div>
                                       <div class="input-field col s2">
                                           <button  class="waves-effect waves-light btn-large" type="submit" name="action"><i class="material-icons left">search</i>Cari</button>
                                       </div>
-                                    </div>
-                                </div>
-                                <div id="test19" style="display: none;">
-                                  <div class="row">
-                                    <div class="input-field col s6">
-                                      <i class="material-icons prefix">chrome_reader_mode</i>
-                                      <input  type="text" >
-                                      <label for="icon_prefix">Nomor warkah</label>
-                                    </div>
-                                    <div class="input-field col s4">
-                                      <i class="material-icons prefix">chrome_reader_mode</i>
-                                      <input  type="text" >
-                                      <label for="icon_prefix">Tahun</label>
-                                    </div>
-                                    <div class="input-field col s2">
-                                        <button  class="waves-effect waves-light btn-large" type="submit" name="action"><i class="material-icons left">search</i>Cari</button>
-                                    </div>
+                                    </form>
                                   </div>
                                 </div>
                             </div>
@@ -383,6 +385,44 @@
             $.ajax({
                 type : "POST",
                 url  : "<?php echo base_url('pinjam/cari_barcode')?>/<?php echo $this->uri->segment('3');?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+barcode,
+                dataType : "JSON",
+                  success: function(data){
+                    if(data==null){
+                      //kosong
+                    }else if (data==0) {
+                      alert("Format Barcode Tidak Sesuai");
+                    }else if (data==1) {
+                      alert("Data Tidak Ditemukan");
+                    }else if (data==2) {
+                      alert("Arsip Belum Lengkap");
+                    }else if (data==3) {
+                      alert("Arsip Telah Di Input");
+                    }else if (data==4) {
+                      alert("Arsip Proses Peminjaman Atau Telah Di Pinjam");
+                    }else if (data==5) {
+                      alert("Arsip Telah Dikembalikan Namun Belum Di Susun, Harap Menyusun Kebali Sebelum dilakukan Proses Peminjaman");
+                    }else if(data==6)
+                      alert("Arsip Hilang");
+                    else{
+                      tampil_data_pinjam();
+                    }
+                    const inputField = document.getElementById("barcode");
+                    inputField.value ="";
+                    document.getElementById("barcode").focus();
+                }
+
+            });
+            return false;
+          }
+      </script>
+      <script type="text/javascript">
+          function cari_buku_tanah(){
+            var desa_buku_tanah=$('#desa_buku_tanah').val();
+            var jenis_hak=$('#jenis_hak').val();
+            var nomor_hak=$('#nomor_hak').val();
+            $.ajax({
+                type : "POST",
+                url  : "<?php echo base_url('pinjam/cari_buku_tanah')?>/<?php echo $this->uri->segment('3');?>/<?php echo $this->session->userdata("nama_lengkap"); ?>/"+desa_buku_tanah+"/"+jenis_hak+"/"+nomor_hak,
                 dataType : "JSON",
                   success: function(data){
                     if(data==null){
