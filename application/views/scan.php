@@ -12,7 +12,7 @@
     <style>
       #preview{
          width:100%;
-         height: 500px;
+        
          margin:0px auto;
       }
     </style>
