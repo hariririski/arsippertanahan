@@ -66,9 +66,8 @@
         //alert(cameras.length);
         if(cameras.length==1){
     	     scanner.start(cameras[0]);
-     }else if(cameras.length>1){
+        }else if(cameras.length>1){
           var kamera=cameras.length-1;
-          alert(kamera);
           scanner.start(cameras[kamera]);
         }
     	} else {
