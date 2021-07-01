@@ -9,7 +9,13 @@
     <title>Scan Qr Code</title>
     <link href="dist/css/style2.css" rel="stylesheet">
     <link href="dist/css/pages/dashboard3.css" rel="stylesheet">
-
+    <style>
+      #preview{
+         width:500px;
+         height: 500px;
+         margin:0px auto;
+      }
+    </style>
 </head>
 
 <body>
@@ -39,7 +45,7 @@
             <div class="card info-gradient m-t-0 m-b-0">
                 <div class="card-content">
                     <div class="p-b-40 p-t-20">
-                        <video id="preview" style="width:100%; height:50%;"></video>
+                        <video id="preview"></video>
                         <h3 class="white-text">Scann QR Code</h3>
                         <p class="white-text op-7 m-b-20">Manajemen Arsip Lebih Mudah, Cepat, Mudah dan Efektif</p>
 
