@@ -58,8 +58,7 @@
                             <div class="card-content">
                               <h4 class="card-title">Peminjaman</h4>
                               <div>
-                                <div id="qr-reader" style="width:100%"></div>
-                                <div id="qr-reader-results"></div>
+                                <video id="preview"></video>
                               </div>
 
 
@@ -82,38 +81,24 @@
     <!-- ============================================================== -->
     <!-- All Required js -->
     <!-- ============================================================== -->
-
-    <script src="dist/js/html5-qrcode.min.js"></script>
-    <script>
-        function docReady(fn) {
-            // see if DOM is already available
-            if (document.readyState === "complete"
-                || document.readyState === "interactive") {
-                // call on next available tick
-                setTimeout(fn, 1);
-            } else {
-                document.addEventListener("DOMContentLoaded", fn);
-            }
-        }
-
-        docReady(function () {
-            var resultContainer = document.getElementById('qr-reader-results');
-            var lastResult, countResults = 0;
-            function onScanSuccess(decodedText, decodedResult) {
-                if (decodedText !== lastResult) {
-                    ++countResults;
-                    lastResult = decodedText;
-                    // Handle on success condition with the decoded message.
-                    alert(`Scan result ${decodedText}`, decodedResult);
-                    location.reload();
-                }
-            }
-
-            var html5QrcodeScanner = new Html5QrcodeScanner(
-                "qr-reader", { fps: 10, qrbox: 250 });
-            html5QrcodeScanner.render(onScanSuccess);
-        });
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
+    <script type="text/javascript">
+      let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+      scanner.addListener('scan', function (content) {
+    	alert(content);
+      });
+      Instascan.Camera.getCameras().then(function (cameras) {
+    	if (cameras.length > 0) {
+    	  scanner.start(cameras[0]);
+    	} else {
+    	  console.error('No cameras found.');
+    	}
+      }).catch(function (e) {
+    	console.error(e);
+      });
     </script>
+
     <script src="assets/libs/jquery/dist/jquery.min.js"></script>
     <script src="dist/js/materialize.min.js"></script>
     <script src="assets/libs/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
