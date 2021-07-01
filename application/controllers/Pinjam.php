@@ -98,19 +98,55 @@ class Pinjam extends CI_Controller {
 				$jumlah_tgl_dikembalikan=$data->jumlah;
 		 }
 		 if($jumlah_tgl_dikembalikan>2){
-			 	$data=$this->M_pinjam->kembalikan($id_pinjam,$status,$tgl_dikembalikan,$admin_kembali);
+			 $status=2;
+			 $tgl_dikembalikan=date('Y-m-d');
+			 $admin_kembali=$this->uri->segment('4');
+				$sql1="SELECT id_pinjam, id_buku_tanah, id_surat_ukur, id_warkah from pinjam where id_pinjam='$id_pinjam' and tgl_dikembalikan is null";
+		 		$query1 = $this->db->query($sql1);
+				$pinjam=$query1->result();
+		 		foreach ($pinjam as $data) {
+		 				$id_pinjam=$data->id_pinjam;
+						$id_buku_tanah=$data->id_buku_tanah;
+						$id_surat_ukur=$data->id_surat_ukur;
+						$id_warkah=$data->id_warkah;
+						$cek=$this->M_pinjam->kembalikan($id_pinjam,$status,$tgl_dikembalikan,$admin_kembali);
+						if($cek>0){
+							if($id_buku_tanah!=null){
+								$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+								$data=1;
+							}elseif ($id_surat_ukur!=null) {
+								$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+								$data=1;
+							}elseif ($id_warkah!=null) {
+								$this->M_warkah->ubah_status($id_warkah,1);
+								$data=1;
+							}
+		 	 			}else{
+		 	 				$data=3;
+		 	 		 	}
+					}
 		 }else if($jumlah_tgl_dikembalikan==2){
 			 $id_pinjam;
 			 $status=2;
 			 $tgl_dikembalikan=date('Y-m-d');
 			 $admin_kembali=$this->uri->segment('4');
-				$sql1="SELECT id_pinjam from pinjam where invoice='$invoice' and tgl_dikembalikan is null";
+				$sql1="SELECT id_pinjam, id_buku_tanah, id_surat_ukur, id_warkah from pinjam where invoice='$invoice' and tgl_dikembalikan is null";
 		 		$query1 = $this->db->query($sql1);
 				$pinjam=$query1->result();
 		 		foreach ($pinjam as $data) {
 		 				$id_pinjam=$data->id_pinjam;
+						$id_buku_tanah=$data->id_buku_tanah;
+						$id_surat_ukur=$data->id_surat_ukur;
+						$id_warkah=$data->id_warkah;
 						$cek=$this->M_pinjam->kembalikan($id_pinjam,$status,$tgl_dikembalikan,$admin_kembali);
 						if($cek>0){
+							if($id_buku_tanah!=null){
+								$this->M_buku_tanah->ubah_status($id_buku_tanah,1);
+							}elseif ($id_surat_ukur!=null) {
+								$this->M_surat_ukur->ubah_status($id_surat_ukur,1);
+							}elseif ($id_warkah!=null) {
+								$this->M_warkah->ubah_status($id_warkah,1);
+							}
 	 	 					$data=2;
 		 	 			}else{
 		 	 				$data=3;

@@ -252,6 +252,7 @@
                             }else if(notif==2){
                               window.location.href="<?php echo base_url()?>datapinjam";
                             }else{
+                              tampil_data_pinjam();
                               alert("Peminjaman Gagal Di Hapus");
                             }
 
