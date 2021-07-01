@@ -81,6 +81,7 @@ $route['uploadcsv'] = 'Uploadcsv';
 $route['profil'] = 'Admin/profil';
 
 $route['cetakqrcodesemualemari'] = 'cetak/qrcode_semua_lemari';
+$route['scan'] = 'Scan';
 
 $route['404_override'] = 'Rusak';
 $route['translate_uri_dashes'] = FALSE;

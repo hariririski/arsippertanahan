@@ -8,6 +8,10 @@
 
                 </li>
                 <li>
+                    <a href="<?php echo base_url(); ?>scan" class="collapsible-header"><i class="material-icons">dashboard</i><span class="hide-menu">Scann Qr Code</span></a>
+
+                </li>
+                <li>
                     <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">collections_bookmark</i><span class="hide-menu">Buku Tanah</span></a>
                     <div class="collapsible-body">
                         <ul>
