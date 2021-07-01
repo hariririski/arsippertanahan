@@ -41,7 +41,7 @@
                     <div class="p-b-40 p-t-20">
                         <h3 class="white-text">Selamat Datang <?php echo $this->session->userdata("nama_lengkap"); ?>!</h3>
                         <p class="white-text op-7 m-b-20">Manajemen Arsip Lebih Mudah, Cepat, Mudah dan Efektif</p>
-                        <video id="preview" style="width:100%"></video>
+                        <video id="preview" style="width:100%; height:50%;"></video>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
       });
       Instascan.Camera.getCameras().then(function (cameras) {
     	if (cameras.length > 0) {
-    	  scanner.start(cameras[2]);
+    	  scanner.start(cameras[0y]);
     	} else {
     	  alert.error('No cameras found.');
     	}
