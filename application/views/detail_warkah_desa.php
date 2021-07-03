@@ -87,11 +87,11 @@
                                                 <?php
                                                 if($warkah->buku_tanah!=null){
                                                 ?>
-                                                <a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah/<?php echo $warkah->id_buku_tanah; ?>" class="waves-effect waves-light btn  green">Detail</a>
+                                                <a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah/<?php echo $warkah->id_buku_tanah; ?>" class="waves-effect waves-light btn  green btn tooltipped"data-position="bottom" data-delay="50" data-tooltip="Detail"><i class="material-icons dp48">remove_red_eye</i></a>
                                                 <?php
                                                 }else{
                                                 ?>
-                                                <a href="<?php echo base_url(); ?>warkah/detail_warkah/<?php echo $warkah->id_warkah; ?>" class="waves-effect waves-light btn  orange">Detail</a>
+                                                <a href="<?php echo base_url(); ?>warkah/detail_warkah/<?php echo $warkah->id_warkah; ?>" class="waves-effect waves-light btn  orange btn tooltipped"data-position="bottom" data-delay="50" data-tooltip="Detail"><i class="material-icons dp48">remove_red_eye</i></a>
                                                 <?php
                                                 }
                                                 ?>

@@ -158,7 +158,7 @@
                                               <td  style="color: #000000;"><?php echo $data->tahun; ?></td>
                                               <td  style="color: #000000;"><a href="<?php echo base_url(); ?>warkah/detail_warkah_desa/<?php echo $data->tahun; ?>"><?php echo $data->jumlah; ?></a></td>
                                               <td  style="color: #000000;">
-                                                <a href="<?php echo base_url(); ?>cetak/cetak_warkah_tahun/<?php echo $data->tahun; ?>/<?php echo $data->jumlah; ?>" target="_blank"class="waves-effect waves-light btn  green">Cetak</a>
+                                                <a href="<?php echo base_url(); ?>cetak/cetak_warkah_tahun/<?php echo $data->tahun; ?>/<?php echo $data->jumlah; ?>" target="_blank"class="waves-effect waves-light btn blue btn tooltipped"data-position="bottom" data-delay="50" data-tooltip="Cetak QR Code"><i class="material-icons dp48">local_printshop</i></a>
                                               </td>
                                           </tr>
                                           <?php

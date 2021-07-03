@@ -164,7 +164,7 @@
                                               <td  style="color: #000000;"><?php echo $desa->nama_desa; ?></td>
                                               <td  style="color: #000000;"><a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah_desa/<?php echo $desa->kode_desa; ?>"><?php echo $desa->jumlah_hak; ?></a></td>
                                               <td  style="color: #000000;">
-                                                <a href="<?php echo base_url(); ?>cetak/cetak_bt_desa/<?php echo $desa->kode_desa; ?>/<?php echo $desa->jumlah_hak; ?>" target="_blank"class="waves-effect waves-light btn  green">Cetak</a>
+                                                <a href="<?php echo base_url(); ?>cetak/cetak_bt_desa/<?php echo $desa->kode_desa; ?>/<?php echo $desa->jumlah_hak; ?>" target="_blank"class="waves-effect waves-light btn  blue btn tooltipped"  data-position="bottom" data-delay="50" data-tooltip="Cetak QR Code"><i class="material-icons dp48">local_printshop</i></a>
                                               </td>
                                           </tr>
                                           <?php

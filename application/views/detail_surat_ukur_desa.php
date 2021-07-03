@@ -86,9 +86,9 @@
                                               <td><?php echo $surat_ukur->no_hak; ?></td>
                                               <td>
                                                 <?php if($surat_ukur->id_buku_tanah!=null){  ?>
-                                                  <a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah/<?php echo $surat_ukur->id_buku_tanah; ?>" class="waves-effect waves-light btn  green">Detail</a>
+                                                  <a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah/<?php echo $surat_ukur->id_buku_tanah; ?>" class="waves-effect waves-light btn  green btn tooltipped"data-position="bottom" data-delay="50" data-tooltip="Detail"><i class="material-icons dp48">remove_red_eye</i></a>
                                                 <?php }else{  ?>
-                                                    <a href="<?php echo base_url(); ?>surat_ukur/detail_surat_ukur/<?php echo $surat_ukur->surat_ukur; ?>" class="waves-effect waves-light btn orange">Detail</a>
+                                                    <a href="<?php echo base_url(); ?>surat_ukur/detail_surat_ukur/<?php echo $surat_ukur->surat_ukur; ?>" class="waves-effect waves-light btn orange btn tooltipped"data-position="bottom" data-delay="50" data-tooltip="Detail"><i class="material-icons dp48">remove_red_eye</i></a>
                                                 <?php } ?>
                                               </td>
                                           </tr>
