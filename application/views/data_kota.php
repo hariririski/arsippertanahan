@@ -11,7 +11,7 @@
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
     <link href="dist/css/pages/data-table.css" rel="stylesheet">
-
+    <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -42,8 +42,8 @@
                 <div class="d-flex align-items-center">
                     <h5 class="font-medium m-b-0">Data Kota</h5>
                     <div class="custom-breadcrumb ml-auto">
-                        <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Kota</a>
+                        <a  class="breadcrumb">Home</a>
+                        <a  class="breadcrumb">Kota</a>
                     </div>
                 </div>
             </div>
@@ -145,7 +145,7 @@
                                             </td>
                                             <td>
                                               <a href="<?php echo base_url(); ?>datakecamatan?kota=<?php echo $data_kota->kode_kota; ?>" class="waves-effect waves-light btn green btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Lihat Kecamatan"><i class="material-icons dp48">remove_red_eye</i></a>
-                                              <a class="waves-effect waves-light btn orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
+                                              <a class="waves-effect waves-light btn orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" onclick="edit('<?php echo $data_kota->kode_kota; ?>')"><i class="material-icons dp48">edit</i></a>
                                               <?php
                                               if($data_kota->aktif==1){
                                               ?>
@@ -172,6 +172,29 @@
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <?php echo $this->load->view('share/footer', '', TRUE);?>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <h5 class="card-title">Perubahan Data</h5>
+                    <div class="row">
+                      <div class="input-field col s12">
+                          <i class="material-icons prefix">chrome_reader_mode</i>
+                          <input  type="text"  required name="id_kota_edit" id="id_kota_edit">
+                          <div class="errorTxt2"></div>
+                      </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">chrome_reader_mode</i>
+                            <input  type="text"  required name="nama_kota_edit" id="nama_kota_edit">
+                            <input  type="hidden"  required name="kode_kota"id="kode_kota">
+                            <div class="errorTxt2"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="simpan"><i class="fas fa-share"></i>Simpan</a>
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -203,6 +226,60 @@
     $(document).ready(function(){
     $('.tooltipped').tooltip();
     });
+    function edit(kode_kota){
+      $.ajax({
+          type : "POST",
+          url  : "<?php echo base_url('provinsi/edit_kota')?>/"+kode_kota,
+          dataType : "JSON",
+            success: function(data){
+              data_modal(data);
+          }
+      });
+      return false;
+    }
+
+    function data_modal(data){
+          $('[name="nama_kota_edit"]').val(data[0]["nama_kota"]);
+          $('[name="id_kota_edit"]').val(data[0]["id_kota"]);
+          $('[name="kode_kota"]').val(data[0]["kode_kota"]);
+          $('#modal').modal('open');
+    }
+
+
+    $('#simpan').on('click',function(){
+        var nama_kota_edit=$('#nama_kota_edit').val();
+        var id_kota_edit=$('#id_kota_edit').val();
+        var kode_kota=$('#kode_kota').val();
+        $.ajax({
+        type : "POST",
+        url  : "<?php echo base_url()?>provinsi/simpan_edit_kota/"+kode_kota+"/"+id_kota_edit+"/"+nama_kota_edit,
+        dataType : "JSON",
+                success: function(notif){
+                    $('#modal').modal('close');
+                    if (notif==1) {
+                      berhasil("Data Berhasi Diperbaharui!.");
+                      setTimeout("location.href = '<?php echo base_url()?>datakota?prov=<?php echo $this->input->get('prov');?>';",1500);
+                    }else{
+                      gagal("Gagal Memperbaharui Data!.");
+                      setTimeout("location.href = '<?php echo base_url()?>datakota?prov=<?php echo $this->input->get('prov');?>';",1500);
+                    }
+
+                }
+            });
+            return false;
+        });
+    </script>
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script>
+      function berhasil(notif) {
+        toastr.success(notif, '', { "progressBar": true });
+      }
+      function peringatan(notif) {
+        toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+      function gagal(notif) {
+        toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
     </script>
 
 </body>

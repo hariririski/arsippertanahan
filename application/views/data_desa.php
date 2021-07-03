@@ -11,7 +11,7 @@
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
     <link href="dist/css/pages/data-table.css" rel="stylesheet">
-
+    <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -142,7 +142,7 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn  orange btn tooltipped"data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
+                                              <a class="waves-effect waves-light btn  orange btn tooltipped"data-position="bottom" data-delay="50" data-tooltip="Edit" onclick="edit('<?php echo $data_desa->kode_desa;?>')"><i class="material-icons dp48">edit</i></a>
                                               <?php
                                               if($data_desa->aktif==1){
                                               ?>
@@ -170,6 +170,31 @@
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <?php echo $this->load->view('share/footer', '', TRUE);?>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <h5 class="card-title">Perubahan Data</h5>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">chrome_reader_mode</i>
+                            <input  type="text"  required name="id_desa_edit" id="id_desa_edit" autofocus>
+                            <div class="errorTxt2"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">chrome_reader_mode</i>
+                            <input  type="text"  required name="nama_desa_edit" id="nama_desa_edit" >
+                            <input  type="hidden"  required name="kode_desa" id="kode_desa">
+                            <div class="errorTxt2"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="simpan"><i class="fas fa-share"></i>Simpan</a>
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -201,6 +226,60 @@
     $(document).ready(function(){
     $('.tooltipped').tooltip();
     });
+    function edit(kode_desa){
+      $.ajax({
+          type : "POST",
+          url  : "<?php echo base_url('provinsi/edit_desa')?>/"+kode_desa,
+          dataType : "JSON",
+            success: function(data){
+              data_modal(data);
+          }
+      });
+      return false;
+    }
+
+    function data_modal(data){
+          $('[name="nama_desa_edit"]').val(data[0]["nama_desa"]);
+          $('[name="id_desa_edit"]').val(data[0]["id_desa"]);
+          $('[name="kode_desa"]').val(data[0]["kode_desa"]);
+          $('#modal').modal('open');
+    }
+
+
+    $('#simpan').on('click',function(){
+        var nama_desa_edit=$('#nama_desa_edit').val();
+        var id_desa_edit=$('#id_desa_edit').val();
+        var kode_desa=$('#kode_desa').val();
+        $.ajax({
+        type : "POST",
+        url  : "<?php echo base_url()?>provinsi/simpan_edit_desa/"+kode_desa+"/"+id_desa_edit+"/"+nama_desa_edit,
+        dataType : "JSON",
+                success: function(notif){
+                    $('#modal').modal('close');
+                    if (notif==1) {
+                      berhasil("Data Berhasi Diperbaharui!.");
+                      setTimeout("location.href = '<?php echo base_url()?>datadesa?kec=<?php echo $this->input->get('kec');?>';",1500);
+                    }else{
+                      gagal("Gagal Memperbaharui Data!.");
+                      setTimeout("location.href = '<?php echo base_url()?>datadesa?kec=<?php echo $this->input->get('kec');?>';",1500);
+                    }
+
+                }
+            });
+            return false;
+        });
+    </script>
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script>
+      function berhasil(notif) {
+        toastr.success(notif, '', { "progressBar": true });
+      }
+      function peringatan(notif) {
+        toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+      function gagal(notif) {
+        toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
     </script>
 
 </body>

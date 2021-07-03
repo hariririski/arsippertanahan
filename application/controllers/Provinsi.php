@@ -20,6 +20,84 @@ class Provinsi extends CI_Controller {
 		$this->load->view('data_provinsi',$data);
 	}
 
+	function edit_prov(){
+        $id=$this->uri->segment('3');
+        $data=$this->M_provinsi->lihat_prov($id);
+        echo json_encode($data);
+  }
+
+	function simpan_edit_prov(){
+        $id=$this->uri->segment('3');
+        $nama=$this->uri->segment('4');
+        $data=$this->M_provinsi->edit_prov($id,$nama);
+				if($data>0){
+					$data=1;
+				}else{
+					$data=0;
+				}
+        echo json_encode($data);
+  }
+
+	function edit_kota(){
+        $id=$this->uri->segment('3');
+        $data=$this->M_provinsi->getKota($id);
+        echo json_encode($data);
+  }
+
+	function simpan_edit_kota(){
+        $kode_kota=$this->uri->segment('3');
+        $id_kota=$this->uri->segment('4');
+        $nama_kota=$this->uri->segment('5');
+				$nama_kota=preg_replace('/%20/'," ", $nama_kota);
+        $data=$this->M_provinsi->edit_kota($kode_kota,$id_kota,$nama_kota);
+				if($data>0){
+					$data=1;
+				}else{
+					$data=0;
+				}
+        echo json_encode($data);
+  }
+
+	function edit_kec(){
+        $id=$this->uri->segment('3');
+        $data=$this->M_provinsi->getKec($id);
+        echo json_encode($data);
+  }
+
+	function simpan_edit_kec(){
+        $kode_kec=$this->uri->segment('3');
+        $id_kec=$this->uri->segment('4');
+        $nama_kec=$this->uri->segment('5');
+				$nama_kec=preg_replace('/%20/'," ", $nama_kec);
+        $data=$this->M_provinsi->edit_kec($kode_kec,$id_kec,$nama_kec);
+				if($data>0){
+					$data=1;
+				}else{
+					$data=0;
+				}
+        echo json_encode($data);
+  }
+
+	function edit_desa(){
+        $id=$this->uri->segment('3');
+        $data=$this->M_provinsi->getDesa($id);
+        echo json_encode($data);
+  }
+
+	function simpan_edit_desa(){
+				$kode_desa=$this->uri->segment('3');
+				$id_desa=$this->uri->segment('4');
+				$nama_desa=$this->uri->segment('5');
+				$nama_desa=preg_replace('/%20/'," ", $nama_desa);
+				$data=$this->M_provinsi->edit_desa($kode_desa,$id_desa,$nama_desa);
+				if($data>0){
+					$data=1;
+				}else{
+					$data=0;
+				}
+				echo json_encode($data);
+	}
+
 	function getKota(){
         $id=$this->input->get('id');
         $data=$this->M_provinsi->getKota($id);

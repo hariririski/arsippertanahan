@@ -10,20 +10,39 @@
         $query=$this->db->query("SELECT * FROM `prov` where kode_prov='$id'");
         return $query->result();
       }
+      function edit_prov($id,$nama){
+        $query=$this->db->query("UPDATE `prov` SET `nama_prov`='$nama' WHERE prov.kode_prov='$id'");
+        return $query;
+      }
 
       function getKota($id){
-        $query=$this->db->query("SELECT * FROM `kota` inner join prov on prov.kode_prov=kota.kode_prov where kota.kode_prov='$id'");
+        $query=$this->db->query("SELECT * FROM `kota` inner join prov on prov.kode_prov=kota.kode_prov where kota.kode_kota='$id'");
         return $query->result();
+      }
+
+      function edit_Kota($kode_kota,$id_kota,$nama_kota){
+        $query=$this->db->query("UPDATE `kota` SET `id_kota`='$id_kota',`nama_kota`='$nama_kota' WHERE kota.kode_kota='$kode_kota'");
+        return $query;
       }
 
       function getKec($id){
-        $query=$this->db->query("SELECT * FROM `kec` where kec.kode_kota='$id'");
+        $query=$this->db->query("SELECT * FROM `kec` where kec.kode_kec='$id'");
         return $query->result();
       }
 
+      function edit_kec($kode_kec,$id_kec,$nama_kec){
+        $query=$this->db->query("UPDATE `kec` SET `id_kec`='$id_kec' ,`nama_kec`='$nama_kec' WHERE kec.kode_kec='$kode_kec'");
+        return $query;
+      }
+
       function getDesa($id){
-        $query=$this->db->query("SELECT * FROM `desa` where desa.kode_kec='$id'");
+        $query=$this->db->query("SELECT * FROM `desa` where desa.kode_desa='$id'");
         return $query->result();
+      }
+
+      function edit_desa($kode_desa,$id_desa,$nama_desa){
+        $query=$this->db->query("UPDATE `desa` SET `id_desa`='$id_desa' ,`nama_desa`='$nama_desa'  WHERE desa.kode_desa='$kode_desa'");
+        return $query;
       }
 
       function add($kode_prov){

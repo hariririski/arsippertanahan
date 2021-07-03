@@ -11,7 +11,7 @@
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
     <link href="dist/css/pages/data-table.css" rel="stylesheet">
-
+    <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -132,7 +132,7 @@
                                             </td>
                                             <td>
                                               <a href="<?php echo base_url(); ?>datakota?prov=<?php echo $data_provinsi->kode_prov; ?>" class="waves-effect waves-light btn green btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Lihat Kota"><i class="material-icons dp48">remove_red_eye</i></a>
-                                              <a class="waves-effect waves-light btn orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
+                                              <a class="waves-effect waves-light btn orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" onclick="edit('<?php echo $data_provinsi->kode_prov; ?>')"><i class="material-icons dp48">edit</i></a>
                                               <?php
                                               if($data_provinsi->aktif==1){
                                               ?>
@@ -161,6 +161,26 @@
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <?php echo $this->load->view('share/footer', '', TRUE);?>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <h5 class="card-title">Perubahan Data</h5>
+                    <div class="row">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">chrome_reader_mode</i>
+                                <input  type="text" name="nama_prov_edit" id="nama_prov_edit"required>
+                                <input  type="hidden" name="kode_prov" id="kode_prov">
+                                <div class="errorTxt2"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="simpan"><i class="fas fa-share"></i>Simpan</a>
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -192,8 +212,59 @@
     $(document).ready(function(){
     $('.tooltipped').tooltip();
     });
-    </script>
+    function edit(kode_prov){
+      $.ajax({
+          type : "POST",
+          url  : "<?php echo base_url('provinsi/edit_prov')?>/"+kode_prov,
+          dataType : "JSON",
+            success: function(data){
+              data_modal(data);
+          }
+      });
+      return false;
+    }
 
+    function data_modal(data){
+          $('[name="nama_prov_edit"]').val(data[0]["nama_prov"]);
+          $('[name="kode_prov"]').val(data[0]["kode_prov"]);
+          $('#modal').modal('open');
+    }
+
+
+    $('#simpan').on('click',function(){
+        var nama_prov_edit=$('#nama_prov_edit').val();
+        var kode_prov=$('#kode_prov').val();
+        $.ajax({
+        type : "POST",
+        url  : "<?php echo base_url()?>provinsi/simpan_edit_prov/"+kode_prov+"/"+nama_prov_edit,
+        dataType : "JSON",
+                success: function(notif){
+                    $('#modal').modal('close');
+                    if (notif==1) {
+                      berhasil("Data Berhasi Diperbaharui!.");
+                      setTimeout("location.href = '<?php echo base_url()?>dataprovinsi';",1500);
+                    }else{
+                      gagal("Gagal Memperbaharui Data!.");
+                      setTimeout("location.href = '<?php echo base_url()?>dataprovinsi';",1500);
+                    }
+
+                }
+            });
+            return false;
+        });
+    </script>
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script>
+      function berhasil(notif) {
+        toastr.success(notif, '', { "progressBar": true });
+      }
+      function peringatan(notif) {
+        toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+      function gagal(notif) {
+        toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+    </script>
 </body>
 
 </html>

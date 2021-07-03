@@ -11,7 +11,7 @@
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
     <link href="dist/css/pages/data-table.css" rel="stylesheet">
-
+    <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -143,7 +143,7 @@
                                             </td>
                                             <td>
                                               <a href="<?php echo base_url(); ?>datadesa?kec=<?php echo $data_kecamatan->kode_kec; ?>" class="waves-effect waves-light btn  green btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Lihat Desa"><i class="material-icons dp48">remove_red_eye</i></a>
-                                              <a class="waves-effect waves-light btn  orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
+                                              <a class="waves-effect waves-light btn  orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" onclick="edit('<?php echo $data_kecamatan->kode_kec;?>')"><i class="material-icons dp48">edit</i></a>
                                               <?php
                                               if($data_kecamatan->aktif==1){
                                               ?>
@@ -171,6 +171,31 @@
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <?php echo $this->load->view('share/footer', '', TRUE);?>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <h5 class="card-title">Perubahan Data</h5>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">chrome_reader_mode</i>
+                            <input  type="text"  required name="id_kec_edit" autofocus id="id_kec_edit">
+                            <div class="errorTxt2"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">chrome_reader_mode</i>
+                            <input  type="text"  required name="nama_kec_edit" id="nama_kec_edit">
+                            <input  type="hidden"  required name="kode_kec" id="kode_kec">
+                            <div class="errorTxt2"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="simpan"><i class="fas fa-share"></i>Simpan</a>
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -202,6 +227,60 @@
     $(document).ready(function(){
     $('.tooltipped').tooltip();
     });
+    function edit(kode_kec){
+      $.ajax({
+          type : "POST",
+          url  : "<?php echo base_url('provinsi/edit_kec')?>/"+kode_kec,
+          dataType : "JSON",
+            success: function(data){
+              data_modal(data);
+          }
+      });
+      return false;
+    }
+
+    function data_modal(data){
+          $('[name="nama_kec_edit"]').val(data[0]["nama_kec"]);
+          $('[name="id_kec_edit"]').val(data[0]["id_kec"]);
+          $('[name="kode_kec"]').val(data[0]["kode_kec"]);
+          $('#modal').modal('open');
+    }
+
+
+    $('#simpan').on('click',function(){
+        var nama_kec_edit=$('#nama_kec_edit').val();
+        var id_kec_edit=$('#id_kec_edit').val();
+        var kode_kec=$('#kode_kec').val();
+        $.ajax({
+        type : "POST",
+        url  : "<?php echo base_url()?>provinsi/simpan_edit_kec/"+kode_kec+"/"+id_kec_edit+"/"+nama_kec_edit,
+        dataType : "JSON",
+                success: function(notif){
+                    $('#modal').modal('close');
+                    if (notif==1) {
+                      berhasil("Data Berhasi Diperbaharui!.");
+                      setTimeout("location.href = '<?php echo base_url()?>datakecamatan?kota=<?php echo $this->input->get('kota');?>';",1500);
+                    }else{
+                      gagal("Gagal Memperbaharui Data!.");
+                      setTimeout("location.href = '<?php echo base_url()?>datakecamatan?kota=<?php echo $this->input->get('kota');?>';",1500);
+                    }
+
+                }
+            });
+            return false;
+        });
+    </script>
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script>
+      function berhasil(notif) {
+        toastr.success(notif, '', { "progressBar": true });
+      }
+      function peringatan(notif) {
+        toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+      function gagal(notif) {
+        toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
     </script>
 
 </body>
