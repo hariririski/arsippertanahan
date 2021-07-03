@@ -23,6 +23,9 @@
           case 3:
               $image="assets/images/users/umum.jpg";
               break;
+          case 4:
+              $image="assets/images/users/link.jpg";
+              break;
         }
 
         $perintah1="INSERT INTO `admin`(`username`, `password`, `level`, `status`, `nama_lengkap`, `image`)

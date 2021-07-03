@@ -89,6 +89,7 @@
                                                   <option value="1">Admnistrator</option>
                                                   <option value="2">Pustakawan</option>
                                                   <option value="3">Umum</option>
+                                                  <option value="4">Link Arsip</option>
                                               </select>
                                           </div>
                                     </div>
@@ -142,6 +143,9 @@
                                                       echo "Pustakawan";
                                                       break;
                                                 case 3:
+                                                      echo "Umum";
+                                                      break;
+                                                case 4:
                                                       echo "Umum";
                                                       break;
                                               }

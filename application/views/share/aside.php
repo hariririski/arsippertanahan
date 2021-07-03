@@ -8,31 +8,20 @@
 
                 </li>
                 <li>
-                    <a href="<?php echo base_url(); ?>scan" class="collapsible-header"><i class="material-icons">dashboard</i><span class="hide-menu">Scann Qr Code</span></a>
+                    <a href="<?php echo base_url(); ?>scan" class="collapsible-header"><i class="material-icons">dashboard</i><span class="hide-menu">Qr Code</span></a>
 
                 </li>
+                <?php
+                  if($this->session->userdata("level")==1 or $this->session->userdata("level")==2){
+                ?>
                 <li>
-                    <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">collections_bookmark</i><span class="hide-menu">Buku Tanah</span></a>
+                    <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">collections_bookmark</i><span class="hide-menu">Arsip</span></a>
                     <div class="collapsible-body">
                         <ul>
                           <li><a href="<?php echo base_url(); ?>databukutanah"><i class="material-icons">event_note</i><span class="hide-menu">Data Buku Tanah</span></a></li>
                           <li><a href="<?php echo base_url(); ?>kondisibukutanah"><i class="material-icons">event_note</i><span class="hide-menu">Kondisi Buku Tanah</span></a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">book</i><span class="hide-menu">Surat Ukur</span></a>
-                    <div class="collapsible-body">
-                        <ul>
                           <li><a href="<?php echo base_url(); ?>datasuratukur"><i class="material-icons">event_note</i><span class="hide-menu">Data Surat Ukur</span></a></li>
                           <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Kondisi Surat Ukur</span></a></li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">book</i><span class="hide-menu">Warkah</span></a>
-                    <div class="collapsible-body">
-                        <ul>
                           <li><a href="<?php echo base_url(); ?>datawarkah"><i class="material-icons">event_note</i><span class="hide-menu">Data Warkah</span></a></li>
                           <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Kondisi Warkah</span></a></li>
                         </ul>
@@ -55,6 +44,11 @@
                         </ul>
                     </div>
                 </li>
+              <?php }?>
+                  <?php
+                    switch ($this->session->userdata("level")){
+                      case 1:
+                    ?>
                 <li>
                     <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">settings</i><span class="hide-menu">Setings</span></a>
                     <div class="collapsible-body">
@@ -70,6 +64,10 @@
                         </ul>
                     </div>
                 </li>
+                    <?php
+                      break;
+                    }
+                    ?>
 
             </ul>
         </li>
