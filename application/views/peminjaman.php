@@ -568,14 +568,12 @@
                       }else if (data[i].id_surat_ukur!=null) {
                         barang="SU - "+data[i].su_nomor+"/"+data[i].su_tahun+" - "+data[i].su_desa;
                       }
-                        text=data[i].pelayanan;
+                        text=data[i].pelayanan+" "+data[i].durasi+"(Hari)";
                         str = wordWrap(text, 40);
-                        alert(str);
-
     		                html += '<tr>'+
       		                  		'<td>'+nomor+'</td>'+
       		                  		'<td>'+barang+'</td>'+
-      		                  		'<td>'+str+"<br>"+data[i].durasi+'(Hari)</td>'+
+      		                  		'<td>'+str+'</td>'+
       		                  		'<td>'+
                                 '<div class="input-field col s12">'+
                                   '<select id="layanan" onchange="changeAction(this)" class="layanan browser-default" required name="layanan" style="width:100px;">'+
