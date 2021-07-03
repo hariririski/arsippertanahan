@@ -58,6 +58,24 @@ class Admin extends CI_Controller {
 	 }
 	}
 
+	public function edit(){
+		$id_admin=$this->uri->segment('3');
+		$data= $this->M_admin->edit($id_admin);
+		echo json_encode($data);
+	}
+	public function simpan_edit(){
+		$id_admin=$this->uri->segment('3');
+		$nama=$this->uri->segment('4');
+		$level=$this->uri->segment('5');
+		$data= $this->M_admin->simpan_edit($id_admin,$nama,$level);
+		if($data>0){
+			$data=1;
+		}else{
+			$data=0;
+		}
+		echo json_encode($data);
+	}
+
 	function aktif_admin(){
 		$id_admin=$this->uri->segment('3');
 		$aktif=$this->uri->segment('4');

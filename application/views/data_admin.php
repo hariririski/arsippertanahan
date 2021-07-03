@@ -11,7 +11,7 @@
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
     <link href="dist/css/pages/data-table.css" rel="stylesheet">
-
+    <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -55,7 +55,7 @@
                     <div class="col s12 ">
                         <div class="card">
                             <div class="card-content">
-                                <h5 class="card-title activator">Tambah Data Administratork<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
+                                <h5 class="card-title activator">Tambah Data Administrator<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Admin/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="input-field col s12">
@@ -161,7 +161,7 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
+                                              <button class="waves-effect waves-light btn orange btn tooltipped" onclick="edit('<?php echo $data_admin->id_admin; ?>')" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48" >edit</i></button>
                                               <?php
                                               if($data_admin->status==1){
                                               ?>
@@ -189,6 +189,30 @@
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <?php echo $this->load->view('share/footer', '', TRUE);?>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <h5 class="card-title">Perubahan Data</h5>
+                    <div class="row">
+                          <div class="row">
+                              <div class="input-field col s12">
+                                  <i class="material-icons prefix">chrome_reader_mode</i>
+                                  <input name="nama_lengkap_edit" id="nama" type="text" required>
+                                  <input name="id_admin" id="id_admin" type="hidden" required>
+                                  <div class="errorTxt1"></div>
+                              </div>
+                          </div>
+
+                          <div class="row" id="level_edit">
+
+                          </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="simpan"><i class="fas fa-share"></i>Simpan</a>
+                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -216,13 +240,113 @@
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-    <script>
+    <script type="text/javascript">
+
     $(document).ready(function(){
     $('.tooltipped').tooltip();
     });
+
+    function edit(id_admin){
+      $.ajax({
+          type : "POST",
+          url  : "<?php echo base_url('admin/edit')?>/"+id_admin,
+          dataType : "JSON",
+            success: function(data){
+              data_modal(data);
+          }
+      });
+      return false;
+    }
+
+    function data_modal(data){
+          $('[name="nama_lengkap_edit"]').val(data[0]["nama_lengkap"]);
+          $('[name="id_admin"]').val(data[0]["id_admin"]);
+          var level="";
+          var nilai=parseInt(data[0]["level"]);
+          switch (nilai){
+            case 1: level +='<div class="input-field col s12">'+
+                        '<select required name="level2" id="level2" class="browser-default" >'+
+                           '<option selected value="1">Admnistrator</option>'+
+                           '<option value="2">Pustakawan</option>'+
+                          '<option value="3">Umum</option>'+
+                        '<option value="4">Link Arsip</option>'+
+                        '</select>'+
+                      '</div>';
+                      $('#level_edit').html(level);
+                      break;
+              case 2: level +='<div class="input-field col s12">'+
+                          '<select required name="level2" id="level2" class="browser-default" >'+
+                             '<option  value="1">Admnistrator</option>'+
+                             '<option selected value="2">Pustakawan</option>'+
+                            '<option value="3">Umum</option>'+
+                          '<option value="4">Link Arsip</option>'+
+                          '</select>'+
+                        '</div>';
+                        $('#level_edit').html(level);
+                      break;
+              case 3: level +='<div class="input-field col s12">'+
+                          '<select required name="level2" id="level2" class="browser-default" >'+
+                             '<option  value="1">Admnistrator</option>'+
+                             '<option  value="2">Pustakawan</option>'+
+                            '<option selected value="3">Umum</option>'+
+                          '<option value="4">Link Arsip</option>'+
+                          '</select>'+
+                        '</div>';
+                        $('#level_edit').html(level);
+                      break;
+              case 4: level +='<div class="input-field col s12">'+
+                          '<select required name="level2" id="level2" class="browser-default" >'+
+                             '<option  value="1">Admnistrator</option>'+
+                             '<option value="2">Pustakawan</option>'+
+                            '<option value="3">Umum</option>'+
+                          '<option selected value="4">Link Arsip</option>'+
+                          '</select>'+
+                        '</div>';
+                        $('#level_edit').html(level);
+                      break;
+          }
+
+            $('#modal').modal('open');
+    }
+
+
+    $('#simpan').on('click',function(){
+        var nama=$('#nama').val();
+        var level=$('#level2').val();
+        var id_admin=$('#id_admin').val();
+        $.ajax({
+        type : "POST",
+        url  : "<?php echo base_url()?>admin/simpan_edit/"+id_admin+"/"+nama+"/"+level,
+        dataType : "JSON",
+                success: function(notif){
+                    $('#modal').modal('close');
+                    if (notif==1) {
+                      berhasil("Data Berhasi Diperbaharui!.");
+                      setTimeout("location.href = '<?php echo base_url()?>dataadmin';",1500);
+                    }else{
+                      gagal("Gagal Memperbaharui Data!.");
+                      setTimeout("location.href = '<?php echo base_url()?>dataadmin';",1500);
+                    }
+
+                }
+            });
+            return false;
+        });
+
+
     </script>
-
-
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script>
+      function berhasil(notif) {
+        toastr.success(notif, '', { "progressBar": true });
+      }
+      function peringatan(notif) {
+        toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+      function gagal(notif) {
+        toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+    </script>
 </body>
 
 </html>

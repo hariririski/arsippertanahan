@@ -4,6 +4,16 @@
         $query=$this->db->query("SELECT * FROM `admin`");
         return $query->result();
       }
+      function edit($id_admin){
+        $perintah="SELECT * FROM `admin` where admin.id_admin=$id_admin";
+        $query=$this->db->query($perintah);
+        return $query->result();
+      }
+      function simpan_edit($id_admin,$nama_lengkap,$level){
+        $perintah="UPDATE `admin` SET `level`=$level,`nama_lengkap`='$nama_lengkap' WHERE admin.id_admin=$id_admin";
+        $query=$this->db->query($perintah);
+        return $query;
+      }
 
       function add(){
         $nama_lengkap = $this->input->post('nama_lengkap');
