@@ -575,8 +575,8 @@
       		                  		'<td style="width:250px;">'+data[i].pelayanan+" "+data[i].durasi+'(Hari)</td>'+
       		                  		'<td>'+
                                 '<div class="input-field col s12">'+
-                                  '<select id="layanan" onchange="changeAction(this)" class="layanan browser-default" required name="layanan" style="width:150px;">'+
-                                      '<option value="" disabled selected>Pilih Layanan</option>'+
+                                  '<select id="layanan" onchange="changeAction(this)" class="layanan browser-default" required name="layanan" style="width:100px;">'+
+                                      '<option value="" disabled selected>Layanan</option>'+
                                       <?php
                                       foreach($data_waktu as $waktu){
                                         ?>
