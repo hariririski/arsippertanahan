@@ -572,7 +572,7 @@
     		                html += '<tr>'+
       		                  		'<td>'+nomor+'</td>'+
       		                  		'<td>'+barang+'</td>'+
-      		                  		'<td style="width:250px;">'+data[i].pelayanan+" "+data[i].durasi+'(Hari)</td>'+
+      		                  		'<td>'+wordwrap(data[i].pelayanan, 20, '<br/>n')+" "+data[i].durasi+'(Hari)</td>'+
       		                  		'<td>'+
                                 '<div class="input-field col s12">'+
                                   '<select id="layanan" onchange="changeAction(this)" class="layanan browser-default" required name="layanan" style="width:100px;">'+
@@ -629,7 +629,19 @@
                 });
 
 
+        function wordwrap( str, width, brk, cut ) {
 
+              brk = brk || 'n';
+              width = width || 75;
+              cut = cut || false;
+
+              if (!str) { return str; }
+
+              var regex = '.{1,' +width+ '}(\s|$)' + (cut ? '|.{' +width+ '}|.+$' : '|\S+?(\s|$)');
+
+              return str.match( RegExp(regex, 'g') ).join( brk );
+
+          }
 
 
     </script>
