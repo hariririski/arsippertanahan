@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo $this->load->view('share/icon', '', TRUE);?>
-    <title>Data Waktu Pelayanan</title>
+    <title>Data Kondisi Arsip</title>
     <link href="dist/css/style.css" rel="stylesheet">
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
@@ -107,7 +107,7 @@
                                             <th>Kondisi</th>
                                             <th width="30%">Keterangan</th>
                                             <th>Status</th>
-                                            <th width="30%">Aksi</th>
+                                            <th width="20%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -131,19 +131,19 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn orange">Edit</a>
+                                              <a class="waves-effect waves-light btn orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
                                               <?php
                                               if($data_kondisi->aktif==1){
                                               ?>
-                                                  <a  href="<?php echo base_url(); ?>kondisi/aktif_kondisi/<?php echo $data_kondisi->id_kondisi; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_kondisi->nama_kondisi; ?>?')"/>Non Aktifkan</a>
+                                                  <a  href="<?php echo base_url(); ?>kondisi/aktif_kondisi/<?php echo $data_kondisi->id_kondisi; ?>/0" class="waves-effect waves-light btn purple btn tooltipped" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_kondisi->nama_kondisi; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Non Aktifkan"/><i class="material-icons dp48">do_not_disturb_alt</i></a>
                                               <?php
                                                 }else{
                                               ?>
-                                                  <a  href="<?php echo base_url(); ?>kondisi/aktif_kondisi/<?php echo $data_kondisi->id_kondisi; ?>/1" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_kondisi->nama_kondisi; ?>?')"/>Aktifkan</a>
+                                                  <a  href="<?php echo base_url(); ?>kondisi/aktif_kondisi/<?php echo $data_kondisi->id_kondisi; ?>/1" class="waves-effect waves-light btn purple btn tooltipped" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_kondisi->nama_kondisi; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Aktifkan"/><i class="material-icons dp48">done</i></a>
                                               <?php
                                                   }
                                               ?>
-                                              <a href="<?php echo base_url(); ?>kondisi/hapus_kondisi/<?php echo $data_kondisi->id_kondisi; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Yakin Menghapus Kondisi <?php echo $data_kondisi->nama_kondisi; ?>?')"/>Hapus </a>
+                                              <a href="<?php echo base_url(); ?>kondisi/hapus_kondisi/<?php echo $data_kondisi->id_kondisi; ?>" type="submit" class="waves-effect waves-light btn  red btn tooltipped" onclick="return confirm('Apakah Anda Yakin Menghapus Kondisi <?php echo $data_kondisi->nama_kondisi; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Hapus"/><i class="material-icons dp48">delete_forever</i></a>
                                             </td>
 
                                         </tr>
@@ -186,7 +186,11 @@
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-
+    <script>
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+    });
+    </script>
 
 </body>
 

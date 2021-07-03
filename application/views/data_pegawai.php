@@ -118,7 +118,7 @@
                                             <th>Jabatan</th>
                                             <th>Jenis</th>
                                             <th width="10%">Status</th>
-                                            <th width="25%">Aksi</th>
+                                            <th width="20%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -157,19 +157,19 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn orange">Edit</a>
+                                              <a class="waves-effect waves-light btn orange btn tooltipped"  data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
                                               <?php
                                               if($data_pegawai->aktif==1){
                                               ?>
-                                                  <a  href="<?php echo base_url(); ?>pegawai/aktif_pegawai/<?php echo $data_pegawai->nip; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_pegawai->nama_lengkap; ?>?')"/>Non Aktifkan</a>
+                                                  <a  href="<?php echo base_url(); ?>pegawai/aktif_pegawai/<?php echo $data_pegawai->nip; ?>/0" class="waves-effect waves-light btn purple btn tooltipped" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_pegawai->nama_lengkap; ?>?')"  data-position="bottom" data-delay="50" data-tooltip="Non Aktifkan"/><i class="material-icons dp48">do_not_disturb_alt</i></a>
                                               <?php
                                                 }else{
                                               ?>
-                                                  <a  href="<?php echo base_url(); ?>pegawai/aktif_pegawai/<?php echo $data_pegawai->nip; ?>/1" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_pegawai->nama_lengkap; ?>?')"/>Aktifkan</a>
+                                                  <a  href="<?php echo base_url(); ?>pegawai/aktif_pegawai/<?php echo $data_pegawai->nip; ?>/1" class="waves-effect waves-light btn purple btn tooltipped" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_pegawai->nama_lengkap; ?>?')" data-position="bottom" data-delay="50" data-tooltip="Aktifkan"/><i class="material-icons dp48">done</i></a>
                                               <?php
                                                   }
                                               ?>
-                                              <a href="<?php echo base_url(); ?>pegawai/hapus_pegawai/<?php echo $data_pegawai->nip; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Yakin Menghapus pegawai <?php echo $data_pegawai->nama_lengkap; ?>?')"/>Hapus </a>
+                                              <a href="<?php echo base_url(); ?>pegawai/hapus_pegawai/<?php echo $data_pegawai->nip; ?>" type="submit" class="waves-effect waves-light btn  red btn tooltipped" onclick="return confirm('Apakah Anda Yakin Menghapus pegawai <?php echo $data_pegawai->nama_lengkap; ?>?')" data-position="bottom" data-delay="50" data-tooltip="Hapus"/><i class="material-icons dp48">delete_forever</i> </a>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -211,7 +211,11 @@
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-
+    <script>
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+    });
+    </script>
 
 </body>
 

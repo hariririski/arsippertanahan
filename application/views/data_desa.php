@@ -111,7 +111,7 @@
                                             <th>Desa</th>
                                             <th>QR Code</th>
                                             <th>Status</th>
-                                            <th width="30%">Aksi</th>
+                                            <th width="23%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -142,19 +142,20 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn  orange">Edit</a>
+                                              <a class="waves-effect waves-light btn  orange btn tooltipped"data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
                                               <?php
                                               if($data_desa->aktif==1){
                                               ?>
-                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_desa/<?php echo $data_desa->kode_kec; ?>/<?php echo $data_desa->kode_desa; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_desa->nama_desa; ?>?')"/>Non Aktifkan</a>
+                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_desa/<?php echo $data_desa->kode_kec; ?>/<?php echo $data_desa->kode_desa; ?>/0" class="waves-effect waves-light btn purple btn tooltipped" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_desa->nama_desa; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Non Aktifkan"/><i class="material-icons dp48">do_not_disturb_alt</i></a>
                                               <?php
                                                 }else{
                                               ?>
-                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_desa/<?php echo $data_desa->kode_kec; ?>/<?php echo $data_desa->kode_desa; ?>/1" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_desa->nama_desa; ?>?')"/>Aktifkan</a>
+                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_desa/<?php echo $data_desa->kode_kec; ?>/<?php echo $data_desa->kode_desa; ?>/1" class="waves-effect waves-light btn purple btn tooltipped" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_desa->nama_desa; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Aktifkan"/><i class="material-icons dp48">done</i></a>
                                               <?php
                                                   }
                                               ?>
-                                              <a href="<?php echo base_url(); ?>provinsi/hapus_desa/<?php echo $data_desa->kode_kec; ?>/<?php echo $data_desa->kode_desa; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Yakin Menghapus Desa <?php echo $data_desa->nama_desa; ?>?')"/>Hapus </a>
+                                              <a  href="<?php echo base_url(); ?>provinsi/aktif_prov/<?php echo $data_desa->kode_kec; ?>/" class="waves-effect waves-light btn indigo btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Cetak QR Code"><i class="material-icons dp48">local_printshop</i></a>
+                                              <a href="<?php echo base_url(); ?>provinsi/hapus_desa/<?php echo $data_desa->kode_kec; ?>/<?php echo $data_desa->kode_desa; ?>" type="submit" class="waves-effect waves-light btn  red btn tooltipped" onclick="return confirm('Apakah Anda Yakin Menghapus Desa <?php echo $data_desa->nama_desa; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Hapus"/><i class="material-icons dp48">delete_forever</i> </a>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -196,7 +197,11 @@
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-
+    <script>
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+    });
+    </script>
 
 </body>
 

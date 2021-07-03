@@ -137,7 +137,7 @@
                                             <th>QR Code</th>
                                             <th>Desa</th>
                                             <th>Sengketa</th>
-                                            <th width="30%">Aksi</th>
+                                            <th width="15%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -171,8 +171,8 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn  orange">Edit</a>
-                                              <a href="<?php echo base_url(); ?>lemari/hapus_bundel/<?php echo $data_bundel->id_baris; ?>/<?php echo $data_bundel->id_bundel; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Ingin Menghapus Bundel <?php echo $data_bundel->nama_bundel; ?>?')"/>Hapus </a>
+                                              <a class="waves-effect waves-light btn  orange btn tooltipped"data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
+                                              <a href="<?php echo base_url(); ?>lemari/hapus_bundel/<?php echo $data_bundel->id_baris; ?>/<?php echo $data_bundel->id_bundel; ?>" type="submit" class="waves-effect waves-light btn  red btn tooltipped" onclick="return confirm('Apakah Anda Ingin Menghapus Bundel <?php echo $data_bundel->nama_bundel; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Hapus"/><i class="material-icons dp48">delete_forever</i> </a>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -214,7 +214,11 @@
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-
+    <script>
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+    });
+    </script>
 </body>
 
 </html>

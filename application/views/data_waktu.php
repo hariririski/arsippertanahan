@@ -107,7 +107,7 @@
                                             <th>Pelayanan</th>
                                             <th>Durasi(Hari)</th>
                                             <th>Status</th>
-                                            <th width="30%">Aksi</th>
+                                            <th width="20%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -131,19 +131,19 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn orange">Edit</a>
+                                              <a class="waves-effect waves-light btn orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
                                               <?php
                                               if($data_waktu->aktif==1){
                                               ?>
-                                                  <a  href="<?php echo base_url(); ?>waktu_pelayanan/aktif_waktu/<?php echo $data_waktu->id_waktu; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_waktu->pelayanan; ?>?')"/>Non Aktifkan</a>
+                                                  <a  href="<?php echo base_url(); ?>waktu_pelayanan/aktif_waktu/<?php echo $data_waktu->id_waktu; ?>/0" class="waves-effect waves-light btn purple btn tooltipped" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_waktu->pelayanan; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Non Aktifkan"/><i class="material-icons dp48">do_not_disturb_alt</i></a>
                                               <?php
                                                 }else{
                                               ?>
-                                                  <a  href="<?php echo base_url(); ?>waktu_pelayanan/aktif_waktu/<?php echo $data_waktu->id_waktu; ?>/1" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_waktu->pelayanan; ?>?')"/>Aktifkan</a>
+                                                  <a  href="<?php echo base_url(); ?>waktu_pelayanan/aktif_waktu/<?php echo $data_waktu->id_waktu; ?>/1" class="waves-effect waves-light btn purple btn tooltipped" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_waktu->pelayanan; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Aktifkan"/><i class="material-icons dp48">done</i></a>
                                               <?php
                                                   }
                                               ?>
-                                              <a href="<?php echo base_url(); ?>waktu_pelayanan/hapus_waktu/<?php echo $data_waktu->id_waktu; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Yakin Menghapus waktu Pelayanan <?php echo $data_waktu->pelayanan; ?>?')"/>Hapus </a>
+                                              <a href="<?php echo base_url(); ?>waktu_pelayanan/hapus_waktu/<?php echo $data_waktu->id_waktu; ?>" type="submit" class="waves-effect waves-light btn  red  btn tooltipped" onclick="return confirm('Apakah Anda Yakin Menghapus waktu Pelayanan <?php echo $data_waktu->pelayanan; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Hapus"/><i class="material-icons dp48">delete_forever</i> </a>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -185,7 +185,11 @@
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-
+    <script>
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+    });
+    </script>
 
 </body>
 

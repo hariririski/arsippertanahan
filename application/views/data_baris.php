@@ -103,7 +103,7 @@
                                             <th>#</th>
                                             <th>Baris</th>
                                             <th>QR Code</th>
-                                            <th width="30%">Aksi</th>
+                                            <th width="25%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -124,9 +124,10 @@
                                               </center>
                                             </td>
                                             <td>
-                                              <a href="<?php echo base_url(); ?>databundel?baris=<?php echo $data_baris->id_baris; ?>" class="waves-effect waves-light btn  green">Tambah Bundel</a>
-                                              <a class="waves-effect waves-light btn  orange">Edit</a>
-                                              <a href="<?php echo base_url(); ?>lemari/hapus_baris/<?php echo $data_baris->id_lemari; ?>/<?php echo $data_baris->id_baris; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Are you sure you want to search Google?')"/>Hapus </a>
+                                              <a href="<?php echo base_url(); ?>databundel?baris=<?php echo $data_baris->id_baris; ?>" class="waves-effect waves-light btn  green btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Lihat Bundel"><i class="material-icons dp48">remove_red_eye</i></a>
+                                              <a class="waves-effect waves-light btn  orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
+                                              <a  href="" class="waves-effect waves-light btn indigo btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Cetak QR Code"><i class="material-icons dp48">local_printshop</i></a>
+                                              <a href="<?php echo base_url(); ?>lemari/hapus_baris/<?php echo $data_baris->id_lemari; ?>/<?php echo $data_baris->id_baris; ?>" type="submit" class="waves-effect waves-light btn  red btn tooltipped" onclick="return confirm('Apakah Anda Yakin MengHapus Data?')"data-position="bottom" data-delay="50" data-tooltip="Hapus"/><i class="material-icons dp48">delete_forever</i> </a>
                                             </td>
                                         </tr>
                                         <?php } ?>

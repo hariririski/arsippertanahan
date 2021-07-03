@@ -98,8 +98,7 @@
                                             <th>Lemari</th>
                                             <th>QR Code</th>
                                             <th>Keterangan</th>
-                                            <th width="30%">Aksi</th>
-                                            <th>Cetak QR Code Baris / Bundel</th>
+                                            <th width="25%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -121,12 +120,10 @@
                                             </td>
                                             <td><?php echo $data_lemari->keterangan; ?></td>
                                             <td>
-                                              <a href="<?php echo base_url(); ?>databaris?lemari=<?php echo $data_lemari->id_lemari; ?>" class="waves-effect waves-light btn  green">Tambah Baris</a>
-                                              <a class="waves-effect waves-light btn  orange">Edit</a>
-                                              <a href="<?php echo base_url(); ?>lemari/hapus_lemari/<?php echo $data_lemari->id_lemari; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Ingin Menghapus Lemari <?php echo $data_lemari->nama_lemari; ?>?')"/>Hapus </a>
-                                            </td>
-                                            <td  style="color: #000000;">
-                                              <a href="<?php echo base_url(); ?>cetak/cetak_bt_desa//" target="_blank"class="waves-effect waves-light btn  green">Cetak QR Code</a>
+                                              <a href="<?php echo base_url(); ?>databaris?lemari=<?php echo $data_lemari->id_lemari; ?>" class="waves-effect waves-light btn  green btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Lihat Baris"><i class="material-icons dp48">remove_red_eye</i></a>
+                                              <a class="waves-effect waves-light btn  orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
+                                              <a href="<?php echo base_url(); ?>cetak/cetak_bt_desa//" target="_blank"class="waves-effect waves-light btn  blue btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Cetakk QR Code"><i class="material-icons dp48">local_printshop</i></a>
+                                              <a href="<?php echo base_url(); ?>lemari/hapus_lemari/<?php echo $data_lemari->id_lemari; ?>" type="submit" class="waves-effect waves-light btn  red btn tooltipped" onclick="return confirm('Apakah Anda Ingin Menghapus Lemari <?php echo $data_lemari->nama_lemari; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Hapus"/><i class="material-icons dp48">delete_forever</i> </a>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -134,7 +131,7 @@
                                 </table>
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <a href="<?php echo base_url(); ?>cetak/cetak_lemari" target="_blank"class="waves-effect waves-light btn  green">Cetak QR Code Lemari</a>
+                                        <a href="<?php echo base_url(); ?>cetak/cetak_lemari" target="_blank"class="waves-effect waves-light btn  green btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Cetakk QR Code Seluruhnya" >Cetak QR Code Lemari</a>
                                         </button>
                                     </div>
                                 </div>
@@ -174,7 +171,11 @@
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-
+    <script>
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+    });
+    </script>
 
 </body>
 

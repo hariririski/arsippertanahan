@@ -161,19 +161,20 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn orange">Edit</a>
+                                              <a class="waves-effect waves-light btn orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
                                               <?php
                                               if($data_admin->status==1){
                                               ?>
-                                                  <a  href="<?php echo base_url(); ?>admin/aktif_admin/<?php echo $data_admin->id_admin; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan <?php echo $data_admin->nama_lengkap; ?>?')"/>Non Aktifkan</a>
+                                                  <a  href="<?php echo base_url(); ?>admin/aktif_admin/<?php echo $data_admin->id_admin; ?>/0" class="waves-effect waves-light btn purple btn tooltipped" onclick="return confirm('Apakah Anda Yakin Non-Aktifkan  User<?php echo $data_admin->nama_lengkap; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Non Aktifkan User"/><i class="material-icons dp48">do_not_disturb_alt</i></a>
                                               <?php
                                                 }else{
                                               ?>
-                                                  <a  href="<?php echo base_url(); ?>admin/aktif_admin/<?php echo $data_admin->id_admin; ?>/1" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin Aktifkan <?php echo $data_admin->nama_lengkap; ?>?')"/>Aktifkan</a>
+                                                  <a  href="<?php echo base_url(); ?>admin/aktif_admin/<?php echo $data_admin->id_admin; ?>/1" class="waves-effect waves-light btn purple btn tooltipped" onclick="return confirm('Apakah Anda Yakin Aktifkan User<?php echo $data_admin->nama_lengkap; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Aktifkan User"/><i class="material-icons dp48">done</i></a>
                                               <?php
                                                   }
                                               ?>
-                                              <a href="<?php echo base_url(); ?>admin/hapus_admin/<?php echo $data_admin->id_admin; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Yakin Menghapus admin <?php echo $data_admin->nama_lengkap; ?>?')"/>Hapus </a>
+                                              <a href="<?php echo base_url(); ?>admin/hapus_admin/<?php echo $data_admin->id_admin; ?>" type="submit" class="waves-effect waves-light btn  red btn tooltipped" onclick="return confirm('Apakah Anda Yakin Menghapus User <?php echo $data_admin->nama_lengkap; ?>?')" data-position="bottom" data-delay="50" data-tooltip="Hapus Data" /><i class="material-icons dp48">delete_forever</i> </a>
+                                              <a href="<?php echo base_url(); ?>admin/hapus_admin/<?php echo $data_admin->id_admin; ?>" type="submit" class="waves-effect waves-light btn  blue btn tooltipped" onclick="return confirm('Apakah Anda Yakin Me Reset Password Menjadi atrbpn2021 User <?php echo $data_admin->nama_lengkap; ?>?')" data-position="bottom" data-delay="50" data-tooltip="Reset Password" /><i class="material-icons dp48">cached</i></a>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -215,6 +216,11 @@
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
+    <script>
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+    });
+    </script>
 
 
 </body>

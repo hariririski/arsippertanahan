@@ -111,7 +111,7 @@
                                             <th>Kecamatan</th>
                                             <th>QR Code</th>
                                             <th>Status</th>
-                                            <th width="30%">Aksi</th>
+                                            <th width="25%">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -142,20 +142,21 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a href="<?php echo base_url(); ?>datadesa?kec=<?php echo $data_kecamatan->kode_kec; ?>" class="waves-effect waves-light btn  green">Desa</a>
-                                              <a class="waves-effect waves-light btn  orange">Edit</a>
+                                              <a href="<?php echo base_url(); ?>datadesa?kec=<?php echo $data_kecamatan->kode_kec; ?>" class="waves-effect waves-light btn  green btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Lihat Desa"><i class="material-icons dp48">remove_red_eye</i></a>
+                                              <a class="waves-effect waves-light btn  orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
                                               <?php
                                               if($data_kecamatan->aktif==1){
                                               ?>
-                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_kec/<?php echo $data_kecamatan->kode_kota; ?>/<?php echo $data_kecamatan->kode_kec; ?>/0" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin  Non-Aktifkan <?php echo $data_kecamatan->nama_kec; ?>?')"/>Non Aktifkan</a>
+                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_kec/<?php echo $data_kecamatan->kode_kota; ?>/<?php echo $data_kecamatan->kode_kec; ?>/0" class="waves-effect waves-light btn purple btn tooltipped" onclick="return confirm('Apakah Anda Yakin  Non-Aktifkan <?php echo $data_kecamatan->nama_kec; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Non Aktifkan"/><i class="material-icons dp48">do_not_disturb_alt</i></a>
                                               <?php
                                                 }else{
                                               ?>
-                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_kec/<?php echo $data_kecamatan->kode_kota; ?>/<?php echo $data_kecamatan->kode_kec; ?>/1" class="waves-effect waves-light btn purple" onclick="return confirm('Apakah Anda Yakin  Aktifkan <?php echo $data_kecamatan->nama_kec; ?>?')"/>Aktifkan</a>
+                                                  <a  href="<?php echo base_url(); ?>provinsi/aktif_kec/<?php echo $data_kecamatan->kode_kota; ?>/<?php echo $data_kecamatan->kode_kec; ?>/1" class="waves-effect waves-light btn purple btn tooltipped" onclick="return confirm('Apakah Anda Yakin  Aktifkan <?php echo $data_kecamatan->nama_kec; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Aktifkan"/><i class="material-icons dp48">done</i></a>
                                               <?php
                                                   }
                                               ?>
-                                              <a href="<?php echo base_url(); ?>provinsi/hapus_kec/<?php echo $data_kecamatan->kode_kota?>/<?php echo $data_kecamatan->kode_kec; ?>" type="submit" class="waves-effect waves-light btn  red" onclick="return confirm('Apakah Anda Yakin Menghapus Kecamatan <?php echo $data_kecamatan->nama_kec; ?>?')"/>Hapus </a>
+                                              <a  href="<?php echo base_url(); ?>provinsi/aktif_prov/<?php echo $data_kecamatan->kode_kota;?>/" class="waves-effect waves-light btn indigo btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Cetak QR Code"><i class="material-icons dp48">local_printshop</i></a>
+                                              <a href="<?php echo base_url(); ?>provinsi/hapus_kec/<?php echo $data_kecamatan->kode_kota;?>/<?php echo $data_kecamatan->kode_kec; ?>" type="submit" class="waves-effect waves-light btn  red btn tooltipped" onclick="return confirm('Apakah Anda Yakin Menghapus Kecamatan <?php echo $data_kecamatan->nama_kec; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Hapus"/><i class="material-icons dp48">delete_forever</i>  </a>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -197,7 +198,11 @@
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
-
+    <script>
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+    });
+    </script>
 
 </body>
 
