@@ -82,6 +82,8 @@ $route['profil'] = 'Admin/profil';
 
 $route['cetakqrcodesemualemari'] = 'cetak/qrcode_semua_lemari';
 $route['scan'] = 'Scan';
+$route['kembali'] = 'Pinjam/kembali';
+$route['susun'] = 'Pinjam/susun';
 
 $route['404_override'] = 'Rusak';
 $route['translate_uri_dashes'] = FALSE;

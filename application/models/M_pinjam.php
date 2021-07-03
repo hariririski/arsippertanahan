@@ -6,6 +6,15 @@
         return $query->result();
       }
 
+      function data_all(){
+        $query=$this->db->query("SELECT * FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip WHERE pinjam.induk=0 and status=2");
+        return $query->result();
+      }
+      function data_susun(){
+        $query=$this->db->query("SELECT * FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip WHERE pinjam.induk=0 and status=3");
+        return $query->result();
+      }
+
       function tambah($invoice,$tgl_pinjam,$nip,$admin){
         $perintah1="INSERT INTO `pinjam`(`invoice`,`tgl_pinjam`,`admin_tambah`,`nip`,`induk`,`status`)
                         VALUES ('$invoice','$tgl_pinjam','$admin','$nip',1,1)";
