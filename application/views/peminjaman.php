@@ -587,7 +587,7 @@
 
                                 '</td>'+
     		                        '<td style="text-align:left;">'+
-                                        '<a  class="btn btn-danger btn-xs item_hapus" data="'+data[i].id_pinjam+'">Hapus</a>'+
+                                        '<a  class="btn btn-danger btn-xs item_hapus" data="'+data[i].id_pinjam+'"><i class="material-icons dp48">delete_forever</i></a>'+
                                     '</td>'+
     		                        '</tr>';
                         nomor++;
