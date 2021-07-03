@@ -63,6 +63,19 @@ class Admin extends CI_Controller {
 		$data= $this->M_admin->edit($id_admin);
 		echo json_encode($data);
 	}
+
+	public function reset(){
+		$id_admin=$this->uri->segment('3');
+		$password="atrbpn2021";
+		$password=md5($password);
+		$data= $this->M_admin->ganti_password($id_admin,$password);
+		if($data>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."dataadmin';</script>");
+		}else{
+			echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."dataadmin';</script>");
+		}
+	}
+
 	public function simpan_edit(){
 		$id_admin=$this->uri->segment('3');
 		$nama=$this->uri->segment('4');

@@ -174,7 +174,7 @@
                                                   }
                                               ?>
                                               <a href="<?php echo base_url(); ?>admin/hapus_admin/<?php echo $data_admin->id_admin; ?>" type="submit" class="waves-effect waves-light btn  red btn tooltipped" onclick="return confirm('Apakah Anda Yakin Menghapus User <?php echo $data_admin->nama_lengkap; ?>?')" data-position="bottom" data-delay="50" data-tooltip="Hapus Data" /><i class="material-icons dp48">delete_forever</i> </a>
-                                              <a href="<?php echo base_url(); ?>admin/hapus_admin/<?php echo $data_admin->id_admin; ?>" type="submit" class="waves-effect waves-light btn  blue btn tooltipped" onclick="return confirm('Apakah Anda Yakin Me Reset Password Menjadi atrbpn2021 User <?php echo $data_admin->nama_lengkap; ?>?')" data-position="bottom" data-delay="50" data-tooltip="Reset Password" /><i class="material-icons dp48">cached</i></a>
+                                              <a href="<?php echo base_url(); ?>admin/reset/<?php echo $data_admin->id_admin; ?>" type="submit" class="waves-effect waves-light btn  blue btn tooltipped" onclick="return confirm('Apakah Anda Yakin Me Reset Password Menjadi atrbpn2021 User <?php echo $data_admin->nama_lengkap; ?>?')" data-position="bottom" data-delay="50" data-tooltip="Reset Password" /><i class="material-icons dp48">cached</i></a>
                                             </td>
                                         </tr>
                                         <?php } ?>
