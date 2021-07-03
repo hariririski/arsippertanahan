@@ -568,11 +568,14 @@
                       }else if (data[i].id_surat_ukur!=null) {
                         barang="SU - "+data[i].su_nomor+"/"+data[i].su_tahun+" - "+data[i].su_desa;
                       }
+                        text=data[i].pelayanan;
+                        str = wordWrap(text, 40);
+                        alert(str);
 
     		                html += '<tr>'+
       		                  		'<td>'+nomor+'</td>'+
       		                  		'<td>'+barang+'</td>'+
-      		                  		'<td style="width:250px;">'+data[i].pelayanan+" "+data[i].durasi+'(Hari)</td>'+
+      		                  		'<td>'+str+"<br>"+data[i].durasi+'(Hari)</td>'+
       		                  		'<td>'+
                                 '<div class="input-field col s12">'+
                                   '<select id="layanan" onchange="changeAction(this)" class="layanan browser-default" required name="layanan" style="width:100px;">'+
@@ -629,21 +632,34 @@
                 });
 
 
-  const formatTextWrap = (text, maxLineLength) => {
-  const words = text.replace(/[\r\n]+/g, ' ').split(' ');
-  let lineLength = 0;
+  function wordWrap(str, maxWidth) {
+    var newLineStr = "<br>"; done = false; res = '';
+    while (str.length > maxWidth) {
+        found = false;
+        // Inserts new line at first whitespace of the line
+        for (i = maxWidth - 1; i >= 0; i--) {
+            if (testWhite(str.charAt(i))) {
+                res = res + [str.slice(0, i), newLineStr].join('');
+                str = str.slice(i + 1);
+                found = true;
+                break;
+            }
+        }
+        // Inserts new line at maxWidth position, the word is too long to wrap
+        if (!found) {
+            res += [str.slice(0, maxWidth), newLineStr].join('');
+            str = str.slice(maxWidth);
+        }
 
-  // use functional reduce, instead of for loop
-  return words.reduce((result, word) => {
-    if (lineLength + word.length >= maxLineLength) {
-      lineLength = word.length;
-      return result + `\n${word}`; // don't add spaces upfront
-    } else {
-      lineLength += word.length + (result ? 1 : 0);
-      return result ? result + ` ${word}` : `${word}`; // add space only when needed
     }
-  }, '');
+
+    return res + str;
 }
+
+function testWhite(x) {
+    var white = new RegExp(/^\s$/);
+    return white.test(x.charAt(0));
+};
 
 
     </script>
