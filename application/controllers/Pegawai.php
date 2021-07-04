@@ -51,6 +51,26 @@ class Pegawai extends CI_Controller {
 		}
 	}
 
+	function edit_pegawai(){
+        $nip=$this->uri->segment('3');
+        $data=$this->M_pegawai->lihat_nip($nip);
+        echo json_encode($data);
+  }
+
+	function simpan_edit_pegawai(){
+        $nip=$this->uri->segment('3');
+        $pelayanan=$this->uri->segment('4');
+        $durasi=$this->uri->segment('5');
+				$pelayanan=preg_replace('/%20/'," ", $pelayanan);
+        $data=$this->M_pegawai->edit_pegawai($nip,$pelayanan,$durasi);
+				if($data>0){
+					$data=1;
+				}else{
+					$data=0;
+				}
+        echo json_encode($data);
+  }
+
 
 
 }
