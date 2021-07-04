@@ -44,7 +44,22 @@ class Lemari extends CI_Controller {
         $data=$this->M_lemari->detail_bundel($id);
         echo json_encode($data);
   }
-
+	function simpan_edit_bundel(){
+        $id_bundel=$this->uri->segment('3');
+        $nama_bundel=$this->uri->segment('4');
+        $sengketa=$this->uri->segment('5');
+        $kode_desa=$this->uri->segment('6');
+        $keterangan=$this->uri->segment('7');
+				$nama_bundel=preg_replace('/%20/'," ", $nama_bundel);
+				$keterangan=preg_replace('/%20/'," ", $keterangan);
+        $data=$this->M_lemari->edit_bundel($id_bundel,$nama_bundel,$sengketa,$kode_desa,$keterangan);
+				if($data>0){
+					$data=1;
+				}else{
+					$data=0;
+				}
+        echo json_encode($data);
+  }
 	function simpan_edit_lemari(){
         $id_lemari=$this->uri->segment('3');
         $nama_lemari=$this->uri->segment('4');

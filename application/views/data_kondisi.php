@@ -58,23 +58,21 @@
                                 <h5 class="card-title activator">Tambah Data Waktu Pelayanan<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>kondisi/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s4">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Kode Kondisi *</label>
                                             <input  type="text"  required name="id_kondisi" autofocus>
                                             <div class="errorTxt2"></div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
+
+                                        <div class="input-field col s4">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Kondisi *</label>
                                             <input  type="text"  required name="nama_kondisi">
                                             <div class="errorTxt2"></div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
+
+                                        <div class="input-field col s4">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Keterangan *</label>
                                             <input  type="text"  required name="keterangan">

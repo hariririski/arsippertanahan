@@ -58,15 +58,14 @@
                                 <h5 class="card-title activator">Tambah Data Lemari<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>lemari/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Lemari *</label>
-                                            <input  type="text"  required name="nama_lemari">
+                                            <input  type="text"  required name="nama_lemari" autofocus>
                                             <div class="errorTxt2"></div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
+
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Keterangan *</label>
                                             <input  type="text"  required name="keterangan">

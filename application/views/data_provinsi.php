@@ -58,15 +58,14 @@
                                 <h5 class="card-title activator">Tambah Data Provinsi<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Provinsi/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <input  name="id_prov" type="text" required>
                                             <label for="uname">Kode Provinsi *</label>
                                             <div class="errorTxt1"></div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
+
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Provinsi *</label>
                                             <input  type="text" name="nama_prov" required>

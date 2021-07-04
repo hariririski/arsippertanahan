@@ -61,7 +61,7 @@
                                 <h5 class="card-title activator">Tambah Data Bundel<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Lemari/tambah_bundel?baris=<?php echo $baris->id_baris;?>" method="post" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
 
                                             <input   type="text" disabled required name="id_Kota" autofocus value="<?php echo $baris->nama_lemari; ?> - <?php echo $baris->nama_baris; ?>">
@@ -69,18 +69,18 @@
                                             <label for="uname">Kode Bundel - Baris *</label>
                                             <div class="errorTxt1"></div>
                                         </div>
-                                    </div>
+
                               <?php  } ?>
-                                    <div class="row">
-                                        <div class="input-field col s12">
+
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Bundel *</label>
-                                            <input  type="text"  required name="nama_bundel">
+                                            <input  type="text"  required name="nama_bundel" autofocus>
                                             <div class="errorTxt2"></div>
                                         </div>
                                     </div>
                                     <div class="row">
-                                          <div class="input-field col s12">
+                                          <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                               <select required name="sengketa">
                                                   <option value="" disabled selected>Pilih Sengketa/Tidak</option>
@@ -88,29 +88,19 @@
                                                   <option value="0">TIDAK</option>
                                               </select>
                                           </div>
-                                    </div>
-                                    <div class="row">
-                                          <div class="input-field col s12">
+
+                                          <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <select required name="kode_desa">
                                               <option value="" disabled selected>Pilih Desa</option>
                                               <?php
-                                                foreach($data_desa as $data_desa){
+                                                foreach($data_desa as $desa){
                                               ?>
-                                                <option value="<?php echo $data_desa->kode_desa; ?>"><?php echo $data_desa->nama_kec; ?> -- <?php echo $data_desa->nama_desa; ?></option>
+                                                <option value="<?php echo $desa->kode_desa; ?>"><?php echo $desa->nama_kec; ?> -- <?php echo $desa->nama_desa; ?></option>
                                               <?php } ?>
                                             </select>
                                           </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">chrome_reader_mode</i>
-                                            <label for="cemail">Keterangan *</label>
-                                            <input  type="text"  required name="keterangan">
-                                            <div class="errorTxt2"></div>
-                                        </div>
-                                    </div>
-
 
                                     <div class="row">
                                         <div class="input-field col s12">
@@ -190,42 +180,34 @@
             <div id="modal" class="modal">
                 <div class="modal-content">
                     <h5 class="card-title">Perubahan Data</h5>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">chrome_reader_mode</i>
+
+                    <div class="row col s12">
+                          <div class="input-field col s3">
+                            <p class="input-field">Nama Bundel</p>
+                          </div>
+                          <div class="input-field col s9">
                             <input  type="text"  required name="nama_bundel_edit" id="nama_bundel_edit">
                             <input  type="hidden"  required name="id_bundel" id="id_bundel">
-                            <div class="errorTxt2"></div>
+                          </div>
+                    </div>
+                    <div class="row col s12">
+                        <div class="input-field col s3">
+                          <p class="input-field">Bundel Sengketa</p>
+                        </div>
+                        <div class="input-field col s9">
+                            <div id="show_sengketa">
+
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                          <div class="input-field col s12">
-                            <i class="material-icons prefix">chrome_reader_mode</i>
-                              <select required name="sengketa">
-                                  <option value="" disabled selected>Pilih Sengketa/Tidak</option>
-                                  <option value="1">IYA</option>
-                                  <option value="0">TIDAK</option>
-                              </select>
-                          </div>
-                    </div>
-                    <div class="row">
-                          <div class="input-field col s12">
-                            <i class="material-icons prefix">chrome_reader_mode</i>
-                            <select required name="kode_desa">
-                              <option value="" disabled selected>Pilih Desa</option>
-                              <?php
-                                foreach($data_desa as $data_desa){
-                              ?>
-                                <option value="<?php echo $data_desa->kode_desa; ?>"><?php echo $data_desa->nama_kec; ?> -- <?php echo $data_desa->nama_desa; ?></option>
-                              <?php } ?>
-                            </select>
-                          </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">chrome_reader_mode</i>
-                            <input  type="text"  required name="keterangan_edit" id="keterangan_edit">
-                            <div class="errorTxt2"></div>
+                    <div class="row col s12">
+                        <div class="input-field col s3">
+                          <p class="input-field">Desa</p>
+                        </div>
+                        <div class="input-field col s9">
+                            <div id="show_desa">
+
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -281,25 +263,70 @@
     function data_modal(data){
           $('[name="nama_bundel_edit"]').val(data[0]["nama_bundel"]);
           $('[name="id_bundel"]').val(data[0]["id_bundel"]);
+          var sengketa="";
+          var nilai=parseInt(data[0]["sengketa"]);
+          switch (nilai){
+            case 1: sengketa +='<div class="input-field col s12">'+
+                                '<select required name="sengketa_edit" id="sengketa_edit" class="browser-default" >'+
+                                  '<option selected value="1">IYA</option>'+
+                                  '<option value="0">TIDAK</option>'+
+                                '</select>'+
+                              '</div>';
+                      $('#show_sengketa').html(sengketa);
+                      break;
+              case 0: sengketa +='<div class="input-field col s12">'+
+                                  '<select required name="sengketa_edit" id="sengketa_edit" class="browser-default" >'+
+                                    '<option value="1">IYA</option>'+
+                                    '<option selected value="0">TIDAK</option>'+
+                                  '</select>'+
+                                '</div>';
+                        $('#show_sengketa').html(sengketa);
+                        break;
+          }
+
+          var desa="";
+          var kode_desa=data[0]["kode_desa" ];
+          var pilih=" ";
+          var database;
+          desa +='<div class="input-field col s12">'+
+                '<select required name="kode_desa" id="kode_desa" class="browser-default">';
+                    <?php
+                      foreach($data_desa as $desa){
+                    ?>
+          if(kode_desa=="<?php echo $desa->kode_desa; ?>"){
+            desa +='<option selected value="<?php echo $desa->kode_desa; ?>"><?php echo $desa->nama_kec."--"; ?><?php echo $desa->nama_desa; ?></option>';
+          }else{
+            pilih=" ";
+            desa +='<option'+pilih;
+            desa +='value="<?php echo $desa->kode_desa; ?>"><?php echo $desa->nama_kec."--"; ?><?php echo $desa->nama_desa; ?></option>';
+          }
+
+            <?php } ?>
+            desa +='</select>'+
+                    '</div>';
+
+                $('#show_desa').html(desa);
           $('#modal').modal('open');
     }
 
 
     $('#simpan').on('click',function(){
-        var nama_baris_edit=$('#nama_baris_edit').val();
-        var id_baris=$('#id_baris').val();
+        var nama_bundel_edit=$('#nama_bundel_edit').val();
+        var id_bundel=$('#id_bundel').val();
+        var kode_desa=$('#kode_desa').val();
+        var sengketa_edit=$('#sengketa_edit').val();
         $.ajax({
         type : "POST",
-        url  : "<?php echo base_url()?>lemari/simpan_edit_baris/"+id_baris+"/"+nama_baris_edit,
+        url  : "<?php echo base_url()?>lemari/simpan_edit_bundel/"+id_bundel+"/"+nama_bundel_edit+"/"+sengketa_edit+"/"+kode_desa,
         dataType : "JSON",
                 success: function(notif){
                     $('#modal').modal('close');
                     if (notif==1) {
                       berhasil("Data Berhasi Diperbaharui!.");
-                      setTimeout("location.href = '<?php echo base_url()?>databaris?lemari=<?php echo $this->input->get('lemari');?>';",1500);
+                      setTimeout("location.href = '<?php echo base_url()?>databundel?baris=<?php echo $this->input->get('baris');?>';",1500);
                     }else{
                       gagal("Gagal Memperbaharui Data!.");
-                      setTimeout("location.href = '<?php echo base_url()?>databaris?lemari=<?php echo $this->input->get('lemari');?>';",1500);
+                      setTimeout("location.href = '<?php echo base_url()?>databundel?baris=<?php echo $this->input->get('baris');?>';",1500);
                     }
 
                 }

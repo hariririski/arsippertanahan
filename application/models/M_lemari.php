@@ -34,6 +34,10 @@
         $query=$this->db->query("UPDATE `baris` SET `nama_baris`='$nama_baris' WHERE baris.id_baris='$id_baris'");
         return $query;
       }
+      function edit_bundel($id_bundel,$nama_bundel,$sengketa,$kode_desa){
+        $query=$this->db->query("UPDATE `bundel` SET`nama_bundel`='$nama_bundel',`kode_desa`='$kode_desa',`sengketa`='$sengketa' WHERE bundel.id_bundel='$id_bundel'");
+        return $query;
+      }
 
       function getBaris($id){
         $query=$this->db->query("SELECT * FROM `baris` where baris.id_lemari='$id'");
@@ -75,7 +79,6 @@
       }
       function tambah_bundel($id_baris,$id_bundel){
         $nama_bundel = $this->input->post('nama_bundel');
-        $keterangan = $this->input->post('keterangan');
         $kode_desa = $this->input->post('kode_desa');
         $sengketa = $this->input->post('sengketa');
         $qrcode="BNDL-".$id_bundel;

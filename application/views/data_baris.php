@@ -61,7 +61,7 @@
                                 <h5 class="card-title activator">Tambah Data Baris Lemari<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>lemari/tambah_baris?lemari=<?php echo $lemari->id_lemari;?>" method="post" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
 
                                             <input   type="text" disabled required name="id_Kota" autofocus value="<?php echo $lemari->nama_lemari; ?>">
@@ -69,13 +69,13 @@
                                             <label for="uname">Lemari *</label>
                                             <div class="errorTxt1"></div>
                                         </div>
-                                    </div>
+
                               <?php  } ?>
-                                    <div class="row">
-                                        <div class="input-field col s12">
+
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama baris *</label>
-                                            <input  type="text"  required name="nama_baris">
+                                            <input  type="text"  required name="nama_baris" autofocus>
                                             <div class="errorTxt2"></div>
                                         </div>
                                     </div>

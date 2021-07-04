@@ -61,24 +61,23 @@
                                 <h5 class="card-title activator">Tambah Data Desa<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>provinsi/tambah_desa?kec=<?php echo $kec->kode_kec;?>" method="post" enctype="multipart/form-data">
                                   <div class="row">
-                                      <div class="input-field col s12">
+                                      <div class="input-field col s4">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
                                           <label for="cemail">Nama Kecamatan</label>
                                           <input  type="text"  disabled value="<?php echo $kec->nama_kec;?>">
                                           <div class="errorTxt2"></div>
                                       </div>
-                                  </div>
+
                               <?php  } ?>
-                                    <div class="row">
-                                        <div class="input-field col s12">
+
+                                        <div class="input-field col s4">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Kode Desa *</label>
                                             <input  type="text"  required name="id_desa" autofocus>
                                             <div class="errorTxt2"></div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="input-field col s12">
+
+                                        <div class="input-field col s4">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama desa*</label>
                                             <input  type="text"  required name="nama_desa">
