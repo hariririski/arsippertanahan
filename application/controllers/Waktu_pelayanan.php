@@ -51,6 +51,26 @@ class Waktu_pelayanan extends CI_Controller {
 		}
 	}
 
+	function edit_waktu_pelayanan(){
+        $id=$this->uri->segment('3');
+        $data=$this->M_waktu_pelayanan->detail_waktu_pelayanan($id);
+        echo json_encode($data);
+  }
+
+	function simpan_edit_waktu_pelayanan(){
+        $id_waktu_pelayanan=$this->uri->segment('3');
+        $pelayanan=$this->uri->segment('4');
+        $durasi=$this->uri->segment('5');
+				$pelayanan=preg_replace('/%20/'," ", $pelayanan);
+        $data=$this->M_waktu_pelayanan->edit_waktu_pelayanan($id_waktu_pelayanan,$pelayanan,$durasi);
+				if($data>0){
+					$data=1;
+				}else{
+					$data=0;
+				}
+        echo json_encode($data);
+  }
+
 
 
 }

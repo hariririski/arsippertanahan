@@ -51,5 +51,26 @@ class Kondisi extends CI_Controller {
 		}
 	}
 
+	function edit_jenis_hak(){
+        $id=$this->uri->segment('3');
+        $data=$this->M_jenis_hak->detail_jenis_hak($id);
+        echo json_encode($data);
+  }
+
+	function simpan_edit_jenis_hak(){
+        $id_jenis_hak=$this->uri->segment('3');
+        $nama_jenis_hak=$this->uri->segment('4');
+        $keterangan=$this->uri->segment('5');
+				$nama_jenis_hak=preg_replace('/%20/'," ", $nama_jenis_hak);
+				$keterangan=preg_replace('/%20/'," ", $keterangan);
+        $data=$this->M_jenis_hak->edit_jenis_hak($id_jenis_hak,$nama_jenis_hak,$keterangan);
+				if($data>0){
+					$data=1;
+				}else{
+					$data=0;
+				}
+        echo json_encode($data);
+  }
+
 
 }

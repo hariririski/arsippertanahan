@@ -5,6 +5,12 @@
         $query=$this->db->query("SELECT * FROM `waktu`");
         return $query->result();
       }
+
+      function detail_waktu_pelayanan($id_waktu_pelayanan){
+        $query=$this->db->query("SELECT * FROM `waktu` where waktu.id_waktu='$id_waktu_pelayanan'");
+        return $query->result();
+      }
+
       function lihat_aktif(){
         $query=$this->db->query("SELECT * FROM `waktu` where aktif=1");
         return $query->result();
@@ -27,6 +33,11 @@
 
       function hapus_waktu($kode){
         $query=$this->db->query("DELETE FROM `waktu` WHERE id_waktu='$kode'");
+        return $query;
+      }
+
+      function edit_waktu_pelayanan($id_waktu_pelayanan,$pelayanan,$durasi){
+        $query=$this->db->query("UPDATE `waktu` SET `pelayanan`='$pelayanan' ,`durasi`='$durasi'  WHERE waktu.id_waktu='$id_waktu_pelayanan'");
         return $query;
       }
 }

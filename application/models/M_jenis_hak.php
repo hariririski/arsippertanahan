@@ -5,6 +5,17 @@
         $query=$this->db->query("SELECT * FROM `jenis_hak`");
         return $query->result();
       }
+
+      function detail_jenis_hak($id_jenis_hak){
+        $query=$this->db->query("SELECT * FROM `jenis_hak` where id_jenis_hak='$id_jenis_hak'");
+        return $query->result();
+      }
+      
+      function edit_jenis_hak($id_jenis_hak,$nama_jenis_hak,$keterangan){
+        $query=$this->db->query("UPDATE `jenis_hak` SET `nama_jenis_hak`='$nama_jenis_hak',`keterangan`='$keterangan' WHERE jenis_hak.id_jenis_hak='$id_jenis_hak'");
+        return $query;
+      }
+
       function add(){
         $id_jenis_hak = $this->input->post('id_jenis_hak');
         $nama_jenis_hak = $this->input->post('nama_jenis_hak');

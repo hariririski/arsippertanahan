@@ -11,7 +11,7 @@
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
     <link href="dist/css/pages/data-table.css" rel="stylesheet">
-
+    <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -105,6 +105,7 @@
                                             <th>#</th>
                                             <th>Kode</th>
                                             <th>Jenis Hak</th>
+                                            <th>Keterangan</th>
                                             <th>Status</th>
                                             <th width="20%">Aksi</th>
                                         </tr>
@@ -119,6 +120,7 @@
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $data_jenis_hak->id_jenis_hak; ?></td>
                                             <td><?php echo $data_jenis_hak->nama_jenis_hak; ?></td>
+                                            <td><?php echo $data_jenis_hak->keterangan; ?></td>
                                             <td>
                                               <?php if($data_jenis_hak->aktif==1){
                                                         echo '<span class="label label-success">Aktif</span>';
@@ -129,7 +131,7 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn  orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
+                                              <a class="waves-effect waves-light btn  orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" onclick="edit('<?php echo  $data_jenis_hak->id_jenis_hak; ?>')"><i class="material-icons dp48">edit</i></a>
                                               <?php
                                               if($data_jenis_hak->aktif==1){
                                               ?>
@@ -156,6 +158,33 @@
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <?php echo $this->load->view('share/footer', '', TRUE);?>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <h5 class="card-title">Perubahan Data</h5>
+                    <div class="row">
+                      <div class="row">
+                          <div class="input-field col s12">
+                              <i class="material-icons prefix">chrome_reader_mode</i>
+                              <input  type="text" name="nama_jenis_hak_edit" id="nama_jenis_hak_edit" required>
+                              <input  type="hidden" name="id_jenis_hak_edit" id="id_jenis_hak_edit"required>
+                              <div class="errorTxt2"></div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="input-field col s12">
+                              <i class="material-icons prefix">chrome_reader_mode</i>
+                              <input  type="text" name="keterangan_edit" id="keterangan_edit" required>
+                              <div class="errorTxt2"></div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="simpan"><i class="fas fa-share"></i>Simpan</a>
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -187,6 +216,60 @@
     $(document).ready(function(){
     $('.tooltipped').tooltip();
     });
+    function edit(id_jenis_hak){
+      $.ajax({
+          type : "POST",
+          url  : "<?php echo base_url('jenis_hak/edit_jenis_hak')?>/"+id_jenis_hak,
+          dataType : "JSON",
+            success: function(data){
+              data_modal(data);
+          }
+      });
+      return false;
+    }
+
+    function data_modal(data){
+          $('[name="nama_jenis_hak_edit"]').val(data[0]["nama_jenis_hak"]);
+          $('[name="keterangan_edit"]').val(data[0]["keterangan"]);
+          $('[name="id_jenis_hak_edit"]').val(data[0]["id_jenis_hak"]);
+          $('#modal').modal('open');
+    }
+
+
+    $('#simpan').on('click',function(){
+        var nama_jenis_hak_edit=$('#nama_jenis_hak_edit').val();
+        var keterangan_edit=$('#keterangan_edit').val();
+        var id_jenis_hak_edit=$('#id_jenis_hak_edit').val();
+        $.ajax({
+        type : "POST",
+        url  : "<?php echo base_url()?>jenis_hak/simpan_edit_jenis_hak/"+id_jenis_hak_edit+"/"+nama_jenis_hak_edit+"/"+keterangan_edit,
+        dataType : "JSON",
+                success: function(notif){
+                    $('#modal').modal('close');
+                    if (notif==1) {
+                      berhasil("Data Berhasi Diperbaharui!.");
+                      setTimeout("location.href = '<?php echo base_url()?>datajenishak';",1500);
+                    }else{
+                      gagal("Gagal Memperbaharui Data!.");
+                      setTimeout("location.href = '<?php echo base_url()?>datajenishak';",1500);
+                    }
+
+                }
+            });
+            return false;
+        });
+    </script>
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script>
+      function berhasil(notif) {
+        toastr.success(notif, '', { "progressBar": true });
+      }
+      function peringatan(notif) {
+        toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+      function gagal(notif) {
+        toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
     </script>
 
 </body>

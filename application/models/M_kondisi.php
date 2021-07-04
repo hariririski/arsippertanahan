@@ -6,6 +6,16 @@
         return $query->result();
       }
 
+      function detail_kondisi($id_kondisi){
+        $query=$this->db->query("SELECT * FROM `kondisi` where id_kondisi='$id_kondisi'");
+        return $query->result();
+      }
+
+      function edit_kondisi($id_kondisi,$nama_kondisi,$keterangan){
+        $query=$this->db->query("UPDATE `kondisi` SET `nama_kondisi`='$nama_kondisi',`keterangan`='$keterangan' WHERE kondisi.id_kondisi='$id_kondisi'");
+        return $query;
+      }
+
       function add(){
         $id_kondisi = $this->input->post('id_kondisi');
         $nama_kondisi = $this->input->post('nama_kondisi');

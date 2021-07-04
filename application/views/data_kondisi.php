@@ -11,7 +11,7 @@
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
     <link href="dist/css/pages/data-table.css" rel="stylesheet">
-
+    <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -131,7 +131,7 @@
                                               ?>
                                             </td>
                                             <td>
-                                              <a class="waves-effect waves-light btn orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
+                                              <a class="waves-effect waves-light btn orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"onclick="edit('<?php echo   $data_kondisi->id_kondisi; ?>')"><i class="material-icons dp48">edit</i></a>
                                               <?php
                                               if($data_kondisi->aktif==1){
                                               ?>
@@ -159,6 +159,31 @@
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <?php echo $this->load->view('share/footer', '', TRUE);?>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <h5 class="card-title">Perubahan Data</h5>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">chrome_reader_mode</i>
+                            <input  type="text"  required name="nama_kondisi_edit" id="nama_kondisi_edit">
+                            <input  type="hidden"  required name="id_kondisi" id="id_kondisi">
+                            <div class="errorTxt2"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">chrome_reader_mode</i>
+                            <input  type="text"  required name="keterangan_edit" id="keterangan_edit">
+                            <div class="errorTxt2"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="simpan"><i class="fas fa-share"></i>Simpan</a>
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -190,7 +215,62 @@
     $(document).ready(function(){
     $('.tooltipped').tooltip();
     });
+    function edit(id_kondisi){
+      $.ajax({
+          type : "POST",
+          url  : "<?php echo base_url('kondisi/edit_kondisi')?>/"+id_kondisi,
+          dataType : "JSON",
+            success: function(data){
+              data_modal(data);
+          }
+      });
+      return false;
+    }
+
+    function data_modal(data){
+          $('[name="nama_kondisi_edit"]').val(data[0]["nama_kondisi"]);
+          $('[name="keterangan_edit"]').val(data[0]["keterangan"]);
+          $('[name="id_kondisi_edit"]').val(data[0]["id_kondisi"]);
+          $('#modal').modal('open');
+    }
+
+
+    $('#simpan').on('click',function(){
+        var nama_kondisi_edit=$('#nama_kondisi_edit').val();
+        var keterangan_edit=$('#keterangan_edit').val();
+        var id_kondisi_edit=$('#id_kondisi_edit').val();
+        $.ajax({
+        type : "POST",
+        url  : "<?php echo base_url()?>kondisi/simpan_edit_kondisi/"+id_kondisi_edit+"/"+nama_kondisi_edit+"/"+keterangan_edit,
+        dataType : "JSON",
+                success: function(notif){
+                    $('#modal').modal('close');
+                    if (notif==1) {
+                      berhasil("Data Berhasi Diperbaharui!.");
+                      setTimeout("location.href = '<?php echo base_url()?>datakondisi';",1500);
+                    }else{
+                      gagal("Gagal Memperbaharui Data!.");
+                      setTimeout("location.href = '<?php echo base_url()?>datakondisi';",1500);
+                    }
+
+                }
+            });
+            return false;
+        });
     </script>
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script>
+      function berhasil(notif) {
+        toastr.success(notif, '', { "progressBar": true });
+      }
+      function peringatan(notif) {
+        toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+      function gagal(notif) {
+        toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+    </script>
+
 
 </body>
 
