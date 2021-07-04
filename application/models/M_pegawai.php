@@ -13,6 +13,10 @@
         $query=$this->db->query("SELECT * FROM `pegawai` where aktif=1");
         return $query->result();
       }
+      function edit_pegawai($nip,$nama_lengkap,$jabatan,$jenis){
+        $query=$this->db->query("UPDATE `pegawai` SET `nama_lengkap`='$nama_lengkap',`jabatan`='$jabatan',`jenis`='$jenis' WHERE pegawai.nip='$nip'");
+        return $query;
+      }
       function add(){
         $nip= $this->input->post('nip');
         $nama_lengkap= $this->input->post('nama_lengkap');

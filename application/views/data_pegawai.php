@@ -203,14 +203,8 @@
                         </div>
                     </div>
                     <div class="row">
-                          <div class="input-field col s12">
-                            <i class="material-icons prefix">chrome_reader_mode</i>
-                              <select required name="jenis_edit" id="jenis_edit">
-                                  <option value="" disabled selected>Pilih Jenis</option>
-                                  <option value="1">ASN</option>
-                                  <option value="2">ASK</option>
-                                  <option value="3">PPNPN</option>
-                              </select>
+                          <div class="input-field col s12" id="show_jenis_edit">
+
                           </div>
                     </div>
                     <div class="modal-footer">
@@ -267,6 +261,38 @@
           $('[name="nama_lengkap_edit"]').val(data[0]["nama_lengkap"]);
           $('[name="nip_edit"]').val(data[0]["nip"]);
           $('[name="jabatan_edit"]').val(data[0]["jabatan"]);
+          var jenis="";
+          var nilai=parseInt(data[0]["jenis"]);
+          switch (nilai){
+            case 1: jenis +='<div class="input-field col s12">'+
+                        '<select required name="jenis_edit" id="jenis_edit" class="browser-default" >'+
+                           '<option selected value="1">ASN</option>'+
+                           '<option value="2">ASK</option>'+
+                          '<option value="3">PPNPN</option>'+
+                        '</select>'+
+                      '</div>';
+                      $('#show_jenis_edit').html(jenis);
+                      break;
+              case 2: jenis +='<div class="input-field col s12">'+
+                          '<select required name="jenis_edit" id="jenis_edit" class="browser-default" >'+
+                              '<option  value="1">ASN</option>'+
+                              '<option  value="2">ASK</option>'+
+                             '<option selected value="3">PPNPN</option>'+
+                          '</select>'+
+                        '</div>';
+                        $('#show_jenis_edit').html(jenis);
+                      break;
+              case 3: jenis +='<div class="input-field col s12">'+
+                          '<select required name="jenis_edit" id="jenis_edit" class="browser-default" >'+
+                              '<option value="1">ASN</option>'+
+                              '<option selected value="2">PPNPN</option>'+
+                             '<option value="3">ASK</option>'+
+                          '</select>'+
+                        '</div>';
+                        $('#show_jenis_edit').html(jenis);
+                      break;
+
+          }
           $('#modal').modal('open');
     }
 
@@ -274,10 +300,11 @@
     $('#simpan').on('click',function(){
         var nama_lengkap_edit=$('#nama_lengkap_edit').val();
         var jabatan_edit=$('#jabatan_edit').val();
+        var jenis_edit=$('#jenis_edit').val();
         var nip_edit=$('#nip_edit').val();
         $.ajax({
         type : "POST",
-        url  : "<?php echo base_url()?>pegawai/simpan_edit_pegawai/"+nip_edit+"/"+nama_lengkap_edit+"/"+jabatan_edit,
+        url  : "<?php echo base_url()?>pegawai/simpan_edit_pegawai/"+nip_edit+"/"+nama_lengkap_edit+"/"+jabatan_edit+"/"+jenis_edit,
         dataType : "JSON",
                 success: function(notif){
                     $('#modal').modal('close');
