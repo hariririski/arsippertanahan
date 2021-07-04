@@ -11,7 +11,7 @@
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
     <link href="dist/css/pages/data-table.css" rel="stylesheet">
-
+    <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -125,7 +125,7 @@
                                             </td>
                                             <td>
                                               <a href="<?php echo base_url(); ?>databundel?baris=<?php echo $data_baris->id_baris; ?>" class="waves-effect waves-light btn  green btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Lihat Bundel"><i class="material-icons dp48">remove_red_eye</i></a>
-                                              <a class="waves-effect waves-light btn  orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
+                                              <a class="waves-effect waves-light btn  orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" onclick="edit('<?php echo  $data_baris->id_baris; ?>')"><i class="material-icons dp48">edit</i></a>
                                               <a  href="" class="waves-effect waves-light btn indigo btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Cetak QR Code"><i class="material-icons dp48">local_printshop</i></a>
                                               <a href="<?php echo base_url(); ?>lemari/hapus_baris/<?php echo $data_baris->id_lemari; ?>/<?php echo $data_baris->id_baris; ?>" type="submit" class="waves-effect waves-light btn  red btn tooltipped" onclick="return confirm('Apakah Anda Yakin MengHapus Data?')"data-position="bottom" data-delay="50" data-tooltip="Hapus"/><i class="material-icons dp48">delete_forever</i> </a>
                                             </td>
@@ -142,6 +142,24 @@
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <?php echo $this->load->view('share/footer', '', TRUE);?>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <h5 class="card-title">Perubahan Data</h5>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">chrome_reader_mode</i>
+                            <input  type="text"  required name="nama_baris_edit" id="nama_baris_edit">
+                            <input  type="hidden"  required name="id_baris" id="id_baris">
+                            <div class="errorTxt2"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="simpan"><i class="fas fa-share"></i>Simpan</a>
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -169,7 +187,63 @@
     <script src="dist/js/pages/forms/jquery.validate.min.js"></script>
     <script src="assets/extra-libs/Datatables/datatables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
+    <script>
+    $(document).ready(function(){
+    $('.tooltipped').tooltip();
+    });
+    function edit(id_baris){
+      $.ajax({
+          type : "POST",
+          url  : "<?php echo base_url('lemari/edit_baris')?>/"+id_baris,
+          dataType : "JSON",
+            success: function(data){
+              data_modal(data);
+          }
+      });
+      return false;
+    }
 
+    function data_modal(data){
+          $('[name="nama_baris_edit"]').val(data[0]["nama_baris"]);
+          $('[name="id_baris"]').val(data[0]["id_baris"]);
+          $('#modal').modal('open');
+    }
+
+
+    $('#simpan').on('click',function(){
+        var nama_baris_edit=$('#nama_baris_edit').val();
+        var id_baris=$('#id_baris').val();
+        $.ajax({
+        type : "POST",
+        url  : "<?php echo base_url()?>lemari/simpan_edit_baris/"+id_baris+"/"+nama_baris_edit,
+        dataType : "JSON",
+                success: function(notif){
+                    $('#modal').modal('close');
+                    if (notif==1) {
+                      berhasil("Data Berhasi Diperbaharui!.");
+                      setTimeout("location.href = '<?php echo base_url()?>databaris?lemari=<?php echo $this->input->get('lemari');?>';",1500);
+                    }else{
+                      gagal("Gagal Memperbaharui Data!.");
+                      setTimeout("location.href = '<?php echo base_url()?>databaris?lemari=<?php echo $this->input->get('lemari');?>';",1500);
+                    }
+
+                }
+            });
+            return false;
+        });
+    </script>
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script>
+      function berhasil(notif) {
+        toastr.success(notif, '', { "progressBar": true });
+      }
+      function peringatan(notif) {
+        toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+      function gagal(notif) {
+        toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+    </script>
 
 </body>
 

@@ -11,7 +11,7 @@
     <!-- This page CSS -->
     <link href="assets/extra-libs/prism/prism.css" rel="stylesheet">
     <link href="dist/css/pages/data-table.css" rel="stylesheet">
-
+    <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -121,7 +121,7 @@
                                             <td><?php echo $data_lemari->keterangan; ?></td>
                                             <td>
                                               <a href="<?php echo base_url(); ?>databaris?lemari=<?php echo $data_lemari->id_lemari; ?>" class="waves-effect waves-light btn  green btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Lihat Baris"><i class="material-icons dp48">remove_red_eye</i></a>
-                                              <a class="waves-effect waves-light btn  orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit"><i class="material-icons dp48">edit</i></a>
+                                              <a class="waves-effect waves-light btn  orange btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Edit" onclick="edit('<?php echo  $data_lemari->id_lemari; ?>')"><i class="material-icons dp48">edit</i></a>
                                               <a href="<?php echo base_url(); ?>cetak/cetak_bt_desa//" target="_blank"class="waves-effect waves-light btn  blue btn tooltipped" data-position="bottom" data-delay="50" data-tooltip="Cetakk QR Code"><i class="material-icons dp48">local_printshop</i></a>
                                               <a href="<?php echo base_url(); ?>lemari/hapus_lemari/<?php echo $data_lemari->id_lemari; ?>" type="submit" class="waves-effect waves-light btn  red btn tooltipped" onclick="return confirm('Apakah Anda Ingin Menghapus Lemari <?php echo $data_lemari->nama_lemari; ?>?')"data-position="bottom" data-delay="50" data-tooltip="Hapus"/><i class="material-icons dp48">delete_forever</i> </a>
                                             </td>
@@ -144,6 +144,33 @@
             <!-- Container fluid scss in scafholding.scss -->
             <!-- ============================================================== -->
             <?php echo $this->load->view('share/footer', '', TRUE);?>
+            <div id="modal" class="modal">
+                <div class="modal-content">
+                    <h5 class="card-title">Perubahan Data</h5>
+                    <div class="row">
+                      <div class="row">
+                          <div class="input-field col s12">
+                              <i class="material-icons prefix">chrome_reader_mode</i>
+                              <input  type="text"  required name="nama_lemari_edit" id="nama_lemari_edit">
+                              <div class="errorTxt2"></div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="input-field col s12">
+                              <i class="material-icons prefix">chrome_reader_mode</i>
+                              <input  type="text"  required name="keterangan_edit" id="keterangan_edit">
+                              <input  type="hidden"  required name="id_lemari" id="id_lemari">
+                              <div class="errorTxt2"></div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat blue white-text" id="simpan"><i class="fas fa-share"></i>Simpan</a>
+                        <a  class="modal-action modal-close waves-effect waves-green btn-flat grey darken-4 white-text " id="btn_batal">Cancel</a>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -175,6 +202,60 @@
     $(document).ready(function(){
     $('.tooltipped').tooltip();
     });
+    function edit(id_lemari){
+      $.ajax({
+          type : "POST",
+          url  : "<?php echo base_url('lemari/edit_lemari')?>/"+id_lemari,
+          dataType : "JSON",
+            success: function(data){
+              data_modal(data);
+          }
+      });
+      return false;
+    }
+
+    function data_modal(data){
+          $('[name="nama_lemari_edit"]').val(data[0]["nama_lemari"]);
+          $('[name="keterangan_edit"]').val(data[0]["keterangan"]);
+          $('[name="id_lemari"]').val(data[0]["id_lemari"]);
+          $('#modal').modal('open');
+    }
+
+
+    $('#simpan').on('click',function(){
+        var nama_lemari_edit=$('#nama_lemari_edit').val();
+        var keterangan_edit=$('#keterangan_edit').val();
+        var id_lemari=$('#id_lemari').val();
+        $.ajax({
+        type : "POST",
+        url  : "<?php echo base_url()?>lemari/simpan_edit_lemari/"+id_lemari+"/"+nama_lemari_edit+"/"+keterangan_edit,
+        dataType : "JSON",
+                success: function(notif){
+                    $('#modal').modal('close');
+                    if (notif==1) {
+                      berhasil("Data Berhasi Diperbaharui!.");
+                      setTimeout("location.href = '<?php echo base_url()?>datalemari';",1500);
+                    }else{
+                      gagal("Gagal Memperbaharui Data!.");
+                      setTimeout("location.href = '<?php echo base_url()?>datalemari';",1500);
+                    }
+
+                }
+            });
+            return false;
+        });
+    </script>
+    <script src="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.js"></script>
+    <script>
+      function berhasil(notif) {
+        toastr.success(notif, '', { "progressBar": true });
+      }
+      function peringatan(notif) {
+        toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
+      function gagal(notif) {
+        toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+      }
     </script>
 
 </body>

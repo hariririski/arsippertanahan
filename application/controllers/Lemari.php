@@ -26,6 +26,53 @@ class Lemari extends CI_Controller {
         $data=$this->M_lemari->getBaris($id);
         echo json_encode($data);
   }
+
+	function edit_lemari(){
+        $id=$this->uri->segment('3');
+        $data=$this->M_lemari->lihat_lemari($id);
+        echo json_encode($data);
+  }
+
+	function edit_baris(){
+        $id=$this->uri->segment('3');
+        $data=$this->M_lemari->detail_baris($id);
+        echo json_encode($data);
+  }
+
+	function edit_bundel(){
+        $id=$this->uri->segment('3');
+        $data=$this->M_lemari->detail_bundel($id);
+        echo json_encode($data);
+  }
+
+	function simpan_edit_lemari(){
+        $id_lemari=$this->uri->segment('3');
+        $nama_lemari=$this->uri->segment('4');
+        $keterangan=$this->uri->segment('5');
+				$nama_lemari=preg_replace('/%20/'," ", $nama_lemari);
+				$keterangan=preg_replace('/%20/'," ", $keterangan);
+        $data=$this->M_lemari->edit_lemari($id_lemari,$nama_lemari,$keterangan);
+				if($data>0){
+					$data=1;
+				}else{
+					$data=0;
+				}
+        echo json_encode($data);
+  }
+
+	function simpan_edit_baris(){
+        $id_baris=$this->uri->segment('3');
+        $nama_baris=$this->uri->segment('4');
+				$nama_baris=preg_replace('/%20/'," ", $nama_baris);
+        $data=$this->M_lemari->edit_baris($id_baris,$nama_baris);
+				if($data>0){
+					$data=1;
+				}else{
+					$data=0;
+				}
+        echo json_encode($data);
+  }
+
 	public function tambah(){
 		$id_lemari=random_string('alnum',10);
 		$cek= $this->M_lemari->add($id_lemari);

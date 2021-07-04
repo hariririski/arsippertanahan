@@ -15,6 +15,26 @@
         return $query->result();
       }
 
+      function detail_baris($id_baris){
+        $query=$this->db->query("SELECT * FROM `baris` where baris.id_baris='$id_baris'");
+        return $query->result();
+      }
+
+      function detail_bundel($id_bundel){
+        $query=$this->db->query("SELECT * FROM `bundel` WHERE bundel.id_bundel='$id_bundel'");
+        return $query->result();
+      }
+
+      function edit_lemari($id_lemari,$nama_lemari,$keterangan){
+        $query=$this->db->query("UPDATE `lemari` SET `nama_lemari`='$nama_lemari' ,`keterangan`='$keterangan'  WHERE lemari.id_lemari='$id_lemari'");
+        return $query;
+      }
+
+      function edit_baris($id_baris,$nama_baris){
+        $query=$this->db->query("UPDATE `baris` SET `nama_baris`='$nama_baris' WHERE baris.id_baris='$id_baris'");
+        return $query;
+      }
+
       function getBaris($id){
         $query=$this->db->query("SELECT * FROM `baris` where baris.id_lemari='$id'");
         return $query->result();
