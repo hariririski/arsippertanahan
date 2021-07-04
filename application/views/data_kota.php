@@ -61,7 +61,7 @@
                                 <h5 class="card-title activator">Tambah Data Kota<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>provinsi/tambah_kota?prov=<?php echo $prov->kode_prov;?>" method="post" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="input-field col s4">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">account_circle</i>
 
                                             <input   type="text" disabled required name="id_Kota" autofocus value="<?php echo $prov->nama_prov; ?>">
@@ -72,14 +72,14 @@
 
                               <?php  } ?>
 
-                                        <div class="input-field col s4">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Kode Kota *</label>
                                             <input  type="text"  required name="id_kota" autofocus>
                                             <div class="errorTxt2"></div>
                                         </div>
 
-                                        <div class="input-field col s4">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Kota *</label>
                                             <input  type="text"  required name="nama_kota">

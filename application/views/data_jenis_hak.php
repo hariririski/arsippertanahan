@@ -58,21 +58,22 @@
                                 <h5 class="card-title activator">Tambah Data Jenis Hak<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>jenis_hak/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="input-field col s4">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <input name="id_jenis_hak" type="text" required autofocus>
                                             <label for="uname">Kode Jenis Hak *</label>
                                             <div class="errorTxt1"></div>
                                         </div>
 
-                                        <div class="input-field col s4">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Jenis Hak *</label>
                                             <input  type="text" name="nama_jenis_hak" required>
                                             <div class="errorTxt2"></div>
                                         </div>
-                                    
-                                        <div class="input-field col s4">
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Keterangan *</label>
                                             <input  type="text" nname="keterangan" required>

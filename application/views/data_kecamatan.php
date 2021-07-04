@@ -61,7 +61,7 @@
                                 <h5 class="card-title activator">Tambah Data Kecamatan<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>provinsi/tambah_kec?kota=<?php echo $kota->kode_kota;?>" method="post" enctype="multipart/form-data">
                                   <div class="row">
-                                      <div class="input-field col s4">
+                                      <div class="input-field col s6">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
                                           <label for="cemail">Nama Kota</label>
                                           <input  type="text"  disabled value="<?php echo $kota->nama_kota;?>">
@@ -70,14 +70,14 @@
 
                               <?php  } ?>
 
-                                        <div class="input-field col s4">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Kode kecamatan *</label>
                                             <input  type="text"  required name="id_kec" autofocus>
                                             <div class="errorTxt2"></div>
                                         </div>
-                                    
-                                        <div class="input-field col s4">
+
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Nama Kecamatan*</label>
                                             <input  type="text"  required name="nama_kec">

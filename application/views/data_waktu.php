@@ -58,7 +58,7 @@
                                 <h5 class="card-title activator">Tambah Waktu Pelayanan<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                                 <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>Waktu_pelayanan/tambah" method="post" enctype="multipart/form-data">
                                     <div class="row">
-                                        <div class="input-field col s4">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <input   type="text" required name="kode_waktu" autofocus>
                                             <label for="uname">Kode Pelayanan *</label>
@@ -71,8 +71,9 @@
                                             <input  type="text"  required name="pelayanan">
                                             <div class="errorTxt2"></div>
                                         </div>
-
-                                        <div class="input-field col s2">
+                                      </div>
+                                      <div class="row">
+                                        <div class="input-field col s6">
                                             <i class="material-icons prefix">chrome_reader_mode</i>
                                             <label for="cemail">Durasi (Hari) *</label>
                                             <input  type="text"  required name="durasi">

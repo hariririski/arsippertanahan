@@ -59,7 +59,7 @@
                               <h5 class="card-title activator">Tambah Surat Ukur<i class="material-icons right tooltipped" data-position="left" data-delay="50" ></i></h5>
                               <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>surat_ukur/tambah" method="post" enctype="multipart/form-data">
                                 <div class="row">
-                                      <div class="input-field col s12">
+                                      <div class="input-field col s6">
                                         <i class="material-icons prefix">chrome_reader_mode</i>
                                         <select required id="desasu" name="kode_desa">
                                           <option value="" disabled selected>Pilih Desa</option>
@@ -70,25 +70,22 @@
                                           <?php } ?>
                                         </select>
                                       </div>
-                                </div>
-                                  <div class="row">
-                                      <div class="input-field col s12">
+
+                                      <div class="input-field col s6">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
                                           <input   type="text" required name="no_su" autofocus >
                                           <label for="uname">Nomor Surat Ukur *</label>
                                           <div class="errorTxt1"></div>
                                       </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="input-field col s12">
+
+                                      <div class="input-field col s6">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
-                                          <input   type="text" required name="tahun" autofocus >
+                                          <input   type="text" required name="tahun"  >
                                           <label for="uname">Tahun Surat Ukur*</label>
                                           <div class="errorTxt1"></div>
                                       </div>
-                                  </div>
-                                  <div class="row">
-                                        <div class="input-field col s12">
+
+                                        <div class="input-field col s6">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
                                           <select required name="id_kondisi">
                                             <option value="" disabled selected>Pilih Kondisi Arsip</option>
@@ -99,19 +96,17 @@
                                             <?php } ?>
                                           </select>
                                         </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="input-field col s12">
+
+                                      <div class="input-field col s6">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
-                                          <label for="cemail">NIB (Nomor Induk Bidang)*</label>
+                                          <label for="cemail">NIB *</label>
                                           <input  type="text"  required name="nib">
                                           <div class="errorTxt2"></div>
                                       </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="input-field col s12">
+
+                                      <div class="input-field col s6">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
-                                          <label for="cemail">Kode Bundel (Scan Barcode Pada Bundel) *</label>
+                                          <label for="cemail">Kode Bundel *</label>
                                           <input  type="text"  required name="id_bundel">
                                           <div class="errorTxt2"></div>
                                       </div>

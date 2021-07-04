@@ -60,23 +60,21 @@
                               <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>warkah/tambah" method="post" enctype="multipart/form-data">
 
                                   <div class="row">
-                                      <div class="input-field col s12">
+                                      <div class="input-field col s6">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
                                           <input   type="text" required name="no_warkah" autofocus >
                                           <label for="uname">Nomor Warkah *</label>
                                           <div class="errorTxt1"></div>
                                       </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="input-field col s12">
+
+                                      <div class="input-field col s6">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
                                           <input   type="text" required name="tahun" autofocus >
                                           <label for="uname">Tahun Warkah*</label>
                                           <div class="errorTxt1"></div>
                                       </div>
-                                  </div>
-                                  <div class="row">
-                                        <div class="input-field col s12">
+
+                                        <div class="input-field col s6">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
                                           <select required name="id_kondisi">
                                             <option value="" disabled selected>Pilih Kondisi Arsip</option>
@@ -87,11 +85,10 @@
                                             <?php } ?>
                                           </select>
                                         </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="input-field col s12">
+
+                                      <div class="input-field col s6">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
-                                          <label for="cemail">Kode Bundel (Scan Barcode Pada Bundel) *</label>
+                                          <label for="cemail">Kode Bundel *</label>
                                           <input  type="text"  required name="id_bundel">
                                           <div class="errorTxt2"></div>
                                       </div>
@@ -99,7 +96,7 @@
                                   <hr></hr>
                                   <h5>Link Buku Tanah (Jika ada)</h5>
                                   <div class="row">
-                                        <div class="input-field col s12">
+                                        <div class="input-field col s6">
                                           <i class="material-icons prefix">chrome_reader_mode</i>
                                           <select id="desasu" name="kode_desa">
                                             <option value="" disabled selected>Pilih Desa</option>
@@ -110,9 +107,8 @@
                                             <?php } ?>
                                           </select>
                                         </div>
-                                  </div>
-                                  <div class="row">
-                                      <div class="input-field col s12">
+                                  
+                                      <div class="input-field col s6">
                                         <select class="browser-default"  id="buku_tanah" name="id_buku_tanah" >
                                           <option value="" disabled selected>Pilihan Belum Tersedia</option>
 

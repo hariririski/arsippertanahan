@@ -85,7 +85,7 @@
                                       </div>
 
                                       <div class="input-field col s2">
-                                          <button class="waves-effect waves-light btn-large" submit=""><i class="material-icons left">search</i>Pinjam</button>
+                                          <button class="waves-effect waves-light btn-large" submit="">Pinjam</button>
                                       </div>
                                   </div>
                               </form>
