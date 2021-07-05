@@ -306,7 +306,6 @@
                                             <th>Operator</th>
                                             <th>Pegawai</th>
                                             <th>Status</th>
-                                            <th >Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -342,32 +341,7 @@
                                                         echo"Selesai";
                                                       } ?>
                                             </td>
-                                            <td>
-                                              <?php
-                                              if($data->status==1){
-                                              ?>
-                                              <a class="waves-effect waves-light btn  red" href="<?php echo base_url(); ?>pinjam/peminjaman/<?php echo $data->invoice; ?>">Lanjutkan</a></td>
-                                              <?php
-                                            }else if ($data->status==2){
-                                              ?>
-                                              <a class="waves-effect waves-light btn  orange" href="<?php echo base_url(); ?>pinjam/detail_peminjaman/<?php echo $data->invoice; ?>">Kembalikan</a></td>
-                                              <?php
-                                            }else if ($data->status=3) {
-                                              ?>
-                                              <?php
-                                              $barcode;
-                                              if($data->id_buku_tanah!=null){
-                                                $barcode="BT-".$data->id_buku_tanah;
-                                              }else if($data->id_surat_ukur!=null){
-                                                $barcode="SU-".$data->id_surat_ukur;
-                                              }else if($data->id_warkah!=null){
-                                                $barcode="W-".$data->id_warkah;
-                                              }
-                                              ?>
-                                              <button class="waves-effect waves-light btn green" onclick="tabel('<?php echo $barcode ?>')">Susun</button></td>
-                                              <?php
-                                            }
-                                              ?>
+                                            
                                         </tr>
                                         <?php } ?>
                                     </tbody>
