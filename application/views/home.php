@@ -290,6 +290,93 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <!-- col -->
+                    <div class="col s12">
+                        <div class="card">
+                          <div class="card-content">
+                              <h5 class="card-title">Data Arsip Belum Susun</h5>
+                              <div class="table-responsive">
+                                  <table class="table product-overview" id="zero_config1" >
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Invoice</th>
+                                            <th>Tanggal Pinjam</th>
+                                            <th>Operator</th>
+                                            <th>Pegawai</th>
+                                            <th>Status</th>
+                                            <th >Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <?php
+                                              $i=0;
+                                              foreach($pinjam as $data){
+                                              $i++;
+                                            ?>
+                                            <td><?php echo $i; ?></td>
+                                            <td>
+                                              <?php
+                                              if($data->id_buku_tanah!=null){
+                                                echo "BT - ".$data->desa_bt."/".$data->nama_jenis_hak."/".$data->no_hak;
+                                              }else if($data->id_surat_ukur!=null){
+                                                echo "SU - ".$data->desa_su."/".$data->nomor_su."/".$data->tahun_su;
+                                              }else if($data->id_warkah!=null){
+                                                echo "W - ".$data->nomor_w."/".$data->tahun_w;
+                                              }
+                                              ?>
+                                            </td>
+                                            <td><?php echo $data->tgl_pinjam; ?></td>
+                                            <td><?php echo $data->admin_tambah; ?></td>
+                                            <td><?php echo $data->nama_lengkap; ?></td>
+                                            <td>
+                                              <?php if($data->status==1){
+                                                        echo"Proses Peminjaman";
+                                                      }else if($data->status==2){
+                                                        echo"Peminjaman";
+                                                      }else if($data->status==3){
+                                                        echo"Dikembalikan, Belum Disusun";
+                                                      }else if($data->status==4){
+                                                        echo"Selesai";
+                                                      } ?>
+                                            </td>
+                                            <td>
+                                              <?php
+                                              if($data->status==1){
+                                              ?>
+                                              <a class="waves-effect waves-light btn  red" href="<?php echo base_url(); ?>pinjam/peminjaman/<?php echo $data->invoice; ?>">Lanjutkan</a></td>
+                                              <?php
+                                            }else if ($data->status==2){
+                                              ?>
+                                              <a class="waves-effect waves-light btn  orange" href="<?php echo base_url(); ?>pinjam/detail_peminjaman/<?php echo $data->invoice; ?>">Kembalikan</a></td>
+                                              <?php
+                                            }else if ($data->status=3) {
+                                              ?>
+                                              <?php
+                                              $barcode;
+                                              if($data->id_buku_tanah!=null){
+                                                $barcode="BT-".$data->id_buku_tanah;
+                                              }else if($data->id_surat_ukur!=null){
+                                                $barcode="SU-".$data->id_surat_ukur;
+                                              }else if($data->id_warkah!=null){
+                                                $barcode="W-".$data->id_warkah;
+                                              }
+                                              ?>
+                                              <button class="waves-effect waves-light btn green" onclick="tabel('<?php echo $barcode ?>')">Susun</button></td>
+                                              <?php
+                                            }
+                                              ?>
+                                        </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- ============================================================== -->
                 <!-- Devices - Income - Sales -->
                 <!-- ============================================================== -->
@@ -368,6 +455,7 @@
      *       Basic Table                   *
      ****************************************/
     $('#zero_config').DataTable();
+    $('#zero_config1').DataTable();
     </script>
     <?php echo $this->load->view('share/home', '', TRUE);?>
 </body>

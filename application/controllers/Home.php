@@ -13,6 +13,7 @@ class Home extends CI_Controller {
 			$this->load->database();
 			$this->load->model('M_home');
 			$this->load->model('M_kondisi');
+			$this->load->model('M_pinjam');
 
 	}
 	public function index()
@@ -33,6 +34,7 @@ class Home extends CI_Controller {
 		$data['pinjam_warkah'] = $this->M_home->pinjam_warkah();
 		$data['tgl_pinjam'] = $this->M_home->tgl_pinjam();
 		$data['pinjam_telat'] = $this->M_home->pinjam_telat();
+		$data['pinjam'] = $this->M_pinjam->data_susun();
 		$this->load->view('home',$data);
 	}
 
