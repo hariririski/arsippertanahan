@@ -53,7 +53,11 @@ class Warkah extends CI_Controller {
 			$id=random_string('alnum',20);
 			$id_warkah=$id;
 			$admin= $this->session->userdata("nama_lengkap");
-			$cek= $this->M_warkah->add($id_warkah,$id_buku_tanah,$admin);
+			$status=1;
+			$valid=1;
+			$admin_tambah=$admin;
+			$admin_valid=	$admin;
+			$cek= $this->M_warkah->add($id_warkah,$id_buku_tanah,$admin_tambah,$admin_valid,$status,$valid);
 
 		if($cek>0){
 					if(!empty($id_buku_tanah)){

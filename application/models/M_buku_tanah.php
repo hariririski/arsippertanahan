@@ -47,14 +47,14 @@
         }
 
       }
-      function add($id_buku_tanah,$admin,$id_bundel){
+      function add($id_buku_tanah,$admin_tambah,$id_bundel,$admin_valid,$status,$valid){
         $id_kondisi = $this->input->post('id_kondisi');
         $kode_desa = $this->input->post('kode_desa');
         $no_hak = $this->input->post('nomor_hak');
         $id_jenis_hak = $this->input->post('id_jenis_hak');
         $nib = $this->input->post('nib');
-        $perintah1="INSERT INTO `buku_tanah`(`id_buku_tanah`, `no_hak`, `id_jenis_hak`, `kode_desa`, `id_kondisi`,`nib`,`id_bundel`,`admin_tambah`)
-                             VALUES ('$id_buku_tanah','$no_hak','$id_jenis_hak','$kode_desa','$id_kondisi','$nib','$id_bundel','$admin')";
+        $perintah1="INSERT INTO `buku_tanah`(`id_buku_tanah`, `no_hak`, `id_jenis_hak`, `kode_desa`, `id_kondisi`,`nib`,`id_bundel`,`admin_tambah`,`admin_valid`,`status`,`valid`)
+                             VALUES ('$id_buku_tanah','$no_hak','$id_jenis_hak','$kode_desa','$id_kondisi','$nib','$id_bundel','$admin_tambah','$admin_valid','$status','$valid')";
         $query=$this->db->query($perintah1);
         return $query;
       }

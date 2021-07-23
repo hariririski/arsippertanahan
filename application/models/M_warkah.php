@@ -2,13 +2,13 @@
     class M_warkah extends CI_Model{
 
 
-      function add($id_warkah,$id_buku_tanah,$admin){
+      function add($id_warkah,$id_buku_tanah,$admin_tambah,$admin_valid,$status,$valid){
         $id_kondisi = $this->input->post('id_kondisi');
         $no_warkah = $this->input->post('no_warkah');
         $tahun = $this->input->post('tahun');
         $id_bundel = $this->input->post('id_bundel');
-        $perintah1="INSERT INTO `warkah`(`id_warkah`, `nomor`, `tahun`, `id_bundel`, `id_kondisi`, `id_buku_tanah`,`admin_tambah`)
-                    VALUES ('$id_warkah','$no_warkah','$tahun','$id_bundel','$id_kondisi','$id_buku_tanah','$admin')";
+        $perintah1="INSERT INTO `warkah`(`id_warkah`, `nomor`, `tahun`, `id_bundel`, `id_kondisi`, `id_buku_tanah`,`admin_tambah`,`admin_valid`,`status`,`valid`)
+                    VALUES ('$id_warkah','$no_warkah','$tahun','$id_bundel','$id_kondisi','$id_buku_tanah','$admin_tambah','$admin_valid','$status','$valid')";
         $query=$this->db->query($perintah1);
         return $query;
       }

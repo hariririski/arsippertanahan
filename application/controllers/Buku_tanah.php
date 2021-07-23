@@ -72,7 +72,11 @@ class Buku_tanah extends CI_Controller {
 			$id=random_string('alnum',20);
 			$id_buku_tanah=$id;
 			$admin= $this->session->userdata("nama_lengkap");
-			$cek= $this->M_buku_tanah->add($id_buku_tanah,$admin,$id_bundel);
+			$status=1;
+			$valid=1;
+			$admin_tambah=$admin;
+			$admin_valid=	$admin;
+			$cek= $this->M_buku_tanah->add($id_buku_tanah,$admin_tambah,$id_bundel,$admin_valid,$status,$valid);
 			if($cek>0){
 					echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."buku_tanah/detail_buku_tanah/".$id_buku_tanah."';</script>");
 			}else{

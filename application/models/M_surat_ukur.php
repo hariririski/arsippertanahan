@@ -2,14 +2,14 @@
     class M_surat_ukur extends CI_Model{
 
 
-      function add($id_surat_ukur,$admin,$id_bundel){
+      function add($id_surat_ukur,$admin_tambah,$id_bundel,$admin_valid,$status,$valid){
         $id_kondisi = $this->input->post('id_kondisi');
         $kode_desa = $this->input->post('kode_desa');
         $no_su = $this->input->post('no_su');
         $tahun = $this->input->post('tahun');
         $nib = $this->input->post('nib');
-        $perintah1="INSERT INTO `surat_ukur`(`id_surat_ukur`, `nomor`, `tahun`, `kode_desa`, `id_bundel`,  `id_kondisi`,`nib`,`admin_tambah`)
-                    VALUES ('$id_surat_ukur','$no_su','$tahun','$kode_desa','$id_bundel',$id_kondisi,'$nib','$admin')";
+        $perintah1="INSERT INTO `surat_ukur`(`id_surat_ukur`, `nomor`, `tahun`, `kode_desa`, `id_bundel`,  `id_kondisi`,`nib`,`admin_tambah`,`admin_valid`,`status`,`valid`)
+                    VALUES ('$id_surat_ukur','$no_su','$tahun','$kode_desa','$id_bundel',$id_kondisi,'$nib','$admin_tambah','$admin_valid','$status','$valid')";
         $query=$this->db->query($perintah1);
         return $query;
       }

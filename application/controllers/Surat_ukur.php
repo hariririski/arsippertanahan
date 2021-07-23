@@ -48,7 +48,11 @@ class Surat_ukur extends CI_Controller {
 			$id=random_string('alnum',20);
 			$id_surat_ukur=$id;
 			$admin= $this->session->userdata("nama_lengkap");
-			$cek= $this->M_surat_ukur->add($id_surat_ukur,$admin,$id_bundel);
+			$status=1;
+			$valid=1;
+			$admin_tambah=$admin;
+			$admin_valid=	$admin;
+			$cek= $this->M_surat_ukur->add($id_surat_ukur,$admin_tambah,$id_bundel,$admin_valid,$status,$valid);
 
 		if($cek>0){
 					if(isset($id_buku_tanah)){

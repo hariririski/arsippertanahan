@@ -62,6 +62,7 @@ class Uploadcsv extends CI_Controller {
 					$kota;
 					$kec;
 					$desa;
+					$baris=0;
 					while (($row = fgetcsv($handle, 2048))) {
 						$i++;
 						$data=explode(";",$row[0]);
@@ -96,11 +97,10 @@ class Uploadcsv extends CI_Controller {
 
 						$jenis_hak=$pisahnohak[4];
 						$no_hak=$pisahnohak[5];
-						$pisahsu=explode("/", $data[1]);
-						$pisahsu2=explode(".", $pisahsu[0]);
-						$no_su=$pisahsu2[1];
-						$tahun_su=$pisahsu[1];
-						$nib=$pisahnohak[3];
+						$nib=sprintf('%05d',$data[2]);
+						if($nib=="null"){
+							$nib=null;
+						}
 
 						$id_buku_tanah=random_string('alnum',20);
 						$id_surat_ukur=random_string('alnum',20);
@@ -109,24 +109,38 @@ class Uploadcsv extends CI_Controller {
 						if($cekbukutanah>0){
 								// echo ($i."Berhasil Menambahkan BT".$no_hak);
 								// echo "<br>";
-								echo ".";
+
 						}else{
 								echo ($i."gagal Menambahkan BT ".$no_hak);
 								echo "<br>";
 					 	}
+
+
 						$admin= $this->session->userdata("nama_lengkap");
-						$ceksuratukur=$this->M_uploadcsv->suratukur($id_surat_ukur,$no_su,$tahun_su,$desa,$nib,$admin);
-						if($ceksuratukur>0){
-								// echo ($i."Berhasil Menambahkan SU ".$no_su);
-								// echo "<br>";
-								echo ".";
-						}else{
-								echo ($i."gagal Menambahkan SU".$no_su);
-								echo "<br>";
-					 	}
+						if( $data[1]!="null"){
+							$pisahsu=explode("/", $data[1]);
+							$pisahsu2=explode(".", $pisahsu[0]);
+							$jumlah=count($pisahsu);
+							$no_su_sementara=$pisahsu2[1];
+							$no_su_sementara=intval($no_su_sementara);
+							$no_su=sprintf('%05d',$no_su_sementara);
+							//echo $no_su_lain=$no_su." ";
+							$tahun_su=$pisahsu[$jumlah-1];
+							$ceksuratukur=$this->M_uploadcsv->suratukur($id_surat_ukur,$no_su,$tahun_su,$desa,$nib,$admin);
+							if($ceksuratukur>0){
+									// echo ($i."Berhasil Menambahkan SU ".$no_su);
+									// echo "<br>";
+
+							}else{
+									echo ($i."gagal Menambahkan SU".$no_su);
+									echo "<br>";
+						 	}
+						}
+
 					}
 
 					fclose($handle);
+					echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."home';</script>");
 
 
 				} else {
