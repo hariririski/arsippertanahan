@@ -20,6 +20,91 @@ class Uploadcsv extends CI_Controller {
 			$this->load->view('uploadcsv');
 	}
 
+	public function warkah()
+	{
+		if ( isset($_POST['import'])) {
+
+						$file = $_FILES['warkah']['tmp_name'];
+
+			// Medapatkan ekstensi file csv yang akan diimport.
+			$ekstensi  = explode('.', $_FILES['warkah']['name']);
+
+			// Tampilkan peringatan jika submit tanpa memilih menambahkan file.
+			if (empty($file)) {
+				echo 'File tidak boleh kosong!';
+			} else {
+				// Validasi apakah file yang diupload benar-benar file csv.
+
+				if (strtolower(end($ekstensi)) === 'csv' && $_FILES["warkah"]["size"] > 0) {
+
+					$i = 0;
+					$handle = fopen($file, "r");
+					$values;
+					$prov;
+					$kota;
+					$kec;
+					$desa;
+					$baris=0;
+					while (($row = fgetcsv($handle, 2048))) {
+						$i++;
+						$data=explode(";",$row[0]);
+						if($data[6]=="Roya" || $data[6]=="Hak Tanggungan"){
+							//next
+						}else{
+								$no_warkah=$data[1];
+								$tahun_warkah=substr($data[2],6,4);
+								$hak=$data[3];
+								$id_warkah=random_string('alnum',20);
+								$admin_tambah= $this->session->userdata("nama_lengkap");
+								if($hak==""){
+									$simpan_warkah= $this->M_uploadcsv->warkah_no_link($id_warkah,$no_warkah,$tahun_warkah,$admin_tambah);
+									if($simpan_warkah>0){
+											//echo "OK ";
+
+									}else{
+											echo "gagal Menambahkan Warkah ";
+											echo "<br>";
+									}
+								}else{
+								$nomor_hak=substr($data[3],9,5);
+								$kec=substr($data[3],4,2);
+								$desa=substr($data[3],6,2);
+								$jenis_hak=substr($data[3],8,1);
+
+								$sql4="SELECT *, count(buku_tanah.id_buku_tanah) as jumlah FROM buku_tanah INNER JOIN desa on desa.kode_desa=buku_tanah.kode_desa INNER JOIN kec on kec.kode_kec=desa.kode_kec WHERE buku_tanah.no_hak='$nomor_hak' and buku_tanah.id_jenis_hak='$jenis_hak' and desa.id_desa='$desa' and kec.id_kec='$kec'";
+				 	  		$query4 = $this->db->query($sql4);
+				 	  		$data4=$query4->result();
+								foreach ($data4 as $isi) {
+									if($isi->jumlah==1){
+										$id_buku_tanah=$isi->id_buku_tanah;
+										$simpan_warkah= $this->M_uploadcsv->warkah($id_warkah,$no_warkah,$tahun_warkah,$id_buku_tanah,$admin_tambah);
+										if($simpan_warkah>0){
+												//echo "OK ";
+
+										}else{
+												echo "gagal Menambahkan Warkah ";
+												echo "<br>";
+									 	}
+									}
+								}
+
+							}
+						}
+
+					}
+
+					fclose($handle);
+					echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."home';</script>");
+
+
+				} else {
+					echo 'Format file tidak valid!';
+				}
+			}
+		}
+	}
+
+
 	public function bukutanah()
 	{
 		$sql1="SELECT kode_prov,id_prov from prov";
@@ -35,10 +120,6 @@ class Uploadcsv extends CI_Controller {
 		 $sql3="SELECT kode_kec,id_kec from kec";
   		$query3 = $this->db->query($sql3);
   		$data3=$query3->result();
-
-
-
-
 
 		if ( isset($_POST['import'])) {
 
@@ -148,7 +229,7 @@ class Uploadcsv extends CI_Controller {
 				}
 			}
         }
-	}
+}
 
 
 
