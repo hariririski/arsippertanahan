@@ -71,7 +71,7 @@ class Uploadcsv extends CI_Controller {
 								$desa=substr($data[3],6,2);
 								$jenis_hak=substr($data[3],8,1);
 
-								$sql4="SELECT *, count(buku_tanah.id_buku_tanah) as jumlah FROM buku_tanah INNER JOIN desa on desa.kode_desa=buku_tanah.kode_desa INNER JOIN kec on kec.kode_kec=desa.kode_kec WHERE buku_tanah.no_hak='$nomor_hak' and buku_tanah.id_jenis_hak='$jenis_hak' and desa.id_desa='$desa' and kec.id_kec='$kec'";
+								$sql4="SELECT count(buku_tanah.id_buku_tanah) as jumlah, buku_tanah.id_buku_tanah FROM buku_tanah INNER JOIN desa on desa.kode_desa=buku_tanah.kode_desa INNER JOIN kec on kec.kode_kec=desa.kode_kec WHERE buku_tanah.no_hak='$nomor_hak' and buku_tanah.id_jenis_hak='$jenis_hak' and desa.id_desa='$desa' and kec.id_kec='$kec'";
 				 	  		$query4 = $this->db->query($sql4);
 				 	  		$data4=$query4->result();
 								foreach ($data4 as $isi) {
