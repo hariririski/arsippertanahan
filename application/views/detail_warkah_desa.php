@@ -63,6 +63,7 @@
                                               <th>Nomor Warkah</th>
                                               <th>Tahun</th>
                                               <th>Hak</th>
+                                              <th>Keterangan</th>
                                               <th>Detail</th>
                                           </tr>
                                       </thead>
@@ -83,6 +84,7 @@
                                                 }
                                                 ?>
                                               </td>
+                                              <td><?php echo $warkah->kegiatan; ?></td>
                                               <td>
                                                 <?php
                                                 if($warkah->buku_tanah!=null){

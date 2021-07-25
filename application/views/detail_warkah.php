@@ -68,6 +68,7 @@
                                                         <th>Nomor</th>
                                                         <th>Tahun</th>
                                                         <th>Kondisi</th>
+                                                        <th>Keterangan</th>
                                                         <th>Penyimpanan</th>
                                                         <th>Status</th>
                                                         <th>Valid</th>
@@ -84,6 +85,7 @@
                                                         <td style="color: #000000"><?php echo $warkah->nomor; ?></td>
                                                         <td style="color: #000000"><?php echo $warkah->tahun; ?></td>
                                                         <td style="color: #000000"><?php echo $warkah->nama_kondisi; ?></td>
+                                                        <td style="color: #000000"><?php echo $warkah->kegiatan; ?></td>
                                                         <td style="color: #000000"><?php echo $warkah->nama_lemari; ?> / <?php echo $warkah->nama_baris; ?> / <?php echo $warkah->nama_bundel; ?></td>
                                                         <td>
                                                           <?php

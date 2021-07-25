@@ -48,6 +48,7 @@ class Uploadcsv extends CI_Controller {
 					while (($row = fgetcsv($handle, 2048))) {
 						$i++;
 						$data=explode(";",$row[0]);
+						$keterangan=$data[6];
 						if($data[6]=="Roya" || $data[6]=="Hak Tanggungan"){
 							//next
 						}else{
@@ -57,9 +58,10 @@ class Uploadcsv extends CI_Controller {
 								$id_warkah=random_string('alnum',20);
 								$admin_tambah= $this->session->userdata("nama_lengkap");
 								if($hak==""){
-									$simpan_warkah= $this->M_uploadcsv->warkah_no_link($id_warkah,$no_warkah,$tahun_warkah,$admin_tambah);
+									$simpan_warkah= $this->M_uploadcsv->warkah_no_link($id_warkah,$no_warkah,$tahun_warkah,$admin_tambah,$keterangan);
 									if($simpan_warkah>0){
 											//echo "OK ";
+											//echo"X ";
 
 									}else{
 											echo "gagal Menambahkan Warkah ";
@@ -77,9 +79,9 @@ class Uploadcsv extends CI_Controller {
 								foreach ($data4 as $isi) {
 									if($isi->jumlah==1){
 										$id_buku_tanah=$isi->id_buku_tanah;
-										$simpan_warkah= $this->M_uploadcsv->warkah($id_warkah,$no_warkah,$tahun_warkah,$id_buku_tanah,$admin_tambah);
+										$simpan_warkah= $this->M_uploadcsv->warkah($id_warkah,$no_warkah,$tahun_warkah,$id_buku_tanah,$admin_tambah,$keterangan);
 										if($simpan_warkah>0){
-												//echo "OK ";
+												//echo "C ";
 
 										}else{
 												echo "gagal Menambahkan Warkah ";
