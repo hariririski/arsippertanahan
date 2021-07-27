@@ -2,7 +2,7 @@
     class M_lemari extends CI_Model{
 
       function lihat(){
-        $query=$this->db->query("SELECT * FROM `lemari`");
+        $query=$this->db->query("SELECT * FROM `lemari` order by nama_lemari ASC");
         return $query->result();
       }
       function lihat2(){
@@ -16,7 +16,7 @@
       }
 
       function detail_baris($id_baris){
-        $query=$this->db->query("SELECT * FROM `baris` where baris.id_baris='$id_baris'");
+        $query=$this->db->query("SELECT * FROM `baris` where baris.id_baris='$id_baris' ");
         return $query->result();
       }
 
@@ -54,7 +54,7 @@
       }
 
       function lihat_baris($id_lemari){
-        $query=$this->db->query("SELECT * FROM lemari INNER JOIN baris on lemari.id_lemari=baris.id_lemari where baris.id_lemari='$id_lemari'");
+        $query=$this->db->query("SELECT * FROM lemari INNER JOIN baris on lemari.id_lemari=baris.id_lemari where baris.id_lemari='$id_lemari' order by nama_baris ASC");
         return $query->result();
       }
 
