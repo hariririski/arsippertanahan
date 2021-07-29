@@ -71,16 +71,16 @@
                         </ul>
                     </div>
                 </li>
-                <li>
+                <!-- <li>
                     <a href="javascript: void(0);" class="collapsible-header has-arrow two-column"><i class="material-icons">assignment</i><span class="hide-menu">Laporan</span></a>
                     <div class="collapsible-body">
                         <ul>
                             <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Laporan Peminjaman</span></a></li>
                             <li><a href="inbox-email.html"><i class="material-icons">email</i><span class="hide-menu">Laporan Keterlambatan</span></a></li>
-                            <li><a href="<?php echo base_url(); ?>cetakqr"><i class="material-icons">email</i><span class="hide-menu">Cetak QR</span></a></li>
+                            <li><a href="<?php //echo base_url(); ?>cetakqr"><i class="material-icons">email</i><span class="hide-menu">Cetak QR</span></a></li>
                         </ul>
                     </div>
-                </li>
+                </li> -->
               <?php }?>
                   <?php
                     switch ($this->session->userdata("level")){
