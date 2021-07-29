@@ -91,6 +91,7 @@ $route['valid'] = 'Valid';
 $route['validqr'] = 'Valid/validqr';
 $route['cetakqr'] = 'Cetak';
 $route['cariarsip'] = 'Cariarsip';
+$route['datalink'] = 'Buku_tanah/data_link';
 
 
 $route['404_override'] = 'Rusak';

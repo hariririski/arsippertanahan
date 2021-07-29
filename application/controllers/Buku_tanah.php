@@ -28,6 +28,15 @@ class Buku_tanah extends CI_Controller {
 		$this->load->view('data_buku_tanah',$data);
 	}
 
+	public function data_link(){
+
+		$data['data_jenis_hak'] = $this->M_jenis_hak->lihat();
+		$data['data_kondisi'] = $this->M_kondisi->lihat();
+		$data['data_desa'] = $this->M_provinsi->data_desa_bundel();
+		$data['desa_tabel'] = $this->M_provinsi->data_desa_buku_tanah();
+		$this->load->view('data_link',$data);
+	}
+
 	public function detail_buku_tanah_desa(){
 		$kode_desa=$this->uri->segment('3');
 		$data['data_buku_tanah'] = $this->M_buku_tanah->data_buku_tanah_desa($kode_desa);

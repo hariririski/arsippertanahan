@@ -29,7 +29,7 @@
                           <li><a href="<?php echo base_url(); ?>databukutanah"><i class="material-icons">event_note</i><span class="hide-menu">Data Buku Tanah</span></a></li>
                           <li><a href="<?php echo base_url(); ?>datasuratukur"><i class="material-icons">event_note</i><span class="hide-menu">Data Surat Ukur</span></a></li>
                           <li><a href="<?php echo base_url(); ?>datawarkah"><i class="material-icons">event_note</i><span class="hide-menu">Data Warkah</span></a></li>
-                          <li><a href="<?php echo base_url(); ?>pinjam"><i class="material-icons">event_note</i><span class="hide-menu">Arsip Belum Link</span></a></li>
+                          <li><a href="<?php echo base_url(); ?>datalink"><i class="material-icons">event_note</i><span class="hide-menu">Arsip Belum Link</span></a></li>
                           <?php
                           // (A) CHECK IF "MOBILE" EXISTS IN USER AGENT
                             $isMob = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), "mobile"));
