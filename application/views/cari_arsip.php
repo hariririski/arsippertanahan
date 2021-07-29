@@ -52,7 +52,7 @@
 
                     <div class="custom-breadcrumb ml-auto">
                         <a href="#!" class="breadcrumb">Home</a>
-                        <a href="#!" class="breadcrumb">Data Peminjaman</a>
+                        <a href="#!" class="breadcrumb">Cari Arsip</a>
                     </div>
                 </div>
             </div>
@@ -239,6 +239,7 @@
                         '<div class="indeterminate"></div>'+
                       '</div>';
               $('#show_data').html(loading);
+              inputField.value ="";
               if(explode[0]=="BT" || explode[0]=="W" || explode[0]=="SU"){
       		    $.ajax({
       		        type  : 'GET',
@@ -294,6 +295,7 @@
                                   nomor++;
               		            }
               		            $('#show_data').html(html);
+
                               break;
 
                         case "SU":
