@@ -349,7 +349,7 @@ class Cetak extends CI_Controller {
 				$pdf = new FPDF('P','mm','A4');
 				$pdf->SetFont('Times','',11);
 				$pdf->AddPage();
-				$sql1="SELECT * FROM warkah  where warkah.tahun='$tahun'";
+				$sql1="SELECT * FROM warkah  where warkah.tahun='$tahun' order by warkah.tahun ASC,warkah.nomor ASC ";
 				$query1 = $this->db->query($sql1);
 				$data1=$query1->result();
 				$i=0;$a;$b;$j;$x=0;
