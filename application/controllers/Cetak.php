@@ -73,7 +73,7 @@ class Cetak extends CI_Controller {
 				$pdf = new FPDF('P','mm','A4');
 				$pdf->SetFont('Times','',12);
 				$pdf->AddPage();
-				$sql1="SELECT * FROM buku_tanah left join jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak left join desa on desa.kode_desa=buku_tanah.kode_desa left join kec on kec.kode_kec=desa.kode_kec left join kota on kota.kode_kota=kec.kode_kota left join prov on prov.kode_prov=kota.kode_prov where buku_tanah.kode_desa='$kode_desa' order by buku_tanah.no_hak ASC";
+				$sql1="SELECT * FROM buku_tanah left join jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak left join desa on desa.kode_desa=buku_tanah.kode_desa left join kec on kec.kode_kec=desa.kode_kec left join kota on kota.kode_kota=kec.kode_kota left join prov on prov.kode_prov=kota.kode_prov where buku_tanah.kode_desa='$kode_desa' order by buku_tanah.id_jenis_hak ASC, buku_tanah.no_hak ASC";
 				$query1 = $this->db->query($sql1);
 				$data1=$query1->result();
 				$i=0;$a;$b;$j;$x=0;
