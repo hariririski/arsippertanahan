@@ -324,7 +324,7 @@ class Cetak extends CI_Controller {
 		$jumlah_warkah;
 
 		if($filecount!=$jumlah_warkah){
-			$sql="SELECT * FROM warkah  where warkah.tahun='$tahun'";
+			$sql="SELECT * FROM warkah  where warkah.tahun='$tahun' order by warkah.nomor ASC";
 			$query = $this->db->query($sql);
 			$data=$query->result();
 			foreach ($data as $isi) {
