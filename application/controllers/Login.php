@@ -55,7 +55,12 @@ class Login extends CI_Controller {
 				 //print_r($arraydata);
          $this->session->set_userdata($arraydata);
       }
-      redirect(base_url('home'));
+			$isMob = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), "mobile"));
+			if($isMob){
+				redirect(base_url('mobile/home'));
+			}else{
+				redirect(base_url('home'));
+			}
 		}else{
       echo"<script>alert('Anda Gagal Login')</script>";
 			redirect(base_url('login'));
