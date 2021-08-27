@@ -12,7 +12,7 @@
           <div class="card-center mx-3 px-4 py-4 bg-white rounded-m">
             <h1 class="font-30 font-800 mb-0">Manajemen Arsip Pertanahan</h1>
             <p></p>
-            <form class="col s12" method="post" action="<?php echo base_url(); ?>Login/proses_login">
+            <form  method="post" action="<?php echo base_url(); ?>Login/proses_login">
             <div class="form-custom form-label form-border form-icon mb-3 bg-transparent">
               <i class="bi bi-person-circle font-13"></i>
               <input name ="username"type="text" class="form-control rounded-xs" id="c1" placeholder="Username" required>
@@ -25,16 +25,12 @@
               <label for="c2" class="color-theme">Password</label>
               <span>(required)</span>
             </div>
-
-            <button type="submit" class="btn btn-full gradient-highlight shadow-bg shadow-bg-s mt-4">Masuk</button>
+                <button type="submit" class="btn-full btn gradient-blue shadow-bg shadow-bg-m" style="width:100%">Masuk</button>
           </form>
           </div>
           <div class="card-overlay rounded-0 m-0 bg-black opacity-70"></div>
         </div>
       </div>
-
-
-
     </div>
 
     <?php echo $this->load->view('views_mobile/share/footer', '', TRUE);?>

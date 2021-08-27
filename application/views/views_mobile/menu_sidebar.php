@@ -4,14 +4,14 @@
   <div class="pt-3">
     <div class="page-title sidebar-title d-flex">
       <div class="align-self-center me-auto">
-        <p class="color-highlight">Welcome Back</p>
-        <h1>Enabled</h1>
+        <p class="color-highlight"></p>
+        <h4><?php echo $this->session->userdata("nama_lengkap"); ?></h4>
       </div>
       <div class="align-self-center ms-auto">
         <a href="#"
         data-bs-toggle="dropdown"
         class="icon gradient-blue shadow-bg shadow-bg-s rounded-m">
-        <img src="../assets_m/images/pictures/25s.jpg" width="45" class="rounded-m" alt="img">
+        <img src="<?php echo base_url(); ?><?php echo $this->session->userdata("image"); ?>" width="45" class="rounded-m" alt="img">
       </a>
 
       <div class="dropdown-menu">
@@ -107,11 +107,6 @@
 
   <h6 class="opacity-40 px-3 mt-n2 mb-0">Useful Links</h6>
   <div class="list-group list-custom list-menu-small">
-    <a href="tel:+1 234 567 8091" class="list-group-item default-link">
-      <i class="bi bi-arrow-up-circle-fill opacity-20 font-16"></i>
-      <div>Support</div>
-      <i class="bi bi-chevron-right"></i>
-    </a>
     <a href="page-profile.html" class="list-group-item">
       <i class="bi bi-person-circle opacity-20 font-16"></i>
       <div>Account</div>

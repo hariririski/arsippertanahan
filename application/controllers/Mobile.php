@@ -11,12 +11,20 @@ class Mobile extends CI_Controller {
 			$this->load->helper('url');
 			$this->load->library('session');
 			$this->load->database();
-			$this->load->model('M_admin');
 			$this->load->model('M_home');
+			$this->load->model('M_kondisi');
+			$this->load->model('M_pinjam');
 	}
 
 	public function home(){
-			$this->load->view('views_mobile/home');
+			$data['jumlah_buku_tanah'] = $this->M_home->jumlah_buku_tanah();
+			$data['jumlah_buku_tanah_valid'] = $this->M_home->jumlah_buku_tanah_valid();
+			$data['jumlah_warkah'] = $this->M_home->jumlah_warkah();
+			$data['jumlah_warkah_valid'] = $this->M_home->jumlah_warkah_valid();
+			$data['jumlah_surat_ukur'] = $this->M_home->jumlah_surat_ukur();
+			$data['jumlah_surat_ukur_valid'] = $this->M_home->jumlah_surat_ukur_valid();
+			$data['pinjam_telat'] = $this->M_home->pinjam_telat();
+			$this->load->view('views_mobile/home_m',$data);
 	}
 
 	public function menu_sidebar(){
@@ -25,8 +33,13 @@ class Mobile extends CI_Controller {
 	public function menu_card_settings(){
 			$this->load->view('views_mobile/menu_card_settings');
 	}
-	public function menu_transfer(){
-			$this->load->view('views_mobile/menu_transfer');
+	public function menu_peminjaman(){
+			$data['data'] = $this->M_pinjam->data();
+			$this->load->view('views_mobile/menu_peminjaman',$data);
+	}
+	public function menu_pengembalian(){
+			$data['pinjam'] = $this->M_pinjam->data_all();
+			$this->load->view('views_mobile/menu_pengembalian',$data);
 	}
 	public function menu_friends_transfer(){
 			$this->load->view('views_mobile/menu_friends_transfer');

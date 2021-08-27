@@ -10,8 +10,8 @@
       <div id="footer-bar" class="footer-bar-1 footer-bar-detached">
         <a href="<?php echo base_url(); ?>mobile/home"><i class="bi bi-house-fill"></i><span>Home</span></a>
         <a href="page-activity.html"><i class="bi bi-graph-up"></i><span>Activity</span></a>
-        <a href="<?php echo base_url(); ?>mobile/home" class="circle-nav-2"><i class="bi bi-upc-scan"></i><span>Scann</span></a>
-        <a href="page-payments.html"><i class="bi bi-receipt"></i><span>Payments</span></a>
+        <a href="<?php echo base_url(); ?>mobile/home" class="circle-nav-2"><i class="bi bi-upc-scan"></i><span>Scan</span></a>
+        <a href="page-payments.html"><i class="bi bi-receipt"></i><span>Progress</span></a>
         <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-sidebar"><i class="bi bi-three-dots"></i><span>More</span></a>
       </div>
 
@@ -21,36 +21,30 @@
           <div class="page-title d-flex">
             <div class="align-self-center me-auto">
               <p class="color-white opacity-80 header-date"></p>
-              <h1 class="color-white">Welcome</h1>
+              <h3 class="color-white"><?php echo $this->session->userdata("nama_lengkap"); ?></h3>
             </div>
             <div class="align-self-center ms-auto">
-              <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-highlights" class="icon bg-white color-theme rounded-m shadow-xl">
-                <i class="bi bi-palette-fill color-black font-16"></i>
-              </a>
+
               <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-notifications" class="icon bg-white color-theme rounded-m shadow-xl">
                 <i class="bi bi-bell-fill color-black font-17"></i>
                 <em class="badge bg-red-light color-white scale-box">3</em>
               </a>
               <a href="#" data-bs-toggle="dropdown" class="icon rounded-m shadow-xl">
-                <img src="../assets_m/images/pictures/25s.jpg" width="45" class="rounded-m" alt="img">
+                <img src="<?php echo base_url(); ?><?php echo $this->session->userdata("image"); ?>" width="45" class="rounded-m" alt="img">
               </a>
 
               <div class="dropdown-menu">
                 <div class="card card-style shadow-m mt-1 me-1">
                   <div class="list-group list-custom list-group-s list-group-flush rounded-xs px-3 py-1">
-                    <a href="page-wallet.html" class="list-group-item">
-                      <i class="has-bg gradient-green shadow-bg shadow-bg-xs color-white rounded-xs bi bi-credit-card"></i>
-                      <strong class="font-13">Wallet</strong>
-                    </a>
                     <a href="page-activity.html" class="list-group-item">
                       <i class="has-bg gradient-blue shadow-bg shadow-bg-xs color-white rounded-xs bi bi-graph-up"></i>
-                      <strong class="font-13">Activity</strong>
+                      <strong class="font-13">Activity Profil</strong>
                     </a>
                     <a href="page-profile.html" class="list-group-item">
                       <i class="has-bg gradient-yellow shadow-bg shadow-bg-xs color-white rounded-xs bi bi-person-circle"></i>
-                      <strong class="font-13">Account</strong>
+                      <strong class="font-13">Profil</strong>
                     </a>
-                    <a href="page-signin-1.html" class="list-group-item">
+                    <a href="<?php echo base_url(); ?>login/logout" class="list-group-item">
                       <i class="has-bg gradient-red shadow-bg shadow-bg-xs color-white rounded-xs bi bi-power"></i>
                       <strong class="font-13">Log Out</strong>
                     </a>
@@ -72,82 +66,171 @@
             <div class="splide__list">
               <div class="splide__slide">
                 <div class="card card-style m-0 bg-5 shadow-card shadow-card-m" style="height:200px">
+                  <div class="card-center">
+                    <div class="bg-theme px-3 py-2 rounded-end d-inline-block">
+                    <a class="color-theme" data-bs-toggle="collapse" href="#balance3" aria-controls="balance2">Jumlah Buku Tanah</a>
+                    <div >
+                      <h2 class="color-theme font-26">
+                          <?php
+                          $jumlah_buku_tanah;
+                          foreach($jumlah_buku_tanah as $data){
+                            echo   $jumlah_buku_tanah=$data->jumlah_buku_tanah;
+                          }
+                          ?>
+                      </h2>
+                    </div>
+                    </div>
+                  </div>
+                  <strong class="card-top no-click font-12 p-3 color-white font-monospace font-20">Buku Tanah</strong>
+                  <strong class="card-bottom no-click p-3 font-12 text-start color-white font-monospace font-20">
+                    <?php
+                    foreach($jumlah_buku_tanah_valid as $data){
+                        echo "Valid : ".$data->jumlah_buku_tanah;
+                    }
+                    ?>
+                  </strong>
+                  <strong class="card-bottom no-click p-3 font-12 text-end color-white font-monospace font-20">
+                    <?php
+                    foreach($jumlah_buku_tanah_valid as $data){
+                      if($jumlah_buku_tanah>0){
+                        echo round($data->jumlah_buku_tanah/$jumlah_buku_tanah*100,2)."%";
+                      }else{
+                        echo "0.00 %";
+                      }
+                    }
+                    ?>
+                  </strong>
+                  <div class="card-overlay bg-black opacity-50"></div>
+                </div>
+              </div>
+
+              <div class="splide__slide">
+                <div class="card card-style m-0 bg-5 shadow-card shadow-card-m" style="height:200px">
                   <div class="card-top p-3">
                     <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-card-more" class="icon icon-xxs bg-white color-black float-end"><i class="bi bi-three-dots font-18"></i></a>
                   </div>
                   <div class="card-center">
                     <div class="bg-theme px-3 py-2 rounded-end d-inline-block">
-                      <h1 class="font-13 my-n1">
-                        <a class="color-theme" data-bs-toggle="collapse" href="#balance3" aria-controls="balance2">Click for Balance</a>
-                      </h1>
-                      <div class="collapse" id="balance3"><h2 class="color-theme font-26">$26,315</h2></div>
+                    <a class="color-theme" data-bs-toggle="collapse" href="#balance3" aria-controls="balance2">Jumlah Surat Ukur</a>
+                    <div >
+                      <h2 class="color-theme font-26">
+                        <?php
+                          $jumlah_surat_ukur;
+                          foreach($jumlah_surat_ukur as $data){
+                            echo $jumlah_surat_ukur=$data->jumlah_surat_ukur;
+                          }
+                        ?>
+                      </h2>
+                    </div>
                     </div>
                   </div>
-                  <strong class="card-top no-click font-12 p-3 color-white font-monospace">Main Account</strong>
-                  <strong class="card-bottom no-click p-3 font-12 text-start color-white font-monospace">1234 5678 1234 5661</strong>
-                  <strong class="card-bottom no-click p-3 font-12 text-end color-white font-monospace">08 / 25</strong>
+                  <strong class="card-top no-click font-12 p-3 color-white font-monospace font-20">Surat Ukur</strong>
+                  <strong class="card-bottom no-click p-3 font-12 text-start color-white font-monospace font-20">
+                    <?php
+                      foreach($jumlah_surat_ukur_valid as $data){
+
+                        echo "Valid : ".$data->jumlah_surat_ukur;
+
+                      }
+                    ?>
+                  </strong>
+                  <strong class="card-bottom no-click p-3 font-12 text-end color-white font-monospace font-20">
+                    <?php
+                      foreach($jumlah_surat_ukur_valid as $data){
+                        if($jumlah_surat_ukur>0){
+                        echo round($data->jumlah_surat_ukur/$jumlah_surat_ukur*100,2)."%";
+                        }else{
+                          echo "0.00 %";
+                        }
+                      }
+                    ?>
+                  </strong>
                   <div class="card-overlay bg-black opacity-50"></div>
                 </div>
               </div>
               <div class="splide__slide">
-                <div class="card card-style m-0 bg-9 shadow-card shadow-card-m" style="height:200px">
+                <div class="card card-style m-0 bg-5 shadow-card shadow-card-m" style="height:200px">
                   <div class="card-top p-3">
                     <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-card-more" class="icon icon-xxs bg-white color-black float-end"><i class="bi bi-three-dots font-18"></i></a>
                   </div>
                   <div class="card-center">
                     <div class="bg-theme px-3 py-2 rounded-end d-inline-block">
-                      <h1 class="font-13 my-n1">
-                        <a class="color-theme" data-bs-toggle="collapse" href="#balance1" aria-controls="balance1">Click for Balance</a>
-                      </h1>
-                      <div class="collapse" id="balance1"><h2 class="color-theme font-26">$65,500</h2></div>
+                    <a class="color-theme" data-bs-toggle="collapse" href="#balance3" aria-controls="balance2">Jumlah Warkah</a>
+                    <div >
+                      <h2 class="color-theme font-26">
+                        <?php
+                          $jumlah_warkah;
+                          foreach($jumlah_warkah as $data){
+                            echo $jumlah_warkah=$data->jumlah_warkah;
+                          }
+                        ?>
+                      </h2>
+                    </div>
                     </div>
                   </div>
-                  <strong class="card-top no-click font-12 p-3 color-white font-monospace">Company Account</strong>
-                  <strong class="card-bottom no-click p-3 font-12 text-start color-white font-monospace">1234 5678 1234 5661</strong>
-                  <strong class="card-bottom no-click p-3 font-12 text-end color-white font-monospace">08 / 25</strong>
+                  <strong class="card-top no-click font-12 p-3 color-white font-monospace font-20">Warkah</strong>
+                  <strong class="card-bottom no-click p-3 font-12 text-start color-white font-monospace font-20">
+                    <?php
+                      foreach($jumlah_warkah_valid as $data){
+                          echo "Valid : ".$data->jumlah_warkah;
+                      }
+                    ?>
+                  </strong>
+                  <strong class="card-bottom no-click p-3 font-12 text-end color-white font-monospace font-20">
+                    <?php
+                      foreach($jumlah_warkah_valid as $data){
+                        if($jumlah_warkah>0){
+                          echo round($data->jumlah_warkah/$jumlah_warkah*100,2)."%";
+                        }else{
+                          echo "0.00 %";
+                        }
+                      }
+                    ?>
+                  </strong>
                   <div class="card-overlay bg-black opacity-50"></div>
                 </div>
               </div>
-              <div class="splide__slide">
-                <div class="card card-style m-0 bg-7 shadow-card shadow-card-m" style="height:200px">
-                  <div class="card-top p-3">
-                    <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-card-more" class="icon icon-xxs bg-white color-black float-end"><i class="bi bi-three-dots font-18"></i></a>
-                  </div>
-                  <div class="card-center">
-                    <div class="bg-theme px-3 py-2 rounded-end d-inline-block">
-                      <h1 class="font-13 my-n1">
-                        <a class="color-theme" data-bs-toggle="collapse" href="#balance2" aria-controls="balance2">Click for Balance</a>
-                      </h1>
-                      <div class="collapse" id="balance2"><h2 class="color-theme font-26">$15,100</h2></div>
-                    </div>
-                  </div>
-                  <strong class="card-top no-click font-12 p-3 color-white font-monospace">Savings Account</strong>
-                  <strong class="card-bottom no-click p-3 font-12 text-start color-white font-monospace">1234 5678 1234 5661</strong>
-                  <strong class="card-bottom no-click p-3 font-12 text-end color-white font-monospace">08 / 25</strong>
-                  <div class="card-overlay bg-black opacity-50"></div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
 
+        <?php
+          $menuju=0;
+          $telat=0;
+          $persen_menuju=0;
+          $persen_telat=0;
+          foreach($pinjam_telat as $pinjam){
+            if($pinjam->selisih >-2 && $pinjam->selisih <1 ){
+              $menuju++;
+            }else if($pinjam->selisih >0){
+              $telat++;
+            }
+          }
+          $total=$menuju+$telat;
+          if($total>0){
+            $persen_menuju=round(($menuju/$total)*100);
+            $persen_telat=round(($telat/$total)*100);
+          }
+        ?>
+
         <div class="content py-2">
           <div class="d-flex text-center">
             <div class="me-auto">
-              <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-transfer" class="icon icon-xxl rounded-m bg-theme shadow-m"><i class="font-28 color-green-dark bi bi-arrow-up-circle"></i></a>
-              <h6 class="font-13 opacity-80 font-500 mb-0 pt-2">Transfer</h6>
+              <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-peminjaman" class="icon icon-xxl rounded-m bg-theme shadow-m"><i class="font-28 color-green-dark bi bi-arrow-up-circle"></i><em class="badge bg-red-light color-white scale-box">3</em></a>
+              <h6 class="font-13 opacity-80 font-500 mb-0 pt-2">Peminjaman</h6>
             </div>
             <div class="m-auto">
-              <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-request" class="icon icon-xxl rounded-m bg-theme shadow-m"><i class="font-28 color-red-dark bi bi-arrow-down-circle"></i></a>
-              <h6 class="font-13 opacity-80 font-500 mb-0 pt-2">Request</h6>
+              <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-pengembalian" class="icon icon-xxl rounded-m bg-theme shadow-m"><i class="font-28 color-red-dark bi bi-arrow-down-circle"></i><em class="badge bg-red-light color-white scale-box">3</em></a>
+              <h6 class="font-13 opacity-80 font-500 mb-0 pt-2">Pengembalian</h6>
             </div>
             <div data-bs-toggle="offcanvas" data-bs-target="#menu-exchange" class="m-auto">
-              <a href="#" class="icon icon-xxl rounded-m bg-theme shadow-m"><i class="font-28 color-blue-dark bi bi-arrow-repeat"></i></a>
-              <h6 class="font-13 opacity-80 font-500 mb-0 pt-2">Exchange</h6>
+              <a href="#" class="icon icon-xxl rounded-m bg-theme shadow-m"><i class="font-28 color-blue-dark bi bi-arrow-repeat"></i><em class="badge bg-red-light color-white scale-box"><?php echo $telat;?></em></a>
+              <h6 class="font-13 opacity-80 font-500 mb-0 pt-2">Terlambat</h6>
             </div>
             <div class="ms-auto">
-              <a href="page-payment-bill.html" class="icon icon-xxl rounded-m bg-theme shadow-m"><i class="font-28 color-brown-dark bi bi-filter-circle"></i></a>
-              <h6 class="font-13 opacity-80 font-500 mb-0 pt-2">Bills</h6>
+              <a href="page-payment-bill.html" class="icon icon-xxl rounded-m bg-theme shadow-m"><i class="font-28 color-brown-dark bi bi-filter-circle"></i><em class="badge bg-red-light color-white scale-box"><?php echo $menuju;?></em></a>
+              <h6 class="font-13 opacity-80 font-500 mb-0 pt-2">Menuju</h6>
             </div>
           </div>
         </div>
@@ -155,10 +238,10 @@
         <div class="content my-0 mt-n2 px-1">
           <div class="d-flex">
             <div class="align-self-center">
-              <h3 class="font-16 mb-2">Recent Activity</h3>
+              <h3 class="font-16 mb-2">Aktivitas Terbaru</h3>
             </div>
             <div class="align-self-center ms-auto">
-              <a href="page-activity.html" class="font-12 pt-1">View All</a>
+              <a href="page-activity.html" class="font-12 pt-1">Lihat Semua</a>
             </div>
           </div>
         </div>
@@ -206,79 +289,66 @@
                 <p class="mb-0 font-11">Wire Transfer</p>
               </div>
             </a>
-          </div>
-        </div>
-
-        <div class="content my-0 mt-n2 px-1">
-          <div class="d-flex">
-            <div class="align-self-center">
-              <h3 class="font-16 mb-2">Account Activity</h3>
-            </div>
-            <div class="align-self-center ms-auto">
-              <a href="page-activity.html" class="font-12 pt-1">View All</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="card card-style gradient-green shadow-bg shadow-bg-s">
-          <div class="content">
-            <a href="page-activity.html" class="d-flex">
+            <div class="divider my-2 opacity-50"></div>
+            <a href="page-activity.html" class="d-flex py-1">
               <div class="align-self-center">
-                <h1 class="mb-0 font-40"><i class="bi bi-check-circle color-white pe-3"></i></h1>
+                <span class="icon rounded-s me-2 gradient-yellow shadow-bg shadow-bg-s"><i class="bi bi-pie-chart-fill color-white"></i></span>
               </div>
+              <div class="align-self-center ps-1">
+                <h5 class="pt-1 mb-n1">Dividends</h5>
+                <p class="mb-0 font-11 opacity-50">13th March <span class="copyright-year"></span></p>
+              </div>
+              <div class="align-self-center ms-auto text-end">
+                <h4 class="pt-1 mb-n1 color-green-dark">$950.00</h4>
+                <p class="mb-0 font-11">Wire Transfer</p>
+              </div>
+            </a>
+            <div class="divider my-2 opacity-50"></div>
+            <a href="page-activity.html" class="d-flex py-1">
               <div class="align-self-center">
-                <h5 class="color-white font-700 mb-0 mt-0 pt-1">
-                  Withdrawal of funds to your <br> Account has been successful.
-                </h5>
+                <span class="icon rounded-s me-2 gradient-yellow shadow-bg shadow-bg-s"><i class="bi bi-pie-chart-fill color-white"></i></span>
               </div>
-              <div class="align-self-center ms-auto">
-                <i class="bi bi-arrow-right-short color-white d-block pt-1 font-20 opacity-50"></i>
+              <div class="align-self-center ps-1">
+                <h5 class="pt-1 mb-n1">Dividends</h5>
+                <p class="mb-0 font-11 opacity-50">13th March <span class="copyright-year"></span></p>
+              </div>
+              <div class="align-self-center ms-auto text-end">
+                <h4 class="pt-1 mb-n1 color-green-dark">$950.00</h4>
+                <p class="mb-0 font-11">Wire Transfer</p>
+              </div>
+            </a>
+            <div class="divider my-2 opacity-50"></div>
+            <a href="page-activity.html" class="d-flex py-1">
+              <div class="align-self-center">
+                <span class="icon rounded-s me-2 gradient-yellow shadow-bg shadow-bg-s"><i class="bi bi-pie-chart-fill color-white"></i></span>
+              </div>
+              <div class="align-self-center ps-1">
+                <h5 class="pt-1 mb-n1">Dividends</h5>
+                <p class="mb-0 font-11 opacity-50">13th March <span class="copyright-year"></span></p>
+              </div>
+              <div class="align-self-center ms-auto text-end">
+                <h4 class="pt-1 mb-n1 color-green-dark">$950.00</h4>
+                <p class="mb-0 font-11">Wire Transfer</p>
               </div>
             </a>
           </div>
         </div>
 
-        <div class="content mb-0">
-          <div class="d-flex">
-            <div class="align-self-center">
-              <h3 class="font-16 mb-2">Send Money</h3>
-            </div>
-            <div class="align-self-center ms-auto">
-              <a href="page-payment-transfer.html" class="font-12 pt-1">View All</a>
-            </div>
-          </div>
-        </div>
 
-        <div class="splide quad-slider slider-no-dots slider-no-arrows slider-visible text-center" id="double-slider-2">
-          <div class="splide__track">
-            <div class="splide__list">
-              <div class="splide__slide">
-                <a href="#" data-card-height="60" data-bs-toggle="offcanvas" data-bs-target="#menu-friends-transfer" class="card border-0  bg-1 shadow-card shadow-card-m rounded-m"></a>
-                <h6 class="pt-2">Johnatan</h6>
-              </div>
-              <div class="splide__slide">
-                <a href="#" data-card-height="60" data-bs-toggle="offcanvas" data-bs-target="#menu-friends-transfer" class="card border-0  bg-6 shadow-card shadow-card-m rounded-m"></a>
-                <h6 class="pt-2">Alexandra</h6>
-              </div>
-              <div class="splide__slide">
-                <a href="#" data-card-height="60" data-bs-toggle="offcanvas" data-bs-target="#menu-friends-transfer" class="card border-0 bg-3 shadow-card shadow-card-m rounded-m"></a>
-                <h6 class="pt-2">Juanita</h6>
-              </div>
-              <div class="splide__slide">
-                <a href="#" data-card-height="60" data-bs-toggle="offcanvas" data-bs-target="#menu-friends-transfer" class="card border-0 bg-9 shadow-card shadow-card-m rounded-m"></a>
-                <h6 class="pt-2">Danielle</h6>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
+
+
       <div id="menu-sidebar" data-menu-active="nav-welcome" data-menu-load="<?php echo base_url(); ?>mobile/menu_sidebar" class="offcanvas offcanvas-start offcanvas-detached rounded-m">
       </div>
 
       <div id="menu-card-more" data-menu-load="<?php echo base_url(); ?>mobile/menu_card_settings" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
       </div>
 
-      <div id="menu-transfer" data-menu-load="<?php echo base_url(); ?>mobile/menu_transfer" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
+      <div id="menu-peminjaman" data-menu-load="<?php echo base_url(); ?>mobile/menu_peminjaman" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
+      </div>
+
+      <div id="menu-pengembalian" data-menu-load="<?php echo base_url(); ?>mobile/menu_pengembalian" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
       </div>
 
       <div id="menu-friends-transfer" data-menu-load="<?php echo base_url(); ?>mobile/menu_friends_transfer" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
