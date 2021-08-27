@@ -117,7 +117,7 @@
       <div>Account</div>
       <i class="bi bi-chevron-right"></i>
     </a>
-    <a href="page-signin-1.html" class="list-group-item">
+    <a href="<?php echo base_url(); ?>login/logout" class="list-group-item">
       <i class="bi bi-bar-chart-fill opacity-20 font-16"></i>
       <div>Log Out</div>
       <i class="bi bi-chevron-right"></i>
@@ -125,6 +125,6 @@
   </div>
   <div class="divider divider-margins opacity-50"></div>
 
-  <p class="px-3 font-9 opacity-30 color-theme mt-n3">Copyright <span class="copyright-year"></span>. Made with <i class="bi bi-heart-fill color-red-dark px-1"></i> by Enabled</p>
+  <p class="px-3 font-9 opacity-30 color-theme mt-n3">Copyright <span class="copyright-year"></span>.</i>Kantah Kota Banda Aceh</p>
 </div>
 </div>
