@@ -272,10 +272,6 @@
           </div>
         </div>
       </div>
-
-
-
-
       <div id="menu-sidebar" data-menu-active="nav-welcome" data-menu-load="menu-sidebar.html" class="offcanvas offcanvas-start offcanvas-detached rounded-m">
       </div>
 
