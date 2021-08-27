@@ -18,4 +18,27 @@ class Mobile extends CI_Controller {
 	public function home(){
 			$this->load->view('views_mobile/home');
 	}
+
+	public function menu_sidebar(){
+			$this->load->view('views_mobile/menu_sidebar');
+	}
+	public function menu_card_settings(){
+			$this->load->view('views_mobile/menu_card_settings');
+	}
+	public function menu_transfer(){
+			$this->load->view('views_mobile/menu_transfer');
+	}
+	public function menu_friends_transfer(){
+			$this->load->view('views_mobile/menu_friends_transfer');
+	}
+	public function menu_exchange(){
+			$this->load->view('views_mobile/menu_exchange');
+	}
+	public function menu_notifications(){
+			$this->load->view('views_mobile/menu_notifications');
+	}
+	public function menu_highlights(){
+			$this->load->view('views_mobile/menu_highlights');
+	}
+
 }

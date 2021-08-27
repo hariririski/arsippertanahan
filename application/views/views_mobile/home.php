@@ -272,28 +272,28 @@
           </div>
         </div>
       </div>
-      <div id="menu-sidebar" data-menu-active="nav-welcome" data-menu-load="menu-sidebar.html" class="offcanvas offcanvas-start offcanvas-detached rounded-m">
+      <div id="menu-sidebar" data-menu-active="nav-welcome" data-menu-load="<?php echo base_url(); ?>mobile/menu_sidebar" class="offcanvas offcanvas-start offcanvas-detached rounded-m">
       </div>
 
-      <div id="menu-card-more" data-menu-load="menu-card-settings.html" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
+      <div id="menu-card-more" data-menu-load="<?php echo base_url(); ?>mobile/menu_card_settings" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
       </div>
 
-      <div id="menu-transfer" data-menu-load="menu-transfer.html" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
+      <div id="menu-transfer" data-menu-load="<?php echo base_url(); ?>mobile/menu_transfer" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
       </div>
 
-      <div id="menu-friends-transfer" data-menu-load="menu-friends-transfer.html" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
+      <div id="menu-friends-transfer" data-menu-load="<?php echo base_url(); ?>mobile/menu_friends_transfer" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
       </div>
 
-      <div id="menu-request" data-menu-load="menu-request.html" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
+      <div id="menu-request" data-menu-load="<?php echo base_url(); ?>mobile/menu_request" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
       </div>
 
-      <div id="menu-exchange" data-menu-load="menu-exchange.html" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
+      <div id="menu-exchange" data-menu-load="<?php echo base_url(); ?>mobile/menu_exchange" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
       </div>
 
-      <div id="menu-notifications" data-menu-load="menu-notifications.html" class="offcanvas offcanvas-top offcanvas-detached rounded-m">
+      <div id="menu-notifications" data-menu-load="<?php echo base_url(); ?>mobile/menu_notifications" class="offcanvas offcanvas-top offcanvas-detached rounded-m">
       </div>
 
-      <div id="menu-highlights" data-menu-load="menu-highlights.html" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
+      <div id="menu-highlights" data-menu-load="<?php echo base_url(); ?>mobile/menu_highlights" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
       </div>
       <div class="offcanvas offcanvas-bottom rounded-m offcanvas-detached" id="menu-install-pwa-ios">
         <div class="content">
