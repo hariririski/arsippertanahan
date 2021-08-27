@@ -14,7 +14,12 @@ class Login extends CI_Controller {
 	}
 	public function index()
 	{
-		$this->load->view('login');
+		$isMob = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), "mobile"));
+		if($isMob){
+			redirect(base_url('logon/login_mobile'));
+		}else{
+			$this->load->view('login');
+		}
 	}
 
 	public function login_mobile()
@@ -63,7 +68,12 @@ class Login extends CI_Controller {
 			}
 		}else{
       echo"<script>alert('Anda Gagal Login')</script>";
-			redirect(base_url('login'));
+			$isMob = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), "mobile"));
+			if($isMob){
+				redirect(base_url('login_mobile'));
+			}else{
+				redirect(base_url('login'));
+			}
 		}
 	}
 
