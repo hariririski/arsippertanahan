@@ -24,7 +24,7 @@ class Login extends CI_Controller {
 
 	public function login_mobile()
 	{
-		$this->load->view('mobile/login_m');
+		$this->load->view('views_mobile/login_m');
 	}
 
 	function logout(){

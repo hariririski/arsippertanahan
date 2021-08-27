@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <?php echo $this->load->view('mobile/share/header', '', TRUE);?>
+  <?php echo $this->load->view('views_mobile/share/header', '', TRUE);?>
   <body class="theme-light">
     <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
 
@@ -322,5 +322,5 @@
       </div>
     </div>
 
-    <?php echo $this->load->view('mobile/share/footer', '', TRUE);?>
+    <?php echo $this->load->view('views_mobile/share/footer', '', TRUE);?>
   </body></html>

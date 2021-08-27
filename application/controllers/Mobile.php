@@ -16,6 +16,6 @@ class Mobile extends CI_Controller {
 	}
 
 	public function home(){
-			$this->load->view('mobile/home');
+			$this->load->view('views_mobile/home');
 	}
 }
