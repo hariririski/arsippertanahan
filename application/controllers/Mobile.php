@@ -16,6 +16,6 @@ class Mobile extends CI_Controller {
 	}
 
 	public function index(){
-			$this->load->view('mobile/login_m');
+			$this->load->view('mobile/home');
 	}
 }
