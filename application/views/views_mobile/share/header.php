@@ -5,7 +5,6 @@
 <title>Mobile - Manajemen Arsip Pertanahan</title>
 <link rel="stylesheet" type="text/css" href="../assets_m/styles/bootstrap.css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@500;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="manifest" href="../assets_m/_manifest.json">
+<link href="../assets_m/styles/css2.css" rel="stylesheet">
 <meta id="theme-check" name="theme-color" content="#FFFFFF">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets_m/app/icons/icon-192x192.png"></head>
