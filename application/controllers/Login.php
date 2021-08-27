@@ -17,9 +17,18 @@ class Login extends CI_Controller {
 		$this->load->view('login');
 	}
 
+	public function login_mobile()
+	{
+		$this->load->view('mobile/login_m');
+	}
+
 	function logout(){
 		$this->session->sess_destroy();
 		redirect(base_url('login'));
+	}
+	function logout_mobile(){
+		$this->session->sess_destroy();
+		redirect(base_url('login/login_mobile'));
 	}
 
 	public function proses_login() {
