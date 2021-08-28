@@ -389,7 +389,7 @@
     <?php echo $this->load->view('views_mobile/share/footer', '', TRUE);?>
     <div id="scan" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
 
-      <div class="menu-size" style="height:440px;">
+      <div class="menu-size" style="height:600px;">
         <div class="d-flex mx-3 mt-3 py-1">
           <div class="align-self-center">
             <h1 class="mb-0">scan</h1>
