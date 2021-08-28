@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <?php echo $this->load->view('views_mobile/share/header', '', TRUE);?>
+  <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
   <body class="theme-light">
     <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
 
@@ -240,89 +241,49 @@
 
         <div class="card card-style">
           <div class="content">
-            <a href="page-activity.html" class="d-flex py-1">
+            <?php
+              $i=0;
+              foreach($aktifitas as $data2){
+              $i++;
+            ?>
+            <a href="#" class="d-flex py-1" data-bs-toggle="offcanvas" data-bs-target="#menu-activity-1">
               <div class="align-self-center">
-                <span class="icon rounded-s me-2 gradient-orange shadow-bg shadow-bg-s"><i class="bi bi-google color-white"></i></span>
+                <span class="icon gradient-red me-2 shadow-bg shadow-bg-s rounded-s">
+                  <img src="../assets_m/images/pictures/6s.jpg" width="45" class="rounded-s" alt="img">
+                </span>
               </div>
               <div class="align-self-center ps-1">
-                <h5 class="pt-1 mb-n1">Google Ads</h5>
-                <p class="mb-0 font-11 opacity-50">14th March <span class="copyright-year"></span></p>
+                <h5 class="pt-1 mb-n1 font-13">
+                  <?php
+                   $barang="";
+                  if($data2->id_warkah!=null){
+                    $barang="W - ".$data2->w_nomor."/".$data2->w_tahun;
+                  }else if ($data2->bt_id_buku_tanah!=null) {
+                    $barang="BT - ".$data2->nama_jenis_hak." ".$data2->no_hak." - ".$data2->bt_desa;
+                  }else if ($data2->id_surat_ukur!=null) {
+                    $barang="SU - ".$data2->su_nomor."/".$data2->su_tahun." - ".$data2->su_desa;
+                  }
+                  ?>
+                    <?php echo $barang; ?>-<?php echo $data2->pelayanan; ?>
+                </h5>
+                <p class="mb-0 font-11 opacity-70"><?php echo $data2->nama_lengkap; ?>-<?php echo $data2->tgl_pinjam; ?> <span class="copyright-year"></span></p>
               </div>
               <div class="align-self-center ms-auto text-end">
-                <h4 class="pt-1 mb-n1 color-red-dark">$150.55</h4>
-                <p class="mb-0 font-11">Bill Payment</p>
+                <span class="btn btn-xxs gradient-green shadow-bg shadow-bg-xs">
+                  <?php
+                  if($data2->ket==2){
+                    echo"Peminjaman";
+                  }else if($data2->ket==3){
+                    echo "Pengembalian";
+                  }else if($data2->ket==4){
+                    echo "Susun";
+                  }
+                  ?>
+                </span>
               </div>
             </a>
             <div class="divider my-2 opacity-50"></div>
-            <a href="page-activity.html" class="d-flex py-1">
-              <div class="align-self-center">
-                <span class="icon rounded-s me-2 gradient-green shadow-bg shadow-bg-s"><i class="bi bi-caret-up-fill color-white"></i></span>
-              </div>
-              <div class="align-self-center ps-1">
-                <h5 class="pt-1 mb-n1">Bitcoin</h5>
-                <p class="mb-0 font-11 opacity-50">14th March <span class="copyright-year"></span></p>
-              </div>
-              <div class="align-self-center ms-auto text-end">
-                <h4 class="pt-1 mb-n1 color-blue-dark">+0.315%</h4>
-                <p class="mb-0 font-11">Stock Update</p>
-              </div>
-            </a>
-            <div class="divider my-2 opacity-50"></div>
-            <a href="page-activity.html" class="d-flex py-1">
-              <div class="align-self-center">
-                <span class="icon rounded-s me-2 gradient-yellow shadow-bg shadow-bg-s"><i class="bi bi-pie-chart-fill color-white"></i></span>
-              </div>
-              <div class="align-self-center ps-1">
-                <h5 class="pt-1 mb-n1">Dividends</h5>
-                <p class="mb-0 font-11 opacity-50">13th March <span class="copyright-year"></span></p>
-              </div>
-              <div class="align-self-center ms-auto text-end">
-                <h4 class="pt-1 mb-n1 color-green-dark">$950.00</h4>
-                <p class="mb-0 font-11">Wire Transfer</p>
-              </div>
-            </a>
-            <div class="divider my-2 opacity-50"></div>
-            <a href="page-activity.html" class="d-flex py-1">
-              <div class="align-self-center">
-                <span class="icon rounded-s me-2 gradient-yellow shadow-bg shadow-bg-s"><i class="bi bi-pie-chart-fill color-white"></i></span>
-              </div>
-              <div class="align-self-center ps-1">
-                <h5 class="pt-1 mb-n1">Dividends</h5>
-                <p class="mb-0 font-11 opacity-50">13th March <span class="copyright-year"></span></p>
-              </div>
-              <div class="align-self-center ms-auto text-end">
-                <h4 class="pt-1 mb-n1 color-green-dark">$950.00</h4>
-                <p class="mb-0 font-11">Wire Transfer</p>
-              </div>
-            </a>
-            <div class="divider my-2 opacity-50"></div>
-            <a href="page-activity.html" class="d-flex py-1">
-              <div class="align-self-center">
-                <span class="icon rounded-s me-2 gradient-yellow shadow-bg shadow-bg-s"><i class="bi bi-pie-chart-fill color-white"></i></span>
-              </div>
-              <div class="align-self-center ps-1">
-                <h5 class="pt-1 mb-n1">Dividends</h5>
-                <p class="mb-0 font-11 opacity-50">13th March <span class="copyright-year"></span></p>
-              </div>
-              <div class="align-self-center ms-auto text-end">
-                <h4 class="pt-1 mb-n1 color-green-dark">$950.00</h4>
-                <p class="mb-0 font-11">Wire Transfer</p>
-              </div>
-            </a>
-            <div class="divider my-2 opacity-50"></div>
-            <a href="page-activity.html" class="d-flex py-1">
-              <div class="align-self-center">
-                <span class="icon rounded-s me-2 gradient-yellow shadow-bg shadow-bg-s"><i class="bi bi-pie-chart-fill color-white"></i></span>
-              </div>
-              <div class="align-self-center ps-1">
-                <h5 class="pt-1 mb-n1">Dividends</h5>
-                <p class="mb-0 font-11 opacity-50">13th March <span class="copyright-year"></span></p>
-              </div>
-              <div class="align-self-center ms-auto text-end">
-                <h4 class="pt-1 mb-n1 color-green-dark">$950.00</h4>
-                <p class="mb-0 font-11">Wire Transfer</p>
-              </div>
-            </a>
+            <?php } ?>
           </div>
         </div>
 
@@ -385,6 +346,7 @@
     <?php echo $this->load->view('views_mobile/share/footer', '', TRUE);?>
     <script src="../dist/js/qrcode_mobile.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>../assets/libs/toastr/build/toastr.min.js"></script>
 
     <div id="scan" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m" data-bs-backdrop="false" >
       <div class="menu-size" style="height:500px;">
@@ -426,8 +388,7 @@
               var audio = new Audio('dist/qr.mp3');
               audio.play();
               lastResult=1;
-              alert(decodedText);
-              //cari_barcode(decodedText);
+              cari_barcode(decodedText);
               setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
 
             }
@@ -456,5 +417,40 @@
         });
       });
     </script>
+    <script type="text/javascript">
+    function cari_barcode(barcode){
+        $.ajax({
+        type : "POST",
+        url  : "<?php echo base_url()?>mobile/cari/"+barcode,
+        dataType : "JSON",
+                success: function(notif){
+                  if (notif==1) {
+                    berhasil("Arsip Valid !.");
+                    // setTimeout("location.href = '<?php echo base_url()?>validqr';",1500);
+                  }else if(notif==2){
+                    gagal("Arsip Gagal Valid");
+                  }else if(notif==3){
+                    gagal("Bundel Tidak Sesuai, Arsip Gagal  Valid");
+                  }else{
+                    gagal("Arsip Gagal Valid");
+
+                  }
+
+                }
+            });
+
+    }
+    function berhasil(notif) {
+      toastr.success(notif, 'Selamat!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+    }
+    function peringatan(notif) {
+      toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+    }
+    function gagal(notif) {
+      toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
+    }
+    </script>
+
+
   </body>
   </html>

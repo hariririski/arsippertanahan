@@ -24,11 +24,16 @@ class Mobile extends CI_Controller {
 			$data['jumlah_surat_ukur'] = $this->M_home->jumlah_surat_ukur();
 			$data['jumlah_surat_ukur_valid'] = $this->M_home->jumlah_surat_ukur_valid();
 			$data['pinjam_telat'] = $this->M_home->pinjam_telat();
+			$data['aktifitas'] = $this->M_pinjam->data_aktifitas_m();
 			$this->load->view('views_mobile/home_m',$data);
 	}
 
 	public function scan(){
 			$this->load->view('views_mobile/scan');
+	}
+	public function cari(){
+			$invoice=$this->uri->segment('3');
+			echo json_encode(1);
 	}
 	public function menu_sidebar(){
 			$this->load->view('views_mobile/menu_sidebar');

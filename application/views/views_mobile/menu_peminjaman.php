@@ -37,7 +37,7 @@
             ?>
               <?php echo $barang; ?>-<?php echo $data2->pelayanan; ?>
           </h5>
-          <p class="mb-0 font-11 opacity-70"><?php echo $data2->nama_lengkap; ?><?php echo $data2->tgl_pinjam; ?> <span class="copyright-year"></span></p>
+          <p class="mb-0 font-11 opacity-70"><?php echo $data2->nama_lengkap; ?>-<?php echo $data2->tgl_pinjam; ?> <span class="copyright-year"></span></p>
         </div>
         <div class="align-self-center ms-auto text-end">
           <span class="btn btn-xxs gradient-green shadow-bg shadow-bg-xs">Details</span>
