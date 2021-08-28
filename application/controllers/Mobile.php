@@ -37,6 +37,9 @@ class Mobile extends CI_Controller {
 	public function aktivitas(){
 			$this->load->view('views_mobile/aktivitas');
 	}
+	public function keterlambatan(){
+			$this->load->view('views_mobile/keterlambatan');
+	}
 	public function cari(){
 			$type="BUKAN";
 			$data="null";
