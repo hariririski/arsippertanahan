@@ -388,8 +388,7 @@
 
     <?php echo $this->load->view('views_mobile/share/footer', '', TRUE);?>
     <div id="scan" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
-
-      <div class="menu-size" style="height:600px;">
+      <div class="menu-size" style="height:500px;">
         <div class="d-flex mx-3 mt-3 py-1">
           <div class="align-self-center">
             <h1 class="mb-0">scan</h1>
@@ -409,7 +408,7 @@
 
       </div>
     </div>
-    <script src="../dist/js/qrcode_scan.min.js"></script>
+    <script src="../dist/js/qrcode_m.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
 
