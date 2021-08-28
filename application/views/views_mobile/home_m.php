@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <?php echo $this->load->view('views_mobile/share/header', '', TRUE);?>
-  <link href="<?php echo base_url(); ?>../assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
   <body class="theme-light">
     <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
 
@@ -292,6 +291,7 @@
 
 
 
+
       <div id="menu-sidebar" data-menu-active="nav-welcome" data-menu-load="<?php echo base_url(); ?>mobile/menu_sidebar" class="offcanvas offcanvas-start offcanvas-detached rounded-m">
       </div>
 
@@ -320,34 +320,11 @@
 
       <div id="menu-highlights" data-menu-load="<?php echo base_url(); ?>mobile/menu_highlights" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
       </div>
-      <div class="offcanvas offcanvas-bottom rounded-m offcanvas-detached" id="menu-install-pwa-ios">
-        <div class="content">
-          <img src="app/icons/icon-128x128.png" alt="img" width="80" class="rounded-m mx-auto my-4">
-          <h1 class="text-center">Install PayApp</h1>
-          <p class="boxed-text-xl">
-            Install PayApp on your home screen, and access it just like a regular app. Open your Safari menu and tap "Add to Home Screen".
-          </p>
-          <a href="#" class="pwa-dismiss close-menu color-theme text-uppercase font-900 opacity-50 font-11 text-center d-block mt-n2" data-bs-dismiss="offcanvas">Maybe Later</a>
-        </div>
-      </div>
-      <div class="offcanvas offcanvas-bottom rounded-m offcanvas-detached" id="menu-install-pwa-android">
-        <div class="content">
-          <img src="app/icons/icon-128x128.png" alt="img" width="80" class="rounded-m mx-auto my-4">
-          <h1 class="text-center">Install PayApp</h1>
-          <p class="boxed-text-l">
-            Install PayApp to your Home Screen to enjoy a unique and native experience.
-          </p>
-          <a href="#" class="pwa-install btn btn-m rounded-s text-uppercase font-900 gradient-highlight shadow-bg shadow-bg-s btn-full">Add to Home Screen</a><br>
-          <a href="#" data-bs-dismiss="offcanvas" class="pwa-dismiss close-menu color-theme text-uppercase font-900 opacity-60 font-11 text-center d-block mt-n1">Maybe later</a>
-        </div>
-      </div>
-    </div>
+
 
     <?php echo $this->load->view('views_mobile/share/footer', '', TRUE);?>
     <script src="../dist/js/qrcode_mobile.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="<?php echo base_url(); ?>../assets/libs/toastr/build/toastr.min.js"></script>
-
     <div id="scan" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m" data-bs-backdrop="false" >
       <div class="menu-size" style="height:500px;">
         <div class="d-flex mx-3 mt-3 py-1">
@@ -419,14 +396,18 @@
     </script>
     <script type="text/javascript">
     function cari_barcode(barcode){
-      alert(barcode);
+      //alert(barcode);
         $.ajax({
         type : "POST",
         url  : "<?php echo base_url()?>mobile/cari/"+barcode,
         dataType : "JSON",
                 success: function(notif){
                   if (notif==1) {
-                    berhasil("Arsip Valid !.");
+
+                     document.getElementById('close').click();
+                      $('#berhasil').trigger('click');
+                    //$('#close').trigger('click');
+
                     // setTimeout("location.href = '<?php //echo base_url()?>validqr';",1500);
                   }else if(notif==2){
                     gagal("Arsip Gagal Valid");
@@ -441,17 +422,43 @@
             });
 
     }
-    function berhasil(notif) {
-      toastr.success(notif, 'Selamat!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
-    }
-    function peringatan(notif) {
-      toastr.warning(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
-    }
-    function gagal(notif) {
-      toastr.error(notif, 'Peringatan!', { positionClass: 'toast-top-full-width', containerId: 'toast-top-full-width' });
-    }
     </script>
+    <button type="submit" hidden id="berhasil" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#ok"></button>
+    <button type="submit" hidden id="gagal" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#gagal"></button>
+    <button type="submit" hidden id="berhasil" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#menu-transfer-ok"></button>
+    <div id="ok" style="width:320px" class="offcanvas offcanvas-modal offcanvas-detached rounded-m">
+      <div class="content text-center">
+        <i style="font-size:65px;" class="scale-box bi bi-check-circle-fill color-green-dark shadow-s rounded-circle p-0 mt-3 mb-3 d-inline-block"></i>
+        <h1 class="pt-3 font-28">Transfer Successful</h1>
+        <p class="font-14">
+          Your transfer was successfully processed.
+        </p>
+        <a href="#" data-bs-toggle="offcanvas" class="btn btn-full gradient-green shadow-bg shadow-bg-xs">Okay</a>
+      </div>
+    </div>
 
+    <div id="menu-transfer-pending" style="width:320px" class="offcanvas offcanvas-modal offcanvas-detached rounded-m">
+      <div class="content text-center">
+        <i style="font-size:65px;" class="scale-box bi bi-question-circle-fill color-blue-dark shadow-s rounded-circle p-0 mt-3 mb-3 d-inline-block"></i>
+        <h1 class="pt-3 font-28">Transfer Pending</h1>
+        <p class="font-14">
+          Transfer process has started. Awaiting approval from bank before processing.
+        </p>
+        <a href="#" data-bs-toggle="offcanvas" class="btn btn-full gradient-blue shadow-bg shadow-bg-xs">Okay</a>
+      </div>
+    </div>
+
+    <div id="gagal" style="width:320px" class="offcanvas offcanvas-modal offcanvas-detached rounded-m">
+      <div class="content text-center">
+        <i style="font-size:65px;" class="scale-box bi bi-x-circle-fill color-red-dark shadow-s rounded-circle p-0 mt-3 mb-3 d-inline-block"></i>
+        <h1 class="pt-3 font-28">Transfer Failed</h1>
+        <p class="font-14 mb-0">
+          There was an error processing your transfer. Please contact support for more details.
+        </p>
+        <a href="tel:+1 234 567 155" class="py-4 font-700 text-uppercase d-block">Tap to Call Support</a>
+        <a href="#" data-bs-toggle="offcanvas" class="btn btn-full gradient-red shadow-bg shadow-bg-xs">Okay</a>
+      </div>
+    </div>
 
   </body>
   </html>
