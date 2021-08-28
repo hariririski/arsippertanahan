@@ -457,6 +457,7 @@
       $(document).ready(function(){
         $('#close').click(function(){
           $('#stop').trigger('click');
+          alert("camera stop");
         });
       });
     </script>
