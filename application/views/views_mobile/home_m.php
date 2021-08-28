@@ -6,50 +6,12 @@
     <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
 
     <div id="page">
-
-      <div id="footer-bar" class="footer-bar-1 footer-bar-detached">
-        <a href="<?php echo base_url(); ?>mobile/home"><i class="bi bi-house-fill"></i><span>Home</span></a>
-        <a href="page-activity.html"><i class="bi bi-graph-up"></i><span>Activity</span></a>
-        <a href="#" data-bs-toggle="offcanvas" data-bs-backdrop="static" data-bs-target="#scan" class="circle-nav-2" onclick="permisi();"><i class="bi bi-upc-scan"></i><span>Scan</span></a>
-        <a href="page-payments.html"><i class="bi bi-receipt"></i><span>Progress</span></a>
-        <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-sidebar"><i class="bi bi-three-dots"></i><span>More</span></a>
-      </div>
+      <?php echo $this->load->view('views_mobile/share/menu_bawah', '', TRUE);?>
 
       <div class="page-content footer-clear">
 
-        <div class="pt-3">
-          <div class="page-title d-flex">
-            <div class="align-self-center me-auto">
-              <p class="color-white opacity-80 header-date"></p>
-              <h3 class="color-white"><?php echo $this->session->userdata("nama_lengkap"); ?></h3>
-            </div>
-            <div class="align-self-center ms-auto">
+        <?php echo $this->load->view('views_mobile/share/menu_profil', '', TRUE);?>
 
-              <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-notifications" class="icon bg-white color-theme rounded-m shadow-xl">
-                <i class="bi bi-bell-fill color-black font-17"></i>
-                <em class="badge bg-red-light color-white scale-box">3</em>
-              </a>
-              <a href="#" data-bs-toggle="dropdown" class="icon rounded-m shadow-xl">
-                <img src="<?php echo base_url(); ?><?php echo $this->session->userdata("image"); ?>" width="45" class="rounded-m" alt="img">
-              </a>
-
-              <div class="dropdown-menu">
-                <div class="card card-style shadow-m mt-1 me-1">
-                  <div class="list-group list-custom list-group-s list-group-flush rounded-xs px-3 py-1">
-                    <a href="page-activity.html" class="list-group-item">
-                      <i class="has-bg gradient-blue shadow-bg shadow-bg-xs color-white rounded-xs bi bi-graph-up"></i>
-                      <strong class="font-13">Activity Profil</strong>
-                    </a>
-                    <a href="<?php echo base_url(); ?>login/logout" class="list-group-item">
-                      <i class="has-bg gradient-red shadow-bg shadow-bg-xs color-white rounded-xs bi bi-power"></i>
-                      <strong class="font-13">Log Out</strong>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <svg id="header-deco" viewbox="0 0 1440 600" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150">
           <path id="header-deco-1" d="M 0,600 C 0,600 0,120 0,120 C 92.36363636363635,133.79904306220095 184.7272727272727,147.59808612440193 287,148 C 389.2727272727273,148.40191387559807 501.4545454545455,135.40669856459328 592,129 C 682.5454545454545,122.5933014354067 751.4545454545455,122.77511961722489 848,115 C 944.5454545454545,107.22488038277511 1068.7272727272727,91.49282296650718 1172,91 C 1275.2727272727273,90.50717703349282 1357.6363636363635,105.25358851674642 1440,120 C 1440,120 1440,600 1440,600 Z"></path>
           <path id="header-deco-2" d="M 0,600 C 0,600 0,240 0,240 C 98.97607655502392,258.2105263157895 197.95215311004785,276.4210526315789 278,282 C 358.04784688995215,287.5789473684211 419.16746411483257,280.5263157894737 524,265 C 628.8325358851674,249.4736842105263 777.377990430622,225.47368421052633 888,211 C 998.622009569378,196.52631578947367 1071.3205741626793,191.57894736842107 1157,198 C 1242.6794258373207,204.42105263157893 1341.3397129186603,222.21052631578948 1440,240 C 1440,240 1440,600 1440,600 Z"></path>
@@ -286,170 +248,9 @@
           </div>
         </div>
 
-
-
-
-
-
-
-      <div id="menu-sidebar" data-menu-active="nav-welcome" data-menu-load="<?php echo base_url(); ?>mobile/menu_sidebar" class="offcanvas offcanvas-start offcanvas-detached rounded-m">
-      </div>
-
-      <div id="menu-card-more" data-menu-load="<?php echo base_url(); ?>mobile/menu_card_settings" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
-      </div>
-
-      <div id="menu-peminjaman" data-menu-load="<?php echo base_url(); ?>mobile/menu_peminjaman" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
-      </div>
-
-      <div id="menu-pengembalian" data-menu-load="<?php echo base_url(); ?>mobile/menu_pengembalian" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
-      </div>
-
-
-
-      <div id="menu-friends-transfer" data-menu-load="<?php echo base_url(); ?>mobile/menu_friends_transfer" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
-      </div>
-
-      <div id="menu-request" data-menu-load="<?php echo base_url(); ?>mobile/menu_request" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
-      </div>
-
-      <div id="menu-exchange" data-menu-load="<?php echo base_url(); ?>mobile/menu_exchange" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
-      </div>
-
-      <div id="menu-notifications" data-menu-load="<?php echo base_url(); ?>mobile/menu_notifications" class="offcanvas offcanvas-top offcanvas-detached rounded-m">
-      </div>
-
-      <div id="menu-highlights" data-menu-load="<?php echo base_url(); ?>mobile/menu_highlights" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
-      </div>
-
-
+    <?php echo $this->load->view('views_mobile/share/menu', '', TRUE);?>
     <?php echo $this->load->view('views_mobile/share/footer', '', TRUE);?>
-    <script src="../dist/js/qrcode_mobile.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <div id="scan" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m" data-bs-backdrop="false" >
-      <div class="menu-size" style="height:500px;">
-        <div class="d-flex mx-3 mt-3 py-1">
-          <div class="align-self-center">
-            <h1 class="mb-0">Scan QRcode</h1>
-          </div>
-          <div class="align-self-center ms-auto">
-            <a href="#" class="ps-4 shadow-0 me-n2" data-bs-dismiss="offcanvas" id="close">
-              <i class="bi bi-x color-red-dark font-26 line-height-xl"></i>
-            </a>
-          </div>
-        </div>
-        <div class="divider divider-margins mt-1">
-                      <div id="qr-reader" style="width:100%"></div>
-                      <div id="qr-reader-results"></div>
-        </div>
-
-      </div>
-    </div>
-
-    <script type="text/javascript">
-
-        function docReady(fn) {
-            // see if DOM is already available
-            if (document.readyState === "complete"
-                || document.readyState === "interactive") {
-                // call on next available tick
-                setTimeout(fn, 1);
-            } else {
-                document.addEventListener("DOMContentLoaded", fn);
-            }
-        }
-
-        docReady(function () {
-            var resultContainer = document.getElementById('qr-reader-results');
-            var lastResult, countResults = 0;
-            function onScanSuccess(decodedText, decodedResult) {
-              var audio = new Audio('../dist/qr.mp3');
-              audio.play();
-              lastResult=1;
-              cari_barcode(decodedText);
-              setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
-
-            }
-
-            var html5QrcodeScanner = new Html5QrcodeScanner(
-                "qr-reader", { fps: 2, qrbox: 250 });
-            html5QrcodeScanner.render(onScanSuccess);
-        });
-    </script>
-    <script type="text/javascript">
-      function permisi(){
-          $(function(){
-              $('.permisi').trigger('click');
-              $('#camera').trigger('click');
-          });
-        }
-
-      function camera(){
-        $(function(){
-          $('#camera').trigger('click');
-        });
-      }
-      $(document).ready(function(){
-        $('#close').click(function(){
-          $('#stop').trigger('click');
-        });
-      });
-    </script>
-    <script type="text/javascript">
-    function cari_barcode(barcode){
-        $.ajax({
-        type : "POST",
-        url  : "<?php echo base_url()?>mobile/cari/"+barcode,
-        dataType : "JSON",
-                success: function(notif){
-                  if (notif==0) {
-                      document.getElementById('close').click();
-                      $('#gagal1').trigger('click');
-                  }else if(notif==1){
-                      document.getElementById('close').click();
-                      $('#berhasil').trigger('click');
-                  }
-
-                }
-            });
-
-    }
-    </script>
-    <button type="submit" hidden id="berhasil" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#ok"></button>
-    <button type="submit" hidden id="gagal1" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#gagal"></button>
-    <button type="submit" hidden id="berhasil" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#menu-transfer-ok"></button>
-    <div id="ok" style="width:320px" class="offcanvas offcanvas-modal offcanvas-detached rounded-m">
-      <div class="content text-center">
-        <i style="font-size:65px;" class="scale-box bi bi-check-circle-fill color-green-dark shadow-s rounded-circle p-0 mt-3 mb-3 d-inline-block"></i>
-        <h1 class="pt-3 font-28">Transfer Successful</h1>
-        <p class="font-14">
-          Your transfer was successfully processed.
-        </p>
-        <a href="#" data-bs-toggle="offcanvas" class="btn btn-full gradient-green shadow-bg shadow-bg-xs">Okay</a>
-      </div>
-    </div>
-
-    <div id="menu-transfer-pending" style="width:320px" class="offcanvas offcanvas-modal offcanvas-detached rounded-m">
-      <div class="content text-center">
-        <i style="font-size:65px;" class="scale-box bi bi-question-circle-fill color-blue-dark shadow-s rounded-circle p-0 mt-3 mb-3 d-inline-block"></i>
-        <h1 class="pt-3 font-28">Transfer Pending</h1>
-        <p class="font-14">
-          Transfer process has started. Awaiting approval from bank before processing.
-        </p>
-        <a href="#" data-bs-toggle="offcanvas" class="btn btn-full gradient-blue shadow-bg shadow-bg-xs">Okay</a>
-      </div>
-    </div>
-
-    <div id="gagal" style="width:320px" class="offcanvas offcanvas-modal offcanvas-detached rounded-m">
-      <div class="content text-center">
-        <i style="font-size:65px;" class="scale-box bi bi-x-circle-fill color-red-dark shadow-s rounded-circle p-0 mt-3 mb-3 d-inline-block"></i>
-        <h1 class="pt-3 font-28">Transfer Failed</h1>
-        <p class="font-14 mb-0">
-          There was an error processing your transfer. Please contact support for more details.
-        </p>
-        <a href="tel:+1 234 567 155" class="py-4 font-700 text-uppercase d-block">Tap to Call Support</a>
-        <a href="#" data-bs-toggle="offcanvas" class="btn btn-full gradient-red shadow-bg shadow-bg-xs">Okay</a>
-      </div>
-    </div>
+    <?php echo $this->load->view('views_mobile/share/scan', '', TRUE);?>
 
   </body>
   </html>

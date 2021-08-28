@@ -31,6 +31,12 @@ class Mobile extends CI_Controller {
 	public function scan(){
 			$this->load->view('views_mobile/scan');
 	}
+	public function detail_bt(){
+			$this->load->view('views_mobile/detail_bt');
+	}
+	public function aktivitas(){
+			$this->load->view('views_mobile/aktivitas');
+	}
 	public function cari(){
 			$type="BUKAN";
 			$data="null";
