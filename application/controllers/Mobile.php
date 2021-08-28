@@ -32,8 +32,9 @@ class Mobile extends CI_Controller {
 			$this->load->view('views_mobile/scan');
 	}
 	public function cari(){
-			$invoice=$this->uri->segment('3');
-			echo json_encode(1);
+			$barcode=$this->uri->segment('3');
+			$data=1;
+			echo json_encode($data);
 	}
 	public function menu_sidebar(){
 			$this->load->view('views_mobile/menu_sidebar');

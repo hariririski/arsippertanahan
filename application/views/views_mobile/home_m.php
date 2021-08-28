@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <?php echo $this->load->view('views_mobile/share/header', '', TRUE);?>
-  <link href="<?php echo base_url(); ?>assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>../assets/libs/toastr/build/toastr.min.css" rel="stylesheet">
   <body class="theme-light">
     <div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
 
