@@ -432,7 +432,8 @@
               var audio = new Audio('dist/qr.mp3');
               audio.play();
               lastResult=1;
-              cari_barcode(decodedText);
+              alert(decodedText);
+              //cari_barcode(decodedText);
               setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
 
             }
