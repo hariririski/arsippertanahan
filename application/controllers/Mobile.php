@@ -32,8 +32,62 @@ class Mobile extends CI_Controller {
 			$this->load->view('views_mobile/scan');
 	}
 	public function cari(){
+			$type="BUKAN";
+			$data="null";
 			$barcode=$this->uri->segment('3');
-			$data=1;
+			$barcode=str_replace('%20', '', $barcode);
+			$cek=strpos($barcode,"-");
+			if($cek!=0){
+				$pecah_barcode=explode("-",$barcode);
+				$type=$pecah_barcode[0];
+				$id=$pecah_barcode[1];
+			}
+				if($type=="BT"){
+					$sql="SELECT *, COUNT(buku_tanah.id_buku_tanah)as jumlah from buku_tanah left join jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak left join desa on desa.kode_desa=buku_tanah.kode_desa where buku_tanah.id_buku_tanah='$id'";
+					$query = $this->db->query($sql);
+					$data=$query->result();
+					foreach ($data as $isi) {
+							if($isi->jumlah==1){
+								$data="BT".";".$isi->no_hak.";".$isi->nama_desa.";".$isi->nama_jenis_hak.";".$isi->id_buku_tanah;
+							}else{
+								$data=null;
+							}
+
+					 }
+			}
+				elseif ($type=="SU") {
+					$sql="SELECT *, COUNT(surat_ukur.id_surat_ukur)as jumlah from surat_ukur left join desa on desa.kode_desa=surat_ukur.kode_desa where surat_ukur.id_surat_ukur='$id'";
+					$query = $this->db->query($sql);
+					$data=$query->result();
+					foreach ($data as $isi) {
+						if($isi->jumlah==1){
+							$data=1;
+						}else{
+							$data=0;
+						}
+					 }
+				}
+				elseif ($type=="W") {
+					$sql="SELECT *, COUNT(warkah.id_warkah)as jumlah from warkah where warkah.id_warkah='$id'";
+					$query = $this->db->query($sql);
+					$data=$query->result();
+					foreach ($data as $isi) {
+						if($isi->jumlah==1){
+							$data="W".";".$isi->nomor.";".$isi->tahun.";".$isi->id_warkah.";".$isi->id_warkah;
+						}else{
+							$data=null;
+						}
+					 }
+				}
+				elseif ($type=="L") {
+				}
+				elseif ($type=="B") {
+				}
+				elseif ($type=="Bndl") {
+				}
+				else{
+					$data=0;
+				}
 			echo json_encode($data);
 	}
 	public function menu_sidebar(){

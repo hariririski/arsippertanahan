@@ -396,26 +396,17 @@
     </script>
     <script type="text/javascript">
     function cari_barcode(barcode){
-      //alert(barcode);
         $.ajax({
         type : "POST",
         url  : "<?php echo base_url()?>mobile/cari/"+barcode,
         dataType : "JSON",
                 success: function(notif){
-                  if (notif==1) {
-
-                     document.getElementById('close').click();
+                  if (notif==0) {
+                      document.getElementById('close').click();
+                      $('#gagal1').trigger('click');
+                  }else if(notif==1){
+                      document.getElementById('close').click();
                       $('#berhasil').trigger('click');
-                    //$('#close').trigger('click');
-
-                    // setTimeout("location.href = '<?php //echo base_url()?>validqr';",1500);
-                  }else if(notif==2){
-                    gagal("Arsip Gagal Valid");
-                  }else if(notif==3){
-                    gagal("Bundel Tidak Sesuai, Arsip Gagal  Valid");
-                  }else{
-                    gagal("Arsip Gagal Valid");
-
                   }
 
                 }
@@ -424,7 +415,7 @@
     }
     </script>
     <button type="submit" hidden id="berhasil" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#ok"></button>
-    <button type="submit" hidden id="gagal" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#gagal"></button>
+    <button type="submit" hidden id="gagal1" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#gagal"></button>
     <button type="submit" hidden id="berhasil" class="list-group-item" data-bs-toggle="offcanvas" data-bs-target="#menu-transfer-ok"></button>
     <div id="ok" style="width:320px" class="offcanvas offcanvas-modal offcanvas-detached rounded-m">
       <div class="content text-center">
