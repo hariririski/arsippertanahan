@@ -79,7 +79,7 @@ function cari_barcode(barcode){
                   $('#gagal1').trigger('click');
               }else if(notif==1){
                   document.getElementById('close').click();
-                  $('#berhasil').trigger('click');
+                  setTimeout("location.href = '<?php echo base_url()?>mobile/detail_bt';",1500);
               }
 
             }

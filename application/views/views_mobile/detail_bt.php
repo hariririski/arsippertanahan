@@ -19,7 +19,7 @@
               </a>
             </div>
             <div class="align-self-center me-auto">
-              <h1 class="color-theme mb-0 font-18">Invoice Sample</h1>
+              <h1 class="color-theme mb-0 font-18">Detail Arsip</h1>
             </div>
             <div class="align-self-center ms-auto">
               <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-sidebar" class="icon icon-xxs gradient-highlight color-white shadow-bg shadow-bg-xs rounded-s">
@@ -32,8 +32,7 @@
           <div class="content">
             <div class="d-flex">
               <div class="mt-1">
-                <p class="color-highlight font-600 mb-n1">Palo Alto, California</p>
-                <h1 class="mb-0">Enabled Labs</h1>
+                <h1 class="mb-0">Buku Tanah</h1>
               </div>
               <div class="ms-auto">
                 <img src="../assets_m/images/pictures/31s-1.jpg" width="60" class="rounded-m shadow-xl">
@@ -54,9 +53,13 @@
               <h5 class="col-8 text-end font-14 opacity-60 font-400 ">PO Box 13451 Palo Alto Street California, Flat 1235</h5>
             </div>
             <div class="divider"></div>
+            <div class="row mb-3 mt-4">
+              <h5 class="col-4 text-start font-15"></h5>
+              <h5 class="col-8 text-end font-20 ">Surat Ukur</h5>
+            </div>
             <div class="d-flex mb-4">
               <div>
-                <img src="../assets_m/images/pictures/14s.jpg" width="110" class="rounded-s shadow-xl">
+                <img src="../assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
               </div>
               <div class="ps-3 w-100">
                 <h1 class="mb-0">$2.150 </h1>
@@ -66,7 +69,7 @@
             </div>
             <div class="d-flex mb-4">
               <div>
-                <img src="../assets_m/images/pictures/7s.jpg" width="110" class="rounded-s shadow-xl">
+                <img src="../assets_m/images/pictures/7s.jpg" width="80" class="rounded-s shadow-xl">
               </div>
               <div class="ps-3 w-100">
                 <h1 class="mb-0">$1.150 </h1>
@@ -75,17 +78,54 @@
               </div>
             </div>
             <div class="divider mt-4"></div>
-            <div class="d-flex mb-0">
-              <div><h5 class="opacity-50 font-500">Taxes</h5></div>
-              <div class="ms-auto"><h5>$30 </h5></div>
+            <div class="row mb-3 mt-4">
+              <h5 class="col-4 text-start font-15"></h5>
+              <h5 class="col-8 text-end font-20 ">Warkah</h5>
             </div>
-            <div class="d-flex mb-3">
-              <div><h5 class="opacity-50 font-500">Shipping</h5></div>
-              <div class="ms-auto"><h5>$20 </h5></div>
+            <div class="d-flex mb-4">
+              <div>
+                <img src="../assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
+              </div>
+              <div class="ps-3 w-100">
+                <h1 class="mb-0">$2.150 </h1>
+                <p class="mb-0 color-highlight font-11">7x Item</p>
+                <h5 class="font-500 font-14 pt-1">Your awesome product or service name goes here</h5>
+              </div>
             </div>
-            <div class="d-flex mb-3">
-              <div><h3 class="font-700">Grand Total</h3></div>
-              <div class="ms-auto"><h3>$3.500 </h3></div>
+            <div class="d-flex mb-4">
+              <div>
+                <img src="../assets_m/images/pictures/7s.jpg" width="80" class="rounded-s shadow-xl">
+              </div>
+              <div class="ps-3 w-100">
+                <h1 class="mb-0">$1.150 </h1>
+                <p class="mb-0 color-highlight font-11">12x Item</p>
+                <h5 class="font-500 font-14 pt-1">Your awesome product or service name goes here</h5>
+              </div>
+            </div>
+            <div class="divider mt-4"></div>
+            <div class="row mb-3 mt-4">
+              <h5 class="col-4 text-start font-15"></h5>
+              <h5 class="col-8 text-end font-20 ">Peminjaman</h5>
+            </div>
+            <div class="d-flex mb-4">
+              <div>
+                <img src="../assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
+              </div>
+              <div class="ps-3 w-100">
+                <h1 class="mb-0">$2.150 </h1>
+                <p class="mb-0 color-highlight font-11">7x Item</p>
+                <h5 class="font-500 font-14 pt-1">Your awesome product or service name goes here</h5>
+              </div>
+            </div>
+            <div class="d-flex mb-4">
+              <div>
+                <img src="../assets_m/images/pictures/7s.jpg" width="80" class="rounded-s shadow-xl">
+              </div>
+              <div class="ps-3 w-100">
+                <h1 class="mb-0">$1.150 </h1>
+                <p class="mb-0 color-highlight font-11">12x Item</p>
+                <h5 class="font-500 font-14 pt-1">Your awesome product or service name goes here</h5>
+              </div>
             </div>
             <div class="divider"></div>
             <a href="#" class="btn btn-full btn-l rounded-s font-800 text-uppercase gradient-highlight shadow-bg shadow-bg-m">Download Invoice in PDF</a>

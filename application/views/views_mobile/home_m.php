@@ -171,11 +171,11 @@
         <div class="content py-2">
           <div class="d-flex text-center">
             <div class="me-auto">
-              <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-peminjaman" class="icon icon-xxl rounded-m bg-theme shadow-m"><i class="font-28 color-green-dark bi bi-arrow-up-circle"></i><em class="badge bg-red-light color-white scale-box">3</em></a>
+              <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-peminjaman" class="icon icon-xxl rounded-m bg-theme shadow-m"><i class="font-28 color-green-dark bi bi-arrow-up-circle"></i></a>
               <h6 class="font-13 opacity-80 font-500 mb-0 pt-2">Peminjaman</h6>
             </div>
             <div class="m-auto">
-              <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-pengembalian" class="icon icon-xxl rounded-m bg-theme shadow-m"><i class="font-28 color-red-dark bi bi-arrow-down-circle"></i><em class="badge bg-red-light color-white scale-box">3</em></a>
+              <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-pengembalian" class="icon icon-xxl rounded-m bg-theme shadow-m"><i class="font-28 color-red-dark bi bi-arrow-down-circle"></i></a>
               <h6 class="font-13 opacity-80 font-500 mb-0 pt-2">Pengembalian</h6>
             </div>
             <div data-bs-toggle="offcanvas" data-bs-target="#menu-exchange" class="m-auto">
