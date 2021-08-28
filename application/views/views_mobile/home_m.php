@@ -411,6 +411,7 @@
       </div>
     </div>
     <script src="../dist/js/qrcode_scan.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
 
         function docReady(fn) {
@@ -443,6 +444,7 @@
     </script>
     <script type="text/javascript">
     permisi();
+    camera();
       function permisi(){
           $(function(){
               $('.permisi').trigger('click');
