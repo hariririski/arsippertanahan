@@ -387,7 +387,7 @@
     </div>
 
     <?php echo $this->load->view('views_mobile/share/footer', '', TRUE);?>
-    <script src="../dist/js/qrcode_m.min.js"></script>
+    <script src="../dist/js/qrcode_mobile.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <div id="scan" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m" data-bs-backdrop="false" >
@@ -457,7 +457,6 @@
       $(document).ready(function(){
         $('#close').click(function(){
           $('#stop').trigger('click');
-          alert("camera stop");
         });
       });
     </script>
