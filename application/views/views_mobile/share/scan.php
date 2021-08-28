@@ -115,11 +115,11 @@ function cari_barcode(barcode){
 <div id="gagal" style="width:320px" class="offcanvas offcanvas-modal offcanvas-detached rounded-m">
   <div class="content text-center">
     <i style="font-size:65px;" class="scale-box bi bi-x-circle-fill color-red-dark shadow-s rounded-circle p-0 mt-3 mb-3 d-inline-block"></i>
-    <h1 class="pt-3 font-28">Transfer Failed</h1>
+    <h1 class="pt-3 font-28">Data Tidak Ditemukan</h1>
     <p class="font-14 mb-0">
-      There was an error processing your transfer. Please contact support for more details.
+      Silahkan Cek Kembali QRcode
     </p>
-    <a href="tel:+1 234 567 155" class="py-4 font-700 text-uppercase d-block">Tap to Call Support</a>
-    <a href="#" data-bs-toggle="offcanvas" class="btn btn-full gradient-red shadow-bg shadow-bg-xs">Okay</a>
+    <a class="py-4 font-700 text-uppercase d-block">Silahkan Hubungi Administrator</a>
+    <a href="#" data-bs-toggle="offcanvas" class="btn btn-full gradient-red shadow-bg shadow-bg-xs">OKE</a>
   </div>
 </div>
