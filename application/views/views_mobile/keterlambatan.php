@@ -17,9 +17,9 @@
             <div class="content">
               <div class="tabs tabs-pill" id="tab-group-2">
                 <div class="tab-controls rounded-m p-1 overflow-visible">
-                  <a class="font-13 rounded-m shadow-bg shadow-bg-s" data-bs-toggle="collapse" href="#tab-4" aria-expanded="true">Keterlambatan</a>
-                  <a class="font-13 rounded-m shadow-bg shadow-bg-s" data-bs-toggle="collapse" href="#tab-5" aria-expanded="false">-3 Keterlambatan</a>
-                  <a class="font-13 rounded-m shadow-bg shadow-bg-s" data-bs-toggle="collapse" href="#tab-6" aria-expanded="false">-10 Keterlambatan</a>
+                  <a class="font-13 rounded-m shadow-bg shadow-bg-s" data-bs-toggle="collapse" href="#tab-4" aria-expanded="true">Terlambat</a>
+                  <a class="font-13 rounded-m shadow-bg shadow-bg-s" data-bs-toggle="collapse" href="#tab-5" aria-expanded="false">-3 Terlambat</a>
+                  <a class="font-13 rounded-m shadow-bg shadow-bg-s" data-bs-toggle="collapse" href="#tab-6" aria-expanded="false">-10 Terlambat</a>
                 </div>
                 <div class="mt-3"></div>
 
