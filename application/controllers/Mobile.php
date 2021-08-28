@@ -37,11 +37,11 @@ class Mobile extends CI_Controller {
 			$this->load->view('views_mobile/menu_card_settings');
 	}
 	public function menu_peminjaman(){
-			$data['data'] = $this->M_pinjam->data();
+			$data['data'] = $this->M_pinjam->data_pinjam_m();
 			$this->load->view('views_mobile/menu_peminjaman',$data);
 	}
 	public function menu_pengembalian(){
-			$data['pinjam'] = $this->M_pinjam->data_all();
+			$data['data'] = $this->M_pinjam->data_kembali_m();
 			$this->load->view('views_mobile/menu_pengembalian',$data);
 	}
 	public function menu_friends_transfer(){

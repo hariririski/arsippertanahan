@@ -40,10 +40,6 @@
                       <i class="has-bg gradient-blue shadow-bg shadow-bg-xs color-white rounded-xs bi bi-graph-up"></i>
                       <strong class="font-13">Activity Profil</strong>
                     </a>
-                    <a href="page-profile.html" class="list-group-item">
-                      <i class="has-bg gradient-yellow shadow-bg shadow-bg-xs color-white rounded-xs bi bi-person-circle"></i>
-                      <strong class="font-13">Profil</strong>
-                    </a>
                     <a href="<?php echo base_url(); ?>login/logout" class="list-group-item">
                       <i class="has-bg gradient-red shadow-bg shadow-bg-xs color-white rounded-xs bi bi-power"></i>
                       <strong class="font-13">Log Out</strong>

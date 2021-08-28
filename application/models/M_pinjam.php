@@ -5,6 +5,14 @@
         $query=$this->db->query("SELECT * FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip WHERE pinjam.induk=1 order by pinjam.status ASC");
         return $query->result();
       }
+      function data_pinjam_m(){
+        $query=$this->db->query("SELECT *, buku_tanah.id_buku_tanah as bt_id_buku_tanah, desa_bt.nama_desa as bt_desa, desa_su.nama_desa as su_desa, warkah.nomor as w_nomor, surat_ukur.nomor as su_nomor, surat_ukur.tahun as su_tahun, warkah.tahun as w_tahun FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip LEFT JOIN buku_tanah on buku_tanah.id_buku_tanah=pinjam.id_buku_tanah LEFT JOIN surat_ukur on surat_ukur.id_surat_ukur=pinjam.id_surat_ukur LEFT JOIN warkah on warkah.id_warkah=pinjam.id_warkah left join jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak left join desa as desa_bt on desa_bt.kode_desa=buku_tanah.kode_desa LEFT JOIN desa as desa_su on desa_su.kode_desa=surat_ukur.kode_desa LEFT JOIN waktu on waktu.id_waktu=pinjam.id_waktu WHERE pinjam.induk=0 and pinjam.status=2 order by pinjam.status ASC limit 10");
+        return $query->result();
+      }
+      function data_kembali_m(){
+        $query=$this->db->query("SELECT *, buku_tanah.id_buku_tanah as bt_id_buku_tanah, desa_bt.nama_desa as bt_desa, desa_su.nama_desa as su_desa, warkah.nomor as w_nomor, surat_ukur.nomor as su_nomor, surat_ukur.tahun as su_tahun, warkah.tahun as w_tahun FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip LEFT JOIN buku_tanah on buku_tanah.id_buku_tanah=pinjam.id_buku_tanah LEFT JOIN surat_ukur on surat_ukur.id_surat_ukur=pinjam.id_surat_ukur LEFT JOIN warkah on warkah.id_warkah=pinjam.id_warkah left join jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak left join desa as desa_bt on desa_bt.kode_desa=buku_tanah.kode_desa LEFT JOIN desa as desa_su on desa_su.kode_desa=surat_ukur.kode_desa LEFT JOIN waktu on waktu.id_waktu=pinjam.id_waktu WHERE pinjam.induk=0 and pinjam.status=3 order by pinjam.status ASC limit 10");
+        return $query->result();
+      }
       function histori($id_buku_tanah,$id_surat_ukur,$id_warkah){
         $query=$this->db->query("SELECT *, pinjam.status as status_pinjam , datediff(pinjam.tgl_pinjam,pinjam.tgl_dikembalikan) as selisih, pinjam.id_buku_tanah as buku_tanah, pinjam.id_surat_ukur as surat_ukur, pinjam.id_warkah as warkah, surat_ukur.nomor as nomor_su, surat_ukur.tahun as tahun_su , warkah.nomor as nomor_w, warkah.tahun as tahun_w FROM `pinjam` left join pegawai on pegawai.nip=pinjam.nip left join buku_tanah on buku_tanah.id_buku_tanah=pinjam.id_buku_tanah left join surat_ukur on surat_ukur.id_surat_ukur=pinjam.id_surat_ukur left join warkah on warkah.id_warkah=pinjam.id_warkah WHERE pinjam.id_buku_tanah='$id_buku_tanah' or pinjam.id_surat_ukur='$id_surat_ukur' or pinjam.id_warkah='$id_warkah' order by pinjam.tgl_pinjam desc limit 50");
         return $query->result();

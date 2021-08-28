@@ -87,38 +87,6 @@
   </div>
   <div class="divider divider-margins mb-3 opacity-50"></div>
 
-  <div class="content pt-1">
-    <div class="d-flex text-center">
-      <div class="me-auto">
-        <a href="page-payment-transfer.html" class="icon icon-s rounded-s gradient-red shadow-bg shadow-bg-xs"><i class="font-16 color-white bi bi-arrow-up"></i></a>
-        <h6 class="font-11 font-400 opacity-70 mb-n1 pt-2">Transfer</h6>
-      </div>
-      <div class="m-auto">
-        <a href="page-payment-request.html" class="icon icon-s rounded-s gradient-green shadow-bg shadow-bg-xs"><i class="font-16 color-white bi bi-arrow-down"></i></a>
-        <h6 class="font-11 font-400 opacity-70 mb-n1 pt-2">Request</h6>
-      </div>
-      <div class="ms-auto">
-        <a href="page-payment-exchange.html" class="icon icon-s rounded-s gradient-blue shadow-bg shadow-bg-xs"><i class="font-16 color-white bi bi-arrow-left-right"></i></a>
-        <h6 class="font-11 font-400 opacity-70 mb-n1 pt-2">Exchange</h6>
-      </div>
-    </div>
-  </div>
-  <div class="divider divider-margins opacity-50"></div>
-
-  <h6 class="opacity-40 px-3 mt-n2 mb-0">Useful Links</h6>
-  <div class="list-group list-custom list-menu-small">
-    <a href="page-profile.html" class="list-group-item">
-      <i class="bi bi-person-circle opacity-20 font-16"></i>
-      <div>Account</div>
-      <i class="bi bi-chevron-right"></i>
-    </a>
-    <a href="<?php echo base_url(); ?>login/logout" class="list-group-item">
-      <i class="bi bi-bar-chart-fill opacity-20 font-16"></i>
-      <div>Log Out</div>
-      <i class="bi bi-chevron-right"></i>
-    </a>
-  </div>
-  <div class="divider divider-margins opacity-50"></div>
 
   <p class="px-3 font-9 opacity-30 color-theme mt-n3">Copyright <span class="copyright-year"></span>.</i>Kantah Kota Banda Aceh</p>
 </div>
