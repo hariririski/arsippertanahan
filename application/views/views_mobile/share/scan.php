@@ -79,6 +79,7 @@ function cari_barcode(barcode){
                   $('#gagal1').trigger('click');
               }else if(notif==1){
                   document.getElementById('close').click();
+                  $('#berhasil').trigger('click');
                   setTimeout("location.href = '<?php echo base_url()?>mobile/detail_bt';",1500);
               }
 
@@ -93,11 +94,11 @@ function cari_barcode(barcode){
 <div id="ok" style="width:320px" class="offcanvas offcanvas-modal offcanvas-detached rounded-m">
   <div class="content text-center">
     <i style="font-size:65px;" class="scale-box bi bi-check-circle-fill color-green-dark shadow-s rounded-circle p-0 mt-3 mb-3 d-inline-block"></i>
-    <h1 class="pt-3 font-28">Transfer Successful</h1>
+    <h1 class="pt-3 font-28">Data Ditemukan</h1>
     <p class="font-14">
-      Your transfer was successfully processed.
+      Mohon Tunggu, Sedang Mengalihkan Halaman
     </p>
-    <a href="#" data-bs-toggle="offcanvas" class="btn btn-full gradient-green shadow-bg shadow-bg-xs">Okay</a>
+    <a href="#" data-bs-toggle="offcanvas" class="btn btn-full gradient-green shadow-bg shadow-bg-xs">OKE</a>
   </div>
 </div>
 
