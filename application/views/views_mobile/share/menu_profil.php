@@ -1,8 +1,8 @@
 <div class="pt-3">
   <div class="page-title d-flex">
     <div class="align-self-center me-auto">
-      <p class="color-white opacity-80 header-date"></p>
-      <h3 class="color-white"><?php echo $this->session->userdata("nama_lengkap"); ?></h3>
+      <p class="color-black opacity-80 header-date"></p>
+      <h3 class="color-black"><?php echo $this->session->userdata("nama_lengkap"); ?></h3>
     </div>
     <div class="align-self-center ms-auto">
 
