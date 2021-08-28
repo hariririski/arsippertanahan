@@ -10,7 +10,7 @@
       <div id="footer-bar" class="footer-bar-1 footer-bar-detached">
         <a href="<?php echo base_url(); ?>mobile/home"><i class="bi bi-house-fill"></i><span>Home</span></a>
         <a href="page-activity.html"><i class="bi bi-graph-up"></i><span>Activity</span></a>
-        <a href="#" data-bs-toggle="offcanvas" data-bs-target="#scan" class="circle-nav-2"><i class="bi bi-upc-scan"></i><span>Scan</span></a>
+        <a href="#" data-bs-toggle="offcanvas" data-bs-target="#scan" class="circle-nav-2" onclick="permisi();"><i class="bi bi-upc-scan"></i><span>Scan</span></a>
         <a href="page-payments.html"><i class="bi bi-receipt"></i><span>Progress</span></a>
         <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-sidebar"><i class="bi bi-three-dots"></i><span>More</span></a>
       </div>
@@ -387,14 +387,17 @@
     </div>
 
     <?php echo $this->load->view('views_mobile/share/footer', '', TRUE);?>
+    <script src="../dist/js/qrcode_m.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <div id="scan" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
       <div class="menu-size" style="height:500px;">
         <div class="d-flex mx-3 mt-3 py-1">
           <div class="align-self-center">
-            <h1 class="mb-0">scan</h1>
+            <h1 class="mb-0">Scan QRcode</h1>
           </div>
           <div class="align-self-center ms-auto">
-            <a href="#" class="ps-4 shadow-0 me-n2" data-bs-dismiss="offcanvas">
+            <a href="#" class="ps-4 shadow-0 me-n2" data-bs-dismiss="offcanvas" id="close">
               <i class="bi bi-x color-red-dark font-26 line-height-xl"></i>
             </a>
           </div>
@@ -404,12 +407,9 @@
                       <div id="qr-reader-results"></div>
         </div>
 
-
-
       </div>
     </div>
-    <script src="../dist/js/qrcode_m.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script type="text/javascript">
 
         function docReady(fn) {
@@ -442,20 +442,23 @@
         });
     </script>
     <script type="text/javascript">
-    permisi();
-    camera();
       function permisi(){
           $(function(){
               $('.permisi').trigger('click');
+              $('#camera').trigger('click');
           });
         }
 
       function camera(){
         $(function(){
-            $('#camera').trigger('click');
+          $('#camera').trigger('click');
         });
       }
+      $(document).ready(function(){
+        $('#close').click(function(){
+          $('#stop').trigger('click');
+        });
+      });
     </script>
-
   </body>
   </html>
