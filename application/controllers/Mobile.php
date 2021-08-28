@@ -27,6 +27,9 @@ class Mobile extends CI_Controller {
 			$this->load->view('views_mobile/home_m',$data);
 	}
 
+	public function scan(){
+			$this->load->view('views_mobile/scan');
+	}
 	public function menu_sidebar(){
 			$this->load->view('views_mobile/menu_sidebar');
 	}

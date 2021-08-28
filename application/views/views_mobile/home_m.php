@@ -10,7 +10,7 @@
       <div id="footer-bar" class="footer-bar-1 footer-bar-detached">
         <a href="<?php echo base_url(); ?>mobile/home"><i class="bi bi-house-fill"></i><span>Home</span></a>
         <a href="page-activity.html"><i class="bi bi-graph-up"></i><span>Activity</span></a>
-        <a href="<?php echo base_url(); ?>mobile/home" class="circle-nav-2"><i class="bi bi-upc-scan"></i><span>Scan</span></a>
+        <a href="#" data-bs-toggle="offcanvas" data-bs-target="#scan" class="circle-nav-2"><i class="bi bi-upc-scan"></i><span>Scan</span></a>
         <a href="page-payments.html"><i class="bi bi-receipt"></i><span>Progress</span></a>
         <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-sidebar"><i class="bi bi-three-dots"></i><span>More</span></a>
       </div>
@@ -106,9 +106,7 @@
 
               <div class="splide__slide">
                 <div class="card card-style m-0 bg-5 shadow-card shadow-card-m" style="height:200px">
-                  <div class="card-top p-3">
-                    <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-card-more" class="icon icon-xxs bg-white color-black float-end"><i class="bi bi-three-dots font-18"></i></a>
-                  </div>
+
                   <div class="card-center">
                     <div class="bg-theme px-3 py-2 rounded-end d-inline-block">
                     <a class="color-theme" data-bs-toggle="collapse" href="#balance3" aria-controls="balance2">Jumlah Surat Ukur</a>
@@ -150,9 +148,7 @@
               </div>
               <div class="splide__slide">
                 <div class="card card-style m-0 bg-5 shadow-card shadow-card-m" style="height:200px">
-                  <div class="card-top p-3">
-                    <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-card-more" class="icon icon-xxs bg-white color-black float-end"><i class="bi bi-three-dots font-18"></i></a>
-                  </div>
+
                   <div class="card-center">
                     <div class="bg-theme px-3 py-2 rounded-end d-inline-block">
                     <a class="color-theme" data-bs-toggle="collapse" href="#balance3" aria-controls="balance2">Jumlah Warkah</a>
@@ -351,6 +347,8 @@
       <div id="menu-pengembalian" data-menu-load="<?php echo base_url(); ?>mobile/menu_pengembalian" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
       </div>
 
+
+
       <div id="menu-friends-transfer" data-menu-load="<?php echo base_url(); ?>mobile/menu_friends_transfer" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
       </div>
 
@@ -389,4 +387,74 @@
     </div>
 
     <?php echo $this->load->view('views_mobile/share/footer', '', TRUE);?>
-  </body></html>
+    <div id="scan" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
+
+      <div class="menu-size" style="height:440px;">
+        <div class="d-flex mx-3 mt-3 py-1">
+          <div class="align-self-center">
+            <h1 class="mb-0">scan</h1>
+          </div>
+          <div class="align-self-center ms-auto">
+            <a href="#" class="ps-4 shadow-0 me-n2" data-bs-dismiss="offcanvas">
+              <i class="bi bi-x color-red-dark font-26 line-height-xl"></i>
+            </a>
+          </div>
+        </div>
+        <div class="divider divider-margins mt-3"></div>
+        <div class="content mt-0">
+          <div class="collapse show" id="tab-4" data-bs-parent="#tab-group-2">
+            <div id="qr-reader" style="width:100%"></div>
+            <div id="qr-reader-results"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <script src="../dist/js/qrcode_scan.min.js"></script>
+    <script type="text/javascript">
+
+        function docReady(fn) {
+            // see if DOM is already available
+            if (document.readyState === "complete"
+                || document.readyState === "interactive") {
+                // call on next available tick
+                setTimeout(fn, 1);
+            } else {
+                document.addEventListener("DOMContentLoaded", fn);
+            }
+        }
+
+        docReady(function () {
+            var resultContainer = document.getElementById('qr-reader-results');
+            var lastResult, countResults = 0;
+            function onScanSuccess(decodedText, decodedResult) {
+              var audio = new Audio('dist/qr.mp3');
+              audio.play();
+              lastResult=1;
+              cari_barcode(decodedText);
+              setTimeout(function(){console.log(`Scan result ${decodedText}`, decodedResult);}, 3000);
+
+            }
+
+            var html5QrcodeScanner = new Html5QrcodeScanner(
+                "qr-reader", { fps: 2, qrbox: 250 });
+            html5QrcodeScanner.render(onScanSuccess);
+        });
+    </script>
+    <script type="text/javascript">
+    permisi();
+      function permisi(){
+          $(function(){
+              $('.permisi').trigger('click');
+          });
+        }
+
+      function camera(){
+        $(function(){
+            $('#camera').trigger('click');
+        });
+      }
+    </script>
+
+  </body>
+  </html>
