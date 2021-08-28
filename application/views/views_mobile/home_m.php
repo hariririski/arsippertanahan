@@ -10,7 +10,7 @@
       <div id="footer-bar" class="footer-bar-1 footer-bar-detached">
         <a href="<?php echo base_url(); ?>mobile/home"><i class="bi bi-house-fill"></i><span>Home</span></a>
         <a href="page-activity.html"><i class="bi bi-graph-up"></i><span>Activity</span></a>
-        <a href="#" data-bs-toggle="offcanvas" data-bs-target="#scan" class="circle-nav-2" onclick="permisi();"><i class="bi bi-upc-scan"></i><span>Scan</span></a>
+        <a href="#" data-bs-toggle="offcanvas" data-bs-backdrop="static" data-bs-target="#scan" class="circle-nav-2" onclick="permisi();"><i class="bi bi-upc-scan"></i><span>Scan</span></a>
         <a href="page-payments.html"><i class="bi bi-receipt"></i><span>Progress</span></a>
         <a href="#" data-bs-toggle="offcanvas" data-bs-target="#menu-sidebar"><i class="bi bi-three-dots"></i><span>More</span></a>
       </div>
@@ -390,7 +390,7 @@
     <script src="../dist/js/qrcode_m.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <div id="scan" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
+    <div id="scan" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m" data-bs-backdrop="false" >
       <div class="menu-size" style="height:500px;">
         <div class="d-flex mx-3 mt-3 py-1">
           <div class="align-self-center">
