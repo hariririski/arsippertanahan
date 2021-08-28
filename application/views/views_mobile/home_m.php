@@ -385,7 +385,7 @@
             var resultContainer = document.getElementById('qr-reader-results');
             var lastResult, countResults = 0;
             function onScanSuccess(decodedText, decodedResult) {
-              var audio = new Audio('dist/qr.mp3');
+              var audio = new Audio('../dist/qr.mp3');
               audio.play();
               lastResult=1;
               cari_barcode(decodedText);
@@ -419,6 +419,7 @@
     </script>
     <script type="text/javascript">
     function cari_barcode(barcode){
+      alert(barcode);
         $.ajax({
         type : "POST",
         url  : "<?php echo base_url()?>mobile/cari/"+barcode,
@@ -426,7 +427,7 @@
                 success: function(notif){
                   if (notif==1) {
                     berhasil("Arsip Valid !.");
-                    // setTimeout("location.href = '<?php echo base_url()?>validqr';",1500);
+                    // setTimeout("location.href = '<?php //echo base_url()?>validqr';",1500);
                   }else if(notif==2){
                     gagal("Arsip Gagal Valid");
                   }else if(notif==3){
