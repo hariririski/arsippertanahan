@@ -400,13 +400,12 @@
             </a>
           </div>
         </div>
-        <div class="divider divider-margins mt-3"></div>
-        <div class="content mt-0">
-          <div class="collapse show" id="tab-4" data-bs-parent="#tab-group-2">
-            <div id="qr-reader" style="width:100%"></div>
-            <div id="qr-reader-results"></div>
-          </div>
+        <div class="divider divider-margins mt-1">
+                      <div id="qr-reader" style="width:100%"></div>
+                      <div id="qr-reader-results"></div>
         </div>
+
+
 
       </div>
     </div>
