@@ -13,6 +13,7 @@ class Mobile extends CI_Controller {
 			$this->load->database();
 			$this->load->model('M_home');
 			$this->load->model('M_warkah');
+			$this->load->model('M_surat_ukur');
 			$this->load->model('M_kondisi');
 			$this->load->model('M_pinjam');
 			$this->load->model('M_provinsi');
@@ -45,6 +46,12 @@ class Mobile extends CI_Controller {
 		$data['data_warkah'] = $this->M_warkah->detail_warkah($id_warkah);
 		$data['histori'] = $this->M_pinjam->pinjam_warkah($id_warkah);
 		$this->load->view('views_mobile/detail_w',$data);
+	}
+	public function detail_su(){
+		$id_surat_ukur=$this->uri->segment('3');
+		$data['data_surat_ukur'] = $this->M_surat_ukur->data_surat_ukur($id_surat_ukur);
+		$data['histori'] = $this->M_pinjam->pinjam_surat_ukur($id_surat_ukur);
+		$this->load->view('views_mobile/detail_su',$data);
 	}
 	public function detail_bt(){
 			$id_buku_tanah=$this->uri->segment('3');
@@ -99,7 +106,11 @@ class Mobile extends CI_Controller {
 					$data=$query->result();
 					foreach ($data as $isi) {
 						if($isi->jumlah==1){
-							$data="BT-".$id;
+							if($isi->id_buku_tanah==null){
+								$data="SU-".$id;
+							}else{
+								$data="BT-".$isi->id_buku_tanah;
+							}
 						}else{
 							$data="NULL".$id;
 						}
