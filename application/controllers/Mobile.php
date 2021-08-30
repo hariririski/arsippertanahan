@@ -111,7 +111,12 @@ class Mobile extends CI_Controller {
 					$data=$query->result();
 					foreach ($data as $isi) {
 						if($isi->jumlah==1){
-							$data="W-".$id;
+							if($isi->id_buku_tanah==null){
+								$data="W-".$id;
+							}else{
+								$data="BT-".$isi->id_buku_tanah;
+							}
+
 						}else{
 							$data="NULL".$id;
 						}
