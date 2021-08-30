@@ -157,11 +157,12 @@ class Mobile extends CI_Controller {
 			$data['data'] = $this->M_pinjam->data_kembali_m();
 			$this->load->view('views_mobile/menu_pengembalian',$data);
 	}
-	public function menu_friends_transfer(){
-			$this->load->view('views_mobile/menu_friends_transfer');
+	public function menu_terlambat(){
+			$this->load->view('views_mobile/menu_terlambat');
 	}
-	public function menu_exchange(){
-			$this->load->view('views_mobile/menu_exchange');
+	public function menu_susun(){
+			$data['pinjam'] = $this->M_pinjam->data_susun();
+			$this->load->view('views_mobile/menu_susun',$data);
 	}
 	public function menu_notifications(){
 			$this->load->view('views_mobile/menu_notifications');

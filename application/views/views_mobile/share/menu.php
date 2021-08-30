@@ -13,10 +13,10 @@
 <div id="menu-friends-transfer" data-menu-load="<?php echo base_url(); ?>mobile/menu_friends_transfer" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
 </div>
 
-<div id="menu-request" data-menu-load="<?php echo base_url(); ?>mobile/menu_request" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
+<div id="menu-terlambat" data-menu-load="<?php echo base_url(); ?>mobile/menu_terlambat" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
 </div>
 
-<div id="menu-exchange" data-menu-load="<?php echo base_url(); ?>mobile/menu_exchange" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
+<div id="menu-susun" data-menu-load="<?php echo base_url(); ?>mobile/menu_susun" class="offcanvas offcanvas-bottom offcanvas-detached rounded-m">
 </div>
 
 <div id="menu-notifications" data-menu-load="<?php echo base_url(); ?>mobile/menu_notifications" class="offcanvas offcanvas-top offcanvas-detached rounded-m">
