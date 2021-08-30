@@ -27,7 +27,7 @@
                   <a href="#" class="d-flex py-1" data-bs-toggle="offcanvas" data-bs-target="#menu-activity-1">
                     <div class="align-self-center">
                       <span class="icon gradient-red me-2 shadow-bg shadow-bg-s rounded-s">
-                        <img src="../assets_m/images/pictures/6s.jpg" width="45" class="rounded-s" alt="img">
+                        <img src="<?php echo base_url(); ?>assets_m/images/pictures/6s.jpg" width="45" class="rounded-s" alt="img">
                       </span>
                     </div>
                     <div class="align-self-center ps-1">
@@ -99,7 +99,7 @@
                   <a href="#" class="d-flex py-1" data-bs-toggle="offcanvas" data-bs-target="#menu-activity-1">
                     <div class="align-self-center">
                       <span class="icon gradient-yellow me-2 shadow-bg shadow-bg-xs rounded-s">
-                        <img src="../assets_m/images/pictures/21s.jpg" width="45" class="rounded-s" alt="img"></span>
+                        <img src="<?php echo base_url(); ?>assets_m/images/pictures/21s.jpg" width="45" class="rounded-s" alt="img"></span>
                       </div>
                       <div class="align-self-center ps-1">
                         <h5 class="pt-1 mb-n1">Jane Doe</h5>
@@ -114,7 +114,7 @@
                     <a href="#" class="d-flex py-1" data-bs-toggle="offcanvas" data-bs-target="#menu-activity-1">
                       <div class="align-self-center">
                         <span class="icon gradient-red me-2 shadow-bg shadow-bg-s rounded-s">
-                          <img src="../assets_m/images/pictures/6s.jpg" width="45" class="rounded-s" alt="img"></span>
+                          <img src="<?php echo base_url(); ?>assets_m/images/pictures/6s.jpg" width="45" class="rounded-s" alt="img"></span>
                         </div>
                         <div class="align-self-center ps-1">
                           <h5 class="pt-1 mb-n1">Karla Black</h5>
@@ -222,7 +222,7 @@
                   <a href="#" class="d-flex py-1 pb-4">
                     <div class="align-self-center">
                       <span class="icon gradient-red me-2 shadow-bg shadow-bg-s rounded-s">
-                        <img src="../assets_m/images/pictures/6s.jpg" width="45" class="rounded-s" alt="img"></span>
+                        <img src="<?php echo base_url(); ?>assets_m/images/pictures/6s.jpg" width="45" class="rounded-s" alt="img"></span>
                       </div>
                       <div class="align-self-center ps-1">
                         <h5 class="pt-1 mb-n1">Karla Black</h5>

@@ -94,6 +94,8 @@ function cari_barcode(barcode){
                     window.location.href='<?php echo base_url(); ?>mobile/detail_b/'+pecah[1];
                   }else if(pecah[0]=="Bndl"){
                     window.location.href='<?php echo base_url(); ?>mobile/detail_Bndl/'+pecah[1];
+                  }else{
+                    alert("SU");
                   }
 
               }
