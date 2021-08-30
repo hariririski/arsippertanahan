@@ -30,78 +30,172 @@
         </div>
         <div class="card card-style">
           <div class="content">
+            <?php
+              foreach($data_buku_tanah as $buku_tanah){
+            ?>
             <div class="d-flex">
               <div class="mt-1">
                 <h1 class="mb-0">Buku Tanah</h1>
               </div>
               <div class="ms-auto">
-                <img src="../assets_m/images/pictures/31s-1.jpg" width="60" class="rounded-m shadow-xl">
+                <img src="<?php echo base_url(); ?>assets_m/images/pictures/31s-1.jpg" width="60" class="rounded-m shadow-xl">
               </div>
             </div>
             <div class="row mb-3 mt-4">
-              <h5 class="col-4 text-start font-15">Invoice</h5>
-              <h5 class="col-8 text-end font-14 opacity-60 font-400">#13241</h5>
+              <h5 class="col-4 text-start font-15">Jenis Hak</h5>
+              <h5 class="col-8 text-end font-14 opacity-60 font-400"><?php echo $buku_tanah->nama_jenis_hak; ?></h5>
+              <h5 class="col-4 text-start font-15">Nomor Hak</h5>
+              <h5 class="col-8 text-end font-14 font-400"><span class="bg-green-dark px-2 rounded-s"><?php echo $buku_tanah->no_hak; ?></span></h5>
+              <h5 class="col-4 text-start font-15">Provinsi/Kota/Kecamatan/Desa</h5>
+              <h5 class="col-8 text-end font-14 opacity-60 font-400"><?php echo $buku_tanah->nama_prov; ?> / <?php echo $buku_tanah->nama_kota; ?> / <?php echo $buku_tanah->nama_kec; ?> / <?php echo $buku_tanah->nama_desa; ?></h5>
+              <h5 class="col-4 text-start font-15">Kondisi Arsip</h5>
+              <h5 class="col-8 text-end font-14 opacity-60 font-400"><?php echo $buku_tanah->nama_kondisi; ?></h5>
+              <h5 class="col-4 text-start font-15">Lokasi Arsip</h5>
+              <h5 class="col-8 text-end font-14 opacity-60 font-400"><?php echo $buku_tanah->nama_lemari; ?> / <?php echo $buku_tanah->nama_baris; ?> / <?php echo $buku_tanah->nama_bundel; ?></h5>
+              <h5 class="col-4 text-start font-15">Valid</h5>
+              <h5 class="col-8 text-end font-14 opacity-60 font-400 "><?php
+              if($buku_tanah->valid==0){
+                  echo 'Belum Valid';
+                }else if($buku_tanah->valid==1){
+                  echo 'Telah Valid';
+                }
+              ?></h5>
               <h5 class="col-4 text-start font-15">Status</h5>
-              <h5 class="col-8 text-end font-14 font-400"><span class="bg-green-dark px-2 rounded-s">Paid</span></h5>
-              <h5 class="col-4 text-start font-15">Bill To</h5>
-              <h5 class="col-8 text-end font-14 opacity-60 font-400">John Doe</h5>
-              <h5 class="col-4 text-start font-15">Date</h5>
-              <h5 class="col-8 text-end font-14 opacity-60 font-400">15th June 2025</h5>
-              <h5 class="col-4 text-start font-15">Company</h5>
-              <h5 class="col-8 text-end font-14 opacity-60 font-400">Enabled Labs</h5>
-              <h5 class="col-4 text-start font-15">Address</h5>
-              <h5 class="col-8 text-end font-14 opacity-60 font-400 ">PO Box 13451 Palo Alto Street California, Flat 1235</h5>
+              <h5 class="col-8 text-end font-14 opacity-60 font-400 ">
+                <?php
+                if($buku_tanah->status==0){
+                    echo '<span class="label label-danger">Belum Di Tentukan</span>';
+                  }else if($buku_tanah->status==1){
+                    echo '<span class="label label-success">Tersedia</span>';
+                  }else if($buku_tanah->status==2){
+                    echo '<span class="label label-info">Di Pinjam</span>';
+                    echo '<br></br>';
+                    echo '<a href="#" class="waves-effect waves-light btn green right  "> lihat Peminjaman</a>';
+                  }else if($buku_tanah->status==3){
+                    echo '<span class="label label-warning">Belum Disusun</span>';
+                  }else if($buku_tanah->status==4){
+                      echo '<span class="label label-danger">Hilang</span>';
+                  }
+                ?>
+              </h5>
+              <h5 class="col-4 text-start font-15">QrCode</h5>
+              <h5 class="col-8 text-end font-14  ">
+                <?php
+                $qrcode="BT-".$buku_tanah->id_buku_tanah;
+                ?>
+                <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
+                    <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px"><br>
+                </a>
+              </h5>
+
             </div>
             <div class="divider"></div>
+            <?php } ?>
+
             <div class="row mb-3 mt-4">
               <h5 class="col-4 text-start font-15"></h5>
               <h5 class="col-8 text-end font-20 ">Surat Ukur</h5>
             </div>
+            <?php
+              $i=0;
+              foreach($data_su_bt as $su){
+              $i++;
+            ?>
             <div class="d-flex mb-4">
               <div>
-                <img src="../assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
+                <img src="<?php echo base_url(); ?>assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
               </div>
               <div class="ps-3 w-100">
-                <h1 class="mb-0">$2.150 </h1>
-                <p class="mb-0 color-highlight font-11">7x Item</p>
-                <h5 class="font-500 font-14 pt-1">Your awesome product or service name goes here</h5>
+                <h1 class="mb-0"><?php echo $su->nomor; ?>/<?php echo $su->tahun; ?></h1>
+                <p class="mb-0 color-highlight font-11">NIB : <?php echo $su->nib; ?></p>
+                <p class="mb-0 color-highlight font-11">Desa : <?php echo $su->nama_desa; ?></p>
+                <p class="mb-0 color-highlight font-11">Kondisi : <?php echo $su->nama_kondisi; ?></p>
+                <p class="mb-0 color-highlight font-11">Valid :
+                    <?php
+                    if($su->valid==0){
+                        echo '<span class="label label-danger">Belum Valid</span>';
+                      }else if($su->valid==1){
+                        echo '<span class="label label-success">Telah Valid</span>';
+                      }
+                    ?>
+                </p>
+                <h5 class="font-500 font-14 pt-1">Lokasi : <?php echo $su->nama_lemari; ?> / <?php echo $su->nama_baris; ?> / <?php echo $su->nama_bundel; ?></h5>
+                <h5 class="font-500 font-14 pt-1"> Status :
+                  <?php
+                  if($su->status==0){
+                      echo '<span class="label label-danger">Belum Di Tentukan</span>';
+                    }else if($su->status==1){
+                      echo '<span class="label label-success">Tersedia</span>';
+                    }else if($su->status==2){
+                      echo '<span class="label label-info">Di Pinjam</span>';
+                    }else if($su->status==3){
+                      echo '<span class="label label-warning">Belum Disusun</span>';
+                    }else if($su->status==4){
+                        echo '<span class="label label-danger">Hilang</span>';
+                    }
+                  ?>
+                </h5>
+                <h5 class="font-500 font-14 pt-1">
+                  <?php
+                  $qrcode="SU-".$su->id_surat_ukur;
+                  ?>
+                  <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
+                      <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px"><br>
+                  </a>
+                </h5>
               </div>
             </div>
-            <div class="d-flex mb-4">
-              <div>
-                <img src="../assets_m/images/pictures/7s.jpg" width="80" class="rounded-s shadow-xl">
-              </div>
-              <div class="ps-3 w-100">
-                <h1 class="mb-0">$1.150 </h1>
-                <p class="mb-0 color-highlight font-11">12x Item</p>
-                <h5 class="font-500 font-14 pt-1">Your awesome product or service name goes here</h5>
-              </div>
-            </div>
+
+            <?php } ?>
+
             <div class="divider mt-4"></div>
             <div class="row mb-3 mt-4">
               <h5 class="col-4 text-start font-15"></h5>
               <h5 class="col-8 text-end font-20 ">Warkah</h5>
             </div>
-            <div class="d-flex mb-4">
-              <div>
-                <img src="../assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
+            <?php
+              $i=0;
+              foreach($data_warkah_bt as $warkah){
+              $i++;
+            ?>
+              <div class="d-flex mb-4">
+                <div>
+                  <img src="<?php echo base_url(); ?>assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
+                </div>
+                <div class="ps-3 w-100">
+                  <h1 class="mb-0"><?php echo $warkah->nomor; ?>/<?php echo $warkah->tahun; ?></h1>
+                  <p class="mb-0 color-highlight font-11">Kondisi : <?php echo $warkah->nama_kondisi; ?></p>
+                  <p class="mb-0 color-highlight font-11">Keterangan : <?php echo $warkah->keterangan; ?></p>
+                  <p class="mb-0 color-highlight font-11">Kondisi : <?php echo $warkah->nama_lemari; ?> / <?php echo $warkah->nama_baris; ?> / <?php echo $warkah->nama_bundel; ?></p>
+                  <p class="mb-0 color-highlight font-11">
+                    Valid :
+                    <?php
+                    if($warkah->valid==0){
+                        echo '<span class="label label-danger">Belum Valid</span>';
+                      }else if($warkah->valid==1){
+                        echo '<span class="label label-success">Telah Valid</span>';
+                      }
+                    ?>
+                  <h5 class="font-500 font-14 pt-1">
+                    Status :
+                    <?php
+                    if($warkah->status==0){
+                        echo '<span class="label label-danger">Belum Di Tentukan</span>';
+                      }else if($warkah->status==1){
+                        echo '<span class="label label-success">Tersedia</span>';
+                      }else if($warkah->status==2){
+                        echo '<span class="label label-info">Di Pinjam</span>';
+                      }else if($warkah->status==3){
+                        echo '<span class="label label-warning">Belum Disusun</span>';
+                      }else if($warkah->status==4){
+                          echo '<span class="label label-danger">Hilang</span>';
+                      }
+                    ?>
+                  </h5>
+                </div>
               </div>
-              <div class="ps-3 w-100">
-                <h1 class="mb-0">$2.150 </h1>
-                <p class="mb-0 color-highlight font-11">7x Item</p>
-                <h5 class="font-500 font-14 pt-1">Your awesome product or service name goes here</h5>
-              </div>
-            </div>
-            <div class="d-flex mb-4">
-              <div>
-                <img src="../assets_m/images/pictures/7s.jpg" width="80" class="rounded-s shadow-xl">
-              </div>
-              <div class="ps-3 w-100">
-                <h1 class="mb-0">$1.150 </h1>
-                <p class="mb-0 color-highlight font-11">12x Item</p>
-                <h5 class="font-500 font-14 pt-1">Your awesome product or service name goes here</h5>
-              </div>
-            </div>
+            <?php } ?>
+
             <div class="divider mt-4"></div>
             <div class="row mb-3 mt-4">
               <h5 class="col-4 text-start font-15"></h5>
@@ -109,7 +203,7 @@
             </div>
             <div class="d-flex mb-4">
               <div>
-                <img src="../assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
+                <img src="<?php echo base_url(); ?>assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
               </div>
               <div class="ps-3 w-100">
                 <h1 class="mb-0">$2.150 </h1>
@@ -119,7 +213,7 @@
             </div>
             <div class="d-flex mb-4">
               <div>
-                <img src="../assets_m/images/pictures/7s.jpg" width="80" class="rounded-s shadow-xl">
+                <img src="<?php echo base_url(); ?>assets_m/images/pictures/7s.jpg" width="80" class="rounded-s shadow-xl">
               </div>
               <div class="ps-3 w-100">
                 <h1 class="mb-0">$1.150 </h1>

@@ -74,13 +74,28 @@ function cari_barcode(barcode){
     url  : "<?php echo base_url()?>mobile/cari/"+barcode,
     dataType : "JSON",
             success: function(notif){
-              if (notif==0) {
-                  document.getElementById('close').click();
+              document.getElementById('close').click();
+              var pecah = notif.split("-");
+              if (pecah[0]=="BUKAN") {
                   $('#gagal1').trigger('click');
-              }else if(notif==1){
-                  document.getElementById('close').click();
+
+              }else{
                   $('#berhasil').trigger('click');
-                  setTimeout("location.href = '<?php echo base_url()?>mobile/detail_bt';",1500);
+                  var bt="location.href ='<?php echo base_url()?>mobile/detail_bt/'"+pecah[1];
+                  if(pecah[0]=="BT"){
+                    window.location.href='<?php echo base_url(); ?>mobile/detail_bt/'+pecah[1];
+                  }else if(pecal[0]=="SU"){
+
+                  }else if(pecal[0]=="W"){
+
+                  }else if(pecal[0]=="L"){
+
+                  }else if(pecal[0]=="B"){
+
+                  }else if(pecal[0]=="Bndl"){
+
+                  }
+
               }
 
             }

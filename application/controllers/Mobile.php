@@ -14,8 +14,16 @@ class Mobile extends CI_Controller {
 			$this->load->model('M_home');
 			$this->load->model('M_kondisi');
 			$this->load->model('M_pinjam');
+			$this->load->model('M_provinsi');
+			$this->load->model('M_jenis_hak');
+			$this->load->model('M_kondisi');
+			$this->load->model('M_buku_tanah');
+			$this->load->model('M_pinjam');
+			$this->load->helper('string');
 	}
-
+	public function index(){
+			redirect(base_url('mobile/home'));
+	}
 	public function home(){
 			$data['jumlah_buku_tanah'] = $this->M_home->jumlah_buku_tanah();
 			$data['jumlah_buku_tanah_valid'] = $this->M_home->jumlah_buku_tanah_valid();
@@ -32,7 +40,21 @@ class Mobile extends CI_Controller {
 			$this->load->view('views_mobile/scan');
 	}
 	public function detail_bt(){
-			$this->load->view('views_mobile/detail_bt');
+			$id_buku_tanah=$this->uri->segment('3');
+			$data['data_buku_tanah'] = $this->M_buku_tanah->detail_buku_tanah($id_buku_tanah);
+			$data['data_su_bt'] = $this->M_buku_tanah->detail_su_bt($id_buku_tanah);
+			$data['data_warkah_bt'] = $this->M_buku_tanah->detail_warkah_bt($id_buku_tanah);
+			$id_buku_tanah;$id_warkah;$id_surat_ukur;
+			$sql="SELECT buku_tanah.id_buku_tanah, buku_tanah.id_surat_ukur, warkah.id_warkah FROM buku_tanah left join warkah on warkah.id_buku_tanah=buku_tanah.id_buku_tanah WHERE buku_tanah.id_buku_tanah='$id_buku_tanah'";
+			$query = $this->db->query($sql);
+			$hasil=$query->result();
+			foreach ($hasil as $isi) {
+					$id_buku_tanah=$isi->id_buku_tanah;
+					$id_warkah=$isi->id_warkah;
+					$id_surat_ukur=$isi->id_surat_ukur;
+			 }
+			$data['histori'] = $this->M_pinjam->histori($id_buku_tanah,$id_surat_ukur,$id_warkah);
+			$this->load->view('views_mobile/detail_bt',$data);
 	}
 	public function aktivitas(){
 			$this->load->view('views_mobile/aktivitas');
@@ -57,9 +79,9 @@ class Mobile extends CI_Controller {
 					$data=$query->result();
 					foreach ($data as $isi) {
 							if($isi->jumlah==1){
-								$data=1;
+								$data="BT-".$id;
 							}else{
-								$data=0;
+								$data="NULL".$id;
 							}
 
 					 }
@@ -95,7 +117,7 @@ class Mobile extends CI_Controller {
 				elseif ($type=="Bndl") {
 				}
 				else{
-					$data=0;
+					$data="BUKAN"."-";
 				}
 			echo json_encode($data);
 	}
