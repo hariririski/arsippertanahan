@@ -127,7 +127,6 @@ class Mobile extends CI_Controller {
 							}else{
 								$data="BT-".$isi->id_buku_tanah;
 							}
-
 						}else{
 							$data="NULL".$id;
 						}
