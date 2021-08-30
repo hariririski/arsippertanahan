@@ -16,7 +16,8 @@ class Login extends CI_Controller {
 	{
 		$isMob = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), "mobile"));
 		if($isMob){
-			redirect(base_url('login/login_mobile'));
+			//redirect(base_url('login/login_mobile'));
+			$this->load->view('login');
 		}else{
 			$this->load->view('login');
 		}
