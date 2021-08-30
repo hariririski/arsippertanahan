@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <?php echo $this->load->view('views_mobile/share/header', '', TRUE);?>
