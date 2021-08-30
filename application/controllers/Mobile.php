@@ -12,6 +12,7 @@ class Mobile extends CI_Controller {
 			$this->load->library('session');
 			$this->load->database();
 			$this->load->model('M_home');
+			$this->load->model('M_warkah');
 			$this->load->model('M_kondisi');
 			$this->load->model('M_pinjam');
 			$this->load->model('M_provinsi');
@@ -38,6 +39,12 @@ class Mobile extends CI_Controller {
 
 	public function scan(){
 			$this->load->view('views_mobile/scan');
+	}
+	public function detail_w(){
+		$id_warkah=$this->uri->segment('3');
+		$data['data_warkah'] = $this->M_warkah->detail_warkah($id_warkah);
+		$data['histori'] = $this->M_pinjam->pinjam_warkah($id_warkah);
+		$this->load->view('views_mobile/detail_w',$data);
 	}
 	public function detail_bt(){
 			$id_buku_tanah=$this->uri->segment('3');
@@ -92,9 +99,9 @@ class Mobile extends CI_Controller {
 					$data=$query->result();
 					foreach ($data as $isi) {
 						if($isi->jumlah==1){
-							$data=1;
+							$data="BT-".$id;
 						}else{
-							$data=0;
+							$data="NULL".$id;
 						}
 					 }
 				}
@@ -104,9 +111,9 @@ class Mobile extends CI_Controller {
 					$data=$query->result();
 					foreach ($data as $isi) {
 						if($isi->jumlah==1){
-							$data="W".";".$isi->nomor.";".$isi->tahun.";".$isi->id_warkah.";".$isi->id_warkah;
+							$data="W-".$id;
 						}else{
-							$data=null;
+							$data="NULL".$id;
 						}
 					 }
 				}
