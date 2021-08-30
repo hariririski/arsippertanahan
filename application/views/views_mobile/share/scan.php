@@ -84,7 +84,6 @@ function cari_barcode(barcode){
                   if(pecah[0]=="BT"){
                     window.location.href='<?php echo base_url(); ?>mobile/detail_bt/'+pecah[1];
                   }else if(pecah[0]=="SU"){
-                    alert("SU");
                     window.location.href='<?php echo base_url(); ?>mobile/detail_su/'+pecah[1];
                   }else if(pecah[0]=="W"){
                     window.location.href='<?php echo base_url(); ?>mobile/detail_w/'+pecah[1];
@@ -94,8 +93,6 @@ function cari_barcode(barcode){
                     window.location.href='<?php echo base_url(); ?>mobile/detail_b/'+pecah[1];
                   }else if(pecah[0]=="Bndl"){
                     window.location.href='<?php echo base_url(); ?>mobile/detail_Bndl/'+pecah[1];
-                  }else{
-                    alert("SU");
                   }
 
               }
