@@ -135,7 +135,7 @@
                     }
                   ?>
                 </h5>
-                <h5 class="font-500 font-14 pt-1">
+                <h5 class="font-500 font-14 pt-1 text-end">
                   <?php
                   $qrcode="SU-".$su->id_surat_ukur;
                   ?>
@@ -192,6 +192,14 @@
                       }
                     ?>
                   </h5>
+                  <h5 class="font-500 font-14 pt-1 text-end">
+                    <?php
+                    $qrcode="W-".$warkah->id_warkah;
+                    ?>
+                    <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
+                        <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px"><br>
+                    </a>
+                  </h5>
                 </div>
               </div>
             <?php } ?>
@@ -201,26 +209,58 @@
               <h5 class="col-4 text-start font-15"></h5>
               <h5 class="col-8 text-end font-20 ">Peminjaman</h5>
             </div>
+            <?php
+              $i=0;
+              foreach($histori as $histori){
+              $i++;
+            ?>
             <div class="d-flex mb-4">
               <div>
                 <img src="<?php echo base_url(); ?>assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
               </div>
               <div class="ps-3 w-100">
-                <h1 class="mb-0">$2.150 </h1>
-                <p class="mb-0 color-highlight font-11">7x Item</p>
-                <h5 class="font-500 font-14 pt-1">Your awesome product or service name goes here</h5>
+                <h1 class="mb-0">
+                  <?php
+                    if($histori->buku_tanah!=null){
+                      echo "BT / ".$histori->no_hak;
+                    }else if($histori->surat_ukur!=null){
+                      echo "SU / ".$histori->nomor_su."/".$histori->tahun_su;
+                    }else if($histori->warkah!=null){
+                      echo "W / ".$histori->nomor_w."/".$histori->tahun_w;
+                    }
+                  ?>
+                </h1>
+                <p class="mb-0 color-highlight font-11">Pinjam : <?php echo $histori->tgl_pinjam; ?></p>
+                <p class="mb-0 color-highlight font-11">Kembali : <?php echo $histori->tgl_kembali; ?></p>
+                <p class="mb-0 color-highlight font-11">DiKembalikan : <?php echo $histori->tgl_dikembalikan; ?></p>
+                <p class="mb-0 color-highlight font-11">Selisih : <?php echo $histori->selisih; ?> Hari</p>
+                <p class="mb-0 color-highlight font-11">Peminjam : <?php echo $histori->nama_lengkap; ?></p>
+                <h5 class="font-500 font-14 pt-1">
+                  <?php
+                if($histori->status_pinjam==0){
+                    echo '<span class="label label-success">Belum Di Tentukan</span>';
+                  }else if($histori->status_pinjam==1){
+                    echo '<span class="label label-warning">Proses Peminjaman</span>';
+                  }else if($histori->status_pinjam==2){
+                    echo '<span class="label label-warning">Di Pinjam</span>';
+                  }else if($histori->status_pinjam==3){
+                    echo '<span class="label label-warning">Belum Disusun</span>';
+                  }else if($histori->status_pinjam==4){
+                    echo '<span class="label label-success">Selesai</span>';
+                  }
+                ?>
+              </h5>
+              <h5 class="font-500 font-14 pt-1 text-end">
+                <?php
+                $qrcode="P-".$histori->invoice;
+                ?>
+                <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
+                    <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px"><br>
+                </a>
+              </h5>
               </div>
             </div>
-            <div class="d-flex mb-4">
-              <div>
-                <img src="<?php echo base_url(); ?>assets_m/images/pictures/7s.jpg" width="80" class="rounded-s shadow-xl">
-              </div>
-              <div class="ps-3 w-100">
-                <h1 class="mb-0">$1.150 </h1>
-                <p class="mb-0 color-highlight font-11">12x Item</p>
-                <h5 class="font-500 font-14 pt-1">Your awesome product or service name goes here</h5>
-              </div>
-            </div>
+            <?php } ?>
             <div class="divider"></div>
             <a href="#" class="btn btn-full btn-l rounded-s font-800 text-uppercase gradient-highlight shadow-bg shadow-bg-m">Kembalikan/Susun Buku Tanah</a>
             <div class="divider"></div>
