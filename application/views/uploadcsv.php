@@ -97,7 +97,26 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="card x-small">
+                    <div class="card-content">
+                        <h5 class="card-title activator">Upload CSV BT dan SU Update <i class="material-icons right tooltipped" data-position="left" data-delay="50" data-tooltip="Get Code">more_vert</i></h5>
+                        <form class="formValidate" id="formValidate" action="<?php echo base_url(); ?>tools/pencocokan_data" method="post" enctype="multipart/form-data">
+                          <div class="row">
+                            <div class="file-field input-field">
+                                <div class="btn blue darken-1">
+                                    <span>File</span>
+                                    <input type="file" name="buku_tanah" accept="text/csv">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                </div>
+                            </div>
+                                <button class="btn cyan waves-effect waves-light right submit" type="submit" name="upload">Submit
+                                </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
               </div>
 

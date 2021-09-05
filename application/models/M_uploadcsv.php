@@ -8,6 +8,18 @@
         return $query;
       }
 
+      function update_buku_tanah($id_buku_tanah,$pemilik_pertama,$nib){
+        $perintah1="UPDATE `buku_tanah` SET `pemilik_pertama`='$pemilik_pertama', nib='$nib' WHERE buku_tanah.id_buku_tanah='$id_buku_tanah'";
+        $query=$this->db->query($perintah1);
+        return $query;
+      }
+      function update_surat_ukur($id_surat_ukur,$no_su,$tahun_su,$nib){
+
+        $perintah1="UPDATE `surat_ukur` SET `nomor`='$no_su',`tahun`='$tahun_su',`nib`='$nib' WHERE surat_ukur.id_surat_ukur='$id_surat_ukur'";
+        $query=$this->db->query($perintah1);
+        return $query;
+      }
+
       function suratukur($id_surat_ukur,$no_su,$tahun_su,$desa,$nib,$admin){
 
         $perintah1="INSERT INTO `surat_ukur`(`id_surat_ukur`, `nomor`, `tahun`, `kode_desa`,`nib`,`admin_tambah`)

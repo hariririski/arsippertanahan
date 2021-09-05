@@ -35,7 +35,7 @@
                 <h1 class="mb-0">Buku Tanah</h1>
               </div>
               <div class="ms-auto">
-                <img src="<?php echo base_url(); ?>assets_m/images/pictures/31s-1.jpg" width="60" class="rounded-m shadow-xl">
+                <img src="<?php echo base_url(); ?>assets_m/images/pictures/arsip.png" width="60" class="rounded-m shadow-xl">
               </div>
             </div>
             <div class="row mb-3 mt-4">
@@ -73,7 +73,7 @@
 
             <div class="d-flex mb-4">
               <div>
-                <img src="<?php echo base_url(); ?>assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
+                <img src="<?php echo base_url(); ?>assets_m/images/pictures/arsip.png" width="80" class="rounded-s shadow-xl">
               </div>
               <div class="ps-3 w-100">
                 <h1 class="mb-0">-</h1>
@@ -105,7 +105,7 @@
             ?>
               <div class="d-flex mb-4">
                 <div>
-                  <img src="<?php echo base_url(); ?>assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
+                  <img src="<?php echo base_url(); ?>assets_m/images/pictures/arsip.png" width="80" class="rounded-s shadow-xl">
                 </div>
                 <div class="ps-3 w-100">
                   <h1 class="mb-0"><?php echo $warkah->nomor; ?>/<?php echo $warkah->tahun; ?></h1>
@@ -161,7 +161,7 @@
             ?>
             <div class="d-flex mb-4">
               <div>
-                <img src="<?php echo base_url(); ?>assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
+                <img src="<?php echo base_url(); ?>assets_m/images/pictures/arsip.png" width="80" class="rounded-s shadow-xl">
               </div>
               <div class="ps-3 w-100">
                 <h1 class="mb-0">
@@ -206,14 +206,14 @@
               </div>
             </div>
             <?php } ?>
-            <div class="divider"></div>
+            <!-- <div class="divider"></div>
             <a href="#" class="btn btn-full btn-l rounded-s font-800 text-uppercase gradient-highlight shadow-bg shadow-bg-m">Kembalikan/Susun Buku Tanah</a>
             <div class="divider"></div>
             <a href="#" class="btn btn-full btn-l rounded-s font-800 text-uppercase gradient-highlight shadow-bg shadow-bg-m">Kembalikan/Susun Surat Ukur</a>
             <div class="divider"></div>
             <a href="#" class="btn btn-full btn-l rounded-s font-800 text-uppercase gradient-highlight shadow-bg shadow-bg-m">Kambalikan/Susun Warkah</a>
             <div class="divider"></div>
-            <a href="#" class="btn btn-full btn-l rounded-s font-800 text-uppercase gradient-highlight shadow-bg shadow-bg-m">Download Invoice in PDF</a>
+            <a href="#" class="btn btn-full btn-l rounded-s font-800 text-uppercase gradient-highlight shadow-bg shadow-bg-m">Download Invoice in PDF</a> -->
           </div>
         </div>
       </div>
