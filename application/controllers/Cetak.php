@@ -566,6 +566,136 @@ class Cetak extends CI_Controller {
 		$pdf->Output();
 	}
 
+	public function cetak_bundel(){
+		require_once(APPPATH . 'third_party/fpdf/fpdf.php');
+		error_reporting(E_ALL);
+		if(is_dir("qr")){
+		}else{
+			mkdir("qr");
+		}
+
+		if(is_dir("qr/L")){
+		}else{
+			mkdir("qr/L");
+		}
+
+		$directory = getcwd()."/qr/Bndl/";
+		$filecount = 0;
+		$files2 = glob( $directory ."*" );
+		if( $files2 ) {
+				$filecount = count($files2);
+		}
+		$filecount . "files ";
+		$jumlah_warkah;
+
+
+			$sql="SELECT * FROM `bundel` LEFT JOIN baris on baris.id_baris=bundel.id_baris left JOIN lemari on lemari.id_lemari=baris.id_lemari";
+			$query = $this->db->query($sql);
+			$data=$query->result();
+			foreach ($data as $isi) {
+				QRcode::png(
+				"L-".$isi->id_lemari,
+				"qr/Bndl/Bndl-".$isi->id_bundel.".png",
+				$level = QR_ECLEVEL_H,
+				$size  = 6,
+				$margin = 2
+			);
+			}
+
+
+		$filecount = 0;
+		$files2 = glob( $directory ."*" );
+		if( $files2 ) {
+				$filecount = count($files2);
+		}
+		$filecount . "files ";
+
+				$pdf = new FPDF('P','mm','A4');
+				$pdf->SetFont('Times','',11);
+				$pdf->AddPage();
+				$sql1="SELECT * FROM `bundel` LEFT JOIN baris on baris.id_baris=bundel.id_baris left JOIN lemari on lemari.id_lemari=baris.id_lemari";
+				$query1 = $this->db->query($sql1);
+				$data1=$query1->result();
+				$i=0;$a;$b;$j;$x=0;
+				$jumlah=count($data1);
+				foreach ($data1 as $isi1) {
+					$a[$i]=$isi1->id_bundel;
+					$b[$i]=$isi1->nama_bundel;
+					$i++;
+				}
+				$x=10;
+				$y=15;
+				$w=30;
+				$h=30;
+				$baris=0;
+				$kertas=0;
+				$pdf -> Line(7.5, 13, 7.5, 293);
+				$pdf->  Line(7.5, 13, 207.5, 13);
+
+				$pdf -> Line(47.5, 13, 47.5, 293);
+				$pdf->  Line(7.5, 53, 207.5, 53);
+
+				$pdf -> Line(87.5, 13, 87.5, 293);
+				$pdf->  Line(7.5, 93, 207.5, 93);
+
+				$pdf -> Line(127.5, 13, 127.5, 293);
+				$pdf->  Line(7.5, 133, 207.5, 133);
+
+				$pdf -> Line(167.5, 13, 167.5, 293);
+				$pdf->  Line(7.5, 173, 207.5, 173);
+
+				$pdf -> Line(207.5, 13, 207.5, 293);
+				$pdf->  Line(7.5, 213, 207.5, 213);
+
+				$pdf->  Line(7.5, 253, 207.5, 253);
+				$pdf->  Line(7.5, 293, 207.5, 293);
+				$pdf->Text(10, 10,"Barcode Bundel");
+				for($j=0; $j<$jumlah; $j++){
+					$pdf->Image("qr/L/L-".$a[$j].".png", $x+2.5, $y, $w, $h, "png");
+					$pdf->Text($x+1, $y+35,"Lemari - ".$b[$j]);
+					$x=$x+40;$baris++;$kertas++;
+					if($baris==5){
+						$x=10;
+						$y=$y+40;
+						$baris=0;
+					}
+					$a[$j];
+					$b[$j];
+					if($kertas==35){
+						$pdf->AddPage();
+						$pdf -> Line(7.5, 8, 7.5, 288);
+						$pdf->  Line(7.5, 8, 207.5, 8);
+
+						$pdf -> Line(47.5, 8, 47.5, 288);
+						$pdf->  Line(7.5, 48, 207.5, 48);
+
+						$pdf -> Line(87.5, 8, 87.5, 288);
+						$pdf->  Line(7.5, 88, 207.5, 88);
+
+						$pdf -> Line(127.5, 8, 127.5, 288);
+						$pdf->  Line(7.5, 128, 207.5, 128);
+
+						$pdf -> Line(167.5, 8, 167.5, 288);
+						$pdf->  Line(7.5, 168, 207.5, 168);
+
+						$pdf -> Line(207.5, 8, 207.5, 288);
+						$pdf->  Line(7.5, 208, 207.5, 208);
+
+						$pdf->  Line(7.5, 248, 207.5, 248);
+						$pdf->  Line(7.5, 288, 207.5, 288);
+						$x=10;
+						$y=10;
+						$w=30;
+						$h=30;
+						$baris=0;
+						$kertas=0;
+					}
+					//if($j==120){break;}
+				}
+
+
+		$pdf->Output();
+	}
 
 
 }

@@ -42,7 +42,7 @@ class Cariarsip extends CI_Controller {
 				$data=$query->result();
 			}
 			elseif ($type=="SU") {
-				$sql="SELECT * FROM `surat_ukur` LEFT JOIN desa on desa.kode_desa=surat_ukur.kode_desa LEFT JOIN bundel on bundel.id_bundel=surat_ukur.id_bundel LEFT JOIN kec on kec.kode_kec=desa.kode_kec left join buku_tanah on buku_tanah.id_surat_ukur=surat_ukur.id_surat_ukur left join jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak left join kondisi on kondisi.id_kondisi=surat_ukur.id_kondisi  LEFT join baris on baris.id_baris=bundel.id_baris left join lemari on lemari.id_lemari=baris.id_baris where surat_ukur.id_surat_ukur='$id'";
+				$sql="SELECT * FROM `surat_ukur` LEFT JOIN desa on desa.kode_desa=surat_ukur.kode_desa LEFT JOIN bundel on bundel.id_bundel=surat_ukur.id_bundel LEFT JOIN kec on kec.kode_kec=desa.kode_kec left join buku_tanah on buku_tanah.id_buku_tanah=surat_ukur.id_buku_tanah left join jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak left join kondisi on kondisi.id_kondisi=surat_ukur.id_kondisi  LEFT join baris on baris.id_baris=bundel.id_baris left join lemari on lemari.id_lemari=baris.id_baris where surat_ukur.id_surat_ukur='$id'";
 				$query = $this->db->query($sql);
 				$data=$query->result();
 			}

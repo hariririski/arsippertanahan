@@ -59,7 +59,7 @@ class Mobile extends CI_Controller {
 			$data['data_su_bt'] = $this->M_buku_tanah->detail_su_bt($id_buku_tanah);
 			$data['data_warkah_bt'] = $this->M_buku_tanah->detail_warkah_bt($id_buku_tanah);
 			$id_buku_tanah;$id_warkah;$id_surat_ukur;
-			$sql="SELECT buku_tanah.id_buku_tanah, buku_tanah.id_surat_ukur, warkah.id_warkah FROM buku_tanah left join warkah on warkah.id_buku_tanah=buku_tanah.id_buku_tanah WHERE buku_tanah.id_buku_tanah='$id_buku_tanah'";
+			$sql="SELECT buku_tanah.id_buku_tanah, surat_ukur.id_surat_ukur, warkah.id_warkah FROM buku_tanah left join warkah on warkah.id_buku_tanah=buku_tanah.id_buku_tanah WHERE buku_tanah.id_buku_tanah='$id_buku_tanah'";
 			$query = $this->db->query($sql);
 			$hasil=$query->result();
 			foreach ($hasil as $isi) {
