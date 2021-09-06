@@ -106,6 +106,7 @@ class Tools extends CI_Controller {
 							if(!empty($isi->id_buku_tanah1)){
 										echo $isi->no_hak." ditemukan";
 										if($isi->pemilik_pertama==NULL){
+												echo " ".$data[3]." ";
 												$cekbukutanah=$this->M_uploadcsv->update_buku_tanah($isi->id_buku_tanah1,$data[3],$nib);
 												if($cekbukutanah>0){
 													echo " update pemilik";
