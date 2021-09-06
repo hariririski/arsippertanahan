@@ -87,6 +87,16 @@
                                       <div class="row">
                                           <div class="col s3">
                                               <div class="h-form-label">
+                                                  <label for="icon_prefix1">Pemilik Pertama</label>
+                                              </div>
+                                          </div>
+                                          <div class="input-field col s9">
+                                              <label for="icon_prefix1" style="color: #000000"><b><?php echo $buku_tanah->pemilik_pertama; ?></b></label>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col s3">
+                                              <div class="h-form-label">
                                                   <label for="icon_prefix3">Provinsi/Kota/Kecamatan/Desa</label>
                                               </div>
                                           </div>

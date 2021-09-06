@@ -33,16 +33,6 @@ class Tools extends CI_Controller {
 	public function pencocokan_data()
 	{
 
-		// $sql1="SELECT kode_prov,id_prov from prov";
-		// $query1 = $this->db->query($sql1);
-		// $data1=$query1->result();
-
-
-		// $sql2="SELECT kode_kota,id_kota from kota";
- 		// $query2 = $this->db->query($sql2);
- 		// $data2=$query2->result();
-
-
 		 $sql3="SELECT kode_kec,id_kec from kec";
   		$query3 = $this->db->query($sql3);
   		$data3=$query3->result();
@@ -74,18 +64,7 @@ class Tools extends CI_Controller {
 						$i++;
 						$data=explode(";",$row[0]);
 						$pisahnohak=explode(".", $data[0]);
-						//konvert id prov ke kode prov
-						// foreach ($data1 as $isi) {
-						// 	if($isi->id_prov==$pisahnohak[0]){
-						// 			$prov=$isi->kode_prov;
-						// 	}
-						// }
-
-						// foreach ($data2 as $isi) {
-						// 	if($isi->id_kota==$pisahnohak[1]){
-						// 			$kota=$isi->kode_kota;
-						// 	}
-						// }
+						$pemilik_pertama=$data[3];
 
 						foreach ($data3 as $isi) {
 							if($isi->id_kec==$pisahnohak[2]){
@@ -119,54 +98,82 @@ class Tools extends CI_Controller {
 												// jika berbeda update dengan data terbaru dan pemilik bertama
 								// jika tidak ditemukan
 										// insert buku tanah dan surat ukur dari data dan pemilik pertama
-						$sql7="SELECT * FROM buku_tanah INNER JOIn surat_ukur on surat_ukur.id_buku_tanah=buku_tanah.id_buku_tanah INNER JOIN desa on desa.kode_desa= buku_tanah.kode_desa INNER JOIN jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak INNER JOIN kec on kec.kode_kec=desa.kode_kec
+						$sql7="SELECT *,count(buku_tanah.id_buku_tanah)as jumlah, buku_tanah.id_buku_tanah as id_buku_tanah1 FROM buku_tanah left JOIn surat_ukur on surat_ukur.id_buku_tanah=buku_tanah.id_buku_tanah left JOIN desa on desa.kode_desa= buku_tanah.kode_desa left JOIN jenis_hak on jenis_hak.id_jenis_hak=buku_tanah.id_jenis_hak left JOIN kec on kec.kode_kec=desa.kode_kec
 									 WHERE buku_tanah.no_hak='$no_hak' and desa.id_desa='$pisahnohak[3]' and kec.id_kec='$pisahnohak[2]' and jenis_hak.id_jenis_hak='$jenis_hak'";
 						$query7 = $this->db->query($sql7);
 						$data7=$query7->result();
 						foreach ($data7 as $isi) {
-							if(!empty($isi->id_buku_tanah)){
-								echo $isi->no_hak." ditemukan";
-								if($isi->pemilik_pertama==NULL){
-										$cekbukutanah=$this->M_uploadcsv->update_buku_tanah($isi->id_buku_tanah,$data[3],$nib);
-										if($cekbukutanah>0){
-											echo " update pemilik";
-										}else{
-											echo " gagal update pemilik";
+							if(!empty($isi->id_buku_tanah1)){
+										echo $isi->no_hak." ditemukan";
+										if($isi->pemilik_pertama==NULL){
+												$cekbukutanah=$this->M_uploadcsv->update_buku_tanah($isi->id_buku_tanah1,$data[3],$nib);
+												if($cekbukutanah>0){
+													echo " update pemilik";
+												}else{
+													echo " gagal update pemilik";
+												}
+											}else if($isi->pemilik_pertama==$isi->pemilik_pertama){
+												echo " Pemilik Sama";
+											}else{
+												echo"Pemilik berbeda";
+											}
+
+										if($data[1]!="null")
+										{
+											$no_su=0;
+											$tahun_su=0;
+											$pisahsu=explode("/", $data[1]);
+											$pisahsu2=explode(".", $pisahsu[0]);
+											$jumlah=count($pisahsu);
+											$no_su_sementara=$pisahsu2[1];
+											$no_su_sementara=intval($no_su_sementara);
+											$no_su=sprintf('%05d',$no_su_sementara);
+											$tahun_su=$pisahsu[$jumlah-1];
+
+											if($isi->nomor==$no_su && $isi->tahun==$tahun_su){
+												echo " SU Sama <br>";
+											}else{
+												// $ceksuratukur=$this->M_uploadcsv->update_surat_ukur($isi->id_surat_ukur,$no_su,$tahun_su,$nib);
+												// if($ceksuratukur>0){
+												// 	echo " SU di perbaharui <br>";
+												// }else{
+												// 	echo " SU gagal diperbaharui <br>";
+											 	// }
+												echo " SU Berbeda <br>";
+											}
 										}
-									}else{
-										echo " Pemilik ok";
-									}
 
-								if($data[1]!="null"){
-									$pisahsu=explode("/", $data[1]);
-									$pisahsu2=explode(".", $pisahsu[0]);
-									$jumlah=count($pisahsu);
-									$no_su_sementara=$pisahsu2[1];
-									$no_su_sementara=intval($no_su_sementara);
-									$no_su=sprintf('%05d',$no_su_sementara);
-									$tahun_su=$pisahsu[$jumlah-1];
-
-									if($isi->nomor==$no_su && $isi->tahun==$tahun_su){
-										echo " SU Sama <br>";
-									}else{
-										$ceksuratukur=$this->M_uploadcsv->update_surat_ukur($isi->id_surat_ukur,$no_su,$tahun_su,$nib);
-										if($ceksuratukur>0){
-											echo " SU di perbaharui <br>";
-										}else{
-											echo " SU gagal diperbaharui <br>";
-									 	}
-									}
-								}else{
-									$ceksuratukur=$this->M_uploadcsv->update_surat_ukur($isi->id_surat_ukur,$no_su,$tahun_su,$nib);
-									if($ceksuratukur>0){
-										echo " SU di perbaharui <br>";
-									}else{
-										echo " SU gagal diperbaharui <br>";
-									}
-								}
 
 							}else{
-								echo $isi->no_hak." tidak ditemukan <br>";
+											echo " tidak ditemukan ";
+
+											$id_buku_tanah=random_string('alnum',20);
+											$id_surat_ukur=random_string('alnum',20);
+											$admin= $this->session->userdata("nama_lengkap");
+											$cekbukutanah= $this->M_uploadcsv->bukutanah($id_buku_tanah,$no_hak,$jenis_hak,$desa,$nib,$id_surat_ukur,$admin,$data[3]);
+											if($cekbukutanah>0){
+													echo ("Berhasil Menambahkan BT".$no_hak."<br>");
+											}else{
+													echo ("gagal Menambahkan BT ".$no_hak."<br>");
+										 	}
+
+										if( $data[1]!="null"){
+												$pisahsu=explode("/", $data[1]);
+												$pisahsu2=explode(".", $pisahsu[0]);
+												$jumlah=count($pisahsu);
+												$no_su_sementara=$pisahsu2[1];
+												$no_su_sementara=intval($no_su_sementara);
+												$no_su=sprintf('%05d',$no_su_sementara);
+												//echo $no_su_lain=$no_su." ";
+												$tahun_su=$pisahsu[$jumlah-1];
+												$ceksuratukur=$this->M_uploadcsv->suratukur($id_surat_ukur,$no_su,$tahun_su,$desa,$nib,$admin,$id_buku_tanah);
+												if($ceksuratukur>0){
+														echo ("Berhasil Menambahkan SU ".$no_su."<br>");
+												}else{
+														echo ("gagal Menambahkan SU".$no_su."<br>");
+											 	}
+											}
+
 							}
 
 						}

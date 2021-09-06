@@ -1,9 +1,8 @@
 <?php
     class M_uploadcsv extends CI_Model{
 
-      function bukutanah($id_buku_tanah,$no_hak,$jenis_hak,$desa,$nib,$id_surat_ukur,$admin){
-        $perintah1="INSERT INTO `buku_tanah`(`id_buku_tanah`, `no_hak`, `id_jenis_hak`, `kode_desa`,`nib`,`id_surat_ukur`,`admin_tambah`)
-                             VALUES ('$id_buku_tanah','$no_hak','$jenis_hak','$desa','$nib','$id_surat_ukur','$admin')";
+      function bukutanah($id_buku_tanah,$no_hak,$jenis_hak,$desa,$nib,$admin,$pemilik_pertama){
+        $perintah1="INSERT INTO `buku_tanah`(`id_buku_tanah`, `no_hak`, `id_jenis_hak`, `kode_desa`,`nib`,`admin_tambah`,`pemilik_pertama`)VALUES ('$id_buku_tanah','$no_hak','$jenis_hak','$desa','$nib','$admin','$pemilik_pertama')";
         $query=$this->db->query($perintah1);
         return $query;
       }
@@ -20,10 +19,9 @@
         return $query;
       }
 
-      function suratukur($id_surat_ukur,$no_su,$tahun_su,$desa,$nib,$admin){
+      function suratukur($id_surat_ukur,$no_su,$tahun_su,$desa,$nib,$admin,$id_buku_tanah){
 
-        $perintah1="INSERT INTO `surat_ukur`(`id_surat_ukur`, `nomor`, `tahun`, `kode_desa`,`nib`,`admin_tambah`)
-                    VALUES ('$id_surat_ukur','$no_su','$tahun_su','$desa','$nib','$admin')";
+        $perintah1="INSERT INTO `surat_ukur`(`id_surat_ukur`, `nomor`, `tahun`, `kode_desa`,`nib`,`admin_tambah`,`id_buku_tanah`)VALUES ('$id_surat_ukur','$no_su','$tahun_su','$desa','$nib','$admin','$id_buku_tanah')";
         $query=$this->db->query($perintah1);
         return $query;
       }
