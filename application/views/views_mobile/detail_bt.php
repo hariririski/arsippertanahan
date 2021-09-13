@@ -48,10 +48,10 @@
               <h5 class="col-8 text-end font-14 font-400"><span class="bg-green-dark px-2 rounded-s"><?php echo $buku_tanah->no_hak; ?></span></h5>
               <h5 class="col-4 text-start font-15">Pemilik Pertama</h5>
               <h5 class="col-8 text-end font-14 font-400">
-                <span class="bg-green-dark px-2 ">
+                <span class="bg-green-dark px-2 rounded-s">
                   <?php
                       $count = 0;
-                      echo $hasil=str_replace("-", "<br>", $buku_tanah->pemilik_pertama, $count);
+                      echo $hasil=str_replace("-", "</span><br><span class="bg-green-dark px-2 ">", $buku_tanah->pemilik_pertama, $count);
                   ?>
                 </span>
               </h5>
