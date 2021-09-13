@@ -7,5 +7,5 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="<?php echo base_url(); ?>assets_m/styles/css2.css" rel="stylesheet">
 <meta id="theme-check" name="theme-color" content="#FFFFFF">
-<meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+
 <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url(); ?>assets_m/app/icons/icon-192x192.png"></head>
