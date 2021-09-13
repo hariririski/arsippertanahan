@@ -13,7 +13,7 @@
                   if($isMob){
                 ?>
                   <li>
-                    <a href="<?php echo base_url(); ?>scan" class="collapsible-header"><i class="material-icons">dashboard</i><span class="hide-menu">Qr Code</span></a>
+                    <a href="<?php echo base_url(); ?>scan" class="collapsible-header"><i class="material-icons">dashboard</i><span class="hide-menu">Mobile</span></a>
                   </li>
                   <?php
                   }
