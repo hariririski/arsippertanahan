@@ -51,7 +51,7 @@
                 <span class="bg-green-dark px-2 rounded-s">
                   <?php
                       $count = 0;
-                      echo $hasil=str_replace("-", "</span><br><span class='bg-green-dark px-2'>", $buku_tanah->pemilik_pertama, $count);
+                      echo $hasil=str_replace("-", " <br> ", $buku_tanah->pemilik_pertama, $count);
                   ?>
                 </span>
               </h5>
