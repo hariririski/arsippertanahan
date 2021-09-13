@@ -16,7 +16,7 @@ class Login extends CI_Controller {
 	{
 		$isMob = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), "mobile"));
 		if($isMob){
-			//redirect(base_url('login/login_mobile'));
+			redirect(base_url('login/login_mobile'));
 			$this->load->view('login');
 		}else{
 			$this->load->view('login');
@@ -57,13 +57,14 @@ class Login extends CI_Controller {
                  'image' => $isi->image,
                  'token' => $token,
                  'id' => $isi->id_admin,
+                 'darkmode' => $isi->darkmode,
          );
 				 //print_r($arraydata);
          $this->session->set_userdata($arraydata);
       }
 			$isMob = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), "mobile"));
 			if($isMob){
-				//redirect(base_url('mobile/home'));
+				redirect(base_url('mobile/home'));
 				redirect(base_url('home'));
 			}else{
 				redirect(base_url('home'));
@@ -72,7 +73,7 @@ class Login extends CI_Controller {
       echo"<script>alert('Anda Gagal Login')</script>";
 			$isMob = is_numeric(strpos(strtolower($_SERVER['HTTP_USER_AGENT']), "mobile"));
 			if($isMob){
-				//redirect(base_url('login_mobile'));
+				redirect(base_url('login_mobile'));
 				redirect(base_url('home'));
 			}else{
 				redirect(base_url('login'));

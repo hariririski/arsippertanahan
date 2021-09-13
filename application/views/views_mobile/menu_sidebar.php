@@ -9,71 +9,17 @@
       </div>
       <div class="align-self-center ms-auto">
         <a href="#"
-        data-bs-toggle="dropdown"
         class="icon gradient-blue shadow-bg shadow-bg-s rounded-m">
         <img src="<?php echo base_url(); ?><?php echo $this->session->userdata("image"); ?>" width="45" class="rounded-m" alt="img">
       </a>
-
-      <div class="dropdown-menu">
-        <div class="card card-style shadow-m mt-1 me-1">
-          <div class="list-group list-custom list-group-s list-group-flush rounded-xs px-3 py-1">
-            <a href="page-wallet.html" class="list-group-item">
-              <i class="has-bg gradient-green shadow-bg shadow-bg-xs color-white rounded-xs bi bi-credit-card"></i>
-              <strong class="font-13">Wallet</strong>
-            </a>
-            <a href="page-activity.html" class="list-group-item">
-              <i class="has-bg gradient-blue shadow-bg shadow-bg-xs color-white rounded-xs bi bi-graph-up"></i>
-              <strong class="font-13">Activity</strong>
-            </a>
-            <a href="page-profile.html" class="list-group-item">
-              <i class="has-bg gradient-yellow shadow-bg shadow-bg-xs color-white rounded-xs bi bi-person-circle"></i>
-              <strong class="font-13">Account</strong>
-            </a>
-            <a href="page-signin-1.html" class="list-group-item">
-              <i class="has-bg gradient-red shadow-bg shadow-bg-xs color-white rounded-xs bi bi-power"></i>
-              <strong class="font-13">Log Out</strong>
-            </a>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <div class="divider divider-margins mb-3 opacity-50"></div>
 
   <div class="list-group list-custom list-menu-large">
-    <a href="index-waves.html" id="nav-welcome" class="list-group-item">
-      <i class="bi bg-red-dark shadow-bg shadow-bg-xs bi-heart-fill"></i>
-      <div>Welcome</div>
-      <i class="bi bi-chevron-right"></i>
-    </a>
-    <a href="pages.html" id="nav-pages" class="list-group-item">
-      <i class="bi bg-green-dark shadow-bg shadow-bg-xs bi-star-fill"></i>
-      <div>Page Packs</div>
-      <i class="bi bi-chevron-right"></i>
-    </a>
-    <a href="#" id="nav-homes" data-submenu="sub1" class="list-group-item">
-      <i class="bi bg-blue-dark shadow-bg shadow-bg-xs bi-house-fill"></i>
-      <div>Home Styles</div>
-      <i class="bi bi-plus font-18"></i>
-    </a>
-    <div class="list-submenu" id="sub1">
-      <a href="index-waves.html" id="nav-waves" class="list-group-item">
-        <div class="ps-4">Waves</div>
-        <i class="bi bi-chevron-right"></i>
-      </a>
-      <a href="index.html" id="nav-classic" class="list-group-item">
-        <div class="ps-4">Classic</div>
-        <i class="bi bi-chevron-right"></i>
-      </a>
-    </div>
-    <a href="components.html" id="nav-comps" class="list-group-item">
-      <i class="bi bg-brown-dark shadow-bg shadow-bg-xs bi-gear-wide-connected"></i>
-      <div>Components</div>
-      <i class="bi bi-chevron-right"></i>
-    </a>
-    <a data-bs-toggle="offcanvas" data-bs-target="#menu-highlights" href="#" class="list-group-item">
-      <i class="bi bg-magenta-dark shadow-bg shadow-bg-xs bi-droplet"></i>
-      <div>Color Theme</div>
+    <a href="<?php echo base_url(); ?>home" id="nav-welcome" class="list-group-item">
+      <i class="bi bg-red-dark shadow-bg shadow-bg-xs bi bi-house-fill"></i>
+      <div>Home Deskop</div>
       <i class="bi bi-chevron-right"></i>
     </a>
     <a href="#" class="list-group-item" data-toggle-theme data-trigger-switch="switch-1">
