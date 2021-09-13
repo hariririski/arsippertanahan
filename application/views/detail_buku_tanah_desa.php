@@ -65,7 +65,7 @@
                                               <th>Desa</th>
                                               <th>No Hak</th>
                                               <th>Jenis Hak</th>
-                                              <th>Pemilik Pertama</th>
+                                              <th width="20%">Pemilik Pertama</th>
                                               <th>Detail</th>
                                           </tr>
                                       </thead>
@@ -81,7 +81,12 @@
                                               <td><?php echo $buku_tanah->nama_desa; ?></td>
                                               <td><?php echo $buku_tanah->no_hak; ?></td>
                                               <td><?php echo $buku_tanah->nama_jenis_hak; ?></td>
-                                              <td><?php echo $buku_tanah->pemilik_pertama; ?></td>
+                                              <td>
+                                                <?php
+                                                    $count = 0;
+                                                    echo $hasil=str_replace("-", "<br>", $buku_tanah->pemilik_pertama, $count);
+                                                ?>
+                                              </td>
                                               <td> <a href="<?php echo base_url(); ?>buku_tanah/detail_buku_tanah/<?php echo $buku_tanah->id_buku_tanah; ?>" class="waves-effect waves-light btn green btn tooltipped"data-position="bottom" data-delay="50" data-tooltip="Detail"><i class="material-icons dp48">remove_red_eye</i></a></td>
                                           </tr>
                                           <?php

@@ -47,7 +47,13 @@
               <h5 class="col-4 text-start font-15">Nomor Hak</h5>
               <h5 class="col-8 text-end font-14 font-400"><span class="bg-green-dark px-2 rounded-s"><?php echo $buku_tanah->no_hak; ?></span></h5>
               <h5 class="col-4 text-start font-15">Pemilik Pertama</h5>
-              <h5 class="col-8 text-end font-14 font-400"><span class="bg-green-dark px-2 rounded-s"><?php echo $buku_tanah->pemilik_pertama; ?></span></h5>
+              <h5 class="col-8 text-end font-14 font-400">
+                <span class="bg-green-dark px-2 rounded-s">
+                  <?php
+                      $count = 0;
+                      echo $hasil=str_replace("-", "<br>", $buku_tanah->pemilik_pertama, $count);
+                  ?>
+                </span></h5>
               <h5 class="col-4 text-start font-15">Provinsi/Kota/Kecamatan/Desa</h5>
               <h5 class="col-8 text-end font-14 opacity-60 font-400"><?php echo $buku_tanah->nama_prov; ?> / <?php echo $buku_tanah->nama_kota; ?> / <?php echo $buku_tanah->nama_kec; ?> / <?php echo $buku_tanah->nama_desa; ?></h5>
               <h5 class="col-4 text-start font-15">Kondisi Arsip</h5>
