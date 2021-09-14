@@ -35,7 +35,7 @@
             ?>
             <div class="d-flex">
               <div class="mt-1">
-                <h1 class="mb-0">Lemari</h1>
+                <h1 class="mb-0"><?php echo $lemari->nama_lemari; ?></h1>
               </div>
               <div class="ms-auto">
                 <?php
@@ -71,8 +71,6 @@
                 }
                 ?>
               </h5>
-              <h5 class="col-4 text-start font-15">Jumlah Peminjaman</h5>
-              <h5 class="col-8 text-end font-14 opacity-60 font-400"></h5>
               <h5 class="col-4 text-start font-15">Keterangan</h5>
               <h5 class="col-8 text-end font-14 opacity-60 font-400"><?php echo $lemari->keterangan; ?></h5>
             </div>
