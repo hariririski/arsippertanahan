@@ -88,15 +88,7 @@
                   }
                 ?>
               </h5>
-              <h5 class="col-4 text-start font-15">QrCode</h5>
-              <h5 class="col-8 text-end font-14  ">
-                <?php
-                $qrcode="BT-".$buku_tanah->id_buku_tanah;
-                ?>
-                <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
-                    <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px"><br>
-                </a>
-              </h5>
+              
 
             </div>
             <div class="divider"></div>
