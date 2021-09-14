@@ -82,7 +82,7 @@
       }
 
       function lihat_bundel($id_baris){
-        $query=$this->db->query("SELECT *, bundel.qrcode as qrbundel FROM lemari INNER JOIN baris on lemari.id_lemari=baris.id_lemari INNER JOIN bundel on bundel.id_baris=baris.id_baris INNER JOIN desa on desa.kode_desa=bundel.kode_desa where bundel.id_baris='$id_baris'");
+        $query=$this->db->query("SELECT *, bundel.qrcode as qrbundel FROM lemari INNER JOIN baris on lemari.id_lemari=baris.id_lemari INNER JOIN bundel on bundel.id_baris=baris.id_baris INNER JOIN desa on desa.kode_desa=bundel.kode_desa where bundel.id_baris='$id_baris' order by bundel.nama_bundel ASC");
         return $query->result();
 
       }
