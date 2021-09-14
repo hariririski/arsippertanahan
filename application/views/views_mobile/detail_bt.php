@@ -38,7 +38,12 @@
                 <h1 class="mb-0">Buku Tanah</h1>
               </div>
               <div class="ms-auto">
-                <img src="<?php echo base_url(); ?>assets_m/images/pictures/arsip.png" width="60" class="rounded-m shadow-xl">
+                <?php
+                $qrcode="BT-".$buku_tanah->id_buku_tanah;
+                ?>
+                <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
+                    <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100" class="rounded-m shadow-xl"><br>
+                </a>
               </div>
             </div>
             <div class="row mb-3 mt-4">
@@ -108,7 +113,12 @@
             ?>
             <div class="d-flex mb-4">
               <div>
-                <img src="<?php echo base_url(); ?>assets_m/images/pictures/arsip.png" width="80" class="rounded-s shadow-xl">
+                <?php
+                $qrcode="SU-".$su->id_surat_ukur;
+                ?>
+                <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
+                    <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px" class="rounded-s shadow-xl"><br>
+                </a>
               </div>
               <div class="ps-3 w-100">
                 <h1 class="mb-0"><?php echo $su->nomor; ?>/<?php echo $su->tahun; ?></h1>
@@ -140,14 +150,6 @@
                     }
                   ?>
                 </h5>
-                <h5 class="font-500 font-14 pt-1 text-end">
-                  <?php
-                  $qrcode="SU-".$su->id_surat_ukur;
-                  ?>
-                  <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
-                      <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px"><br>
-                  </a>
-                </h5>
               </div>
             </div>
 
@@ -165,7 +167,12 @@
             ?>
               <div class="d-flex mb-4">
                 <div>
-                  <img src="<?php echo base_url(); ?>assets_m/images/pictures/arsip.png" width="80" class="rounded-s shadow-xl">
+                  <?php
+                  $qrcode="W-".$warkah->id_warkah;
+                  ?>
+                  <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
+                      <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px" class="rounded-s shadow-xl"><br>
+                  </a>
                 </div>
                 <div class="ps-3 w-100">
                   <h1 class="mb-0"><?php echo $warkah->nomor; ?>/<?php echo $warkah->tahun; ?></h1>
@@ -196,14 +203,6 @@
                           echo '<span class="label label-danger">Hilang</span>';
                       }
                     ?>
-                  </h5>
-                  <h5 class="font-500 font-14 pt-1 text-end">
-                    <?php
-                    $qrcode="W-".$warkah->id_warkah;
-                    ?>
-                    <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
-                        <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px"><br>
-                    </a>
                   </h5>
                 </div>
               </div>
