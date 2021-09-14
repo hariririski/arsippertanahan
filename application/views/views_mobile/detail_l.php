@@ -81,7 +81,7 @@
                     <?php
                     $ci =& get_instance();
                     $ci->load->model('M_lemari');
-                    $data['data_baris']=$ci->M_lemari->lihat_bundel($baris->id_baris);
+                    $data['data_baris']=$ci->M_lemari->m_lihat_bundel($baris->id_baris,$baris->id_lemari);
                     ?>
                     <div class="table-responsive">
                       <table class="table color-theme mb-2">

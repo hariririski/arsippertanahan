@@ -86,6 +86,12 @@
         return $query->result();
 
       }
+
+      function m_lihat_bundel($id_baris,$id_lemari){
+        $query=$this->db->query("SELECT * FROM lemari INNER JOIN baris on lemari.id_lemari=baris.id_lemari INNER JOIN bundel on bundel.id_baris=baris.id_baris INNER JOIN desa on desa.kode_desa=bundel.kode_desa where bundel.id_baris='$id_baris' and lemari.id_lemari='$id_lemari'  order by bundel.nama_bundel ASC");
+        return $query->result();
+
+      }
       function tambah_bundel($id_baris,$id_bundel){
         $nama_bundel = $this->input->post('nama_bundel');
         $kode_desa = $this->input->post('kode_desa');
