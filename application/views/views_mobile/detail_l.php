@@ -44,26 +44,14 @@
             <div class="row mb-3 mt-4">
               <h5 class="col-4 text-start font-15">Nama Lemari</h5>
               <h5 class="col-8 text-end font-14 opacity-60 font-400"><?php echo $lemari->nama_lemari; ?></h5>
-              <h5 class="col-4 text-start font-15">Nomor Hak</h5>
-              <h5 class="col-8 text-end font-14 font-400"><span class="bg-green-dark px-2 rounded-s"></span></h5>
-              <h5 class="col-4 text-start font-15">Pemilik Pertama</h5>
-              <h5 class="col-8 text-end font-14 font-400">
-                <span class="bg-green-dark px-2 rounded-s">
-
-                </span></h5>
-              <h5 class="col-4 text-start font-15">Provinsi/Kota/Kecamatan/Desa</h5>
+              <h5 class="col-4 text-start font-15">Jumlah Baris</h5>
               <h5 class="col-8 text-end font-14 opacity-60 font-400"></h5>
-              <h5 class="col-4 text-start font-15">Kondisi Arsip</h5>
+              <h5 class="col-4 text-start font-15">Jumlah Bundel</h5>
               <h5 class="col-8 text-end font-14 opacity-60 font-400"></h5>
-              <h5 class="col-4 text-start font-15">Lokasi Arsip</h5>
+              <h5 class="col-4 text-start font-15">Jumlah Peminjaman</h5>
               <h5 class="col-8 text-end font-14 opacity-60 font-400"></h5>
-              <h5 class="col-4 text-start font-15">Valid</h5>
-              <h5 class="col-8 text-end font-14 opacity-60 font-400 ">
-              </h5>
-              <h5 class="col-4 text-start font-15">Status</h5>
-              <h5 class="col-8 text-end font-14 opacity-60 font-400 ">
-
-              </h5>
+              <h5 class="col-4 text-start font-15">Keterangan</h5>
+              <h5 class="col-8 text-end font-14 opacity-60 font-400"><?php echo $lemari->keterangan; ?></h5>
               <h5 class="col-4 text-start font-15">QrCode</h5>
               <h5 class="col-8 text-end font-14  ">
                 <?php
@@ -78,93 +66,69 @@
             <div class="divider"></div>
             <?php } ?>
 
-            <div class="row mb-3 mt-4">
-              <h5 class="col-4 text-start font-15"></h5>
-              <h5 class="col-8 text-end font-20 ">Surat Ukur</h5>
-            </div>
-
-
-            <div class="d-flex mb-4">
-              <div>
-                <img src="<?php echo base_url(); ?>assets_m/images/pictures/arsip.png" width="80" class="rounded-s shadow-xl">
-              </div>
-              <div class="ps-3 w-100">
-                <h1 class="mb-0"></h1>
-                <p class="mb-0 color-highlight font-11">NIB : </p>
-                <p class="mb-0 color-highlight font-11">Desa : </p>
-                <p class="mb-0 color-highlight font-11">Kondisi : </p>
-                <p class="mb-0 color-highlight font-11">Valid :
-
-                </p>
-                <h5 class="font-500 font-14 pt-1">Lokasi : </h5>
-                <h5 class="font-500 font-14 pt-1"> Status :
-
-                </h5>
-                <h5 class="font-500 font-14 pt-1 text-end">
-
-
-                </h5>
-              </div>
-            </div>
-
-
-
-            <div class="divider mt-4"></div>
-            <div class="row mb-3 mt-4">
-              <h5 class="col-4 text-start font-15"></h5>
-              <h5 class="col-8 text-end font-20 ">Warkah</h5>
-            </div>
-
-              <div class="d-flex mb-4">
-                <div>
-                  <img src="<?php echo base_url(); ?>assets_m/images/pictures/arsip.png" width="80" class="rounded-s shadow-xl">
-                </div>
-                <div class="ps-3 w-100">
-                  <h1 class="mb-0"></h1>
-                  <p class="mb-0 color-highlight font-11">Kondisi : </p>
-                  <p class="mb-0 color-highlight font-11">Keterangan : </p>
-                  <p class="mb-0 color-highlight font-11">Kondisi :</p>
-                  <p class="mb-0 color-highlight font-11">
-                    Valid :
-
-                  <h5 class="font-500 font-14 pt-1">
-                    Status :
-
-                  </h5>
-                  <h5 class="font-500 font-14 pt-1 text-end">
-                    <
-                  </h5>
+            <div class="accordion accordion-m border-0" id="accordion-group-7">
+              <div class="accordion-item border border-fade-highlight border-bottom-0 ">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion7-1" aria-expanded="false">
+                  <i class="bi bi-heart-fill color-red-dark pe-3 font-14"></i>
+                  <span class="font-600 font-13">Accordion Item Text</span>
+                  <i class="bi bi-plus font-20"></i>
+                </button>
+                <div id="accordion7-1" class="accordion-collapse collapse" data-bs-parent="#accordion-group-7" style="">
+                  <p class="px-3 mb-0 pb-3 pt-1">
+                    This is the accordion body. It can support most content you want without restrictions. You can use
+                    images, videos lists or whatever you want.
+                  </p>
                 </div>
               </div>
-
-
-            <div class="divider mt-4"></div>
-            <div class="row mb-3 mt-4">
-              <h5 class="col-4 text-start font-15"></h5>
-              <h5 class="col-8 text-end font-20 ">Peminjaman</h5>
+              <div class="accordion-item border border-fade-highlight border-bottom-0">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion7-2" aria-expanded="false">
+                  <i class="bi bi-star-fill color-yellow-dark pe-3 font-14"></i>
+                  <span class="font-600 font-13">Accordion Item Image</span>
+                  <i class="bi bi-plus font-20"></i>
+                </button>
+                <div id="accordion7-2" class="accordion-collapse collapse" data-bs-parent="#accordion-group-7" style="">
+                  <div class="p-2 px-3"><img src="images/pictures/1w.jpg" class="img-fluid rounded-s"></div>
+                  <h5 class="px-3 font-700">This is an Image</h5>
+                  <p class="px-3 mb-0 pb-3 opacity-70">
+                    This is the accordion body. It can support most content you want without restrictions. You can use
+                    images, videos lists or whatever you want.
+                  </p>
+                </div>
+              </div>
+              <div class="accordion-item border border-fade-highlight ">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion7-3" aria-expanded="false">
+                  <i class="bi bi-check-circle-fill color-green-dark pe-3 font-14"></i>
+                  <span class="font-600 font-13">Accordion Item Grid</span>
+                  <i class="bi bi-arrow-down-short font-20"></i>
+                </button>
+                <div id="accordion7-3" class="accordion-collapse collapse" data-bs-parent="#accordion-group-7" style="">
+                  <div class="row px-3 pb-3 pt-1">
+                    <div class="col-4"><img src="images/pictures/1s-1.jpg" class="img-fluid rounded-xs"></div>
+                    <div class="col-4"><img src="images/pictures/2s.jpg" class="img-fluid rounded-xs"></div>
+                    <div class="col-4"><img src="images/pictures/3s.jpg" class="img-fluid rounded-xs"></div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div class="d-flex mb-4">
-              <div>
-                <img src="<?php echo base_url(); ?>assets_m/images/pictures/14s.jpg" width="80" class="rounded-s shadow-xl">
-              </div>
-              <div class="ps-3 w-100">
-                <h1 class="mb-0">
+            <div class="divider"></div>
 
-                </h1>
-                <p class="mb-0 color-highlight font-11">Pinjam : </p>
-                <p class="mb-0 color-highlight font-11">Kembali : </p>
-                <p class="mb-0 color-highlight font-11">DiKembalikan :</p>
-                <p class="mb-0 color-highlight font-11">Selisih :  Hari</p>
-                <p class="mb-0 color-highlight font-11">Peminjam : </p>
-                <h5 class="font-500 font-14 pt-1">
-
-              </h5>
-              <h5 class="font-500 font-14 pt-1 text-end">
-
-              </h5>
+            <div class="accordion accordion-m border-0" id="accordion-group-7">
+              <div class="accordion-item border border-fade-highlight border-bottom-0 rounded-top rounded-m rounded-bottom rounded-m">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#peminjaman" aria-expanded="false">
+                  <i class="bi bi-heart-fill color-red-dark pe-3 font-14"></i>
+                  <span class="font-600 font-13">Data Peminjaman</span>
+                  <i class="bi bi-plus font-20"></i>
+                </button>
+                <div id="peminjaman" class="accordion-collapse collapse" data-bs-parent="#accordion-group-7" style="">
+                  <p class="px-3 mb-0 pb-3 pt-1">
+                    This is the accordion body. It can support most content you want without restrictions. You can use
+                    images, videos lists or whatever you want.
+                  </p>
+                </div>
               </div>
             </div>
+
 
             <!-- <div class="divider"></div>
             <a href="#" class="btn btn-full btn-l rounded-s font-800 text-uppercase gradient-highlight shadow-bg shadow-bg-m">Kembalikan/Susun Buku Tanah</a>
