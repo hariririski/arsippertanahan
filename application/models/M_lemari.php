@@ -10,6 +10,16 @@
         return $query->result();
       }
 
+      function jumlah_baris($id_lemari){
+        $query=$this->db->query("SELECT count(baris.id_baris) as jumlah_baris from baris left join lemari on lemari.id_lemari=baris.id_lemari WHERE lemari.id_lemari='$id_lemari'");
+        return $query->result();
+      }
+
+      function jumlah_bundel($id_lemari){
+        $query=$this->db->query("SELECT count(bundel.id_bundel) as jumlah_bundel from baris left join lemari on lemari.id_lemari=baris.id_lemari left join bundel on bundel.id_baris=baris.id_baris WHERE lemari.id_lemari='$id_lemari'");
+        return $query->result();
+      }
+
       function lihat_lemari($id_lemari){
         $query=$this->db->query("SELECT * FROM `lemari` where lemari.id_lemari='$id_lemari'");
         return $query->result();

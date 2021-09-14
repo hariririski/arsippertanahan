@@ -45,9 +45,27 @@
               <h5 class="col-4 text-start font-15">Nama Lemari</h5>
               <h5 class="col-8 text-end font-14 opacity-60 font-400"><?php echo $lemari->nama_lemari; ?></h5>
               <h5 class="col-4 text-start font-15">Jumlah Baris</h5>
-              <h5 class="col-8 text-end font-14 opacity-60 font-400"></h5>
+              <h5 class="col-8 text-end font-14 opacity-60 font-400">
+                <?php
+                $ci =& get_instance();
+                $ci->load->model('M_lemari');
+                $data['jumlah_baris']=$ci->M_lemari->jumlah_baris($lemari->id_lemari);
+                foreach(  $data['jumlah_baris'] as $jumlah_baris){
+                  echo $jumlah_baris->jumlah_baris." Baris";
+                }
+                ?>
+              </h5>
               <h5 class="col-4 text-start font-15">Jumlah Bundel</h5>
-              <h5 class="col-8 text-end font-14 opacity-60 font-400"></h5>
+              <h5 class="col-8 text-end font-14 opacity-60 font-400">
+                <?php
+                $ci =& get_instance();
+                $ci->load->model('M_lemari');
+                $data['jumlah_bundel']=$ci->M_lemari->jumlah_bundel($lemari->id_lemari);
+                foreach(  $data['jumlah_bundel'] as $jumlah_bundel){
+                  echo $jumlah_bundel->jumlah_bundel." Bundel";
+                }
+                ?>
+              </h5>
               <h5 class="col-4 text-start font-15">Jumlah Peminjaman</h5>
               <h5 class="col-8 text-end font-14 opacity-60 font-400"></h5>
               <h5 class="col-4 text-start font-15">Keterangan</h5>
@@ -108,7 +126,7 @@
                       </table>
                     </div>
 
-                
+
                 </div>
               </div>
             <?php } ?>
