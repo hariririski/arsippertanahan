@@ -38,7 +38,12 @@
                 <h1 class="mb-0">Lemari</h1>
               </div>
               <div class="ms-auto">
-                <img src="<?php echo base_url(); ?>assets_m/images/pictures/arsip.png" width="60" class="rounded-m shadow-xl">
+                <?php
+                $qrcode="L-".$lemari->id_lemari;
+                ?>
+                <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
+                    <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" class="rounded-m shadow-xl" width="100px"><br>
+                </a>
               </div>
             </div>
             <div class="row mb-3 mt-4">
@@ -70,16 +75,6 @@
               <h5 class="col-8 text-end font-14 opacity-60 font-400"></h5>
               <h5 class="col-4 text-start font-15">Keterangan</h5>
               <h5 class="col-8 text-end font-14 opacity-60 font-400"><?php echo $lemari->keterangan; ?></h5>
-              <h5 class="col-4 text-start font-15">QrCode</h5>
-              <h5 class="col-8 text-end font-14  ">
-                <?php
-                $qrcode="L-".$lemari->id_lemari;
-                ?>
-                <a href="<?php echo site_url('Code/QRcode/'.$qrcode); ?>">
-                    <img style=" border: 1px solid #555;"src="<?php echo base_url('Code/QRcode/'.$qrcode);?>" width="100px"><br>
-                </a>
-              </h5>
-
             </div>
             <div class="divider"></div>
             <?php } ?>
