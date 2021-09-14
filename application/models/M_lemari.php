@@ -24,6 +24,10 @@
         $query=$this->db->query("SELECT * FROM `baris` where baris.id_baris='$id_baris' ");
         return $query->result();
       }
+      function m_baris($id){
+        $query=$this->db->query("SELECT * FROM `baris` left join lemari on lemari.id_lemari=baris.id_lemari where baris.id_lemari='$id' order by baris.nama_baris ASC");
+        return $query->result();
+      }
 
       function detail_bundel($id_bundel){
         $query=$this->db->query("SELECT * FROM `bundel` WHERE bundel.id_bundel='$id_bundel'");

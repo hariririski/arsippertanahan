@@ -67,48 +67,51 @@
             <?php } ?>
 
             <div class="accordion accordion-m border-0" id="accordion-group-7">
+              <?php
+                foreach($baris as $baris){
+              ?>
               <div class="accordion-item border border-fade-highlight border-bottom-0 ">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion7-1" aria-expanded="false">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion7-<?php echo $baris->id_baris; ?>" aria-expanded="false">
                   <i class="bi bi-heart-fill color-red-dark pe-3 font-14"></i>
-                  <span class="font-600 font-13">Accordion Item Text</span>
+                  <span class="font-600 font-13">Baris <?php echo $baris->nama_baris; ?></span>
                   <i class="bi bi-plus font-20"></i>
                 </button>
-                <div id="accordion7-1" class="accordion-collapse collapse" data-bs-parent="#accordion-group-7" style="">
+                <div id="accordion7-<?php echo $baris->id_baris; ?>" class="accordion-collapse collapse " data-bs-parent="#accordion-group-7" style="">
                   <p class="px-3 mb-0 pb-3 pt-1">
-                    This is the accordion body. It can support most content you want without restrictions. You can use
-                    images, videos lists or whatever you want.
+                    <?php
+                    $ci =& get_instance();
+                    $ci->load->model('M_lemari');
+                    $data['data_baris']=$ci->M_lemari->lihat_bundel($baris->id_baris);
+                    ?>
+                    <div class="table-responsive">
+                      <table class="table color-theme mb-2">
+                        <thead>
+                          <tr>
+                            <th class="border-fade-blue" scope="col">Bundel</th>
+                            <th class="border-fade-blue" scope="col">Jumlah Arsip</th>
+                            <th class="border-fade-blue text-center" scope="col">Valid</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php
+                          foreach($data['data_baris'] as $nilai){
+                          ?>
+                          <tr class="border-fade-blue">
+                            <td><?php echo $nilai->nama_bundel; ?></td>
+                            <td>50</td>
+                            <td>35%</td>
+                          </tr>
+                        <?php
+                      }
+                        ?>
+                        </tbody>
+                      </table>
+                    </div>
+
                   </p>
                 </div>
               </div>
-              <div class="accordion-item border border-fade-highlight border-bottom-0">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion7-2" aria-expanded="false">
-                  <i class="bi bi-star-fill color-yellow-dark pe-3 font-14"></i>
-                  <span class="font-600 font-13">Accordion Item Image</span>
-                  <i class="bi bi-plus font-20"></i>
-                </button>
-                <div id="accordion7-2" class="accordion-collapse collapse" data-bs-parent="#accordion-group-7" style="">
-                  <div class="p-2 px-3"><img src="images/pictures/1w.jpg" class="img-fluid rounded-s"></div>
-                  <h5 class="px-3 font-700">This is an Image</h5>
-                  <p class="px-3 mb-0 pb-3 opacity-70">
-                    This is the accordion body. It can support most content you want without restrictions. You can use
-                    images, videos lists or whatever you want.
-                  </p>
-                </div>
-              </div>
-              <div class="accordion-item border border-fade-highlight ">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion7-3" aria-expanded="false">
-                  <i class="bi bi-check-circle-fill color-green-dark pe-3 font-14"></i>
-                  <span class="font-600 font-13">Accordion Item Grid</span>
-                  <i class="bi bi-arrow-down-short font-20"></i>
-                </button>
-                <div id="accordion7-3" class="accordion-collapse collapse" data-bs-parent="#accordion-group-7" style="">
-                  <div class="row px-3 pb-3 pt-1">
-                    <div class="col-4"><img src="images/pictures/1s-1.jpg" class="img-fluid rounded-xs"></div>
-                    <div class="col-4"><img src="images/pictures/2s.jpg" class="img-fluid rounded-xs"></div>
-                    <div class="col-4"><img src="images/pictures/3s.jpg" class="img-fluid rounded-xs"></div>
-                  </div>
-                </div>
-              </div>
+            <?php } ?>
             </div>
 
             <div class="divider"></div>

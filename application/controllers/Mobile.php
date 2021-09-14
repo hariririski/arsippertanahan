@@ -75,8 +75,13 @@ class Mobile extends CI_Controller {
 	public function detail_l(){
 		$id=$this->uri->segment('3');
 		$data['lemari'] = $this->M_lemari->detail_lemari($id);
+		$data['baris'] = $this->M_lemari->m_baris($id);
+		//$data['jumlah_baris'] = $this->M_lemari->jumlah_baris($id);
+		//$data['jumlah_bundel'] = $this->M_lemari->jumlah_bundel($id);
 		$this->load->view('views_mobile/detail_l',$data);
 	}
+
+
 
 	public function detail_b(){
 		$id=$this->uri->segment('3');
