@@ -70,6 +70,23 @@ class Mobile extends CI_Controller {
 			$data['histori'] = $this->M_pinjam->histori($id_buku_tanah,$id_surat_ukur,$id_warkah);
 			$this->load->view('views_mobile/detail_bt',$data);
 	}
+
+	public function detail_l(){
+		$id=$this->uri->segment('3');
+		$data['lemari'] = $this->M_lemari->detail_lemari($id);
+		$this->load->view('views_mobile/detail_l',$data);
+	}
+
+	public function detail_b(){
+		$id=$this->uri->segment('3');
+		$this->load->view('views_mobile/detail_b');
+	}
+
+	public function detail_Bndl(){
+		$id=$this->uri->segment('3');
+		$this->load->view('views_mobile/detail_Bndl');
+	}
+
 	public function aktivitas(){
 			$this->load->view('views_mobile/aktivitas');
 	}

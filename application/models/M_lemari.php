@@ -15,6 +15,11 @@
         return $query->result();
       }
 
+      function detail_lemari($id_lemari){
+        $query=$this->db->query("SELECT * FROM `lemari` where lemari.id_lemari='$id_lemari'");
+        return $query->result();
+      }
+
       function detail_baris($id_baris){
         $query=$this->db->query("SELECT * FROM `baris` where baris.id_baris='$id_baris' ");
         return $query->result();
