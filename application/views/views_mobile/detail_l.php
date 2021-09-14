@@ -77,14 +77,14 @@
                   <i class="bi bi-plus font-20"></i>
                 </button>
                 <div id="accordion7-<?php echo $baris->id_baris; ?>" class="accordion-collapse collapse " data-bs-parent="#accordion-group-7" style="">
-                  <p class="px-3 mb-0 pb-3 pt-1">
+
                     <?php
                     $ci =& get_instance();
                     $ci->load->model('M_lemari');
                     $data['data_baris']=$ci->M_lemari->m_lihat_bundel($baris->id_baris,$baris->id_lemari);
                     ?>
                     <div class="table-responsive">
-                      <table class="table color-theme mb-2">
+                      <table class="table color-theme border-blue-dark mb-0" >
                         <thead>
                           <tr>
                             <th class="border-fade-blue" scope="col">Bundel</th>
@@ -108,7 +108,7 @@
                       </table>
                     </div>
 
-                  </p>
+                
                 </div>
               </div>
             <?php } ?>
