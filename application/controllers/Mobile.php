@@ -21,6 +21,7 @@ class Mobile extends CI_Controller {
 			$this->load->model('M_kondisi');
 			$this->load->model('M_buku_tanah');
 			$this->load->model('M_pinjam');
+			$this->load->model('M_lemari');
 			$this->load->helper('string');
 	}
 	public function index(){
@@ -112,7 +113,7 @@ class Mobile extends CI_Controller {
 							if($isi->jumlah==1){
 								$data="BT-".$id;
 							}else{
-								$data="NULL".$id;
+								$data="BUKAN-";
 							}
 
 					 }
@@ -129,7 +130,7 @@ class Mobile extends CI_Controller {
 								$data="BT-".$isi->id_buku_tanah;
 							}
 						}else{
-							$data="NULL".$id;
+							$data="BUKAN-";
 						}
 					 }
 				}
@@ -145,15 +146,45 @@ class Mobile extends CI_Controller {
 								$data="BT-".$isi->id_buku_tanah;
 							}
 						}else{
-							$data="NULL".$id;
+							$data="BUKAN-";
 						}
 					 }
 				}
 				elseif ($type=="L") {
+					$sql="SELECT *, COUNT(lemari.id_lemari)as jumlah from lemari where lemari.id_lemari='$id'";
+					$query = $this->db->query($sql);
+					$data=$query->result();
+					foreach ($data as $isi) {
+						if($isi->jumlah==1){
+							$data="L-".$isi->id_lemari;
+						}else{
+							$data="BUKAN-";
+						}
+					 }
 				}
 				elseif ($type=="B") {
+					$sql="SELECT *, COUNT(baris.id_baris)as jumlah from baris where baris.id_baris='$id'";
+					$query = $this->db->query($sql);
+					$data=$query->result();
+					foreach ($data as $isi) {
+						if($isi->jumlah==1){
+							$data="B-".$isi->id_baris;
+						}else{
+							$data="BUKAN-";
+						}
+					 }
 				}
 				elseif ($type=="Bndl") {
+					$sql="SELECT *, COUNT(lemari.id_bundel)as jumlah from bundel where bundel.id_bundel='$id'";
+					$query = $this->db->query($sql);
+					$data=$query->result();
+					foreach ($data as $isi) {
+						if($isi->jumlah==1){
+							$data="Bndl-".$isi->id_bundel;
+						}else{
+							$data="BUKAN-";
+						}
+					 }
 				}
 				else{
 					$data="BUKAN"."-";

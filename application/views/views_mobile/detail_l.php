@@ -43,7 +43,7 @@
             </div>
             <div class="row mb-3 mt-4">
               <h5 class="col-4 text-start font-15">Nama Lemari</h5>
-              <h5 class="col-8 text-end font-14 opacity-60 font-400"><?php echo $buku_tanah->nama_lemari; ?></h5>
+              <h5 class="col-8 text-end font-14 opacity-60 font-400"><?php echo $lemari->nama_lemari; ?></h5>
               <h5 class="col-4 text-start font-15">Nomor Hak</h5>
               <h5 class="col-8 text-end font-14 font-400"><span class="bg-green-dark px-2 rounded-s"></span></h5>
               <h5 class="col-4 text-start font-15">Pemilik Pertama</h5>
@@ -165,7 +165,7 @@
               </h5>
               </div>
             </div>
-            
+
             <!-- <div class="divider"></div>
             <a href="#" class="btn btn-full btn-l rounded-s font-800 text-uppercase gradient-highlight shadow-bg shadow-bg-m">Kembalikan/Susun Buku Tanah</a>
             <div class="divider"></div>
