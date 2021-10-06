@@ -23,7 +23,7 @@
           <div class="splide__track">
             <div class="splide__list">
               <div class="splide__slide">
-                <div class="card card-style m-0 bg-5 shadow-card shadow-card-m" style="height:200px">
+                <div class="card card-style m-0 bg-6 shadow-card shadow-card-m" style="height:200px">
                   <div class="card-center">
                     <div class="bg-theme px-3 py-2 rounded-end d-inline-block">
                     <a class="color-theme" data-bs-toggle="collapse" href="#balance3" aria-controls="balance2">Jumlah Buku Tanah</a>
@@ -63,7 +63,7 @@
               </div>
 
               <div class="splide__slide">
-                <div class="card card-style m-0 bg-5 shadow-card shadow-card-m" style="height:200px">
+                <div class="card card-style m-0 bg-6 shadow-card shadow-card-m" style="height:200px">
 
                   <div class="card-center">
                     <div class="bg-theme px-3 py-2 rounded-end d-inline-block">
@@ -105,7 +105,7 @@
                 </div>
               </div>
               <div class="splide__slide">
-                <div class="card card-style m-0 bg-5 shadow-card shadow-card-m" style="height:200px">
+                <div class="card card-style m-0 bg-6 shadow-card shadow-card-m" style="height:200px">
 
                   <div class="card-center">
                     <div class="bg-theme px-3 py-2 rounded-end d-inline-block">
@@ -210,7 +210,7 @@
             <a href="#" class="d-flex py-1" data-bs-toggle="offcanvas" data-bs-target="#menu-activity-1">
               <div class="align-self-center">
                 <span class="icon gradient-red me-2 shadow-bg shadow-bg-s rounded-s">
-                  <img src="../assets_m/images/pictures/6s.jpg" width="45" class="rounded-s" alt="img">
+                  <img src="../assets_m/images/pictures/doc.png" width="45" class="rounded-s" alt="img">
                 </span>
               </div>
               <div class="align-self-center ps-1">

@@ -8,13 +8,13 @@
             <!-- Logo you can find that scss in header.scss -->
             <!-- ============================================================== -->
             <a href="javascript:void(0)" class="brand-logo">
-                <span class="icon">
-                    <img class="light-logo" src="<?php echo base_url(); ?>assets/images/logo-light-icon.png">
-                    <img class="dark-logo" src="<?php echo base_url(); ?>assets/images/logo-icon.png">
-                </span>
+                <!-- <span class="icon">
+                    <img class="light-logo" src="<?php echo base_url(); ?>assets/images/logo.png" width="40%">
+                    <img class="dark-logo" src="<?php echo base_url(); ?>assets/images/logo.png">
+                </span> -->
                 <span class="text">
-                    <img class="light-logo" src="<?php echo base_url(); ?>assets/images/logo-light-text.png">
-                    <img class="dark-logo" src="<?php echo base_url(); ?>assets/images/logo-text.png">
+                    <img class="light-logo" src="<?php echo base_url(); ?>assets/images/logo.png" width="100%">
+                    <img class="dark-logo" src="<?php echo base_url(); ?>assets/images/logo.png" width="100%">
                 </span>
             </a>
             <!-- ============================================================== -->

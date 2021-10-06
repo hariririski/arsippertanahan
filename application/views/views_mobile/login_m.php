@@ -10,7 +10,7 @@
       <div class="page-content my-0 py-0">
         <div class="card bg-5 card-fixed">
           <div class="card-center mx-3 px-4 py-4 bg-white rounded-m">
-            <h1 class="font-30 font-800 mb-0">Manajemen Arsip Pertanahan</h1>
+            <h1 class="font-30 font-800 mb-0">Digital Arsip Pertanahan</h1>
             <p></p>
             <form  method="post" action="<?php echo base_url(); ?>Login/proses_login">
             <div class="form-custom form-label form-border form-icon mb-3 bg-transparent">
@@ -28,7 +28,7 @@
                 <button type="submit" class="btn-full btn gradient-blue shadow-bg shadow-bg-m" style="width:100%">Masuk</button>
           </form>
           </div>
-          <div class="card-overlay rounded-0 m-0 bg-black opacity-70"></div>
+
         </div>
       </div>
     </div>
