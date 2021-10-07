@@ -14,7 +14,7 @@
                 </span> -->
                 <span class="text">
                     <img class="light-logo" src="<?php echo base_url(); ?>assets/images/logo.png" width="100%">
-                    <img class="dark-logo" src="<?php echo base_url(); ?>assets/images/logo.png" width="100%">
+                    <img class="dark-logo" src="<?php echo base_url(); ?>assets/images/logo.png" >
                 </span>
             </a>
             <!-- ============================================================== -->
