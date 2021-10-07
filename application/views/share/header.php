@@ -7,7 +7,7 @@
             <!-- ============================================================== -->
             <!-- Logo you can find that scss in header.scss -->
             <!-- ============================================================== -->
-            <a href="javascript:void(0)" class="brand-logo">
+            <a href="<?php echo base_url(); ?>home" class="brand-logo">
                 <!-- <span class="icon">
                     <img class="light-logo" src="<?php echo base_url(); ?>assets/images/logo.png" width="40%">
                     <img class="dark-logo" src="<?php echo base_url(); ?>assets/images/logo.png">
