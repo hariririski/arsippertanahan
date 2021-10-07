@@ -67,6 +67,7 @@
                                               <th>Jenis Hak</th>
                                               <th>Buku Tanah</th>
                                               <th>Detail</th>
+                                              <th>Hapus</th>
                                           </tr>
                                       </thead>
                                       <tbody>
@@ -91,6 +92,7 @@
                                                     <a href="<?php echo base_url(); ?>surat_ukur/detail_surat_ukur/<?php echo $surat_ukur->surat_ukur; ?>" class="waves-effect waves-light btn orange btn tooltipped"data-position="bottom" data-delay="50" data-tooltip="Detail"><i class="material-icons dp48">remove_red_eye</i></a>
                                                 <?php } ?>
                                               </td>
+                                              <td>  <a href="<?php echo base_url(); ?>surat_ukur/hapus_surat_ukur/<?php echo $surat_ukur->surat_ukur; ?>/<?php echo $surat_ukur->desa; ?>" type="submit" class="waves-effect waves-light btn  red btn tooltipped" onclick="return confirm('Apakah Anda Yakin MengHapus Data?')"data-position="bottom" data-delay="50" data-tooltip="Hapus"/><i class="material-icons dp48">delete_forever</i> </a></td>
                                           </tr>
                                           <?php
                                           }

@@ -88,6 +88,15 @@ class Surat_ukur extends CI_Controller {
 		$this->load->view('detail_surat_ukur',$data);
 	}
 
-
+	function hapus_surat_ukur(){
+		$id_surat_ukur=$this->uri->segment('3');
+		$id_desa=$this->uri->segment('4');
+		$cek= $this->M_surat_ukur->hapus($id_surat_ukur);
+		if($cek>0){
+			echo ("<script LANGUAGE='JavaScript'>window.location.href='".base_url()."surat_ukur/detail_surat_ukur_desa/".$id_desa."';</script>");
+		}else{
+		echo ("<script LANGUAGE='JavaScript'>window.alert('Data Gagal Di Simpan');window.location.href='".base_url()."surat_ukur/detail_surat_ukur_desa/".$id_desa."';</script>");
+		}
+	}
 
 }
